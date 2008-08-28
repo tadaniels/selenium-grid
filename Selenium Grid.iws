@@ -69,10 +69,7 @@
     <list name="Failed commit: Failed commit: Failed commit: Default" comment="Renamed to com.thoughtworks.selenium.grid" />
     <list name="Failed commit: Default (2)" comment="Renamed to com.thoughtworks.selenium.grid" />
     <list default="true" name="All Uncommited Changes" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Selenium Grid.ipr" afterPath="$PROJECT_DIR$/Selenium Grid.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hub/Hub.iml" afterPath="$PROJECT_DIR$/hub/Hub.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Selenium Grid.iws" afterPath="$PROJECT_DIR$/Selenium Grid.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/AmazonCommentTestBase.java" afterPath="$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/AmazonCommentTestBase.java" />
     </list>
     <ignored path="Selenium Grid.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -538,7 +535,7 @@
       <file leaf-file-name="AmazonCommentTestBase.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/AmazonCommentTestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="8" selection-start="677" selection-end="677" vertical-scroll-proportion="0.29868227">
+            <state line="21" column="63" selection-start="977" selection-end="977" vertical-scroll-proportion="0.36896047">
               <folding />
             </state>
           </provider>
@@ -1657,7 +1654,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/AmazonCommentTestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="8" selection-start="677" selection-end="677" vertical-scroll-proportion="0.29868227">
+        <state line="21" column="63" selection-start="977" selection-end="977" vertical-scroll-proportion="0.36896047">
           <folding />
         </state>
       </provider>
