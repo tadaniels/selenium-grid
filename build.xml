@@ -34,6 +34,7 @@
   </target>
 
   <target name="ci:core" depends="clean, dist" description="Continuous Integration : Build and Unit Tests"/>
+  <target name="ci:metrics" depends="clean, metrics" description="Continuous Integration : Build and Unit Tests"/>
   <target name="ci:demo" depends="clean, dist, automated-demo" description="Continuous Integration : Demo"/>
   <target name="ci:functionals" depends="clean,dist, automated-demo" description="Continuous Integration : Functional Tests"/>
 
