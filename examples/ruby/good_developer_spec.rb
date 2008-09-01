@@ -6,7 +6,7 @@ describe "Good Developer" do
   it "refactors aggressively" do
     as_described_on_amazon \
       :title => "Refactoring: Improving the Design of Existing Code",
-      :anchor => "Refactoring: Improving the Design of Existing Code (The Addison-Wesley Object Technology Series)",
+      :anchor => "Refactoring: Improving the Design of Existing Code (Addison-Wesley Object Technology Series)",
       :keywords => "Refactoring",
       :isbn => "0201485672"
       

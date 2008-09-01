@@ -28,14 +28,14 @@ public class BookTest {
         closeSeleniumSession();
     }
 
-    protected void checkBook(String title, String thumbnail, String keywords, String isbn) {
+    protected void checkBook(String title, String linkText, String keywords, String isbn) {
         session().open("/");
         session().select("url", "Books");
         session().type("twotabsearchtextbox", keywords);
         session().click("navGoButtonPanel");
         session().waitForPageToLoad(TIMEOUT);
         assertTrue(session().isTextPresent(title));
-        session().click("link=" + thumbnail);
+        session().click("link=exact:" + linkText);        
         session().waitForPageToLoad(TIMEOUT);
         assertEquals("1", session().getValue("name=quantity"));
         assertTrue(session().isTextPresent("ISBN-10: " + isbn));
