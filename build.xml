@@ -176,6 +176,7 @@
   <target name="automated-demo" description="Fully Automated Demo (for continuous integration)">
     <exec executable="${rake}" dir="${dist}/selenium-grid-${version}" failonerror="true">
         <arg value="all:restart"/>
+        <env key="SELENIUM_BROWSER" value="*safari"/>
     </exec>
     <waitfor maxwait="10" maxwaitunit="second">
       <socket server="localhost" port="4444"/>

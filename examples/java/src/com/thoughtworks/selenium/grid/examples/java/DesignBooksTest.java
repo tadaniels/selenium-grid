@@ -10,7 +10,7 @@ public class DesignBooksTest extends BookTest {
     @Test(groups = {"example", "firefox", "default"}, description = "Test Amazon Comment Quality Using the Firefox Web Browser (1).")
     public void refactoring() throws Throwable {
         checkBook("Refactoring: Improving the Design of Existing Code",
-                "Refactoring: Improving the Design of Existing Code (The Addison-Wesley Object Technology Series)",
+                "Refactoring: Improving the Design of Existing Code (Addison-Wesley Object Technology Series)",
                 "Refactoring",
                 "0201485672");
     }
@@ -27,7 +27,7 @@ public class DesignBooksTest extends BookTest {
     @Test(groups = {"example", "firefox", "default"}, description = "Test Amazon Comment Quality Using the Firefox Web Browser (1).")
     public void testDrivenDevelopment() throws Throwable {
         checkBook("Test Driven Development: By Example",
-                "Test Driven Development: By Example (The Addison-Wesley Signature Series)",
+                "Test Driven Development: By Example (Addison-Wesley Signature Series)",
                 "Test Driven Development",
                 "0321146530");
     }
@@ -35,7 +35,7 @@ public class DesignBooksTest extends BookTest {
     @Test(groups = {"example", "firefox", "default"}, description = "Test Amazon Comment Quality Using the Firefox Web Browser (1).")
     public void enterpriseDesignPatterns() throws Throwable {
         checkBook("Patterns of Enterprise Application Architecture",
-                "Patterns of Enterprise Application Architecture (The Addison-Wesley Signature Series)",
+                "Patterns of Enterprise Application Architecture (Addison-Wesley Signature Series)",
                 "enterprise design patterns",
                 "0321127420");
     }
