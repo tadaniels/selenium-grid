@@ -15,7 +15,7 @@ describe "Good Developer" do
   it "drive its design with tests" do
     as_described_on_amazon \
       :title => "Test Driven Development: By Example",
-      :anchor => "Test Driven Development: By Example (The Addison-Wesley Signature Series)",
+      :anchor => "Test Driven Development: By Example (Addison-Wesley Signature Series)",
       :keywords => "Test Driven Development",
       :isbn => "0321146530"
       

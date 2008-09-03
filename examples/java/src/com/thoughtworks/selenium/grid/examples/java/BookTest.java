@@ -21,6 +21,7 @@ public class BookTest {
     @Parameters({"seleniumHost", "seleniumPort", "browser", "webSite"})
     protected void startSession(String seleniumHost, int seleniumPort, String browser, String webSite) throws Exception {
         startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
+        session().setTimeout(TIMEOUT);
     }
 
     @AfterMethod(groups = {"default", "example"}, alwaysRun = true)

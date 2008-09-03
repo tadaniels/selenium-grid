@@ -9,6 +9,10 @@
 
 require "rubygems"
 require 'rake'
+
+$:.unshift File.expand_path(File.dirname(__FILE__) + "/vendor/selenium-client-1.2/lib")
+require "selenium/rake/tasks"
+
 begin
   require "deep_test/rake_tasks"
 rescue Exception
@@ -57,9 +61,9 @@ Spec::Rake::SpecTask.new("tests:run_in_parallel") do |t|
   t.deep_test :number_of_workers => 10,
               :timeout_in_seconds => 180
   t.spec_opts << '--color'
-  t.spec_opts << "--require './lib/screenshot_formatter'"
-  t.spec_opts << "--format=ScreenshotFormatter:./tmp/rspec_report/index.html"
-  t.spec_opts << "--format=progress"                
+  t.spec_opts << "--require './vendor/selenium-client-1.2/lib/selenium/rspec/reporting/selenium_test_report_formatter'"
+  t.spec_opts << "--format=Selenium::RSpec::SeleniumTestReportFormatter:./tmp/test_report.html"
+  t.spec_opts << "--format=progress"
 end  
 task :'tests:run_in_parallel' => :create_report_dir
 
@@ -72,8 +76,8 @@ desc "Run all behaviors in sequence"
 Spec::Rake::SpecTask.new('tests:run_in_sequence') do |t|
   t.pattern = "**/*_spec.rb"
   t.spec_opts << '--color'
-  t.spec_opts << "--require './lib/screenshot_formatter'"
-  t.spec_opts << "--format=ScreenshotFormatter:./tmp/rspec_report/index.html"
+  t.spec_opts << "--require './vendor/selenium-client-1.2/lib/selenium/rspec/reporting/selenium_test_report_formatter'"
+  t.spec_opts << "--format=Selenium::RSpec::SeleniumTestReportFormatter:./tmp/test_report.html"
   t.spec_opts << "--format=progress"                
   t.fail_on_error = true
 end

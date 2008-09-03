@@ -1,37 +1,62 @@
 $:.unshift
+$:.unshift File.expand_path(File.dirname(__FILE__) + "/vendor/selenium-client-1.2/lib")
+
 require 'rubygems'
 require 'spec'
-require 'spec/runner/formatter/html_formatter'
-require File.expand_path(File.dirname(__FILE__) + "/vendor/selenium-client-1.1/lib/selenium.rb")
-require File.expand_path(File.dirname(__FILE__) + "/lib/selenium_driver_extensions")
-require File.expand_path(File.dirname(__FILE__) + "/lib/rspec_extensions")
-require File.expand_path(File.dirname(__FILE__) + "/lib/screenshot_formatter")
+require "selenium"
+require "selenium/rspec/rspec_extensions"
+require "selenium/rspec/reporting/selenium_test_report_formatter"
 require File.expand_path(File.dirname(__FILE__) + "/book_example")
+require File.expand_path(File.dirname(__FILE__) + "/lib/selenium_driver_extensions")
 
 
 Spec::Runner.configure do |config|
 
-  config.before(:all) do
-    remote_control_server = ENV['SELENIUM_REMOTE_CONTROL'] || "localhost"
-    port = ENV['SELENIUM_PORT'] || 4444
-    browser = ENV['SELENIUM_BROWSER'] || "*firefox"
-    application_host = ENV['SELENIUM_APPLICATION_HOST'] || "amazon.com"
-    application_port = ENV['SELENIUM_APPLICATION_PORT'] || "80"
-    timeout = 60000    
-    puts "Contacting Selenium RC on #{remote_control_server}:#{port} -> http://#{application_host}:#{application_port}"
-    @selenium = Selenium::SeleniumDriver.new(remote_control_server, port, browser, "http://#{application_host}:#{application_port}", timeout)
-    @selenium.extend SeleniumDriverExtensions
-    @selenium.start
+  config.before(:each) do
+    create_selenium_driver
+    start_new_browser_session
   end
 
   config.after(:each) do
-    ScreenshotFormatter.capture_browser_state(@selenium, self) if execution_error
+    begin
+      Selenium::RSpec::SeleniumTestReportFormatter.capture_system_state(@selenium_driver, self) if execution_error
+      if @selenium_driver.session_started?
+        selenium_driver.set_context "Ending example '#{self.description}'"
+      end
+    ensure
+      @selenium_driver.stop
+    end
   end
 
-  config.after(:all) do
-    @selenium.stop
+  def start_new_browser_session
+    @selenium_driver.start_new_browser_session
+    @selenium_driver.set_context "Starting example '#{self.description}'"
   end
-  
-  
+
+  def selenium_driver
+    @selenium_driver
+  end
+
+  def page
+    @selenium_driver
+  end
+
+  def create_selenium_driver
+    remote_control_server = ENV['SELENIUM_RC_HOST'] || "localhost"
+    port = ENV['SELENIUM_RC_PORT'] || 4444
+    browser = ENV['SELENIUM_RC_BROWSER'] || "*firefox"
+    timeout = ENV['SELENIUM_RC_TIMEOUT'] || 60
+    application_host = ENV['SELENIUM_APPLICATION_HOST'] || "amazon.com"
+    application_port = ENV['SELENIUM_APPLICATION_PORT'] || "80"
+
+    puts "Contacting Selenium RC on #{remote_control_server}:#{port} -> http://#{application_host}:#{application_port}"
+    @selenium_driver = Selenium::SeleniumDriver.new(
+        remote_control_server, port, browser,
+        "http://#{application_host}:#{application_port}", timeout)
+    @selenium_driver.extend SeleniumDriverExtensions
+  end
+
+
+
 end
 

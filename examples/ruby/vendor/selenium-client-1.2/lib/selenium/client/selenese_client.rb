@@ -7,7 +7,7 @@ module Selenium
       attr_reader :session_id
   
       def do_command(verb, args)
-        timeout(@timeout) do
+        timeout(default_timeout_in_seconds) do
           status, response = http_post(http_request_for(verb, args))
           raise SeleniumCommandError, response unless status == "OK"          
           response
@@ -82,10 +82,10 @@ module Selenium
       end
             
       def http_post(data)
-        #print "Requesting --->" + command_string + "\n"
+        # puts "Requesting ---> #{data.inspect}"
         http = Net::HTTP.new(@server_host, @server_port)
         response = http.post('/selenium-server/driver/', data, HTTP_HEADERS)
-        #print "RESULT: " + response.body + "\n\n"å          
+        # puts "RESULT: #{response.inspect}\n"       
         [ response.body[0..1], response.body[3..-1] ]
       end
       
