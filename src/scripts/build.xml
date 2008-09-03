@@ -7,7 +7,7 @@
   <property name="webSite" value="http://amazon.com" />
   <property name="seleniumHost" value="localhost" />
   <property name="seleniumPort" value="4444" />
-  <property name="browser" value="*chrome" />
+  <property name="browser" value="*firefox" />
   
   <taskdef resource="testngtasks" classpath="${basedir}/lib/testng-5.7-jdk15.jar"/>
   
@@ -74,7 +74,7 @@
   <property name="host" value="localhost"/>
   <property name="port" value="5555"/>
   <property name="hubURL" value="http://localhost:4444"/>
-  <property name="environment" value="*chrome"/>
+  <property name="environment" value="*firefox"/>
   <property name="seleniumArgs" value=""/>  
   <target name="launch-remote-control" description="Launch A Remote Control">
     <java classpathref="remote-control.classpath"

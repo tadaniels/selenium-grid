@@ -21,7 +21,7 @@ public class OptionParser {
         protected Options() {
             this.host = "localhost";
             this.port = "5555";
-            this.environment = "*chrome";
+            this.environment = "*firefox";
             this.hubURL = "http://localhost:4444";
             this.seleniumServerOptions = new ArrayList<String>(10);
         }
@@ -100,7 +100,7 @@ public class OptionParser {
         println("Usage: java -jar selenium-grid-remote-control*.jar -host <host> -port <port> -env <environment> -hubURL <url> [options]\n");
         println("-port <nnnn>: the port number the selenium server should use (default 5555)");
         println("-host <hostname>: hostname of the machine the selenium server is launched on (default localhost)");
-        println("-env <environment>: environment offered by this selenium server (default *chrome)");
+        println("-env <environment>: environment offered by this selenium server (default *firefox)");
         println("-hubURL <url>: base url of the central Hub to register to (default http://localhost:4444)");
     }
 

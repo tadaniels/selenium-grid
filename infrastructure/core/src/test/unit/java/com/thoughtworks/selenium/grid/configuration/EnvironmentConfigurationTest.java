@@ -71,8 +71,8 @@ public class EnvironmentConfigurationTest {
 
     @Test
     public void toStringReturnAHumanFriendlyString() {
-        assertEquals("[EnvironmentConfiguration name='Firefox / Linux', browser='*chrome']",
-                     new EnvironmentConfiguration("Firefox / Linux", "*chrome").toString());
+        assertEquals("[EnvironmentConfiguration name='Firefox / Linux', browser='*firefox']",
+                     new EnvironmentConfiguration("Firefox / Linux", "*firefox").toString());
     }
 
     @Test
