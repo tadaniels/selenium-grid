@@ -35,7 +35,7 @@ public class BookTest {
         session().click("navGoButtonPanel");
         session().waitForPageToLoad(TIMEOUT);
         assertTrue(session().isTextPresent(title));
-        session().click("link=exact:" + linkText);        
+        session().click("link=" + linkText);        
         session().waitForPageToLoad(TIMEOUT);
         assertEquals("1", session().getValue("name=quantity"));
         assertTrue(session().isTextPresent("ISBN-10: " + isbn));
