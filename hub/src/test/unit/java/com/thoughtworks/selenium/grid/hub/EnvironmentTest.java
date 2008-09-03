@@ -62,8 +62,8 @@ public class EnvironmentTest extends UsingClassMock {
 
     @Test
     public void toStringReturnsAHumanFriendlyString() {
-      assertEquals("[Environment name='Firefox / Linux', browser='*chrome']",
-                   new Environment("Firefox / Linux", "*chrome").toString());
+      assertEquals("[Environment name='Firefox / Linux', browser='*firefox']",
+                   new Environment("Firefox / Linux", "*firefox").toString());
     }
 
 }

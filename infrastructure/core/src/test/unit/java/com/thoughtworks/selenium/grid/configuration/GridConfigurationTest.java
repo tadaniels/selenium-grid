@@ -61,13 +61,13 @@ public class GridConfigurationTest {
                 "hub: \n"
               + "  environments:\n"
               + "    - name: \"Firefox on Windows\"\n"
-              + "      browser: \"*chrome\"\n"
+              + "      browser: \"*firefox\"\n"
               + "    - name: \"IE 6 on Windows\"\n"
               + "      browser: \"*iehta\"\n");
         environments = configuration.getHub().getEnvironments();
 
         Assert.assertEquals(2, environments.length);
-        Assert.assertTrue(Arrays.asList(environments).contains(new EnvironmentConfiguration("Firefox on Windows", "*chrome")));
+        Assert.assertTrue(Arrays.asList(environments).contains(new EnvironmentConfiguration("Firefox on Windows", "*firefox")));
         Assert.assertTrue(Arrays.asList(environments).contains(new EnvironmentConfiguration("IE 6 on Windows", "*iehta")));
     }
 

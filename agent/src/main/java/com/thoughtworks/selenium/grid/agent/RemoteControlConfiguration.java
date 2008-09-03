@@ -24,7 +24,7 @@ public class RemoteControlConfiguration {
     }
 
     public String environment() {
-        return "*chrome";
+        return "*firefox";
     }
 
     public String additionalSeleniumArgs() {

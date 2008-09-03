@@ -33,8 +33,8 @@ public class RemoteControlConfigurationTest {
     }
 
     @Test
-    public void environmentIsChromeByDefault() {
-        assertEquals("*chrome", new RemoteControlConfiguration().environment());
+    public void environmentIsFirefoxByDefault() {
+        assertEquals("*firefox", new RemoteControlConfiguration().environment());
     }
 
     @Test

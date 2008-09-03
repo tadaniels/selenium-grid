@@ -14,7 +14,7 @@ Spec::Runner.configure do |config|
   config.before(:all) do
     remote_control_server = ENV['SELENIUM_REMOTE_CONTROL'] || "localhost"
     port = ENV['SELENIUM_PORT'] || 4444
-    browser = ENV['SELENIUM_BROWSER'] || "*chrome"
+    browser = ENV['SELENIUM_BROWSER'] || "*firefox"
     application_host = ENV['SELENIUM_APPLICATION_HOST'] || "amazon.com"
     application_port = ENV['SELENIUM_APPLICATION_PORT'] || "80"
     timeout = 60000    

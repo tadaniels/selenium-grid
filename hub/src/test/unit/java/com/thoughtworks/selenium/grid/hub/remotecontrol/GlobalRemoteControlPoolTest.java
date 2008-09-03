@@ -250,7 +250,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
 
         remoteControl = new RemoteControlProxy("", 0, "an environment", 1, null);
-        environment = new Environment("an environment", "*chrome");
+        environment = new Environment("an environment", "*firefox");
         pool = new GlobalRemoteControlPool();
         pool.register(remoteControl);
 

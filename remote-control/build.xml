@@ -52,7 +52,7 @@
   <property name="host" value="localhost"/>
   <property name="port" value="5555"/>
   <property name="hubURL" value="http://localhost:4444"/>
-  <property name="environment" value="*chrome"/>
+  <property name="environment" value="*firefox"/>
   <property name="seleniumArgs" value=""/>
   <target name="run" description="Launch a remote control">
     <java classpathref="runtime.classpath"
