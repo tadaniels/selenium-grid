@@ -1,6 +1,7 @@
 #
 # Rakefile managing Selenium Grid components
 #
+require "net/http"
 require File.dirname(__FILE__) + '/lib/ruby/tcp_socket_extensions'
 require File.dirname(__FILE__) + '/lib/ruby/file_extensions'
 require File.dirname(__FILE__) + '/lib/ruby/java/classpath'
