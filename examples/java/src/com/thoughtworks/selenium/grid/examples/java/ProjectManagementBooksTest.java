@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
  */
 public class ProjectManagementBooksTest extends BookTest {
 
-
     @Test(groups = {"example", "firefox", "default"}, description = "Test Amazon Comment Quality Using the Firefox Web Browser (1).")
     public void shipIt() throws Throwable {
         checkBook("Ship it! A Practical Guide to Successful Software Projects",
