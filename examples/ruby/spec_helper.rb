@@ -4,8 +4,7 @@ $:.unshift File.expand_path(File.dirname(__FILE__) + "/vendor/selenium-client-1.
 require 'rubygems'
 require 'spec'
 require "selenium"
-require "selenium/rspec/rspec_extensions"
-require "selenium/rspec/reporting/selenium_test_report_formatter"
+require "selenium/rspec/spec_helper"
 require File.expand_path(File.dirname(__FILE__) + "/book_example")
 require File.expand_path(File.dirname(__FILE__) + "/lib/selenium_driver_extensions")
 
@@ -18,14 +17,7 @@ Spec::Runner.configure do |config|
   end
 
   config.after(:each) do
-    begin
-      Selenium::RSpec::SeleniumTestReportFormatter.capture_system_state(@selenium_driver, self) if execution_error
-      if @selenium_driver.session_started?
-        selenium_driver.set_context "Ending example '#{self.description}'"
-      end
-    ensure
-      @selenium_driver.stop
-    end
+    @selenium_driver.stop
   end
 
   def start_new_browser_session
@@ -55,8 +47,6 @@ Spec::Runner.configure do |config|
         "http://#{application_host}:#{application_port}", timeout)
     @selenium_driver.extend SeleniumDriverExtensions
   end
-
-
 
 end
 
