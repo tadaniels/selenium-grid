@@ -75,6 +75,13 @@
 # 
 # Currently the css selector locator supports all css1, css2 and css3 selectors except namespace in css3, some pseudo classes(:nth-of-type, :nth-last-of-type, :first-of-type, :last-of-type, :only-of-type, :visited, :hover, :active, :focus, :indeterminate) and pseudo elements(::first-line, ::first-letter, ::selection, ::before, ::after). 
 # 
+# *    <b>ui</b>=<em>uiSpecifierString</em>:
+# Locate an element by resolving the UI specifier string to another locator, and evaluating it. See the Selenium UI-Element Reference for more details.
+# *    ui=loginPages::loginButton()
+# *    ui=settingsPages::toggle(label=Hide Email)
+# *    ui=forumPages::postBody(index=2)//a[2]
+# 
+# 
 # 
 # 
 # Without an explicit locator prefix, Selenium uses the following default
@@ -1518,6 +1525,18 @@ module Selenium
         end
 
 
+        # Executes a command rollup, which is a series of commands with a unique
+        # name, and optionally arguments that control the generation of the set of
+        # commands. If any one of the rolled-up commands fails, the rollup is
+        # considered to have failed. Rollups may also contain nested rollups.
+        #
+        # 'rollupName' is the name of the rollup command
+        # 'kwargs' is keyword arguments string that influences how the                    rollup expands into commands
+        def rollup(rollupName,kwargs)
+            do_command("rollup", [rollupName,kwargs,])
+        end
+
+
         # Writes a message to the status bar and adds a note to the browser-side
         # log.
         #
@@ -1543,10 +1562,23 @@ module Selenium
             do_command("captureScreenshot", [filename,])
         end
 
+
         # Capture a PNG screenshot.  It then returns the file as a base 64 encoded string.
         #
         def capture_screenshot_to_string()
             return get_string("captureScreenshotToString", [])
+        end
+
+
+        # Downloads a screenshot of the browser current window canvas to a 
+        # based 64 encoded PNG file. The <em>entire</em> windows canvas is captured,
+        # including parts rendered outside of the current view port.
+        # 
+        # Currently this only works in Mozilla and when running in chrome mode.
+        #
+        # 'kwargs' is A kwargs string that modifies the way the screenshot is captured. Example: "background=#CCFFDD". This may be useful to set for capturing screenshots of less-than-ideal layouts, for example where absolute positioning causes the calculation of the canvas dimension to fail and a black background is exposed  (possibly obscuring black text).
+        def capture_entire_page_screenshot_to_string(kwargs)
+            return get_string("captureEntirePageScreenshotToString", [kwargs,])
         end
 
 
@@ -1557,6 +1589,15 @@ module Selenium
         #
         def shut_down_selenium_server()
             do_command("shutDownSeleniumServer", [])
+        end
+
+
+        # Retrieve the last messages logged on a specific remote control. Useful for error reports, especially
+        # when running multiple remote controls in a distributed environment. The maximum number of log messages
+        # that can be retrieve is configured on remote control startup.
+        #
+        def retrieve_last_remote_control_logs()
+            return get_string("retrieveLastRemoteControlLogs", [])
         end
 
 

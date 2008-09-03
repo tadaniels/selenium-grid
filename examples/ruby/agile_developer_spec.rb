@@ -6,7 +6,7 @@ describe "Agile Developer" do
   it "demonstrates integrity and discipline" do
     as_described_on_amazon \
       :title => "Extreme Programming Explained: Embrace Change",
-      :anchor => "Extreme Programming Explained: Embrace Change (2nd Edition) (The XP Series)",
+      :anchor => "Extreme Programming Explained: Embrace Change (2nd Edition) (XP Series)",
       :keywords => "Extreme Programming",
       :isbn => "0321278658"
       

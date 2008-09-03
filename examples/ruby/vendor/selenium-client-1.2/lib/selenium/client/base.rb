@@ -23,13 +23,14 @@ module Selenium
       include Selenium::Client::SeleneseClient
       include Selenium::Client::GeneratedDriver
   
-      def initialize(server_host, server_port, browserStartCommand, browserURL, timeout=30000)
+      def initialize(server_host, server_port, browser_string, browser_url, timeout_in_seconds=300)
         @server_host = server_host
         @server_port = server_port
-        @browserStartCommand = browserStartCommand
-        @browserURL = browserURL
-        @timeout = timeout
+        @browser_string = browser_string
+        @browser_url = browser_url
+        @timeout = timeout_in_seconds
         @extension_js = ""
+        @session_id = nil
       end
       
       def set_extension_js(extension_js)
@@ -37,7 +38,7 @@ module Selenium
       end
       
       def start()
-        result = get_string("getNewBrowserSession", [@browserStartCommand, @browserURL, @extension_js])
+        result = get_string("getNewBrowserSession", [@browser_string, @browser_url, @extension_js])
         @session_id = result
       end
       
@@ -46,6 +47,26 @@ module Selenium
         @session_id = nil
       end
 
+      def start_new_browser_session
+        start
+      end
+      
+      def close_current_browser_session
+        stop
+      end
+      
+      def session_started?
+        not @session_id.nil?
+      end
+      
+      def default_timeout_in_seconds
+        @timeout
+      end
+      
+      def chrome_backend?
+        ["*chrome", "*firefox", "*firefox2", "*firefox3"].include?(@browser_string)
+      end
+      
     end
   
   end
