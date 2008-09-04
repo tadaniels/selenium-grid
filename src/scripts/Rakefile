@@ -72,6 +72,7 @@ end
 
 desc "Stop all  services (Hub a Remote Controls"
 task :'all:stop' do
+  puts "Stopping all Selenium Grid servers..."
   Rake::Task[:'rc:stop_all'].invoke
   Rake::Task[:'hub:stop'].invoke rescue nil
 end
@@ -136,12 +137,11 @@ end
 desc "Fully Automated Ruby Example (for continuous integration)"
 task :'ci:ruby-example' do
   begin
-    Rake::Task["all:restart"].invoke
+    Rake::Task["all:restart"].execute "dummy"
 #    sh "(cd  examples/ruby; rake tests:run_in_parallel)"
-    sh "(cd  examples/ruby; rake tests:run_in_sequence)"
+    sh "(cd  examples/ruby; rake tests:run_in_sequencex)"
   ensure
-    puts "Stopping all servers..."
-    Rake::Task["all:stop"].invoke
+    Rake::Task["all:stop"].execute "dummy"
   end
 end
 
