@@ -134,6 +134,17 @@ task :'xvnc:start' do
   sh "Xvnc :1 -alwaysshared -geometry 1280x1024 -depth 24 -desktop 'Selenium Grid' 2>&1 >#{File.join(File.dirname(__FILE__), "log", "X.log")} &"
 end
 
+desc "Fully Automated Demo (for continuous integration)"
+task :'ci:demo' do
+  begin
+    Rake::Task["all:restart"].execute "dummy"
+#    sh "ant run-demo-in-parallel"
+    sh "ant run-demo-in-sequence"
+  ensure
+    Rake::Task["all:stop"].execute "dummy"
+  end
+end
+
 desc "Fully Automated Ruby Example (for continuous integration)"
 task :'ci:ruby-example' do
   begin
