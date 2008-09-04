@@ -36,7 +36,7 @@
   <target name="ci:core" depends="clean, dist" description="Continuous Integration : Build and Unit Tests"/>
   <target name="ci:metrics" depends="clean, metrics" description="Continuous Integration : Build and Unit Tests"/>
   <target name="ci:demo" depends="clean, dist-bin, automated-demo" description="Continuous Integration : Demo"/>
-  <target name="ci:functionals" depends="clean, dist-bin, automated-demo" description="Continuous Integration : Functional Tests"/>
+  <target name="ci:functionals" depends="clean, dist-bin, automated-ruby-example" description="Continuous Integration : Functional Tests"/>
 
   <target name="clean" description="clean all generated artifacts">
     <build-subprojects target="clean"/>
