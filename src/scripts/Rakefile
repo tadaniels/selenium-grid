@@ -133,6 +133,18 @@ task :'xvnc:start' do
   sh "Xvnc :1 -alwaysshared -geometry 1280x1024 -depth 24 -desktop 'Selenium Grid' 2>&1 >#{File.join(File.dirname(__FILE__), "log", "X.log")} &"
 end
 
+desc "Fully Automated Ruby Example (for continuous integration)"
+task :'ci:ruby-example' do
+  begin
+    Rake::Task["all:restart"].invoke
+    sh "(cd  examples/ruby; rake tests:run_in_parallel)"
+    sh "(cd  examples/ruby; rake tests:run_in_sequence)"
+  ensure
+    puts "Stopping all servers..."
+    Rake::Task["all:stop"].invoke
+  end
+end
+
 def launch_rc(options)
     # Selenium Server must be first in classpath
     classpath = Java::Classpath.new(File.dirname(__FILE__))
@@ -155,3 +167,4 @@ def rc_args(options)
   args << (options[:selenium_args] || ENV['SELENIUM_ARGS'] || "")
   args
 end
+
