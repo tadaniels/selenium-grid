@@ -59,7 +59,7 @@ desc("Run all tests in parallel using DeepTest.")
 Spec::Rake::SpecTask.new("tests:run_in_parallel") do |t|
   t.spec_files = FileList['./**/*_spec.rb']
   t.deep_test :number_of_workers => 10,
-              :timeout_in_seconds => 180
+              :timeout_in_seconds => 300
   t.spec_opts << '--color'
   t.spec_opts << "--require './vendor/selenium-client-1.2/lib/selenium/rspec/reporting/selenium_test_report_formatter'"
   t.spec_opts << "--format=Selenium::RSpec::SeleniumTestReportFormatter:./tmp/test_report.html"
