@@ -90,6 +90,7 @@ end
 
 desc "Stop Hub"
 task :'hub:stop' do
+  puts "Shutting down Selenium Grid hub..."
   http = Net::HTTP.new("localhost", 4444)
   http.post('/lifecycle-manager', "action=shutdown")
 end
