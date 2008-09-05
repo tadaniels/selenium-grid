@@ -2,6 +2,7 @@
 # Rakefile managing Selenium Grid components
 #
 require "net/http"
+require "yaml"
 require File.dirname(__FILE__) + '/lib/ruby/tcp_socket_extensions'
 require File.dirname(__FILE__) + '/lib/ruby/file_extensions'
 require File.dirname(__FILE__) + '/lib/ruby/java/classpath'
@@ -66,7 +67,7 @@ task :'all:start' do
   ENV['BACKGROUND'] = "true"
   Rake::Task[:'hub:start'].execute "dummy"
   puts "Waiting for Hub to come up..."
-  TCPSocket.wait_for_service :host => "localhost", :port => 4444
+  TCPSocket.wait_for_service :host => "localhost", :port => hub_port
   Rake::Task[:'rc:start_all'].execute "dummy"
 end
 
@@ -91,7 +92,7 @@ end
 desc "Stop Hub"
 task :'hub:stop' do
   puts "Shutting down Selenium Grid hub..."
-  http = Net::HTTP.new("localhost", 4444)
+  http = Net::HTTP.new("localhost", hub_port)
   http.post('/lifecycle-manager', "action=shutdown")
 end
 
@@ -141,7 +142,7 @@ task :'ci:demo' do
   begin
     Rake::Task["all:restart"].execute "dummy"
 #    sh "ant run-demo-in-parallel"
-#    sh "ant run-demo-in-sequence"
+    sh "ant run-demo-in-sequence"
   ensure
     Rake::Task["all:stop"].execute "dummy"
   end
@@ -175,9 +176,17 @@ def rc_args(options)
   args = []
   args << "-host" << (options[:host] || ENV['HOST'] || "localhost")
   args << "-port" << options[:port]
-  args << "-hubUrl" << (options[:hub_url] || ENV['HUB_URL'] || 'http://localhost:4444')
+  args << "-hubUrl" << (options[:hub_url] || ENV['HUB_URL'] || "http://localhost:#{hub_port}")
   args << "-env '#{options[:environment] || ENV['ENVIRONMENT'] || "*firefox"}'" 
   args << (options[:selenium_args] || ENV['SELENIUM_ARGS'] || "")
   args
+end
+
+def hub_port
+  (ENV["HUB_PORT"] || config["hub"]["port"]).to_i
+end
+
+def config
+  @config ||= YAML.load(File.read(File.dirname(__FILE__) + "/grid_configuration.yml"))
 end
 
