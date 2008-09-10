@@ -43,6 +43,12 @@ div.section h2 {
   text-shadow: .1em .1em .2em #222;
 }
 
+div.section div.content h3 {
+  margin: 0em 1em .5em 0em;
+  color:  #a20017;
+  font: bold 1.2em "Lucida Grande", Verdana, sans-serif;
+}
+
 div.section div.content {
   float: left;
   width: 70%;
