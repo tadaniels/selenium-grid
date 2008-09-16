@@ -53,35 +53,34 @@ Launching the Hub and the Remote Controls
     rake hub:start SELENIUM_ARGS="-multiWindow -debug"
 
 
- I need to run hub and remoute control in background.... How can I do it?
- ------------------------------------------------------------------------
+ How can I run the Hub and the Remote control in the background?
+ ---------------------------------------------------------------
 
-  On UNIX you just add a ampersand at the en of the command line. See:
+  On UNIX you just add a ampersand at the end of the command line. See:
 
  * [Working with the UNIX shell](http://www.washington.edu/computing/unix/startdoc/shell.html)
  * [`nohup`](http://en.wikipedia.org/wiki/Nohup)
   
-  On Windows you can use "start /wait/ /b" : [`start` command reference](http://www.ss64.com/nt/start.html)
+  On Windows you can use "start /wait/ /b" : Check out the [`start` command reference](http://www.ss64.com/nt/start.html) for more details.
   
   This said, if you are running on a UNIX platform or Mac OS X, the 
   easiest way to start the Hub and Remote Controls is to use the Rake 
-  tasks that come with the default Selenium Grid distribution. 
-  `cd` to the root of the Selenium distribution and launch:
+  tasks that come with Selenium Grid distribution. 
+  `cd` to the root of the Selenium distribution and type:
   
       rake hub:start BACKGROUND=true
   
-  to launch the hub in the background. Then
+  Which will launch the hub in the background. You can then launch
+  remote controls in the background with:
   
-      rake rc:start BACKGROUND=true
+      rake rc:start PORT=4445 BACKGROUND=true
   
-  to launch a remote control in the background
-  
-  In practice, you can actually launch the hub and all the remote controls
-  in the background with a single command:
+  In practice, it is actually easier to launch the hub and all 
+  the remote controls in the background with a single command:
   
       rake all:start
   
-  and od course stop all of them in a similar way
+  Of course you can also stop them all in a similar way:
   
       rake all:start
 
@@ -104,7 +103,7 @@ Launching the Hub and the Remote Controls
 * While you are at it cleanup `C:\DOCUME1\<your login>\LOCALS1\Temp as much as possible`
 * Run your tests or the demo again
 
- Why do I have duplicate entries in the grid hub after restarting my RCs?
+ Why do I have duplicate entries in the Hub after restarting my Remote Controls?
  ------------------------------------------------------------------------
 
 > Say I have a hub setup with three RCs ready and waiting, and then I
@@ -343,19 +342,15 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
  My test is not working when I use HTTPS!
  ----------------------------------------
 
->  We have a client where application is built on HTTPS. We tried testing using selenium but its not supporting.
+>  We have a client where application is built on HTTPS. 
+>  We tried testing using selenium but its not supporting.
 >
->  Can you please suggest us the approach to be followed to test HTTPS URL’s.
+>  Can you please suggest us the approach to be followed 
+>  to test HTTPS URL's.
 
-  http://blog.thirstybear.co.uk/2008/05/selenium-and-https.html
-
- However, in some cases, you may be required to test more than one domain at
- once. The most common case is when you need to test both http://blah.com and
- https://blah.com. "http:" and "https:" are considered different "origins" from
- JavaScript perspective, so tests running on one can't run on the other. In
- that case, for now, you'll have to use one of our experimental browser
- launchers which support running in multiple domains. (Also be sure to read the
- HTTPS section of this documentation for more details about HTTPS support.)
+  Selenium and Selenium Grid support HTTPS out-of-the-box. Just make sure
+  you are using one of the "privileged" browser modes,
+  namely `*chrome`, `*hta` and `*safari`.
 
  I get some strange errors when I run multiple Internet Explorer instances on the same machine
  ---------------------------------------------------------------------------------------------
@@ -407,7 +402,7 @@ Development
  Where Can I Get Feedback Selenium Grid on Continuous Integration Builds?
  ------------------------------------------------------------------------
   
-  Check out the Selenium Grid builds on 
-  [http://teamcity.openqa.org](http://teamcity.openqa.org) (you can login as a guest user).
+  Check out latest Selenium Grid builds on 
+  [http://xserve.openqa.org:8080/](http://xserve.openqa.org:8080/)
 
 
