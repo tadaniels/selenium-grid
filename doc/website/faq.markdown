@@ -342,7 +342,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
  My test is not working when I use HTTPS!
  ----------------------------------------
 
->  We have a client where application is built on HTTPS. 
+>  We have a clienthe application as same as HTTP, iam getting certificate popup windowt where application is built on HTTPS. 
 >  We tried testing using selenium but its not supporting.
 >
 >  Can you please suggest us the approach to be followed 
@@ -352,6 +352,59 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
   you are using one of the "privileged" browser modes,
   namely `*chrome`, `*hta` and `*safari`.
 
+ How can I avoid SSL certificate popups?
+ ---------------------------------------
+
+  First make sure you are using a priviledged browser mode 
+  (namely `*chrome`, `*hta` or `*safari`).
+
+  The generic solution is to accept the Certificate manually the first
+  time and run the test again. For Firefox the solution is actually a
+  little more involved and will depend whether your SSL certificate is
+  valid or not:
+
+### Your SSL Certificate is Valid ###
+
+1. Generate a Firefox [profile](http://support.mozilla.com/en-US/kb/Profiles)
+    accepting the certificate:
+
+   1. Start Firefox manually
+
+   2. Go to the web page trigerring the certificate popup and 
+      accept permanently the certification.
+
+   3. Close Firefox.
+
+2. Copy the Firefox profile you just changed to a new directory
+  (eg `seleniumFirefoxProfile`). You will typically find the
+  Firefox profile under (`~/Library/Mozilla/Profiles/`, 
+  `~/.mozilla/firefox/` or `C:\Documents and settings\%USER%\Application Data\Mozilla\Profiles`).
+              
+
+3. Now start the Selenium Remote Control using the profile you just copied
+   using the `-firefoxTemplateProfile` option.
+
+    java -jar selenium-server-1.0.jar -firefoxProfileTemplate ~/seleniumFirefoxProfile
+
+   Or if you are using Selenium Grid:
+
+    ant -DseleniumArgs="-firefoxProfileTemplate ~/seleniumFirefoxProfile" launch-remote-control
+
+### Your SSL Certificate is Invalid ###
+
+ When you are running Selenium Grid against Developement or QA 
+ environments you can run into invalid SSL certificated (expired
+ certificate for instance).
+                        
+ In that case not only accept permanently the certificate but 
+ also install the "Remember Mismatch" Firefox plugin when generating
+ the firefox profile you will use for Selenium. 
+
+ If you are desperate, there is another solution (quite brutal): 
+ When you generate the Firefox profile to use for Selenium, 
+ type about:copy in the browser address line. Then Search every 
+ `security.warn` attribute and set it to false!
+                           
  I get some strange errors when I run multiple Internet Explorer instances on the same machine
  ---------------------------------------------------------------------------------------------
 
