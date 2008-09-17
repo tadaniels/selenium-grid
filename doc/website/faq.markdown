@@ -53,8 +53,23 @@ Launching the Hub and the Remote Controls
     rake hub:start SELENIUM_ARGS="-multiWindow -debug"
 
 
- How can I run the Hub and the Remote control in the background?
- ---------------------------------------------------------------
+ How can I use the `-firefoxProfileTemplate` option on Windows?
+ --------------------------------------------------------------
+
+  On OS X or UNIx, you can use a custom Firefox profile with Selenium
+  Grid by launching the remote controls with the `-firefoxProfileTemplate`
+  option:
+
+    ant -DseleniumArgs="-firefoxProfileTemplate /path/to/my_profile" launch-remote-control
+
+  On Windows figuring out the right path to provide for your profile
+  can be confusing espcially if you file path contains spaces
+  (like `\Documents and Settings`). Just make sure you are
+  providing the short filename (visible with a `dir /x`) and everything
+  will be fine.
+
+ I need to run hub and remoute control in background.... How can I do it?
+ ------------------------------------------------------------------------
 
   On UNIX you just add a ampersand at the end of the command line. See:
 
