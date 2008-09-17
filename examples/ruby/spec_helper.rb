@@ -38,7 +38,7 @@ Spec::Runner.configure do |config|
     port = ENV['SELENIUM_RC_PORT'] || 4444
     browser = ENV['SELENIUM_RC_BROWSER'] || "*firefox"
     timeout = ENV['SELENIUM_RC_TIMEOUT'] || 60
-    application_host = ENV['SELENIUM_APPLICATION_HOST'] || "amazon.com"
+    application_host = ENV['SELENIUM_APPLICATION_HOST'] || "www.amazon.com"
     application_port = ENV['SELENIUM_APPLICATION_PORT'] || "80"
 
     puts "Contacting Selenium RC on #{remote_control_server}:#{port} -> http://#{application_host}:#{application_port}"
