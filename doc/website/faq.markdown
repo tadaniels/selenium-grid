@@ -58,7 +58,7 @@ Launching the Hub and the Remote Controls
  How can I use the `-firefoxProfileTemplate` option on Windows?
  --------------------------------------------------------------
 
-  On OS X or UNIx, you can use a custom Firefox profile with Selenium
+  On OS X or UNIX, you can use a custom Firefox profile with Selenium
   Grid by launching the remote controls with the `-firefoxProfileTemplate`
   option:
 
@@ -106,7 +106,7 @@ Launching the Hub and the Remote Controls
 
 > Here is my log on this error:
 > ...
-> java Caused by: org.openqa.selenium.server.browserlaunchers.FirefoxChromeLauncher$FileLockRemai nedException: Lock file still present! C:\DOKUME1\Semadou\LOKALE1\Temp\customProfileDir9d4a3879bb7d4ca5b75dbbb488ec30b1\parent.lock
+> java Caused by: org.openqa.selenium.server.browserlaunchers.FirefoxChromeLauncher$FileLockRemainedException: Lock file still present! C:\DOKUME1\Semadou\LOKALE1\Temp\customProfileDir9d4a3879bb7d4ca5b75dbbb488ec30b1\parent.lock
 
 
   Sometimes Selenium Remote Control does not stop Firefox properly on Windows
@@ -124,10 +124,10 @@ Launching the Hub and the Remote Controls
  ------------------------------------------------------------------------
 
 > Say I have a hub setup with three RCs ready and waiting, and then I
-> go and restart those RCs, my hub now shows 6 RCs eventhough there are
+> go and restart those RCs, my hub now shows 6 RCs even though there are
 > actually only 3. Is this anything to worry about? Will the hub try
 > to send requests to the "dead" entries? Do I have to restart the hub
-> everytime I need to restart and RC?
+> every time I need to restart and RC?
 
   You are probably stopping the remote controls a little too "harshly"? For
   instance, if you do a `kill -9` or use Windows task manager, the JVM shutdown
@@ -149,9 +149,7 @@ Launching the Hub and the Remote Controls
 
 > I am having problems with the http proxy settings when I launch the
 > Remote Controls with Selenium Grid ant task: I tried
->
 > ant -Dport=5556 -Dhttp.proxyHost=my_proxy.my_company.com -Dhttp.proxyPort=3128 launch-remote-control
->
 > which works with a standard remote control, but not with Selenium Grid launcher.
 
   The problem is that `ant launch-remote-control` does launch the remote
@@ -359,12 +357,6 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
  My test is not working when I use HTTPS!
  ----------------------------------------
 
->  We have a clienthe application as same as HTTP, iam getting certificate popup windowt where application is built on HTTPS. 
->  We tried testing using selenium but its not supporting.
->
->  Can you please suggest us the approach to be followed 
->  to test HTTPS URL's.
-
   Selenium and Selenium Grid support HTTPS out-of-the-box. Just make sure
   you are using one of the "privileged" browser modes,
   namely `*chrome`, `*hta` and `*safari`.
@@ -399,7 +391,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
               
 
 3. Now start the Selenium Remote Control using the profile you just copied
-   using the `-firefoxTemplateProfile` option.
+   using the `-firefoxProfileTemplate` option.
 
     java -jar selenium-server-1.0.jar -firefoxProfileTemplate ~/seleniumFirefoxProfile
 
