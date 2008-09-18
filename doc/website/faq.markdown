@@ -1,5 +1,6 @@
 Title: Selenium Grid FAQ
 CSS: stylesheets/site.css stylesheets/document.css stylesheets/faq.css
+Use numbered headers: false
 
 <div class="header">
   <a href="index.html"><img alt="Selenium_grid_logo_large" src="images/selenium_grid_logo_large.png"/></a>
@@ -7,6 +8,7 @@ CSS: stylesheets/site.css stylesheets/document.css stylesheets/faq.css
 </div>
 
 Table Of Content:
+{: class=toc}
 
 * This will become a table of contents (this text will be scraped).
 {:toc}
@@ -186,8 +188,8 @@ Launching the Hub and the Remote Controls
 Running the Examples Included in Selenium Grid Distribution
 ===========================================================
 
- How to run the Java example
- ---------------------------
+ How to run the Java example?
+ ----------------------------
 
 1. Go to the root directory of your Selenium Grid distribution
 
@@ -198,8 +200,8 @@ Running the Examples Included in Selenium Grid Distribution
 
 4. Launch the tests with: `ant run`  
 
- How to Run the Ruby Example
- ---------------------------
+ How to Run the Ruby Example?
+ ----------------------------
 
 1. Go to the root directory of your Selenium Grid distribution
 
@@ -430,7 +432,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
 you run 2 browsers as the same user in HTA mode they end up sharing a
 singleton instance in memory, which could cause problems.
 
-* The `*iexplore mode` is changing the registry settings at each
+* The `*iexplore` mode is changing the registry settings at each
 session start/end to have IE use a specific Remote Control as HTTP
 proxy. If you run multiple Remote Controls at the same time you can
 see the problems coming! ;-)
