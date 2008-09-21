@@ -137,6 +137,7 @@ task :'xvnc:start' do
   sh "Xvnc :1 -alwaysshared -geometry 1280x1024 -depth 24 -desktop 'Selenium Grid' 2>&1 >#{File.join(File.dirname(__FILE__), "log", "X.log")} &"
 end
 
+<<<<<<< HEAD:src/scripts/Rakefile
 desc "Fully Automated Demo (for continuous integration)"
 task :'ci:demo' do
   begin
@@ -153,6 +154,8 @@ task :'ci:ruby-example' do
   begin
     Rake::Task["all:restart"].execute "dummy"
 #    sh "(cd  examples/ruby; rake tests:run_in_parallel)"
+    Rake::Task["all:restart"].invoke
+    sh "(cd  examples/ruby; rake tests:run_in_parallel)"
     sh "(cd  examples/ruby; rake tests:run_in_sequence)"
   ensure
     Rake::Task["all:stop"].execute "dummy"
@@ -189,4 +192,3 @@ end
 def config
   @config ||= YAML.load(File.read(File.dirname(__FILE__) + "/grid_configuration.yml"))
 end
-
