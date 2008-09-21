@@ -627,6 +627,7 @@
       <module fileurl="file://$PROJECT_DIR$/examples/java/Java Example.iml" filepath="$PROJECT_DIR$/examples/java/Java Example.iml" />
       <module fileurl="file://$PROJECT_DIR$/regression-tests/Regression Tests.iml" filepath="$PROJECT_DIR$/regression-tests/Regression Tests.iml" />
       <module fileurl="file://$PROJECT_DIR$/remote-control/Remote Control.iml" filepath="$PROJECT_DIR$/remote-control/Remote Control.iml" />
+      <module fileurl="file://$PROJECT_DIR$/examples/Ruby Example/Ruby Example.iml" filepath="$PROJECT_DIR$/examples/Ruby Example/Ruby Example.iml" />
       <module fileurl="file://$PROJECT_DIR$/tools/Tools.iml" filepath="$PROJECT_DIR$/tools/Tools.iml" />
       <module fileurl="file://$PROJECT_DIR$/infrastructure/webserver/WebServer.iml" filepath="$PROJECT_DIR$/infrastructure/webserver/WebServer.iml" />
     </modules>
@@ -673,6 +674,7 @@
         </entry>
       </map>
     </option>
+    <option name="myVersion" value="123" />
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
