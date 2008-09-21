@@ -19,36 +19,40 @@ import org.testng.annotations.Test;
  * on the Hub and at least one remote control must register as providing
  * this particular environment.
  */
-public class WebTestInvolvingMultiEnvironments extends AmazonCommentTestBase {
+public class WebTestInvolvingMultiEnvironments extends GitHubTestBase {
 
     @Parameters({"seleniumHost", "seleniumPort", "firstEnvironment", "webSite"})
-    @Test(groups = {"demo", "multiEnvironment"}, description = "Test Amazon Comment Quality Using the Firefox Web Browser on Window.")
+    @Test(groups = {"demo", "multiEnvironment"}, description = "Show off Selenium Grid the Firefox Web Browser on Window.")
     public void testForFirstEnvironment(String seleniumHost, int seleniumPort, String firstEnvironment, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, firstEnvironment, webSite);
-            runAmazonScenario();
+            runGitHubScenario("Selenium Grid", "selenium-grid");
         } finally {
             closeSeleniumSession();
         }
     }
 
     @Parameters({"seleniumHost", "seleniumPort", "secondEnvironment", "webSite"})
-    @Test(groups = {"demo", "multiEnvironment"}, description = "Test Amazon Comment Quality Using the Firefox Web Browser on Windows (2).")
+    @Test(groups = {"demo", "multiEnvironment"}, description = "Show off Deep Test Using the Firefox Web Browser on Windows (2).")
     public void testForSecondEnvironment(String seleniumHost, int seleniumPort, String secondEnvironment, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, secondEnvironment, webSite);
-            runAmazonScenario();
+            runGitHubScenario("Deep Test", "deep-test");
         } finally {
             closeSeleniumSession();
         }
     }
 
+    protected void runGitHubScenario(String searchString, String project) throws Exception {
+        super.runGitHubScenario(searchString, project);    //To change body of overridden methods use File | Settings | File Templates.
+    }
+
     @Parameters({"seleniumHost", "seleniumPort", "thirdEnvironment", "webSite"})
-    @Test(groups = {"demo", "multiEnvironment"}, description = "Test Amazon Comment Quality Using the Firefox Web Browser on the Mac.")
+    @Test(groups = {"demo", "multiEnvironment"}, description = "Show of Rubinious Using the Firefox Web Browser on the Mac.")
     public void testForThirdEnvironment(String seleniumHost, int seleniumPort, String thirdEnvironment, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, thirdEnvironment, webSite);
-            runAmazonScenario();
+            runGitHubScenario("Rubinius", "rubinius");
         } finally {
             closeSeleniumSession();
         }

@@ -19,55 +19,57 @@ import org.testng.annotations.Test;
  * on the Hub and at least one remote control must register as providing
  * this particular environment.
  */
-public class WebTestForASingleBrowser extends AmazonCommentTestBase {
+public class WebTestForASingleBrowser extends GitHubTestBase {
 
-
-    @Test(groups = {"demo", "firefox", "default"}, description = "Test Amazon Comment Quality Using the Firefox Web Browser (1).")
+    @Test(groups = {"demo", "firefox", "default"}, description = "Show off github features for Selenium Grid project.")
     @Parameters({"seleniumHost", "seleniumPort", "browser", "webSite"})
-    public void firstTest(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
+    public void seleniumGrid(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runAmazonScenario();
+            runGitHubScenario("Selenium Grid", "selenium-grid");
         } finally {
             closeSeleniumSession();
 
         }
     }
 
-    @Test(groups = {"demo", "firefox", "default"}, description = "Test Amazon Comment Quality Using the Firefox Web Browser (2).")
+    @Test(groups = {"demo", "firefox", "default"}, description = "Show off github features for Deep Test project.")
     @Parameters({"seleniumHost", "seleniumPort", "browser", "webSite"})
-    public void secondTest(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
+    public void deeptest(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runAmazonScenario();
+            runGitHubScenario("Deep Test", "deep-test");
         } finally {
             closeSeleniumSession();
         }
     }
 
-    @Test(groups = {"demo", "firefox", "default"}, description = "Test Amazon Comment Quality Using the Firefox Web Browser (3).")
+    @Test(groups = {"demo", "firefox", "default"}, description = "Show off github features for Rubinious project..")
     @Parameters({"seleniumHost", "seleniumPort", "browser", "webSite"})
-    public void thirdTest(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
+    public void rubinius(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runAmazonScenario();
+            runGitHubScenario("Rubinius", "rubinius");
         } finally {
             closeSeleniumSession();
         }
     }
 
-    @Test(groups = {"demo", "firefox", "default"}, description = "Test Amazon Comment Quality Using the Firefox Web Browser (4).")
+    @Test(groups = {"demo", "firefox", "default"}, description = "Show off github features for Rails project.")
     @Parameters({"seleniumHost", "seleniumPort", "browser", "webSite"})
-    public void fourthTest(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
+    public void merb(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runAmazonScenario();
+            runGitHubScenario("Merb", "merb-core");
         } finally {
             closeSeleniumSession();
         }
     }
 
 
+    protected void runGitHubScenario(String searchString, String project) throws Exception {
+        super.runGitHubScenario(searchString, project);    //To change body of overridden methods use File | Settings | File Templates.
+    }
 }
 
 
