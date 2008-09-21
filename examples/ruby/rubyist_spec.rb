@@ -9,14 +9,14 @@ describe "Good Rubyist" do
       :anchor => "Programming Ruby: The Pragmatic Programmers' Guide, Second Edition",
       :keywords => "Ruby",
       :isbn => "0974514055"
-      
+
   end
-  
+
   it "has style" do
     as_described_on_amazon \
-      :title => "The Ruby Way, Second Edition: Solutions and Techniques in Ruby Programming",
-      :anchor => "The Ruby Way, Second Edition: Solutions and Techniques in Ruby Programming (2nd Edition) (Addison-Wesley Professional Ruby Series)",
-      :keywords => "Ruby",
+      :title => " The Ruby Way, Second Edition: Solutions and Techniques in Ruby Programming",
+      :anchor => "The Ruby Way, Second Edition: Solutions and Techniques in Ruby Programming ( Edition) (Addison-Wesley Professional Ruby Series)",
+      :keywords => "Ruby Way",
       :isbn => "0672328844"
   end
   
