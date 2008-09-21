@@ -154,9 +154,7 @@ task :'ci:ruby-example' do
   begin
     Rake::Task["all:restart"].execute "dummy"
 #    sh "(cd  examples/ruby; rake tests:run_in_parallel)"
-    Rake::Task["all:restart"].invoke
-#    sh "(cd  examples/ruby; rake tests:run_in_parallel)"
-    sh "(cd  examples/ruby; rake tests:run_in_sequence)"
+    sh "(cd  examples/ruby; rake tests:run_in_sequencex)"
   ensure
     Rake::Task["all:stop"].execute "dummy"
   end
