@@ -142,7 +142,7 @@ task :'ci:demo' do
   begin
     Rake::Task["all:restart"].execute "dummy"
 #    sh "ant run-demo-in-parallel"
-    sh "ant run-demo-in-sequence"
+#    sh "ant run-demo-in-sequence"
   ensure
     Rake::Task["all:stop"].execute "dummy"
   end
