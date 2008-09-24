@@ -1,6 +1,146 @@
+			    =======================
+                            Selenium Grid ChangeLog
+			    =======================
 
-Summary of changes from v0.9.3 to v0.9.4
-========================================
+
+Summary of changes from 1.0.1 to 1.1
+====================================
+
+ - Support for Selenium RC 1.0-SNAPSHOT
+ - Support for high-efficiency parallel Safari
+ - Refactoring of Browser dispatch (simpler)
+ - Better reporting for Ruby
+ - Better RSpec integration
+ - Simplified spec helper, leveraging selenium-client gem
+ - DeepTest example
+ - Remote Control: allow user to specifiy a proxy
+   (http.proxyHost and http.proxyPort system properties)
+ - Added a restful shutdown for Selenium Grid Hub .
+ - Less brutal shutdown task for Hub and Remote Controls
+   (POST /lifecycle-manager action=shutdown)
+ - Samples now showcasing GitHub
+ - Rakefile now honors hub port defined in grid_configuration.xml
+   (Thank you Bob Cotton)
+ - Bug Fixes
+ - Improved FAQ
+ - Metrics build
+
+  Dev
+  ---
+   * Dryer ant files
+   * PMD and Cobertura reports
+   - Started work on agent
+
+ Thank you:
+ ---------
+
+  - Bob Cotton (http://github.com/bcotton) : patch to have the
+    Rakefile use the hub port defined in grid_configuration.xml
+    (http://github.com/bcotton/selenium-grid/commits/rakefile_fixes)
+
+Summary of changes from 1.0 to 1.0.1
+====================================
+
+ - Fixed Grid-4 (http://jira.openqa.org/browse/GRID-4):
+   Selenium does not properly handle accentuated for input fields
+    
+ - Fixed Grid-6 (http://jira.openqa.org/browse/GRID-6):
+   Rake task. environments name can't contain space
+
+ - Fixed Grid-7 (http://jira.openqa.org/browse/GRID-7):
+   Selenium Grid does not release a Remote Control when 
+   returned session Id is null
+
+ - 
+Summary of changes from 0.9.4 to 1.0
+====================================
+
+ Main highlights for the 1.0 release include:
+
+ Amazon EC2 Integration and Automation
+ -------------------------------------
+
+  Selenium Grid now comes with out-of-the-box support for EC2. There is an
+  official EC2 image which bundles all the tools you need to establish a
+  Selenium Grid cluster on Amazon Elastic Compute Cloud (including a VNC
+  server). Selenium Grid 1.0 also comes with Capistrano tasks to automate
+  deployment and management of the Selenium Grid on EC2 (in the examples/ec2
+  directory). Check out the Selenium Grid Website for more details on the EC2
+  instrumentation and how to run Selenium Grid Demo on EC2.
+
+ New Ruby Example
+ ----------------
+
+  A new example demonstrating how to run in parallel Selenium tests written in
+  Ruby (RSpec)
+
+  See the examples/rspec directory. The current solution (spawning multiple
+  processes) is basic but works great and is used daily on professional
+  projects. The plan is to evolve the current solution to an actual RSpec test
+  runner based on Rinda/DRb, Memcache or a flavor a MapReduce. Of course
+  contributions are welcome. Make sure that you also have a look in the
+  reports directory after running the tests: You will see some nice test
+  reports including screenshots of the application under test. The screenshot
+  formatter used in Selenium Grid Ruby example is based on Spec::UI code by
+  Aslak, just tweaked a little bit to make it work with RSpec 1.1.3.
+
+ TestNG based Demo
+ -----------------
+
+  Selenium Grid demo is now powered by TestNG (in lieu of Parallel JUnit)
+
+  TestNG provides the best and the more scalable solution to run tests in
+  parallel for Selenium tests written in Java. The demo now demonstrates best
+  practices in the field. Feel free to use it as a starting point when
+  instrumenting your Selenium test suite for Selenium Grid.
+
+ RC Startup Parameters
+ ---------------------
+
+  Additional parameters can be passed to Selenium remote controls at startup
+
+  Just set the seleniumArgs Java property when launching the remote control.
+  For instance, to start a remote control in multi window and debug mode you
+  would use:
+  ant -DseleniumArgs="-multiWindow -debug" launch-remote-control
+
+  Ruby dudes can use:
+  rake hub:start SELENIUM_ARGS="-multiWindow -debug"
+
+ Support for Selenium RC 0.9.3
+ -----------------------------
+
+  Selenium Grid now works with 0.9.3 Remote Controls
+
+  Just replace the lib/selenium-server-0.9.2.jar library packaged in Selenium
+  Grid distribution with a 0.9.3 snapshot of Selenium Remote Control if you
+  want to try it out. Selenium Remote Control 0.9.3 branch changed the way the
+  session IDs are set and is now using GUIDs.
+
+ Better handling of massive text field values
+ --------------------------------------------
+
+  Selenium Grid was choking when testing fields with big chunks of text.
+  Selenium Grid now uses HTTP POST to relay Selenese commands to the remote
+  controls and everything works like a charm.
+
+ Support for web pages including international characters
+ --------------------------------------------------------
+
+  Selenium Grid was also misbehaving for web pages with international
+  characters. Not anymore! Selenium Grid now speaks whatever language you
+  speak. Since Selenium Remote Control does not explicitly set the charset in
+  HTTP request headers, we changed our HttpClient wrapper to assume UTF-8.
+
+  Thanks to Vinay Tota, Maria Elisa Sanchez, Sam Chen, Miles, Shiang Luong,
+  Daniel Stironek, Adrian Gan, Mattias, Sem Adou, Joel and David Burns for
+  reporting bugs, suggesting interesting new features or helping me improve
+  the documentation in the Selenium Grid Forums. Thank you also to Clint
+  Bishop who helped convert some test to JRuby, and to Patrick Lightbody who
+  is always here to help me with OpenQA infrastructure.
+
+Summary of changes from 0.9.3 to 0.9.4
+======================================
 
 Philippe Hanrigou <http://ph7spot.com>:
 
