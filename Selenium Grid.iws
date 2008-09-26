@@ -526,82 +526,148 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD:Selenium Grid.iws
       <file leaf-file-name="AmazonCommentTestBase.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/AmazonCommentTestBase.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="17" column="128" selection-start="705" selection-end="797" vertical-scroll-proportion="0.43870968">
+=======
+      <file leaf-file-name="GitHubTestBase.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/GitHubTestBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="0" selection-start="427" selection-end="1534" vertical-scroll-proportion="0.39215687">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:Selenium Grid.iws
       <file leaf-file-name="DesignBooksTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/DesignBooksTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="41" column="60" selection-start="1928" selection-end="1928" vertical-scroll-proportion="0.6451613">
+=======
+      <file leaf-file-name="GitHubTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/GitHubTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="56" column="32" selection-start="2568" selection-end="2568" vertical-scroll-proportion="1.1554054">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:Selenium Grid.iws
       <file leaf-file-name="good_developer_spec.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/ruby/good_developer_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="8" column="70" selection-start="323" selection-end="323" vertical-scroll-proportion="0.20645161">
+=======
+      <file leaf-file-name="ToolsProjectsTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/ToolsProjectsTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="111" selection-start="879" selection-end="879" vertical-scroll-proportion="0.8496732">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:Selenium Grid.iws
       <file leaf-file-name="WebTestForASingleBrowser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestForASingleBrowser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="21" column="13" selection-start="912" selection-end="912" vertical-scroll-proportion="0.33333334">
+=======
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/java/build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="13" selection-start="356" selection-end="358" vertical-scroll-proportion="0.28915662">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:Selenium Grid.iws
       <file leaf-file-name="HttpCommandProcessor.class" pinned="false" current="false" current-in-tab="false">
         <entry file="jar://$PROJECT_DIR$/vendor/selenium-java-client-driver-1.0-SNAPSHOT.jar!/com/thoughtworks/selenium/HttpCommandProcessor.class">
           <provider selected="true" editor-type-id="text-editor">
             <state line="46" column="0" selection-start="2340" selection-end="2340" vertical-scroll-proportion="0.8451613">
+=======
+      <file leaf-file-name="testng.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/examples/java/testng.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="85" selection-start="146" selection-end="146" vertical-scroll-proportion="0.06818182">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:Selenium Grid.iws
       <file leaf-file-name="BookTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/BookTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="15" column="13" selection-start="672" selection-end="672" vertical-scroll-proportion="0.33333334">
+=======
+      <file leaf-file-name="PlatformProjectsTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/PlatformProjectsTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="13" selection-start="156" selection-end="156" vertical-scroll-proportion="0.26143792">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:Selenium Grid.iws
       <file leaf-file-name="HubRegistryTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hub/src/test/unit/java/com/thoughtworks/selenium/grid/hub/HubRegistryTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="39" column="38" selection-start="1122" selection-end="1122" vertical-scroll-proportion="0.975">
+=======
+      <file leaf-file-name="WebProjectsTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/WebProjectsTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="16" selection-start="833" selection-end="833" vertical-scroll-proportion="0.751634">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:Selenium Grid.iws
       <file leaf-file-name="HubRegistry.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hub/src/main/java/com/thoughtworks/selenium/grid/hub/HubRegistry.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="54" column="47" selection-start="2193" selection-end="2193" vertical-scroll-proportion="1.0365591">
+=======
+      <file leaf-file-name="TestingProjectsTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/TestingProjectsTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="147" selection-end="147" vertical-scroll-proportion="-0.19607843">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD:Selenium Grid.iws
       <file leaf-file-name="RegistrationManagementServlet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hub/src/main/java/com/thoughtworks/selenium/grid/hub/management/RegistrationManagementServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="8" column="22" selection-start="240" selection-end="240" vertical-scroll-proportion="0.20645161">
+=======
+      <file leaf-file-name="run_the_demo.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doc/website/run_the_demo.html">
+          <provider editor-type-id="HtmlPreview">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="167" column="74" selection-start="9219" selection-end="9219" vertical-scroll-proportion="0.037593983">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
               <folding />
             </state>
           </provider>
@@ -610,7 +676,11 @@
       <file leaf-file-name="RegistrationServlet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hub/src/main/java/com/thoughtworks/selenium/grid/hub/management/RegistrationServlet.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD:Selenium Grid.iws
             <state line="19" column="0" selection-start="615" selection-end="699" vertical-scroll-proportion="0.475">
+=======
+            <state line="37" column="27" selection-start="1369" selection-end="1369" vertical-scroll-proportion="1.0495496">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
               <folding />
             </state>
           </provider>
@@ -837,6 +907,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
+<<<<<<< HEAD:Selenium Grid.iws
       <PATH>
         <PATH_ELEMENT>
           <option name="myItemId" value="Selenium Grid" />
@@ -901,6 +972,8 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
+=======
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
     </subPane>
   </component>
   <component name="ProjectReloadState">
@@ -974,14 +1047,23 @@
     <RUBY_DOC NAME="DEFAULTS" VALUE="true" />
     <RUBY_DOC NAME="NUMBER" VALUE="0" />
   </component>
+<<<<<<< HEAD:Selenium Grid.iws
   <component name="RunManager" selected="TestNG.DesignBooksTest">
     <tempConfiguration default="false" name="DesignBooksTest" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
+=======
+  <component name="RunManager" selected="TestNG.PlatformProjectsTest">
+    <tempConfiguration default="false" name="PlatformProjectsTest" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
       <module name="Java Example" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="SUITE_NAME" />
       <option name="PACKAGE_NAME" value="com.thoughtworks.selenium.grid.examples.java" />
+<<<<<<< HEAD:Selenium Grid.iws
       <option name="MAIN_CLASS_NAME" value="com.thoughtworks.selenium.grid.examples.java.DesignBooksTest" />
+=======
+      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.selenium.grid.examples.java.PlatformProjectsTest" />
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
       <option name="METHOD_NAME" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="CLASS" />
@@ -999,9 +1081,14 @@
       <option name="PROPERTIES_FILE" />
       <envs />
       <properties>
+<<<<<<< HEAD:Selenium Grid.iws
         <property name="firstEnvironment" value="*chrome" />
         <property name="seleniumPort" value="4444" />
         <property name="webSite" value="http://amazon.com" />
+=======
+        <property name="secondEnvironmnet" value="*chrome" />
+        <property name="webSite" value="http://github.com" />
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
         <property name="browser" value="*chrome" />
         <property name="secondEnvironmnet" value="*chrome" />
         <property name="thirdEnvironment" value="*chrome" />
@@ -1014,6 +1101,7 @@
         <option name="Make" value="true" />
       </method>
     </tempConfiguration>
+<<<<<<< HEAD:Selenium Grid.iws
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myCoreSettings">
@@ -1054,6 +1142,12 @@
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
+=======
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" />
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
@@ -1066,6 +1160,140 @@
       <option name="VM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+<<<<<<< HEAD:Selenium Grid.iws
+    <configuration default="true" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
+      <module name="" />
+=======
+    <configuration default="true" type="JUnit" factoryName="JUnit" enabled="true" merge="false">
+      <module name="All" />
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="ADDITIONAL_CLASS_PATH" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+<<<<<<< HEAD:Selenium Grid.iws
+      <properties>
+        <property name="firstEnvironment" value="*chrome" />
+        <property name="seleniumPort" value="4444" />
+        <property name="webSite" value="http://amazon.com" />
+        <property name="browser" value="*chrome" />
+        <property name="secondEnvironmnet" value="*chrome" />
+        <property name="thirdEnvironment" value="*chrome" />
+        <property name="seleniumHost" value="localhost" />
+      </properties>
+      <listeners />
+=======
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
+<<<<<<< HEAD:Selenium Grid.iws
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+=======
+    <configuration default="true" type="RubyRunConfigurationType" factoryName="Ruby test">
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="MODULE_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="false" />
+      <envs />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_CLASS_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="INHERITANCE_CHECK_DISABLED" VALUE="false" />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myCoreSettings">
+          <MavenCoreSettings>
+            <option name="checksumPolicy" value="fail" />
+            <option name="failureBehavior" value="fail-fast" />
+            <option name="localRepository" value="" />
+            <option name="mavenHome" value="" />
+            <option name="mavenSettingsFile" value="" />
+            <option name="nonRecursive" value="false" />
+            <option name="pluginUpdatePolicy" value="false" />
+            <option name="produceExceptionErrorMessages" value="false" />
+            <option name="usePluginRegistry" value="false" />
+            <option name="workOffline" value="false" />
+          </MavenCoreSettings>
+        </option>
+        <option name="myRunnerSettings">
+          <MavenRunnerSettings>
+            <option name="jreName" value="Ruby SDK 1.8.6" />
+            <option name="mavenProperties">
+              <map />
+            </option>
+            <option name="runMavenInBackground" value="false" />
+            <option name="skipTests" value="false" />
+            <option name="useMavenEmbedder" value="false" />
+            <option name="vmOptions" value="" />
+          </MavenRunnerSettings>
+        </option>
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="pomPath" value="" />
+            <option name="profiles">
+              <set />
+            </option>
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
       <module name="" />
@@ -1091,69 +1319,33 @@
       <option name="PROPERTIES_FILE" />
       <envs />
       <properties>
-        <property name="firstEnvironment" value="*chrome" />
-        <property name="seleniumPort" value="4444" />
-        <property name="webSite" value="http://amazon.com" />
-        <property name="browser" value="*chrome" />
         <property name="secondEnvironmnet" value="*chrome" />
+        <property name="webSite" value="http://github.com" />
+        <property name="browser" value="*chrome" />
         <property name="thirdEnvironment" value="*chrome" />
+        <property name="firstEnvironment" value="*chrome" />
         <property name="seleniumHost" value="localhost" />
+        <property name="seleniumPort" value="4444" />
       </properties>
       <listeners />
       <method>
         <option name="Make" value="true" />
       </method>
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
+<<<<<<< HEAD:Selenium Grid.iws
+=======
+    <configuration default="true" type="RubyRunConfigurationType" factoryName="Ruby script">
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="MODULE_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="false" />
       <envs />
-      <method>
-        <option name="Make" value="true" />
-      </method>
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit" enabled="true" merge="false">
-      <module name="All" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="ADDITIONAL_CLASS_PATH" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <envs />
-      <method>
-        <option name="Make" value="true" />
-      </method>
-    </configuration>
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
     <configuration default="false" name="SelfRegisteringRemoteControlLauncher" type="Application" factoryName="Application" enabled="false" merge="false">
       <option name="MAIN_CLASS_NAME" value="com.thoughtworks.selenium.grid.remotecontrol.SelfRegisteringRemoteControlLauncher" />
       <option name="VM_PARAMETERS" />
@@ -1289,6 +1481,69 @@
         <option name="Make" value="true" />
       </method>
     </configuration>
+    <configuration default="false" name="http_command_parser_test" type="RubyRunConfigurationType" factoryName="Ruby test">
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/hub/src/test/unit/com/thoughtworks/selenium/grid/hub" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="MODULE_NAME" VALUE="Hub Tests" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="false" />
+      <envs />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/hub/src/test/unit/com/thoughtworks/selenium/grid/hub/http_command_parser_test.rb" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_CLASS_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="INHERITANCE_CHECK_DISABLED" VALUE="false" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
+    <configuration default="false" name="HttpCommandParserTest" type="RubyRunConfigurationType" factoryName="Ruby test">
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/hub/src/test/unit/com/thoughtworks/selenium/grid/hub" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="MODULE_NAME" VALUE="Hub Tests" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="false" />
+      <envs />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/hub/src/test/unit/com/thoughtworks/selenium/grid/hub/http_command_parser_test.rb" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_CLASS_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="INHERITANCE_CHECK_DISABLED" VALUE="false" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
+    <configuration default="false" name="http_client_test" type="RubyRunConfigurationType" factoryName="Ruby test">
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/hub/src/test/unit/com/thoughtworks/selenium/grid/hub" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="MODULE_NAME" VALUE="Hub Tests" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="false" />
+      <envs />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/hub/src/test/unit/com/thoughtworks/selenium/grid/hub/http_client_test.rb" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_CLASS_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="INHERITANCE_CHECK_DISABLED" VALUE="false" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
     <configuration default="false" name="WebTestForASingleBrowser.amazonOnFirefox" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
       <module name="Demo" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1313,9 +1568,14 @@
       <option name="PROPERTIES_FILE" />
       <envs />
       <properties>
+<<<<<<< HEAD:Selenium Grid.iws
         <property name="firstEnvironment" value="*chrome" />
         <property name="seleniumPort" value="4444" />
         <property name="webSite" value="http://amazon.com" />
+=======
+        <property name="secondEnvironmnet" value="*chrome" />
+        <property name="webSite" value="http://github.com" />
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
         <property name="browser" value="*chrome" />
         <property name="secondEnvironmnet" value="*chrome" />
         <property name="thirdEnvironment" value="*chrome" />
@@ -1352,9 +1612,14 @@
       <option name="PROPERTIES_FILE" value="" />
       <envs />
       <properties>
+<<<<<<< HEAD:Selenium Grid.iws
         <property name="firstEnvironment" value="*chrome" />
         <property name="seleniumPort" value="4444" />
         <property name="webSite" value="http://amazon.com" />
+=======
+        <property name="secondEnvironmnet" value="*chrome" />
+        <property name="webSite" value="http://github.com" />
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
         <property name="browser" value="*chrome" />
         <property name="secondEnvironmnet" value="*chrome" />
         <property name="thirdEnvironment" value="*chrome" />
@@ -1397,9 +1662,14 @@
       <option name="PROPERTIES_FILE" value="" />
       <envs />
       <properties>
+<<<<<<< HEAD:Selenium Grid.iws
         <property name="firstEnvironment" value="*chrome" />
         <property name="seleniumPort" value="4444" />
         <property name="webSite" value="http://amazon.com" />
+=======
+        <property name="secondEnvironmnet" value="*chrome" />
+        <property name="webSite" value="http://github.com" />
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
         <property name="browser" value="*chrome" />
         <property name="secondEnvironmnet" value="*chrome" />
         <property name="thirdEnvironment" value="*chrome" />
@@ -1412,17 +1682,31 @@
         <option name="Make" value="true" />
       </method>
     </configuration>
+<<<<<<< HEAD:Selenium Grid.iws
     <list size="10">
+=======
+    <list size="13">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
       <item index="0" class="java.lang.String" itemvalue="Application.SelfRegisteringRemoteControlLauncher" />
       <item index="1" class="java.lang.String" itemvalue="Application.TestDriver" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.PageTest" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.TemplateTest" />
       <item index="4" class="java.lang.String" itemvalue="JUnit.ControllerTest" />
       <item index="5" class="java.lang.String" itemvalue="JUnit.com.thoughtworks.selenium.grid.configuration in Core" />
+<<<<<<< HEAD:Selenium Grid.iws
       <item index="6" class="java.lang.String" itemvalue="TestNG.WebTestForASingleBrowser.amazonOnFirefox" />
       <item index="7" class="java.lang.String" itemvalue="TestNG.WebTestForASingleBrowser.secondTest" />
       <item index="8" class="java.lang.String" itemvalue="TestNG.WebTestInvolvingMultiEnvironments" />
       <item index="9" class="java.lang.String" itemvalue="TestNG.DesignBooksTest" />
+=======
+      <item index="6" class="java.lang.String" itemvalue="Ruby Scripts and Tests.http_command_parser_test" />
+      <item index="7" class="java.lang.String" itemvalue="Ruby Scripts and Tests.HttpCommandParserTest" />
+      <item index="8" class="java.lang.String" itemvalue="Ruby Scripts and Tests.http_client_test" />
+      <item index="9" class="java.lang.String" itemvalue="TestNG.WebTestForASingleBrowser.amazonOnFirefox" />
+      <item index="10" class="java.lang.String" itemvalue="TestNG.WebTestForASingleBrowser.secondTest" />
+      <item index="11" class="java.lang.String" itemvalue="TestNG.WebTestInvolvingMultiEnvironments" />
+      <item index="12" class="java.lang.String" itemvalue="TestNG.PlatformProjectsTest" />
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
     </list>
     <configuration default="true" type="RubyRunConfigurationType" factoryName="Ruby test">
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
@@ -1599,7 +1883,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD:Selenium Grid.iws
     <frame x="92" y="39" width="1368" height="871" extended-state="0" />
+=======
+    <frame x="19" y="27" width="1420" height="860" extended-state="1" />
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
     <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
@@ -1624,6 +1912,10 @@
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328877" order="10" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="13" />
+<<<<<<< HEAD:Selenium Grid.iws
+=======
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27972028" order="2" x="25" y="383" width="1379" height="169" />
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
       <window_info id="DSM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" order="7" x="100" y="136" width="1229" height="664" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="4" />
       <window_info id="RDoc" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" order="14" />
@@ -1750,114 +2042,216 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/hub/src/main/java/com/thoughtworks/selenium/grid/hub/management/LifecycleManagerServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="70" selection-start="775" selection-end="775" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/doc/website/how_it_works.html">
+      <provider editor-type-id="HtmlPreview">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="187" column="75" selection-start="9652" selection-end="9652" vertical-scroll-proportion="0.39966834">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/hub/src/main/java/com/thoughtworks/selenium/grid/hub/HubServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="92" selection-start="1672" selection-end="1672" vertical-scroll-proportion="0.6149341">
+=======
+    <entry file="file://$PROJECT_DIR$/src/configuration/grid_configuration.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="22" selection-start="637" selection-end="637" vertical-scroll-proportion="0.5324074">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/hub/src/test/unit/java/com/thoughtworks/selenium/grid/hub/management/RegistrationServletTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="13" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestForASingleBrowser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="8" selection-start="3176" selection-end="3303" vertical-scroll-proportion="0.807267">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/hub/src/test/unit/java/com/thoughtworks/selenium/grid/hub/management/RemoteControlParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="13" selection-start="347" selection-end="347" vertical-scroll-proportion="0.017191976">
+=======
+    <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestInvolvingMultiEnvironments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="8" selection-start="2246" selection-end="2373" vertical-scroll-proportion="0.6006144">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/hub/src/test/unit/java/com/thoughtworks/selenium/grid/hub/management/LifecyleManagerServletTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="4" selection-start="1738" selection-end="1738" vertical-scroll-proportion="0.8041667">
+=======
+    <entry file="file://$PROJECT_DIR$/demo/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="51" selection-start="549" selection-end="549" vertical-scroll-proportion="0.03409091">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/hub/src/main/java/com/thoughtworks/selenium/grid/hub/management/LifecycleManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="0" selection-start="221" selection-end="302" vertical-scroll-proportion="0.275">
+=======
+    <entry file="file://$PROJECT_DIR$/regression-tests/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="77" selection-start="1267" selection-end="1267" vertical-scroll-proportion="0.19772728">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/hub/src/test/unit/java/com/thoughtworks/selenium/grid/hub/HubRegistryTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="38" selection-start="1122" selection-end="1122" vertical-scroll-proportion="0.975">
+=======
+    <entry file="file://$PROJECT_DIR$/tools/src/main/com/thoughtworks/selenium/grid/tools/ThreadSafeSeleniumSessionStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="27" selection-start="1369" selection-end="1369" vertical-scroll-proportion="1.0495496">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/hub/src/main/java/com/thoughtworks/selenium/grid/hub/HubRegistry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="54" column="47" selection-start="2193" selection-end="2193" vertical-scroll-proportion="1.0365591">
+=======
+    <entry file="file://$PROJECT_DIR$/doc/website/run_the_demo.html">
+      <provider editor-type-id="HtmlPreview">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="167" column="74" selection-start="9219" selection-end="9219" vertical-scroll-proportion="0.037593983">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/hub/src/main/java/com/thoughtworks/selenium/grid/hub/management/RegistrationManagementServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="22" selection-start="240" selection-end="240" vertical-scroll-proportion="0.20645161">
+=======
+    <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/GitHubTestBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="427" selection-end="1534" vertical-scroll-proportion="0.39215687">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/hub/src/main/java/com/thoughtworks/selenium/grid/hub/management/RegistrationServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="0" selection-start="615" selection-end="699" vertical-scroll-proportion="0.475">
+=======
+    <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/GitHubTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="32" selection-start="2568" selection-end="2568" vertical-scroll-proportion="1.1554054">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="jar://$PROJECT_DIR$/vendor/selenium-java-client-driver-1.0-SNAPSHOT.jar!/com/thoughtworks/selenium/HttpCommandProcessor.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="0" selection-start="2340" selection-end="2340" vertical-scroll-proportion="0.8451613">
+=======
+    <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/WebProjectsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="16" selection-start="833" selection-end="833" vertical-scroll-proportion="0.751634">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/AmazonCommentTestBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="128" selection-start="705" selection-end="797" vertical-scroll-proportion="0.43870968">
+=======
+    <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/ToolsProjectsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="111" selection-start="879" selection-end="879" vertical-scroll-proportion="0.8496732">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/examples/ruby/good_developer_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="70" selection-start="323" selection-end="323" vertical-scroll-proportion="0.20645161">
+=======
+    <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/TestingProjectsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="147" selection-end="147" vertical-scroll-proportion="-0.19607843">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestForASingleBrowser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="13" selection-start="912" selection-end="912" vertical-scroll-proportion="0.33333334">
+=======
+    <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/PlatformProjectsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="156" selection-end="156" vertical-scroll-proportion="0.26143792">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/BookTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="13" selection-start="672" selection-end="672" vertical-scroll-proportion="0.33333334">
+=======
+    <entry file="file://$PROJECT_DIR$/examples/java/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="356" selection-end="358" vertical-scroll-proportion="0.28915662">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD:Selenium Grid.iws
     <entry file="file://$PROJECT_DIR$/examples/java/src/com/thoughtworks/selenium/grid/examples/java/DesignBooksTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="60" selection-start="1928" selection-end="1928" vertical-scroll-proportion="0.6451613">
+=======
+    <entry file="file://$PROJECT_DIR$/examples/java/testng.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="85" selection-start="146" selection-end="146" vertical-scroll-proportion="0.06818182">
+>>>>>>> ece5232221f6016dbfb660ce0618687c9249aff7:Selenium Grid.iws
           <folding />
         </state>
       </provider>
