@@ -5,7 +5,7 @@ require 'rubygems'
 require 'spec'
 require "selenium"
 require "selenium/rspec/spec_helper"
-require File.expand_path(File.dirname(__FILE__) + "/book_example")
+require File.expand_path(File.dirname(__FILE__) + "/git_hub_example")
 require File.expand_path(File.dirname(__FILE__) + "/lib/selenium_driver_extensions")
 
 
@@ -29,6 +29,10 @@ Spec::Runner.configure do |config|
     @selenium_driver
   end
 
+  def browser
+    @selenium_driver
+  end
+
   def page
     @selenium_driver
   end
@@ -38,7 +42,7 @@ Spec::Runner.configure do |config|
     port = ENV['SELENIUM_RC_PORT'] || 4444
     browser = ENV['SELENIUM_RC_BROWSER'] || "*firefox"
     timeout = ENV['SELENIUM_RC_TIMEOUT'] || 60
-    application_host = ENV['SELENIUM_APPLICATION_HOST'] || "www.amazon.com"
+    application_host = ENV['SELENIUM_APPLICATION_HOST'] || "github.com"
     application_port = ENV['SELENIUM_APPLICATION_PORT'] || "80"
 
     puts "Contacting Selenium RC on #{remote_control_server}:#{port} -> http://#{application_host}:#{application_port}"
