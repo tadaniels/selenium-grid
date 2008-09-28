@@ -461,10 +461,15 @@ Analysing Failures
 Development
 ===========
 
+ Where can I find Selenium Grid nightly builds?
+ ----------------------------------------------
+
+  Download them from Selenium Grid [core build artifacts](http://xserve.openqa.org:8080/job/Grid%20Core%20-%20Mac/lastBuild/artifact/trunk/target/dist)
+
  Where Can I Get Feedback Selenium Grid on Continuous Integration Builds?
  ------------------------------------------------------------------------
   
   Check out latest Selenium Grid builds on 
-  [http://xserve.openqa.org:8080/](http://xserve.openqa.org:8080/)
+  [http://xserve.openqa.org:8080/view/Selenium%20Grid](http://xserve.openqa.org:8080/)
 
 
