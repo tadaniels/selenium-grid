@@ -13,23 +13,8 @@ require 'rake'
 $:.unshift File.expand_path(File.dirname(__FILE__) + "/vendor/selenium-client-1.2/lib")
 require "selenium/rake/tasks"
 
-begin
-  require "deep_test/rake_tasks"
-rescue Exception
-  STDERR.puts <<-EOS
-**************************************************************  
-
-  Please install the DeepTest gem:
-    
-    sudo gem install deep_test
-      
-  See http://deep-test.rubyforge.org for more information.
-
-**************************************************************  
-  EOS
-  STDERR.flush
-  raise
-end
+$:.unshift File.expand_path(File.dirname(__FILE__) + "/vendor/deep_test-1.2.1/lib")
+require "deep_test/rake_tasks"
 
 begin  
   require 'spec/rake/spectask'
