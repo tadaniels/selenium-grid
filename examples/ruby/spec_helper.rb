@@ -2,12 +2,10 @@ $:.unshift
 $:.unshift File.expand_path(File.dirname(__FILE__) + "/vendor/selenium-client-1.2/lib")
 
 require 'rubygems'
-require 'spec'
+gem 'spec', "1.1.4"
 require "selenium"
 require "selenium/rspec/spec_helper"
 require File.expand_path(File.dirname(__FILE__) + "/git_hub_example")
-require File.expand_path(File.dirname(__FILE__) + "/lib/selenium_driver_extensions")
-
 
 Spec::Runner.configure do |config|
 
@@ -50,7 +48,6 @@ Spec::Runner.configure do |config|
     @selenium_driver = Selenium::SeleniumDriver.new(
         remote_control_server, port, browser,
         "http://#{application_host}:#{application_port}", timeout)
-    @selenium_driver.extend SeleniumDriverExtensions
   end
 
 end

@@ -10,25 +10,25 @@ body {
 
 div.header {
   text-align: center;
-  font: bold 2em "Chalkboard", "Georgia", serif;
+  font: bold 3em "Didot", "Georgia", serif;
   padding: 0;
-  margin: 1em 0 2.5em 0;
+  margin: 1em 1em 2.4em 0;
+}
+
+div.header img {
+  padding: 0;
+  margin: -.8em 1em 0 0;
+  vertical-align: top;
+  float: left;
 }
 
 div.header a {
   border: 0;
 }
 
-div.header img {
-  padding: 0;
-  margin: 0 1em 0 0;
-  vertical-align: middle;
-  border: 0;
-}
-
 div.section {
   clear: both;
-  margin: 1em;
+  margin: -3em 1em;
 }
          
 div.section h2 {
@@ -36,16 +36,15 @@ div.section h2 {
   width: 15%;
   border: 0;
   padding: 0;
-  margin: 0 2em 2.5em 0;
+  margin: -0.3em 2em 2.5em 0;
   color: black;
-  font: bold 1.4em "Lucida Grande", Verdana, sans-serif;
+  font: bold 2em "Optima", Verdana, sans-serif;
   background: none;
-  text-shadow: .1em .1em .2em #222;
 }
 
 div.section div.content h3 {
   margin: 0em 1em .5em 0em;
-  color:  #a20017;
+  color: #740F31;
   font: bold 1.2em "Lucida Grande", Verdana, sans-serif;
 }
 

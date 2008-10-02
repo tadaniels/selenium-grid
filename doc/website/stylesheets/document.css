@@ -1,70 +1,29 @@
-   body {
-     font: 11pt "Lucida Grande", Verdana, sans-serif;
-     margin-left: 1em;
-   }
+body {
+  font: 11pt "Lucida Grande", Verdana, sans-serif;
+  margin-left: 1em;
+}
 
-   div.header {
-     text-align: center;
-     font: bold 1.7em "Chalkboard", "Georgia", serif;
-     padding: 0;
-     margin: 1em 0 2.5em 0;
-   }
+h2 {
+	font: bold 2em "Optima", Verdana, sans-serif;
+  padding: .2em .2em .2em .5em;
+  border: 0;
+  color: #740F31;
+  border-left: .5em solid #740F31;
+  background: none;
+  margin-left: 1.3em;
+}
 
-   div.header img {
-     padding: 0;
-     margin: 0 1em 0 0;
-     vertical-align: middle;
-   }
-
-   div.section {
-     clear: both;
-     margin: 1em;
-   }
-            
-   div.section h2 {
-     float: left;
-     width: 15%;
-     border: 0;
-     padding: 0;
-     margin: 0 2em 2.5em 0;
-     color: black;
-     font: bold 1.4em "Lucida Grande", Verdana, sans-serif;
-     background: none;
-   }
-
-   div.section div.content {
-     float: left;
-     width: 70%;
-     border: 0;
-     padding: 0;
-     margin: 0 0 2em 0;     
-     font-size: 1em;
-   }
-
-   div.section div.content p {
-     margin-top: .3em;
-   }
-   
-    h2 {
-      font: bold 1.4em "Lucida Grande", Verdana, sans-serif;
-      padding: .2em .2em;
-      border: 0;
-      border-bottom: solid medium #a20017;
-      background: none;
-    }
-
-    h3 {
-      font: bold 1.2em "Lucida Grande", Verdana, sans-serif;
-      padding: .2em .2em;
-      border: 0;
-      border-bottom: solid thin #444;
-	  color: #a20017;
-      background: none;
-      margin-left: 1.3em;
-    }
+ h3 {
+  font: bold 2em "Optima", serif;
+  padding: .2em .2em 0 .2em;
+  margin: 1.5em 2em 1em 1.5em;
+  border-bottom: solid thick #740F31;
+  
+ }
     
 img {
-    border-style: none;
+  border-style: none;
+  margin-left: 5em;
 }
 
 a, a:link, a:visited {
@@ -79,7 +38,8 @@ a:hover {
 
 p, ul, ol, dl, pre {
   font-size: 1em;  
-  margin-left: 2.3em;
+  margin-left: 5em;
+  max-width: 50em;
 }
 
 ul p, ul pre, ol p, ol pre, p pre {
@@ -87,17 +47,19 @@ ul p, ul pre, ol p, ol pre, p pre {
 }
 
 pre.command {
-  font-size: 1em;
-  margin-left: 3em;
-  border: thin dotted #bbb;
+  background:#EEEEEE none repeat scroll 0 0;
+  border:1px solid #DDDDDD;
+  font-family: monospace;
+  padding: 0.5em;
+  white-space: pre-wrap;
 }
 
 div.screenshot {
-    font-size: 1em;
-    margin: .5em 3em;
-    padding: .5em 1em;
-    border: thin dotted gray;
-    background: ghostwhite;
+	font-size: 1em;
+	margin: .5em 6em;
+	padding: .5em 1em;
+	border: thin dotted gray;
+	background: ghostwhite;
 }
 
 div.screenshot p {

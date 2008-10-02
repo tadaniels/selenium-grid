@@ -2,44 +2,55 @@
  * Stylesheet for Selenium Grid website home page.
  */
 
-h2 {
-  background: none;
-  border: 0;
-  color:black;
-  font: bold 2em "Lucida Grande", Verdana, sans-serif;
-}
-
 div.marketing-banner {
-  margin: 1em 5em; 
+  margin: 1em 5em 0 5em; 
   text-align: center
 }
 
+div.marketing-banner img {
+  float: left;
+  margin: -1.3em 2em 0 0;
+  padding: 0;
+}
+
 div.marketing-banner p {
-  color: #333;
   font: 1.2em "Lucida Grande", Verdana, sans-serif;
   padding: 0 3em;
+  text-align: left;
 }
 
 div.marketing-banner p.tagline {
   color: black;
-  font: bold 1.7em "Chalkboard", "Georgia", serif;
+  font: bold 2.2em "Chalkboard", "Georgia", serif;
   padding: 0;
+  margin: 1.2em 0 0 0;
 }
 
 div#news {
   text-align: center;
-  margin: 0 30%;
+  margin: 1em auto 1em auto;
+  width: 20em;
 }
 
 div#news,
 div#news a {
-  color: #9f0118;
-  font-weight: bold;
+  color: #740F31;
+  font-style: bold;
 }
 
 table#start-tracks {
-  margin-bottom: 1em;
+  margin-top: 3em;
+  margin-botton: 1em 0;
+  padding: .4em .6em;
   border-spacing: .6em 1em;
+  clear: both;
+  width: 80%;
+  background: #781435;
+
+  -moz-border-radius: .6em;
+  -webkit-border-radius: .8em;
+  border-radius: .8em;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)
 }
    
 table#start-tracks tr td {
@@ -87,12 +98,12 @@ table#start-tracks tr td ul li a {
 }
 
 table#start-tracks tr td h2 {
+  font: bold 2em "Optima", Verdana, sans-serif;
   text-align: center;
-  color: #9f0118;
-  font-size: 1.1em;
+  color: #740F31;
+  font-size: 1.3em;
   margin: 0 0 1em 0;
   padding: 0;
-  text-shadow: .1em .1em .2em #888;
 }
 
 div.section {
@@ -105,9 +116,9 @@ div.section h2 {
   width: 15%;
   border: 0;
   padding: 0;
-  margin: 0 0em 2.5em 0;
+  margin: -0.5em 0 2.5em 1em;
   color: black;
-  font: bold 1.3em "Lucida Grande", Verdana, sans-serif;
+  font: bold 2em "Optima", Verdana, sans-serif;
   background: none;
   text-shadow: .1em .1em .2em #222;
 }
@@ -123,4 +134,5 @@ div.section div.content {
 
 div.section div.content p {
   margin-top: .3em;
+  max-width: 40em;
 }
