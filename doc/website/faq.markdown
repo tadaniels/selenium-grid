@@ -3,7 +3,7 @@ CSS: stylesheets/site.css stylesheets/document.css stylesheets/faq.css
 Use numbered headers: false
 
 <div class="header">
-  <a href="index.html"><img alt="Selenium_grid_logo_large" src="images/selenium_grid_logo_large.png"/></a>
+  <a href="index.html"><img alt="Selenium_grid_logo_large" src="images/selenium-grid-logo-large.png"/></a>
   <p>FAQ</p>
 </div>
 

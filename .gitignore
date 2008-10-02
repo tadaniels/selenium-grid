@@ -9,3 +9,5 @@ doc/website/faq.html
 examples/ruby/tmp
 test-output
 .dotest
+.DS_Store
+.svn
