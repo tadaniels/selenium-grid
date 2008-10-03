@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
  * Each test request a different browser/environment.
  * <br/>
  * <code>testAmazonOnFirefox</code> can run against a plain vanilla
- * Selenium remote control.
+ * Selenium remote control.       
  * <br/>
  * The other tests need to run again a Selenium Hub: They demonstrate
  * the capacity of requesting a specific environment per
@@ -19,56 +19,56 @@ import org.testng.annotations.Test;
  * on the Hub and at least one remote control must register as providing
  * this particular environment.
  */
-public class WebTestForASingleBrowser extends GitHubTestBase {
+public class WebTestForASingleBrowser extends FlickrTestBase {
 
-    @Test(groups = {"demo", "firefox", "default"}, description = "Show off github features for Selenium Grid project.")
+    @Test(groups = {"demo", "firefox", "default"}, description = "Show off Sarlat on Flickr.")
     @Parameters({"seleniumHost", "seleniumPort", "browser", "webSite"})
-    public void seleniumGrid(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
+    public void sarlat(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runGitHubScenario("Selenium Grid", "selenium-grid");
+            runFlickrScenario("Sarlat", "selenium-grid");
         } finally {
             closeSeleniumSession();
 
         }
     }
 
-    @Test(groups = {"demo", "firefox", "default"}, description = "Show off github features for Deep Test project.")
+    @Test(groups = {"demo", "firefox", "default"}, description = "Show off Lascaux on Flickr.")
     @Parameters({"seleniumHost", "seleniumPort", "browser", "webSite"})
-    public void deeptest(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
+    public void lascaux(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runGitHubScenario("Deep Test", "deep-test");
+            runFlickrScenario("Lascaux", "deep-test");
         } finally {
             closeSeleniumSession();
         }
     }
 
-    @Test(groups = {"demo", "firefox", "default"}, description = "Show off github features for Rubinious project..")
+    @Test(groups = {"demo", "firefox", "default"}, description = "Show off Domme on Flickr.")
     @Parameters({"seleniumHost", "seleniumPort", "browser", "webSite"})
-    public void rubinius(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
+    public void domme(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runGitHubScenario("Rubinius", "rubinius");
+            runFlickrScenario("Domme Perigord", "deep-test");
         } finally {
             closeSeleniumSession();
         }
     }
 
-    @Test(groups = {"demo", "firefox", "default"}, description = "Show off github features for Rails project.")
+    @Test(groups = {"demo", "firefox", "default"}, description = "Show off Montbazillac on Flickr.")
     @Parameters({"seleniumHost", "seleniumPort", "browser", "webSite"})
-    public void merb(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
+    public void montbazillac(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runGitHubScenario("Merb", "merb-core");
+            runFlickrScenario("Montbazillac", "deep-test");
         } finally {
             closeSeleniumSession();
         }
     }
 
 
-    protected void runGitHubScenario(String searchString, String project) throws Exception {
-        super.runGitHubScenario(searchString, project);    //To change body of overridden methods use File | Settings | File Templates.
+    protected void runFlickrScenario(String searchString, String project) throws Exception {
+        super.runFlickrScenario(searchString, project);    //To change body of overridden methods use File | Settings | File Templates.
     }
 }
 
