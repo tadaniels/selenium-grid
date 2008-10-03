@@ -68,7 +68,119 @@
     <list name="Failed commit: Failed commit: Default" comment="Renamed to com.thoughtworks.selenium.grid" />
     <list name="Failed commit: Failed commit: Failed commit: Default" comment="Renamed to com.thoughtworks.selenium.grid" />
     <list name="Failed commit: Default (2)" comment="Renamed to com.thoughtworks.selenium.grid" />
+<<<<<<< HEAD:Selenium Grid.iws
     <list default="true" name="All Uncommited Changes" comment="" />
+=======
+    <list default="true" name="All Uncommited Changes" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/test/extensions/error.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/test_helper.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/null_worker_listener.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/script/public/master_test_server.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/throughput_runner.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/extensions/object_extension_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/distributed/drb_client_connection_info_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/throughput_worker_client.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/worker_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/rspec_detector.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/server_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/test/work_result.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/worker.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/distributed/remote_worker_client_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/option.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/rsync.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/distributed/remote_worker_server_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/script/public/test_throughput.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/script/public/test_server.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/local_workers.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/deadlock_detector.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/ui/console_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/distributed/throughput_worker_client_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/extensions/drb_extension.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/marshallable_exception_wrapper_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Selenium Grid.iws" afterPath="$PROJECT_DIR$/Selenium Grid.iws" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/test/work_result_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/listener_list.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/All.iml" afterPath="$PROJECT_DIR$/All.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/test_task_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/failing.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/logger.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/spec/work_result.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/spec/runner.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/warlock_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/spec/work_unit.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/distributed/throughput_runner_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/distributed/rsync_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/metrics/gatherer.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/distributed/multi_test_server_proxy_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/distributed/master_test_server_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/extensions/object_extension.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/listener_list_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/distributed/dispatch_controller_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/spec/extensions/spec_task.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/ui/console.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/filename_resolver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/show_status.rhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/distributed/test_server_workers_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/test/supervised_test_suite.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/test_factory.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/process_orchestrator.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/simple_test_blackboard.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/fake_deadlock_error.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/throughput_statistics.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/metrics/gatherer_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/simple_test_blackboard_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/test_server.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/result_reader_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/test_task_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/marshallable_exception_wrapper.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/spec/extensions/options.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/result_reader.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/spec/extensions/example_group_methods.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Selenium Grid.ipr" afterPath="$PROJECT_DIR$/Selenium Grid.ipr" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/process_orchestrator_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/distributed/test_server_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/null_work_unit.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/master_test_server.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/ui/null.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/logger_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/warlock.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/failing.rake" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/distributed/filename_resolver_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/Rakefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/server.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/remote_worker_server.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/test/supervised_test_suite_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/database/setup_listener.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/CHANGELOG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/dispatch_controller.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/rake_tasks.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/local_workers_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/bin/deep_test" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/test_server_status.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/spec/extensions/example_methods.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/test/work_unit_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/drb_client_connection_info.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/metrics/queue_lock_wait_time_measurement.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/multi_test_server_proxy.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/spec/extensions/reporter.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/test/extensions/error_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/options.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/database/mysql_setup_listener_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/script/internal/run_test_suite.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/test/deep_test/test/runner_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/test_server_workers.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/test_task.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/README.rdoc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/distributed/remote_worker_client.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/test/work_unit.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/test/runner.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/ruby/vendor/deep_test-1.2.1/lib/deep_test/database/mysql_setup_listener.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/ruby/Rakefile" afterPath="$PROJECT_DIR$/examples/ruby/Rakefile" />
+    </list>
+>>>>>>> Fixing spec_helper to ensure proper after(:each) ordering:Selenium Grid.iws
     <ignored path="Selenium Grid.iws" />
     <ignored path=".idea/workspace.xml" />
   </component>
@@ -642,7 +754,7 @@
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="0.5" version="1" splitterProportion="0.5">
-      <flattenPackages PackagesPane="false" ProjectPane="false" />
+      <flattenPackages PackagesPane="false" ProjectPane="true" />
       <showMembers />
       <showModules />
       <showLibraryContents />
