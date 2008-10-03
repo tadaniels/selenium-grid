@@ -14,8 +14,9 @@ Spec::Runner.configure do |config|
     start_new_browser_session
   end
 
-  config.after(:each) do
-    @selenium_driver.stop
+  # The system capture need to happen BEFORE the closing the Selenium session 
+  config.append_after(:each) do    
+    @selenium_driver.close_current_browser_session
   end
 
   def start_new_browser_session
