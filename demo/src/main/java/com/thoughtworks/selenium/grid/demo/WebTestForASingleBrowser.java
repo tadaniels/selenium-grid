@@ -26,7 +26,7 @@ public class WebTestForASingleBrowser extends FlickrTestBase {
     public void sarlat(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runFlickrScenario("Sarlat", "selenium-grid");
+            runFlickrScenario("Sarlat");
         } finally {
             closeSeleniumSession();
 
@@ -38,7 +38,7 @@ public class WebTestForASingleBrowser extends FlickrTestBase {
     public void lascaux(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runFlickrScenario("Lascaux", "deep-test");
+            runFlickrScenario("lascaux hall of the bull");
         } finally {
             closeSeleniumSession();
         }
@@ -49,7 +49,7 @@ public class WebTestForASingleBrowser extends FlickrTestBase {
     public void domme(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runFlickrScenario("Domme Perigord", "deep-test");
+            runFlickrScenario("Cathedral in PŽrigueux");
         } finally {
             closeSeleniumSession();
         }
@@ -60,16 +60,13 @@ public class WebTestForASingleBrowser extends FlickrTestBase {
     public void montbazillac(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runFlickrScenario("Montbazillac", "deep-test");
+            runFlickrScenario("Montbazillac");
         } finally {
             closeSeleniumSession();
         }
     }
 
 
-    protected void runFlickrScenario(String searchString, String project) throws Exception {
-        super.runFlickrScenario(searchString, project);    //To change body of overridden methods use File | Settings | File Templates.
-    }
 }
 
 

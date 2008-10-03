@@ -26,7 +26,7 @@ public class WebTestInvolvingMultiEnvironments extends FlickrTestBase {
     public void testForFirstEnvironment(String seleniumHost, int seleniumPort, String firstEnvironment, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, firstEnvironment, webSite);
-            runFlickrScenario("Selenium Grid", "selenium-grid");
+            runFlickrScenario("Montbazillac");
         } finally {
             closeSeleniumSession();
         }
@@ -37,22 +37,19 @@ public class WebTestInvolvingMultiEnvironments extends FlickrTestBase {
     public void testForSecondEnvironment(String seleniumHost, int seleniumPort, String secondEnvironment, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, secondEnvironment, webSite);
-            runFlickrScenario("Deep Test", "deep-test");
+            runFlickrScenario("Pauillac");
         } finally {
             closeSeleniumSession();
         }
     }
 
-    protected void runFlickrScenario(String searchString, String project) throws Exception {
-        super.runFlickrScenario(searchString, project);    //To change body of overridden methods use File | Settings | File Templates.
-    }
 
     @Parameters({"seleniumHost", "seleniumPort", "thirdEnvironment", "webSite"})
     @Test(groups = {"demo", "multiEnvironment"}, description = "Show of Rubinious Using the Firefox Web Browser on the Mac.")
     public void testForThirdEnvironment(String seleniumHost, int seleniumPort, String thirdEnvironment, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, thirdEnvironment, webSite);
-            runFlickrScenario("Rubinius", "rubinius");
+            runFlickrScenario("Percharmant");
         } finally {
             closeSeleniumSession();
         }
