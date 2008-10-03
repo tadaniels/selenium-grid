@@ -69,10 +69,7 @@
     <list name="Failed commit: Failed commit: Failed commit: Default" comment="Renamed to com.thoughtworks.selenium.grid" />
     <list name="Failed commit: Default (2)" comment="Renamed to com.thoughtworks.selenium.grid" />
     <list default="true" name="All Uncommited Changes" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Selenium Grid.ipr" afterPath="$PROJECT_DIR$/Selenium Grid.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestForASingleBrowser.java" afterPath="$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestForASingleBrowser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestInvolvingMultiEnvironments.java" afterPath="$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestInvolvingMultiEnvironments.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/FlickrTestBase.java" afterPath="$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/FlickrTestBase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/build.xml" afterPath="$PROJECT_DIR$/src/scripts/build.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Selenium Grid.iws" afterPath="$PROJECT_DIR$/Selenium Grid.iws" />
     </list>
     <ignored path="Selenium Grid.iws" />
@@ -545,10 +542,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebTestForASingleBrowser.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="WebTestForASingleBrowser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestForASingleBrowser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="40" column="55" selection-start="1890" selection-end="1890" vertical-scroll-proportion="0.46067417">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/scripts/build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="47" selection-start="258" selection-end="258" vertical-scroll-proportion="0.17866005">
               <folding />
             </state>
           </provider>
@@ -709,6 +715,92 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="PsiDirectory:/Users/ph7/Projects/Selenium-Grid/demo/src/main/java/com/thoughtworks/selenium/grid/demo" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Selenium Grid" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="All" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Selenium Grid" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="All" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/ph7/Projects/Selenium-Grid" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Selenium Grid" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="All" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/ph7/Projects/Selenium-Grid" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/ph7/Projects/Selenium-Grid/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/ph7/Projects/Selenium-Grid/src/scripts" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Selenium Grid" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="All" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/ph7/Projects/Selenium-Grid" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/ph7/Projects/Selenium-Grid/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/ph7/Projects/Selenium-Grid/src/reports" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Selenium Grid" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="All" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/ph7/Projects/Selenium-Grid" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/ph7/Projects/Selenium-Grid/src" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -1702,6 +1794,13 @@
     <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestForASingleBrowser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="55" selection-start="1890" selection-end="1890" vertical-scroll-proportion="0.46067417">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="47" selection-start="258" selection-end="258" vertical-scroll-proportion="0.17866005">
           <folding />
         </state>
       </provider>

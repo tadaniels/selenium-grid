@@ -4,7 +4,7 @@
   <property file="${basedir}/project.properties"/>
   <property name="version" value="SNAPSHOT"/>
 
-  <property name="webSite" value="http://github.com" />
+  <property name="webSite" value="http://flickr.com" />
   <property name="seleniumHost" value="localhost" />
   <property name="seleniumPort" value="4444" />
   <property name="browser" value="*firefox" />
