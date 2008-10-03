@@ -11,10 +11,10 @@
 
   <import file="${rootdir}/lib/build/common-build.xml" />
 
-  <property name="webSite" value="http://github.com" />
+  <property name="webSite" value="http://flickr.com" />
   <property name="seleniumHost" value="localhost" />
   <property name="seleniumPort" value="4444" />
-  <property name="browser" value="*firefox  " />
+  <property name="browser" value="*firefox" />
   
   <path id="demo.classpath">
     <pathelement location="${rootdir}/vendor/selenium-java-client-driver-${selenium.version}.jar"/>

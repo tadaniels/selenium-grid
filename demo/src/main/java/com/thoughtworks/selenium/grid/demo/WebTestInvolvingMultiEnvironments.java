@@ -19,14 +19,14 @@ import org.testng.annotations.Test;
  * on the Hub and at least one remote control must register as providing
  * this particular environment.
  */
-public class WebTestInvolvingMultiEnvironments extends GitHubTestBase {
+public class WebTestInvolvingMultiEnvironments extends FlickrTestBase {
 
     @Parameters({"seleniumHost", "seleniumPort", "firstEnvironment", "webSite"})
     @Test(groups = {"demo", "multiEnvironment"}, description = "Show off Selenium Grid the Firefox Web Browser on Window.")
     public void testForFirstEnvironment(String seleniumHost, int seleniumPort, String firstEnvironment, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, firstEnvironment, webSite);
-            runGitHubScenario("Selenium Grid", "selenium-grid");
+            runFlickrScenario("Selenium Grid", "selenium-grid");
         } finally {
             closeSeleniumSession();
         }
@@ -37,14 +37,14 @@ public class WebTestInvolvingMultiEnvironments extends GitHubTestBase {
     public void testForSecondEnvironment(String seleniumHost, int seleniumPort, String secondEnvironment, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, secondEnvironment, webSite);
-            runGitHubScenario("Deep Test", "deep-test");
+            runFlickrScenario("Deep Test", "deep-test");
         } finally {
             closeSeleniumSession();
         }
     }
 
-    protected void runGitHubScenario(String searchString, String project) throws Exception {
-        super.runGitHubScenario(searchString, project);    //To change body of overridden methods use File | Settings | File Templates.
+    protected void runFlickrScenario(String searchString, String project) throws Exception {
+        super.runFlickrScenario(searchString, project);    //To change body of overridden methods use File | Settings | File Templates.
     }
 
     @Parameters({"seleniumHost", "seleniumPort", "thirdEnvironment", "webSite"})
@@ -52,7 +52,7 @@ public class WebTestInvolvingMultiEnvironments extends GitHubTestBase {
     public void testForThirdEnvironment(String seleniumHost, int seleniumPort, String thirdEnvironment, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, thirdEnvironment, webSite);
-            runGitHubScenario("Rubinius", "rubinius");
+            runFlickrScenario("Rubinius", "rubinius");
         } finally {
             closeSeleniumSession();
         }
