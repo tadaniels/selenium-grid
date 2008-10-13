@@ -22,7 +22,7 @@ div.header img {
   float: left;
 }
 
-div.header a {
+div.header a, div.header a img {
   border: 0;
 }
 
