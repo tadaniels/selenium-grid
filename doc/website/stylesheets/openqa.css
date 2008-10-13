@@ -35,12 +35,16 @@ body {
  color: black;
 }
 
-div#content * {
+div#content {
  float: left;
  width: 85%;
  margin: 0 0 0 0;
  padding: 0;
  text-align: left;
+}
+
+div#content * {
+  text-align: left;
 }
 
 div#sponsor-sidebar {
