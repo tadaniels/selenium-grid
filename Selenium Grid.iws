@@ -69,7 +69,7 @@
     <list name="Failed commit: Failed commit: Failed commit: Default" comment="Renamed to com.thoughtworks.selenium.grid" />
     <list name="Failed commit: Default (2)" comment="Renamed to com.thoughtworks.selenium.grid" />
     <list default="true" name="All Uncommited Changes" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/build.xml" afterPath="$PROJECT_DIR$/src/scripts/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/configuration/grid_configuration.yml" afterPath="$PROJECT_DIR$/src/configuration/grid_configuration.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Selenium Grid.iws" afterPath="$PROJECT_DIR$/Selenium Grid.iws" />
     </list>
     <ignored path="Selenium Grid.iws" />
@@ -527,7 +527,7 @@
       <file leaf-file-name="FlickrTestBase.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/FlickrTestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="22" selection-start="265" selection-end="265" vertical-scroll-proportion="0.002247191">
+            <state line="8" column="22" selection-start="265" selection-end="265" vertical-scroll-proportion="0.13753581">
               <folding />
             </state>
           </provider>
@@ -536,7 +536,7 @@
       <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="42" selection-start="697" selection-end="697" vertical-scroll-proportion="0.027972028">
+            <state line="16" column="42" selection-start="697" selection-end="697" vertical-scroll-proportion="0.017595308">
               <folding />
             </state>
           </provider>
@@ -545,16 +545,25 @@
       <file leaf-file-name="WebTestForASingleBrowser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestForASingleBrowser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="55" selection-start="1890" selection-end="1890" vertical-scroll-proportion="0.46067417">
+            <state line="40" column="55" selection-start="1890" selection-end="1890" vertical-scroll-proportion="0.36389685">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scripts/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="47" selection-start="258" selection-end="258" vertical-scroll-proportion="0.17866005">
+            <state line="32" column="23" selection-start="1148" selection-end="1148" vertical-scroll-proportion="0.40469208">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="grid_configuration.yml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/configuration/grid_configuration.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="27" selection-start="359" selection-end="359" vertical-scroll-proportion="0.2234957">
               <folding />
             </state>
           </provider>
@@ -563,7 +572,7 @@
       <file leaf-file-name="WebTestInvolvingMultiEnvironments.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestInvolvingMultiEnvironments.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="35" selection-start="2230" selection-end="2230" vertical-scroll-proportion="1.3116279">
+            <state line="47" column="35" selection-start="2230" selection-end="2230" vertical-scroll-proportion="0.7759883">
               <folding />
             </state>
           </provider>
@@ -817,7 +826,7 @@
       <showLibraryContents />
       <hideEmptyPackages PackagesPane="true" ProjectPane="true" />
       <abbreviatePackageNames ProjectPane="false" />
-      <showStructure Favorites="false" Scope="false" PackagesPane="false" ProjectPane="false" />
+      <showStructure ProjectPane="false" Scope="false" PackagesPane="false" Favorites="false" />
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
@@ -916,82 +925,10 @@
         <option name="Make" value="true" />
       </method>
     </tempConfiguration>
-    <configuration default="true" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="ADDITIONAL_CLASS_PATH" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties>
-        <property name="seleniumPort" value="4444" />
-        <property name="webSite" value="http://flickr.com/" />
-        <property name="secondEnvironmnet" value="*chrome" />
-        <property name="browser" value="*firefox" />
-        <property name="thirdEnvironment" value="*chrome" />
-        <property name="seleniumHost" value="localhost" />
-      </properties>
-      <listeners />
-      <method>
-        <option name="Make" value="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit" enabled="true" merge="false">
-      <module name="All" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="ADDITIONAL_CLASS_PATH" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <envs />
-      <method>
-        <option name="Make" value="true" />
-      </method>
+      <option name="PROGRAM_PARAMETERS" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
       <option name="MAIN_CLASS_NAME" />
@@ -1050,10 +987,82 @@
         </option>
       </MavenSettings>
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+    <configuration default="true" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
       <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="ADDITIONAL_CLASS_PATH" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties>
+        <property name="seleniumPort" value="4444" />
+        <property name="webSite" value="http://flickr.com/" />
+        <property name="secondEnvironmnet" value="*chrome" />
+        <property name="browser" value="*firefox" />
+        <property name="thirdEnvironment" value="*chrome" />
+        <property name="seleniumHost" value="localhost" />
+      </properties>
+      <listeners />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit" enabled="true" merge="false">
+      <module name="All" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="ADDITIONAL_CLASS_PATH" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration default="false" name="WebTestForASingleBrowser.sarlat" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
       <module name="Demo" />
@@ -1346,17 +1355,17 @@
       </method>
     </configuration>
     <list size="11">
-      <item index="0" class="java.lang.String" itemvalue="TestNG.WebTestForASingleBrowser.sarlat" />
-      <item index="1" class="java.lang.String" itemvalue="Application.SelfRegisteringRemoteControlLauncher" />
-      <item index="2" class="java.lang.String" itemvalue="Application.TestDriver" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.PageTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TemplateTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.ControllerTest" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.com.thoughtworks.selenium.grid.configuration in Core" />
-      <item index="7" class="java.lang.String" itemvalue="TestNG.WebTestForASingleBrowser.amazonOnFirefox" />
-      <item index="8" class="java.lang.String" itemvalue="TestNG.WebTestForASingleBrowser.secondTest" />
-      <item index="9" class="java.lang.String" itemvalue="TestNG.WebTestInvolvingMultiEnvironments" />
-      <item index="10" class="java.lang.String" itemvalue="TestNG.WebTestForASingleBrowser" />
+      <item index="0" class="java.lang.String" itemvalue="TestNG.WebTestForASingleBrowser" />
+      <item index="1" class="java.lang.String" itemvalue="TestNG.WebTestForASingleBrowser.sarlat" />
+      <item index="2" class="java.lang.String" itemvalue="Application.SelfRegisteringRemoteControlLauncher" />
+      <item index="3" class="java.lang.String" itemvalue="Application.TestDriver" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.PageTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.TemplateTest" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.ControllerTest" />
+      <item index="7" class="java.lang.String" itemvalue="JUnit.com.thoughtworks.selenium.grid.configuration in Core" />
+      <item index="8" class="java.lang.String" itemvalue="TestNG.WebTestForASingleBrowser.amazonOnFirefox" />
+      <item index="9" class="java.lang.String" itemvalue="TestNG.WebTestForASingleBrowser.secondTest" />
+      <item index="10" class="java.lang.String" itemvalue="TestNG.WebTestInvolvingMultiEnvironments" />
     </list>
     <configuration default="true" type="RubyRunConfigurationType" factoryName="Ruby test">
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)" />
@@ -1626,30 +1635,30 @@
     <frame x="55" y="29" width="1368" height="871" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="-1" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="-1" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="7" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" order="0" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24943139" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328877" order="-1" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328877" order="8" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="6" />
-      <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="-1" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="-1" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="-1" />
+      <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
-      <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="-1" />
-      <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="-1" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="-1" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.328877" order="2" />
+      <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328877" order="2" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="0" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="4" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="-1" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="-1" />
-      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="-1" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="0" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="3" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="5" />
     </layout>
@@ -1770,37 +1779,44 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/demo/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="42" selection-start="697" selection-end="697" vertical-scroll-proportion="0.027972028">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestInvolvingMultiEnvironments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="35" selection-start="2230" selection-end="2230" vertical-scroll-proportion="1.3116279">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/FlickrTestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="22" selection-start="265" selection-end="265" vertical-scroll-proportion="0.002247191">
+        <state line="8" column="22" selection-start="265" selection-end="265" vertical-scroll-proportion="0.13753581">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="42" selection-start="697" selection-end="697" vertical-scroll-proportion="0.017595308">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestForASingleBrowser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="55" selection-start="1890" selection-end="1890" vertical-scroll-proportion="0.46067417">
+        <state line="40" column="55" selection-start="1890" selection-end="1890" vertical-scroll-proportion="0.36389685">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/src/main/java/com/thoughtworks/selenium/grid/demo/WebTestInvolvingMultiEnvironments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="35" selection-start="2230" selection-end="2230" vertical-scroll-proportion="0.7759883">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scripts/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="47" selection-start="258" selection-end="258" vertical-scroll-proportion="0.17866005">
+        <state line="32" column="23" selection-start="1148" selection-end="1148" vertical-scroll-proportion="0.40469208">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/configuration/grid_configuration.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="27" selection-start="359" selection-end="359" vertical-scroll-proportion="0.2234957">
           <folding />
         </state>
       </provider>
