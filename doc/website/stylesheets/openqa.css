@@ -45,7 +45,7 @@ div#content * {
   text-align: left;
 }
 
-table#start-tracks ul li a {
+table#start-tracks ul, table#start-tracks ul li, table#start-tracks ul li a {
   text-align: center;
 }
 
