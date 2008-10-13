@@ -36,8 +36,6 @@ body {
 }
 
 div#content {
- float: left;
- width: 85%;
  margin: 0 0 0 0;
  padding: 0;
  text-align: left;
@@ -47,14 +45,8 @@ div#content * {
   text-align: left;
 }
 
-div#sponsor-sidebar {
-  float: right;
-  width: 15%;
-}
-
-div#sponsor-sidebar a.logo img {
-  padding: 0 0 2.8em 0;
-  border: none;
+table#start-tracks ul {
+  text-align: center;
 }
 
 div#openqa-project-list {
