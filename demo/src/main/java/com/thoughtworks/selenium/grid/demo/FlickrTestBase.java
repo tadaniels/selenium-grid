@@ -31,7 +31,6 @@ public abstract class FlickrTestBase {
         session().waitForPageToLoad(TIMEOUT);
         session().click("//img[@class='pc_img']");
         session().waitForPageToLoad(TIMEOUT);
-        Thread.sleep(20000);
         session().click("link=*photostream");
         session().waitForPageToLoad(TIMEOUT);
     }
