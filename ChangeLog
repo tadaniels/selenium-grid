@@ -1,35 +1,38 @@
-			    =======================
-                            Selenium Grid ChangeLog
-			    =======================
+			    =========================
+                 Selenium Grid ChangeLog
+			    =========================
 
 
-Summary of changes from 1.0.1 to 1.1
-====================================
+Summary of changes from 1.0.1 to 1.0.2
+======================================
 
- - Support for Selenium RC 1.0-SNAPSHOT
- - Support for high-efficiency parallel Safari
- - Refactoring of Browser dispatch (simpler)
- - Better reporting for Ruby
- - Better RSpec integration
- - Simplified spec helper, leveraging selenium-client gem
- - DeepTest example
- - Remote Control: allow user to specifiy a proxy
-   (http.proxyHost and http.proxyPort system properties)
- - Added a restful shutdown for Selenium Grid Hub .
- - Less brutal shutdown task for Hub and Remote Controls
-   (POST /lifecycle-manager action=shutdown)
- - Samples now showcasing GitHub
- - Rakefile now honors hub port defined in grid_configuration.xml
-   (Thank you Bob Cotton)
- - Bug Fixes
- - Improved FAQ
- - Metrics build
+ For End Users
+ -------------
 
-  Dev
-  ---
-   * Dryer ant files
-   * PMD and Cobertura reports
-   - Started work on agent
+  * Support for Selenium RC 1.0-SNAPSHOT
+  * Support for highly-efficient parallel Safari runs
+  * Better reporting for Ruby tests, better RSpec integration, and
+    simplified spec helper, all based on the work that happened
+    on the selenium-client gem
+  * DeepTest example for Ruby parallel runs
+  * Remote Control: allow user to specify a proxy
+    (http.proxyHost and http.proxyPort system properties)
+  * Added a restful shutdown for Selenium Grid Hub .
+  * Less brutal shutdown task for Hub and Remote Controls
+    (POST /lifecycle-manager action=shutdown)
+  * Samples now showcasing Flickr as Amazon website is changing way too often
+  * Rakefile now honors hub port defined in grid_configuration.xml
+    (Thank you Bob Cotton)
+  * Bug Fixes
+  * Improved FAQ and website
+
+ For Developers
+ --------------
+ 
+  * Refactoring of Browser dispatch (simpler)
+  * Metrics build, PMD and Cobertura reports
+  * Dryer ant files
+  * Started work on agent
 
  Thank you:
  ---------

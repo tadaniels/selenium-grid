@@ -19,7 +19,7 @@ public class AgentConfigurationTest {
 
     @Test
     public void defaultRemoteControlWrapperJarPathMatchesDistributionLayout() {
-        assertEquals("lib/selenium-grid-remote-control-standalone-1.0.1.jar",
+        assertEquals("lib/selenium-grid-remote-control-standalone-1.0.2.jar",
                      new AgentConfiguration().remoteControlWrapperJarPath());
     }
 
