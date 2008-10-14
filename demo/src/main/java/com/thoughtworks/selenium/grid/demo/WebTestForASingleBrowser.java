@@ -49,7 +49,7 @@ public class WebTestForASingleBrowser extends FlickrTestBase {
     public void domme(String seleniumHost, int seleniumPort, String browser, String webSite) throws Throwable {
         try {
             startSeleniumSession(seleniumHost, seleniumPort, browser, webSite);
-            runFlickrScenario("Cathedral in PŽrigueux");
+            runFlickrScenario("Cathedral in Perigueux");
         } finally {
             closeSeleniumSession();
         }
