@@ -7,10 +7,11 @@ $:.unshift File.expand_path(File.dirname(__FILE__) + "/vendor/selenium-client-1.
 gem "rspec", "=1.1.8"
 require 'spec/rake/spectask'
 
-$:.unshift File.expand_path(File.dirname(__FILE__) + "/vendor/selenium-client-1.2.6/lib")
+gem "selenium-client", ">=1.2.7"
 require "selenium/rake/tasks"
 require "selenium/client"
 require "selenium/rspec/spec_helper"
+
 require File.expand_path(File.dirname(__FILE__) + "/flickr_example")
 
 Spec::Runner.configure do |config|
@@ -50,7 +51,6 @@ Spec::Runner.configure do |config|
     application_host = ENV['SELENIUM_APPLICATION_HOST'] || "flickr.com"
     application_port = ENV['SELENIUM_APPLICATION_PORT'] || "80"
 
-    puts "Contacting Selenium RC on #{remote_control_server}:#{port} -> http://#{application_host}:#{application_port}"
     @selenium_driver = Selenium::Client::Driver.new(
         remote_control_server, port, browser,
         "http://#{application_host}:#{application_port}", timeout)
