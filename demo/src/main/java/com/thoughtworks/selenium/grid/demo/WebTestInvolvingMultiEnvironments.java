@@ -43,7 +43,6 @@ public class WebTestInvolvingMultiEnvironments extends FlickrTestBase {
         }
     }
 
-
     @Parameters({"seleniumHost", "seleniumPort", "thirdEnvironment", "webSite"})
     @Test(groups = {"demo", "multiEnvironment"}, description = "Show of Rubinious Using the Firefox Web Browser on the Mac.")
     public void testForThirdEnvironment(String seleniumHost, int seleniumPort, String thirdEnvironment, String webSite) throws Throwable {
