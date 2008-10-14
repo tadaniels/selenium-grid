@@ -18,17 +18,17 @@ task :help do
          Capistrano recipes provided with Selenium Grid distribution
  
  
- Start the Hub and 20 Remote Controls
+ Start the Hub and 15 Remote Controls
  ------------------------------------
  
     rake all:start
    
- Stop the Hub and 20 Remote Controls
+ Stop the Hub and 15 Remote Controls
  -----------------------------------
  
     rake all:stop
    
- Restart the Hub and 20 Remote Controls
+ Restart the Hub and 15 Remote Controls
  --------------------------------------
 
     rake all:restart
@@ -109,7 +109,7 @@ end
 
 desc "Launch Remote Control"
 task :'rc:start_all' do
-  ports = ENV['PORTS'] || "5000-5020"
+  ports = ENV['PORTS'] || "5000-5015"
   port_range = Range.new(*ports.split("-"))
   port_range.each do |port|
     ENV['BACKGROUND'] = "true"
@@ -119,7 +119,7 @@ end
 
 desc"Stop Remote Controls. Usage rake rc:stop PORTS=5555-5560"
 task :'rc:stop_all' do
-  ports = ENV['PORTS'] || "5000-5020"
+  ports = ENV['PORTS'] || "5000-5015"
   port_range = Range.new(*ports.split("-"))
   port_range.each do |port|
     begin

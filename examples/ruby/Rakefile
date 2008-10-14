@@ -10,10 +10,10 @@
 require "rubygems"
 require 'rake'
 
-$:.unshift File.expand_path(File.dirname(__FILE__) + "/vendor/selenium-client-1.2.6/lib")
+gem "selenium-client", ">=1.2.7"
 require "selenium/rake/tasks"
 
-$:.unshift File.expand_path(File.dirname(__FILE__) + "/vendor/deep_test-1.2.2/lib")
+gem "deep_test", "=1.2.2"
 require "deep_test/rake_tasks"
 
 gem "rspec", "=1.1.8"
@@ -31,7 +31,7 @@ Spec::Rake::SpecTask.new("tests:run_in_parallel") do |t|
   t.deep_test :number_of_workers => 6,
               :timeout_in_seconds => 300
   t.spec_opts << '--color'
-  t.spec_opts << "--require './vendor/selenium-client-1.2.6/lib/selenium/rspec/reporting/selenium_test_report_formatter'"
+  t.spec_opts << "--require 'rubygems,selenium/rspec/reporting/selenium_test_report_formatter'"
   t.spec_opts << "--format=Selenium::RSpec::SeleniumTestReportFormatter:./tmp/test_report.html"
   t.spec_opts << "--format=progress"
 end  
@@ -46,7 +46,7 @@ desc "Run all behaviors in sequence"
 Spec::Rake::SpecTask.new('tests:run_in_sequence') do |t|
   t.pattern = "**/*_spec.rb"
   t.spec_opts << '--color'
-  t.spec_opts << "--require './vendor/selenium-client-1.2.6/lib/selenium/rspec/reporting/selenium_test_report_formatter'"
+  t.spec_opts << "--require 'rubygems,selenium/rspec/reporting/selenium_test_report_formatter'"
   t.spec_opts << "--format=Selenium::RSpec::SeleniumTestReportFormatter:./tmp/test_report.html"
   t.spec_opts << "--format=progress"                
   t.fail_on_error = true
