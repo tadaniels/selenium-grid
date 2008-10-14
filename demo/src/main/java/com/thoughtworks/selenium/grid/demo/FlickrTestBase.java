@@ -1,7 +1,6 @@
 package com.thoughtworks.selenium.grid.demo;
 
 import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.session;
-import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
 /**
