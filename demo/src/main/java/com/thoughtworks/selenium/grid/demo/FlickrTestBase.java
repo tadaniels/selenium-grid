@@ -22,17 +22,6 @@ public abstract class FlickrTestBase {
         session().click("//input[@value='SEARCH']");
         session().waitForPageToLoad(TIMEOUT);
         assertTrue(session().isTextPresent(searchString.split(" ")[0]));
-        session().click("//img[@class='pc_img']");
-        session().waitForPageToLoad(TIMEOUT);                           
-        if (session().isTextPresent("photo_gne_button_zoom")) {
-          session().click("photo_gne_button_zoom");
-        }
-        session().goBack();
-        session().waitForPageToLoad(TIMEOUT);
-        session().click("//img[@class='pc_img']");
-        session().waitForPageToLoad(TIMEOUT);
-        session().click("link=*photostream");
-        session().waitForPageToLoad(TIMEOUT);
     }
 
 }
