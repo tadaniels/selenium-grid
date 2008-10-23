@@ -10,7 +10,8 @@ public abstract class FlickrTestBase {
 
     public static final String TIMEOUT = "120000";
 
-    protected void runFlickrScenario(String searchString) throws Exception {
+    
+    protected void runFlickrScenario(String searchString) {
         session().open("/");
         assertTrue(session().getLocation(), session().getLocation().startsWith("http://flickr.com"));
         session().type("q", searchString);
