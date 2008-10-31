@@ -546,7 +546,7 @@
       <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="100" column="90" selection-start="4436" selection-end="4436" vertical-scroll-proportion="0.80031204">
+            <state line="65" column="9" selection-start="2862" selection-end="2862" vertical-scroll-proportion="0.1450858">
               <folding />
             </state>
           </provider>
@@ -1493,12 +1493,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="29" width="1368" height="871" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="7" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24867323" order="0" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24867323" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" order="8" />
@@ -1726,7 +1726,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="90" selection-start="4436" selection-end="4436" vertical-scroll-proportion="0.80031204">
+        <state line="65" column="9" selection-start="2862" selection-end="2862" vertical-scroll-proportion="0.1450858">
           <folding />
         </state>
       </provider>
