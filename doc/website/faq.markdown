@@ -36,6 +36,18 @@ General
   JMeter/Grinder/httperf can generate the same kind of load with a single
   machine.
 
+Installing
+==========
+
+  Do you have step by step, "assume I am an idiot", installation instructions?
+  ------------------------------------------------------------------------------
+  
+   First if you are trying out Selenium Grid you are certainly *not* an idiot. ;-)
+   Second, yes we do have step by step installation instructions, check out:
+  
+* [Step by Step Installation Instructions for Windows](./step_by_step_installation_instructions_for_windows.html)
+* [Step by Step Installation Instructions for Mac OS X](./step_by_step_installation_instructions_for_osx.html)
+  
 Launching the Hub and the Remote Controls
 =========================================
 
@@ -70,7 +82,7 @@ Launching the Hub and the Remote Controls
   providing the short filename (visible with a `dir /x`) and everything
   will be fine.
 
- I need to run hub and remoute control in background.... How can I do it?
+ I need to run the Hub and Remote Control in background.... How can I do it?
  ------------------------------------------------------------------------
 
   On UNIX you just add a ampersand at the end of the command line. See:
