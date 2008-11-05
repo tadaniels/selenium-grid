@@ -13,7 +13,7 @@
   <import file="${rootdir}/lib/build/common-build.xml" />
 
   <path id="compile.classpath">
-    <fileset dir="${basedir}/lib">
+    <fileset dir="${rootdir}/vendor">
       <include name="selenium-server-${selenium.version}.jar"/>
     </fileset>
     <fileset dir="${rootdir}/vendor">
@@ -26,7 +26,7 @@
   </path>
 
   <path id="runtime.classpath">
-    <fileset dir="${basedir}/lib">
+    <fileset dir="${rootdir}/vendor">
       <include name="selenium-server-*.jar"/>
     </fileset>
     <!-- Selenium Server must be first in classpath -->

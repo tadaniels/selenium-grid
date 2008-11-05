@@ -8,7 +8,7 @@ public class AgentConfiguration {
     public static final String DEFAULT_RC_WRAPPER_JAR_PATH =
             "lib/selenium-grid-remote-control-standalone-1.0.2.jar";
     public static final String DEFAULT_RC_JAR_PATH =
-            "lib/selenium-server-1.0-SNAPSHOT.jar";
+            "vendor/selenium-server-1.0-SNAPSHOT.jar";
 
     private int port;
     private String remoteControlWrapperJarPath;
