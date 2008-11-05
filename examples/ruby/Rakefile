@@ -8,13 +8,19 @@
 #
 
 require "rubygems"
+gem "rspec", "=1.1.8"
 require 'rake'
+require 'spec/rake/spectask'
 
-gem "selenium-client", ">=1.2.7"
+gem "selenium-client", "=1.2.7"
 require "selenium/rake/tasks"
 
-gem "rspec", "=1.1.8"
-require 'spec/rake/spectask'
+# Make sure we pick up the reporter from the appropriate selenium-client
+# install as RSpec runner --require does not discriminate between multiple
+# selenium-client gems.
+report_formatter_path = `gem which -q "selenium/rspec/reporting/selenium_test_report_formatter"`.chomp
+report_formatter_path.gsub! /selenium-client-\d+\.\d+.\d+/, "selenium-client-1.2.7"
+
 
 gem "deep_test", "=1.2.2"
 require "deep_test/rake_tasks"
@@ -31,7 +37,7 @@ Spec::Rake::SpecTask.new("tests:run_in_parallel") do |t|
   t.deep_test :number_of_workers => 6,
               :timeout_in_seconds => 300
   t.spec_opts << '--color'
-  t.spec_opts << "--require 'rubygems,selenium/rspec/reporting/selenium_test_report_formatter'"
+  t.spec_opts << "--require 'rubygems,#{report_formatter_path}'"
   t.spec_opts << "--format=Selenium::RSpec::SeleniumTestReportFormatter:./tmp/test_report.html"
   t.spec_opts << "--format=progress"
 end  
@@ -42,11 +48,12 @@ task :'tests:run_in_parallel' => :create_report_dir
 # useful to troubleshoot problems with the parallel run.
 #  
 
+
 desc "Run all behaviors in sequence"
 Spec::Rake::SpecTask.new('tests:run_in_sequence') do |t|
   t.pattern = "**/*_spec.rb"
   t.spec_opts << '--color'
-  t.spec_opts << "--require 'rubygems,selenium/rspec/reporting/selenium_test_report_formatter'"
+  t.spec_opts << "--require 'rubygems,#{report_formatter_path}'"
   t.spec_opts << "--format=Selenium::RSpec::SeleniumTestReportFormatter:./tmp/test_report.html"
   t.spec_opts << "--format=progress"                
   t.fail_on_error = true
