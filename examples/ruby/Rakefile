@@ -82,7 +82,7 @@ end
 
 desc "Check whether you installed all dependencies and you environmnet is OK."
 task :sanity_check do
-  require File.dirname(__FILE__) + "/lib/screenshot_formatter"
+  require report_formatter_path
   STDOUT.puts <<-EOS
 
  Congratulations, your environment is set properly.

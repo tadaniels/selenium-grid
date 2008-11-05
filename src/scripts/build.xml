@@ -12,7 +12,7 @@
   <taskdef resource="testngtasks" classpath="${basedir}/lib/testng-5.7-jdk15.jar"/>
   
   <path id="remote-control.classpath">
-    <fileset dir="${basedir}/lib">
+    <fileset dir="${basedir}/vendor">
       <include name="selenium-server-*.jar"/>
     </fileset>
     <!-- Selenium Server must be first in classpath -->

@@ -34,7 +34,7 @@ public class JMVMLauncherTest {
         final JVMHandle handle;
 
         classpath = new Classpath();
-        classpath.add("/Users/ph7/Projects/Selenium Grid/remote-control/lib/selenium-server-1.0-SNAPSHOT.jar");
+        classpath.add("/Users/ph7/Projects/Selenium Grid/vendor/selenium-server-1.0-SNAPSHOT.jar");
         classpath.add("/Users/ph7/Projects/Selenium Grid/remote-control/target/dist/lib/selenium-grid-remote-control-standalone-1.0.2.jar");
         launcher = new JVMLauncher(classpath, "com.thoughtworks.selenium.grid.remotecontrol.SelfRegisteringRemoteControlLauncher");
         handle = launcher.launchNewJVM();
