@@ -46,7 +46,7 @@ table#start-tracks {
   border-spacing: 1.6em 1em;
   clear: both;
   width: 90%;
-  background: #781435;
+  background:  #781435;
 
   -moz-border-radius: .6em;
   -webkit-border-radius: .8em;
@@ -67,19 +67,19 @@ table#start-tracks tr td {
 /* Color Scheme from http://www.colourlovers.com/palette/270694/The_Rainbow_Song_I */
 
 table#start-tracks tr td#get-started {
-  background: url("../images/background_started.png") repeat-x; 
+  background: white url("../images/background_started.png") repeat-x; 
 }
 
 table#start-tracks tr td#get-better {
-  background: url("../images/background_better.png") repeat-x; 
+  background: white url("../images/background_better.png") repeat-x; 
 }
 
 table#start-tracks tr td#give-feedback {
-  background: url("../images/background_feedback.png") repeat-x; 
+  background: white url("../images/background_feedback.png") repeat-x; 
 }
 
 table#start-tracks tr td#participate {
-  background: url("../images/background_participate.png") repeat-x; 
+  background: white url("../images/background_participate.png") repeat-x; 
 }
 
 table#start-tracks ul {
