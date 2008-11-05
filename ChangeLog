@@ -1,8 +1,15 @@
-			    =========================
-                 Selenium Grid ChangeLog
-			    =========================
+			           =========================
+                  Selenium Grid ChangeLog
+			           =========================
 
 
+Summary of changes from 1.0.2 to 1.0.3
+======================================
+
+ * Fixed the Ruby example to pick the custom RSpec report from the
+   appropriate selenium-client installation when there are multiple
+   selenium-client gems installed.
+ 
 Summary of changes from 1.0.1 to 1.0.2
 ======================================
 
