@@ -32,7 +32,7 @@ public class AgentConfigurationTest {
 
     @Test
     public void defaultRemoteControlJarPathMatchesDistributionLayout() {
-        assertEquals("lib/selenium-server-1.0-SNAPSHOT.jar",
+        assertEquals("vendor/selenium-server-1.0-SNAPSHOT.jar",
                      new AgentConfiguration().remoteControlJarPath());
     }
 

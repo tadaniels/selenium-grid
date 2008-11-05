@@ -162,7 +162,7 @@ end
 def launch_rc(options)
     # Selenium Server must be first in classpath
     classpath = Java::Classpath.new(File.dirname(__FILE__))
-    classpath =  classpath << "." << "lib/selenium-server-*.jar" << "lib/selenium-grid-remote-control-standalone-*.jar"
+    classpath =  classpath << "." << "vendor/selenium-server-*.jar" << "lib/selenium-grid-remote-control-standalone-*.jar"
 
     Java::VM.new.run "com.thoughtworks.selenium.grid.remotecontrol.SelfRegisteringRemoteControlLauncher",
                      :classpath => classpath.definition,
