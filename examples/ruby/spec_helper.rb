@@ -1,13 +1,12 @@
-require "rubygems"
-require "rake"
-
 $:.unshift
-$:.unshift File.expand_path(File.dirname(__FILE__) + "/vendor/selenium-client-1.2/lib")
 
+require "rubygems"
 gem "rspec", "=1.1.8"
 require 'spec/rake/spectask'
 
-gem "selenium-client", ">=1.2.7"
+require "rake"
+
+gem "selenium-client", "=1.2.7"
 require "selenium/rake/tasks"
 require "selenium/client"
 require "selenium/rspec/spec_helper"
