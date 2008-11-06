@@ -47,7 +47,77 @@ Installing
   
 * [Step by Step Installation Instructions for Windows](./step_by_step_installation_instructions_for_windows.html)
 * [Step by Step Installation Instructions for Mac OS X](./step_by_step_installation_instructions_for_osx.html)
+
+Analysing Failures
+==================
+
+  How can I troubleshoot problems when running the demo ?
+  -------------------------------------------------------
   
+> I started the Hub on the UNIX machine and then I've created 2 
+> remote controls on a Window laptop. This part worked and I can see the
+> Hub console listing the 2 remote controls. 
+> When I start `ant run-demo-in-parallel` on the UNIX box, however, the 
+> following error appears:
+>
+    [java] ===============================================
+    [java] Selenium Grid Demo In Parallel
+    [java] Total tests run: 4, Failures: 4, Skips: 0
+    [java] ===============================================
+>
+> How can I investigate the problem?
+
+  Here are a few things you can do to try to understand what is going on:
+  
+* Look at the TestNG report under `target/reports` on the test runner machine
+  (the UNIX one in your case), looking fo the actual error messages / stack
+  traces.
+
+* Look at the Windows machine where the remote controls are running: Are the
+  remote controls logging any command at all? Are browsers popping up at
+  least? Take a good look at the Selenium Remote Control logs while the tests
+  are running.
+
+  If the remote controls on the Windows machine are not even contacted, this
+  is most likely to be a setting/network/browser configuration problem. Check
+  the way you launched the hub and the remote controls, as well as your
+  network.
+
+  If the remote controls on the windows machine are contacted but fail to run
+  the tests properly, this is probably just a problem on the local machine.
+  Try to run Selenium Grid demo exclusively on this machine (or any Selenium
+  Test you have) to understand the nature of the problem in a less complex
+  environment.
+
+  If finding the actual problem still end up being hard, please 
+  [send us](http://clearspace.openqa.org/community/selenium_grid/selenium_grid_users)
+  another message with:
+
+* The test client side errors (TestNG reports)
+* The remote control logs
+
+
+ When we test the application with Selenium Grid, we get nondeterministic results
+ --------------------------------------------------------------------------------
+
+> Locally, when we test the application with Selenium Grid, we get 
+> nondeterministic results. Tests seem to fail randomly. Messing with the 
+> number of nodes in the grid seems to help, but its really annoying that we 
+> can't seem to get consistent results.
+
+  Most likely some tests are timing out in a non-deterministic manner because
+  your CPU or Network is over-utilized. Monitor your CPU and Network activity on
+  all the machines involved. Once you find the bottleneck launch fewer
+  processes. For instance if your load average is way higher than the number of
+  CPUs on the machine running the remote controls, cut the number of remote
+  controls you launch by two until you get to a sustainable machine load.
+
+  Make sure you spend some time figuring out the optimal number of 
+  concurrent test runners and remote controls to run in parallel on each 
+  machine, before deploying a Selenium Grid infrastructure your organization
+  is going to depend on.
+
+
 Launching the Hub and the Remote Controls
 =========================================
 
@@ -159,41 +229,14 @@ Launching the Hub and the Remote Controls
  Can I configure the Remote Control to use a custom HTTP proxy?
  --------------------------------------------------------------
 
-> I am having problems with the http proxy settings when I launch the
-> Remote Controls with Selenium Grid ant task: I tried
-> ant -Dport=5556 -Dhttp.proxyHost=my_proxy.my_company.com -Dhttp.proxyPort=3128 launch-remote-control
-> which works with a standard remote control, but not with Selenium Grid launcher.
-
-  The problem is that `ant launch-remote-control` does launch the remote
-  control as a forked Java process (which does not inherit the system
-  properties that you are passing to Ant). You can edit the
-  build.xml file at the root of your Selenium Grid distribution and add the
-  system properties you need. For instance:
-
-    <target name="launch-remote-control" description="Launch A Remote Control">
-      <java classpathref="remote-control.classpath"
-            classname="com.thoughtworks.selenium.grid.remotecontrol.SelfRegisteringRemoteControlLauncher"
-            fork="true"
-            failonerror="true">
+  To use custom http proxy settings set the `http.proxyHost` and the
+  `http.proxyPort` java system properties when starting the remote
+  controls and the hub. 
   
-        <sysproperty key="http.proxyHost" value="${http.proxyHost}"/>
-        <sysproperty key="http.proxyPort" value="${http.proxyPort}"/>
+  For instance:
   
-        <arg value="-port"/>
-        <arg value="${port}"/>
-        <arg value="-host"/>
-        <arg value="${host}"/>
-        <arg value="-hubURL"/>
-        <arg value="${hubURL}"/>
-        <arg value="-env"/>
-        <arg value="${environment}"/>
-        <arg line="${seleniumArgs}"/>      
-      </java>
-    </target>
-
-  Alternatively, you can also just 
-  [build your own Selenium Grid distribution from source](http://selenium-grid.openqa.org/build_it_from_source.html)
-  as the fix in already checked-in in the codebase.
+    ant -Dhttp.proxyHost=my_proxy.my_company.com -Dhttp.proxyPort=3128 launch-hub
+    ant -Dhttp.proxyHost=my_proxy.my_company.com -Dhttp.proxyPort=3128 launch-remote-control
 
 Running the Examples Included in Selenium Grid Distribution
 ===========================================================
@@ -446,29 +489,6 @@ with Selenium Grid is to use virtualization.**
 
  This said, I am not satisfied wit the current state of affairs and I
  am currently working on better support for IE in Selenium Grid 1.2.
-
-Analysing Failures
-==================
-
- When we test the application with Selenium Grid, we get nondeterministic results
- --------------------------------------------------------------------------------
-
-> Locally, when we test the application with Selenium Grid, we get 
-> nondeterministic results. Tests seem to fail randomly. Messing with the 
-> number of nodes in the grid seems to help, but its really annoying that we 
-> can't seem to get consistent results.
-
-  Most likely some tests are timing out in a non-deterministic manner because
-  your CPU or Network is over-utilized. Monitor your CPU and Network activity on
-  all the machines involved. Once you find the bottleneck launch fewer
-  processes. For instance if your load average is way higher than the number of
-  CPUs on the machine running the remote controls, cut the number of remote
-  controls you launch by two until you get to a sustainable machine load.
-
-  Make sure you spend some time figuring out the optimal number of 
-  concurrent test runners and remote controls to run in parallel on each 
-  machine, before deploying a Selenium Grid infrastructure your organization
-  is going to depend on.
 
 Development
 ===========
