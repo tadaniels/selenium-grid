@@ -2,7 +2,7 @@ package com.thoughtworks.selenium.grid.remotecontrol;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openqa.selenium.server.SeleniumServer;
+import org.seleniumhq.selenium.server.SeleniumServer;
 
 import java.io.IOException;
 
