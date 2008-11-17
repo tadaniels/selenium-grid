@@ -54,13 +54,13 @@ Summary of changes from 1.0.1 to 1.0.2
 Summary of changes from 1.0 to 1.0.1
 ====================================
 
- - Fixed Grid-4 (http://jira.openqa.org/browse/GRID-4):
+ - Fixed Grid-4 (http://jira.seleniumhq.org/browse/GRID-4):
    Selenium does not properly handle accentuated for input fields
     
- - Fixed Grid-6 (http://jira.openqa.org/browse/GRID-6):
+ - Fixed Grid-6 (http://jira.seleniumhq.org/browse/GRID-6):
    Rake task. environments name can't contain space
 
- - Fixed Grid-7 (http://jira.openqa.org/browse/GRID-7):
+ - Fixed Grid-7 (http://jira.seleniumhq.org/browse/GRID-7):
    Selenium Grid does not release a Remote Control when 
    returned session Id is null
 

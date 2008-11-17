@@ -147,7 +147,7 @@
          y="539.26727"
          x="225.04688"
          id="tspan2353"
-         sodipodi:role="line">http://selenium-grid.openqa.org</tspan></text>
+         sodipodi:role="line">http://selenium-grid.seleniumhq.org</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:64px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Lucida Grande"
@@ -158,6 +158,6 @@
          sodipodi:role="line"
          id="tspan3010"
          x="223.04688"
-         y="537.26727">http://selenium-grid.openqa.org</tspan></text>
+         y="537.26727">http://selenium-grid.seleniumhq.org</tspan></text>
   </g>
 </svg>
