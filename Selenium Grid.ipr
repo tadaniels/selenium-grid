@@ -718,7 +718,7 @@
     </library>
     <library name="Selenium Remote Control">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/remote-control/lib/selenium-server-1.0-SNAPSHOT.jar!/" />
+        <root url="jar://$PROJECT_DIR$/vendor/selenium-server-1.0-SNAPSHOT.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
