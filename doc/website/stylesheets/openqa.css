@@ -1,5 +1,5 @@
 /*
- * Stylesheet dedicated to integration with layout on openqa.org
+ * Stylesheet dedicated to integration with layout on seleniumhq.org
  */
 
 body {
@@ -49,15 +49,15 @@ table#start-tracks ul, table#start-tracks ul li, table#start-tracks ul li a {
   text-align: center;
 }
 
-div#openqa-project-list {
+div#seleniumhq-project-list {
   text-align: left;
 }
 
-div#openqa-project-list ul {
+div#seleniumhq-project-list ul {
   list-style-type: none;
 }
 
-div#openqa-project-list ul li a {
+div#seleniumhq-project-list ul li a {
   color: #222;
 }
 

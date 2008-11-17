@@ -90,7 +90,7 @@ Analysing Failures
   environment.
 
   If finding the actual problem still end up being hard, please 
-  [send us](http://clearspace.openqa.org/community/selenium_grid/selenium_grid_users)
+  [send us](http://clearspace.seleniumhq.org/community/selenium_grid/selenium_grid_users)
   another message with:
 
 * The test client side errors (TestNG reports)
@@ -188,7 +188,7 @@ Launching the Hub and the Remote Controls
 
 > Here is my log on this error:
 > ...
-> java Caused by: org.openqa.selenium.server.browserlaunchers.FirefoxChromeLauncher$FileLockRemainedException: Lock file still present! C:\DOKUME1\Semadou\LOKALE1\Temp\customProfileDir9d4a3879bb7d4ca5b75dbbb488ec30b1\parent.lock
+> java Caused by: org.seleniumhq.selenium.server.browserlaunchers.FirefoxChromeLauncher$FileLockRemainedException: Lock file still present! C:\DOKUME1\Semadou\LOKALE1\Temp\customProfileDir9d4a3879bb7d4ca5b75dbbb488ec30b1\parent.lock
 
 
   Sometimes Selenium Remote Control does not stop Firefox properly on Windows
@@ -247,7 +247,7 @@ Running the Examples Included in Selenium Grid Distribution
 1. Go to the root directory of your Selenium Grid distribution
 
 2. Launch Selenium Grid Hub and 4 remote controls as explained in
-   ["Run the Demo"](http://selenium-grid.openqa.org/run_the_demo.html)
+   ["Run the Demo"](http://selenium-grid.seleniumhq.org/run_the_demo.html)
 
 3. Go to the Java example directory: `cd ./examples/java`
 
@@ -283,7 +283,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
 
   You can find a concrete example on
   how this can be achieved in the standard Selenium Grid distribution under
-  the [`examples/java`](http://svn.openqa.org/svn/selenium-grid/trunk/examples/java/) 
+  the [`examples/java`](http://svn.seleniumhq.org/svn/selenium-grid/trunk/examples/java/) 
   directory.
 
 ### Ruby ###
@@ -294,7 +294,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
 
   You can find a concrete example (a nice test reports) on
   how this can be achieved in the standard Selenium Grid distribution under
-  the [`examples/ruby`](http://svn.openqa.org/svn/selenium-grid/trunk/examples/ruby/) 
+  the [`examples/ruby`](http://svn.seleniumhq.org/svn/selenium-grid/trunk/examples/ruby/) 
   directory.
 
 ### Python ###
@@ -320,7 +320,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
   way I originally started with Ruby and you can find an example on how this
   worked in the Ruby example included in Selenium Grid distribution:
 
-  [`examples/ruby/lib/multi_process_behaviour_runner.rb`](http://svn.openqa.org/svn/selenium-grid/trunk/examples/ruby/lib/multi_process_behaviour_runner.rb)
+  [`examples/ruby/lib/multi_process_behaviour_runner.rb`](http://svn.seleniumhq.org/svn/selenium-grid/trunk/examples/ruby/lib/multi_process_behaviour_runner.rb)
 
   You launch the whole thing with:
 
@@ -357,7 +357,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
   started with Ruby and you can find an example on how this worked in the Ruby
   example included in Selenium Grid distribution:
 
-  [`examples/ruby/lib/multi_process_behaviour_runner.rb`](http://svn.openqa.org/svn/selenium-grid/trunk/examples/ruby/lib/multi_process_behaviour_runner.rb)
+  [`examples/ruby/lib/multi_process_behaviour_runner.rb`](http://svn.seleniumhq.org/svn/selenium-grid/trunk/examples/ruby/lib/multi_process_behaviour_runner.rb)
 
   You launch the whole thing with:
 
@@ -389,7 +389,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
   programming language and test runner you are using (for instance 
   `JUnit`, `TestNG`, `Test::Unit` or `RSpec`).
 
-  You can look at the [`examples/ruby`](http://svn.openqa.org/svn/selenium-grid/trunk/examples/ruby/) 
+  You can look at the [`examples/ruby`](http://svn.seleniumhq.org/svn/selenium-grid/trunk/examples/ruby/) 
   directory in the Selenium Grid
   distribution to see how you can use RSpec and Selenium to generate reports
   which [include HTML capture and OS screenshots when a test
@@ -407,7 +407,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
  your test suite grows big enough that it takes too long to run.
  
  This said, there might be hope as some guys seem to be working on it though: see 
- [this thread](http://clearspace.openqa.org/thread/11482)
+ [this thread](http://clearspace.seleniumhq.org/thread/11482)
 
  My test is not working when I use HTTPS!
  ----------------------------------------
@@ -496,12 +496,12 @@ Development
  Where can I find Selenium Grid nightly builds?
  ----------------------------------------------
 
-  Download them from Selenium Grid [core build artifacts](http://xserve.openqa.org:8080/job/Grid%20Core%20-%20Mac/lastBuild/artifact/trunk/target/dist)
+  Download them from Selenium Grid [core build artifacts](http://xserve.seleniumhq.org:8080/job/Grid%20Core%20-%20Mac/lastBuild/artifact/trunk/target/dist)
 
  Where Can I Get Feedback Selenium Grid on Continuous Integration Builds?
  ------------------------------------------------------------------------
   
   Check out latest Selenium Grid builds on 
-  [http://xserve.openqa.org:8080/view/Selenium%20Grid](http://xserve.openqa.org:8080/)
+  [http://xserve.seleniumhq.org:8080/view/Selenium%20Grid](http://xserve.seleniumhq.org:8080/)
 
 
