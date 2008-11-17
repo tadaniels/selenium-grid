@@ -25,7 +25,7 @@ Running the Tests
 
   To run the tests you must first launch a Selenium Hub and 4 Selenium
   remote controls as explained in the Demo:
-  http://openqa.org/selenium-grid/run_the_demo.html
+  http://seleniumhq.org/selenium-grid/run_the_demo.html
 
   You can then:
 

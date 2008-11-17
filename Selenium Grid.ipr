@@ -660,11 +660,11 @@
             <SvnBranchConfiguration>
               <option name="branchUrls">
                 <list>
-                  <option value="https://svn.openqa.org/svn/selenium-grid/tags" />
-                  <option value="https://svn.openqa.org/svn/selenium-grid/website" />
+                  <option value="https://svn.seleniumhq.org/svn/selenium-grid/tags" />
+                  <option value="https://svn.seleniumhq.org/svn/selenium-grid/website" />
                 </list>
               </option>
-              <option name="trunkUrl" value="https://svn.openqa.org/svn/selenium-grid/trunk" />
+              <option name="trunkUrl" value="https://svn.seleniumhq.org/svn/selenium-grid/trunk" />
             </SvnBranchConfiguration>
           </value>
         </entry>

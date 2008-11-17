@@ -80,7 +80,7 @@ public class HttpCommandParserTest extends UsingClassMock {
         parameters = new HttpParameters();
         parameters.put("cmd", "getNewBrowserSession");
         parameters.put("1", "an environment name");
-        parameters.put("2", "http://openqa.org");
+        parameters.put("2", "http://seleniumhq.org");
         expectedEnvironment = new Environment("", "aBrowser");
         environmentManager = mock(EnvironmentManager.class);
         environmentManager.expects("environment").with("an environment name").will(returnValue(expectedEnvironment));
@@ -91,7 +91,7 @@ public class HttpCommandParserTest extends UsingClassMock {
 
         assertEquals("getNewBrowserSession", browserSessionCommand.parameters().get("cmd"));
         assertEquals("aBrowser", browserSessionCommand.parameters().get("1"));
-        assertEquals("http://openqa.org", browserSessionCommand.parameters().get("2"));
+        assertEquals("http://seleniumhq.org", browserSessionCommand.parameters().get("2"));
 
         assertEquals(expectedEnvironment, browserSessionCommand.environment());
 
@@ -107,7 +107,7 @@ public class HttpCommandParserTest extends UsingClassMock {
         parameters = new HttpParameters();
         parameters.put("cmd", "getNewBrowserSession");
         parameters.put("1", "an unknown environment name");
-        parameters.put("2", "http://openqa.org");
+        parameters.put("2", "http://seleniumhq.org");
         environmentManager = mock(EnvironmentManager.class);
         environmentManager.expects("environment").with("an unknown environment name").will(returnValue(null));
 
