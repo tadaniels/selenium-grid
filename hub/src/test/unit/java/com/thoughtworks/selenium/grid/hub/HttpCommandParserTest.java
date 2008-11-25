@@ -31,7 +31,7 @@ public class HttpCommandParserTest extends UsingClassMock {
       assertEquals("generic", command.parameters().get("cmd"));
       assertEquals("1234", command.parameters().get("sessionId"));
       assertEquals("1234", command.sessionId());
-    }
+        }
 
     @Test
     public void returnsARemoteControlCommandWithMatchingHttpParametersForAGenericRequest() {

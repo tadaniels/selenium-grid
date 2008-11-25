@@ -40,18 +40,12 @@ div#news a {
 }
 
 table#start-tracks {
-  margin-top: 3em;
-  margin-botton: 1em 0;
-  padding: .4em .6em;
-  border-spacing: 1.6em 1em;
+  margin: 0;
+  padding: 2em 2em;
+  border-spacing: 2em 0;
   clear: both;
-  width: 90%;
-  background:  #781435;
-
-  -moz-border-radius: .6em;
-  -webkit-border-radius: .8em;
-  border-radius: .8em;
-  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)
+  width: 100%;
+  background: white url("../images/background_start_tracks.png") bottom repeat-x;
 }
    
 table#start-tracks tr td {
