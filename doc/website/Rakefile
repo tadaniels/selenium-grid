@@ -35,5 +35,3 @@ end
 task :'images:generate' do
   sh "convert -size 1x400 gradient:white-#781435 images/background_start_tracks.png"
 end
-end
-
