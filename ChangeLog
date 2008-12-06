@@ -3,8 +3,8 @@
                   =========================
 
 
-Summary of changes from 1.0.2 to 1.0.3
-======================================
+Summary of changes from 1.0.2 to 1.0.3 - Nov 27 2008
+====================================================
 
  * Fixed the Ruby example to pick the custom RSpec report from the
    appropriate selenium-client installation when there are multiple
@@ -13,8 +13,8 @@ Summary of changes from 1.0.2 to 1.0.3
  * Moved the Selenium RC server jar to the vendor/ directory 
    (as opposed to lib/)
 
-Summary of changes from 1.0.1 to 1.0.2
-======================================
+Summary of changes from 1.0.1 to 1.0.2 - Oct 23 2008
+====================================================
 
  For End Users
  -------------
@@ -51,8 +51,8 @@ Summary of changes from 1.0.1 to 1.0.2
     Rakefile use the hub port defined in grid_configuration.xml
     (http://github.com/bcotton/selenium-grid/commits/rakefile_fixes)
 
-Summary of changes from 1.0 to 1.0.1
-====================================
+Summary of changes from 1.0 to 1.0.1 - Apr 15 2008
+==================================================
 
  - Fixed Grid-4 (http://jira.seleniumhq.org/browse/GRID-4):
    Selenium does not properly handle accentuated for input fields
@@ -65,8 +65,8 @@ Summary of changes from 1.0 to 1.0.1
    returned session Id is null
 
  - 
-Summary of changes from 0.9.4 to 1.0
-====================================
+Summary of changes from 0.9.4 to 1.0 - Feb 25 2008
+===================================================
 
  Main highlights for the 1.0 release include:
 
@@ -184,3 +184,8 @@ Clinton Bishop:
 
   * Helped converting some tests to JRuby
 
+Summary of changes from 0.9.2 to 0.9.3 - Nov 22 2007
+====================================================
+
+First Release 0.9.2 - Oct 28 2007
+=================================
