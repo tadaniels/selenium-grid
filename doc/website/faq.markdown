@@ -118,8 +118,29 @@ Analysing Failures
   is going to depend on.
 
 
-Launching the Hub and the Remote Controls
+Managing the Hub and the Remote Controls
 =========================================
+
+ How can I shutdown Selenium Grid Hub?
+ -------------------------------------
+ 
+  If you are using the rake task provided with Selenium Grid you can just
+  run:
+
+    rake hub:stop
+    
+  If Rake is not an option or you want to hook your instrumentation logic
+  you can also shutdown the Hub with a single HTTP request. You need to 
+  submit a POST request to the Hub targeting `/lifecycle-manager` with a
+  parameter `action=shutdown`. For instance if the Hub is running on
+  `localhost` on port `4444` you could shut it down with:
+  
+    curl -d action=shutdown http://localhost:4444/lifecycle-manager
+    
+  or
+
+    wget --post-data action=shutdown action=shutdown http://localhost:4444/lifecycle-manager
+
 
  How can I pass additional parameters to the Remote Controls when starting them as part of Selenium Grid?
  --------------------------------------------------------------------------------------------------------
