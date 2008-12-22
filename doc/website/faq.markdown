@@ -27,7 +27,8 @@ General
 
   For load/performance testing I would advise using tools like JMeter, Grinder
   or httperf. What you can do though, is reuse your selenium tests to record
-  the use cases you will use for your load testing.
+  the use cases you will use for your load testing. If you really want to 
+  conduct load testing with Selenium, check out [Browser Mob](http://browsermob.com/welcome).
 
   To simulate 200 concurrent users for instance, you would need 200 concurrent
   browsers with a load testing framework based on Selenium Grid. Even if you
