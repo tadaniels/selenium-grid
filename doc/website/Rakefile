@@ -4,7 +4,7 @@
 
 task :default => [ :generate_faq, :copy_stylesheets, :copy_images, :copy_pages]
 
-OUTPUT_DIR = "../../../website/src/main/webapp"
+OUTPUT_DIR = "../../../Selenium Grid Website/src/main/webapp"
 
 task :copy_images do
   mkdir_p File.join(OUTPUT_DIR, "images")

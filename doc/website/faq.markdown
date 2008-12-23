@@ -49,6 +49,22 @@ Installing
 * [Step by Step Installation Instructions for Windows](./step_by_step_installation_instructions_for_windows.html)
 * [Step by Step Installation Instructions for Mac OS X](./step_by_step_installation_instructions_for_osx.html)
 
+Customizing Selenium Grid
+=========================
+
+  Can I change the version of Selenium RC used by the Grid?
+  ---------------------------------------------------------
+  
+  Every remote control that you launch with `ant launch-remote-control` or
+  `rake rc:start` is using the first Selenium Remote Control standalone jar 
+  packaged in the `vendor` directory whose name matches `selenium-server-*.jar`.
+   
+  To use your own version of Selenium Remote Control, just
+  delete the `vendor/selenium-server-*.jar` file that comes with Selenium
+  Grid distribution and replace it any standalone Remote Control jar that 
+  you fancy! This technique is especially useful to workaround
+  regressions in Remote Control nightly builds...
+  
 Analysing Failures
 ==================
 
