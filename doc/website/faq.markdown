@@ -107,7 +107,7 @@ Analysing Failures
   environment.
 
   If finding the actual problem still end up being hard, please 
-  [send us](http://clearspace.seleniumhq.org/community/selenium_grid/selenium_grid_users)
+  [send us](http://clearspace.openqa.org/community/selenium/advanced)
   another message with:
 
 * The test client side errors (TestNG reports)
@@ -445,7 +445,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
  your test suite grows big enough that it takes too long to run.
  
  This said, there might be hope as some guys seem to be working on it though: see 
- [this thread](http://clearspace.seleniumhq.org/thread/11482)
+ [this thread](http://clearspace.openqa.org/thread/11482)
 
  My test is not working when I use HTTPS!
  ----------------------------------------
