@@ -546,7 +546,7 @@ Development
  Where can I find Selenium Grid nightly builds?
  ----------------------------------------------
 
-  Download them from Selenium Grid [core build artifacts](http://xserve.seleniumhq.org:8080/job/Grid%20Core%20-%20Mac/lastBuild/artifact/trunk/target/dist)
+  Download them from Selenium Grid [core build artifacts](http://xserve.seleniumhq.org:8080/view/Selenium%20Grid/job/Grid%20Core%20-%20Mac/lastSuccessfulBuild/artifact/trunk/target/dist/)
 
  Where Can I Get Feedback Selenium Grid on Continuous Integration Builds?
  ------------------------------------------------------------------------
