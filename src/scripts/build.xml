@@ -84,6 +84,8 @@
 
       <sysproperty key="http.proxyHost" value="${http.proxyHost}"/>
       <sysproperty key="http.proxyPort" value="${http.proxyPort}"/>
+      <sysproperty key="https.proxyHost" value="${https.proxyHost}"/>
+      <sysproperty key="https.proxyPort" value="${https.proxyPort}"/>
 
       <arg value="-port"/>
       <arg value="${port}"/>

@@ -264,8 +264,8 @@ Managing the Hub and the Remote Controls
   Selenium Grid will take care of this problem transparently, but for now a
   restart is safer.
 
- Can I configure the Remote Control to use a custom HTTP proxy?
- --------------------------------------------------------------
+ Can I configure the Remote Control to use a custom HTTP/HTTPS proxy?
+ --------------------------------------------------------------------
 
   To use custom http proxy settings set the `http.proxyHost` and the
   `http.proxyPort` java system properties when starting the remote
@@ -275,6 +275,18 @@ Managing the Hub and the Remote Controls
   
     ant -Dhttp.proxyHost=my_proxy.my_company.com -Dhttp.proxyPort=3128 launch-hub
     ant -Dhttp.proxyHost=my_proxy.my_company.com -Dhttp.proxyPort=3128 launch-remote-control
+
+  Note that the JVM use different properties for http and https
+  proxies. So if you also want to use the same proxy for http *and* https 
+  you need to use:
+
+      ant -Dhttp.proxyHost=my_proxy.my_company.com -Dhttp.proxyPort=3128 \
+          -Dhttps.proxyHost=my_proxy.my_company.com -Dhttps.proxyPort=3128 \
+          launch-hub
+
+      ant -Dhttp.proxyHost=my_proxy.my_company.com -Dhttp.proxyPort=3128 \
+          -Dhttps.proxyHost=my_proxy.my_company.com -Dhttps.proxyPort=3128 \
+          launch-remote-control  
 
 Running the Examples Included in Selenium Grid Distribution
 ===========================================================
