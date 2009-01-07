@@ -507,6 +507,25 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
  This said, there might be hope as some guys seem to be working on it though: see 
  [this thread](http://clearspace.openqa.org/thread/11482)
 
+ Here are more details on why this feature is not high on my priority list:
+
+1. I write all my tests using a full-featured programming language 
+   (not HTML) because I believe that it is a far better approach 
+   to in-browser testing -- especially when it come to maintenance.
+
+2. If you have enough tests to feel the need for Selenium Grid, 
+   then test maintenance should matter to you... and using HTML test 
+   cases is not going to help!
+
+3. I have limited development cycles and work on Selenium grid in my 
+   free time. There a lot of other features to work on that are more 
+   important to me and my teams.
+
+4. Selenium Grid is an open-source project. If this running HTML tests 
+   in parallel is important enough to a large number of users, somebody 
+   will write a patch that I will be glad to incorporate it in the codebase.
+ 
+ 
  My test is not working when I use HTTPS!
  ----------------------------------------
 
