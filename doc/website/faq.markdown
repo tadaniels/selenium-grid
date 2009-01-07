@@ -49,6 +49,54 @@ Installing
 * [Step by Step Installation Instructions for Windows](./step_by_step_installation_instructions_for_windows.html)
 * [Step by Step Installation Instructions for Mac OS X](./step_by_step_installation_instructions_for_osx.html)
 
+
+Running the Demo
+================
+
+ Running the Demo Using a Different Browser
+ ------------------------------------------
+ 
+> When i run the selenium grid demo then all remote control by default launched Firefox.
+> so how and where could I update the browser name incase of Selenium Grid.
+
+
+Here is how you would do to run the demo with the Safari web browser for instance.
+
+Launch the Hub the standard way:
+
+    ant launch-hub
+
+Launch a remote control declaring that it provides the Safari environment:
+
+    ant -Denvironment="*safari" launch-remote-control
+
+Launch the other remote controls the same way:
+
+    ant -Denvironment="*safari" -Dport=5556 launch-remote-control
+    ant -Denvironment="*safari" -Dport=5557 launch-remote-control
+
+Launch the demo overriding the browser system property:
+
+      ant -Dbrowser="*safari" run-demo-in-parallel
+    
+Voila! you're done!
+
+If you are using Ruby automation (power to you), you can also achieve the
+same thing easily:
+
+Launch the Hub the standard way:
+
+    rake hub:start
+
+Launch the remote controls declaring that they provides the Safari environment:
+
+    rake rc:start_all ENVIRONMENT=*safari
+
+Launch the demo overriding the browser system property:
+
+    ant -Dbrowser="*safari" run-demo-in-parallel
+
+
 Customizing Selenium Grid
 =========================
 
