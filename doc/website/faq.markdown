@@ -441,6 +441,11 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
   solution for Python, I will put it in the documentation. Even better,
   send me an example, I will include it in Selenium Grid distribution.
 
+### .Net ###
+
+  I have no expertise in .Net but [Gallio](http://www.gallio.org/)
+  seems to be able to [run tests in parallel](http://igorbrejc.net/development/continuous-integration/gallio-running-tests-in-parallel)
+  
 ### Other ###
 
   To take advantage of Selenium Grid power, you need to come up with a way to
