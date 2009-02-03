@@ -53,6 +53,60 @@ Installing
 Running the Demo
 ================
 
+  Tests Are Failing When I Run the Demo. How can I troubleshoot the problem?
+  --------------------------------------------------------------------------
+  
+> I started the Hub on the UNIX machine and then I've created 2 
+> remote controls on a Window laptop. This part worked and I can see the
+> Hub console listing the 2 remote controls. 
+> When I start `ant run-demo-in-parallel` on the UNIX box, however, the 
+> following error appears:
+>
+    [java] ===============================================
+    [java] Selenium Grid Demo In Parallel
+    [java] Total tests run: 4, Failures: 4, Skips: 0
+    [java] ===============================================
+>
+> How can I investigate the problem?
+
+  Here are a few things you can do to try to understand what is going on:
+  
+* Look at the TestNG report under `target/reports/index.html` on the test 
+  runner machine (the UNIX one in your case), looking for the actual error 
+  messages / stack traces.
+
+* Check the Hub and remote control logs under `log/`
+
+* Look at the Windows machine where the remote controls are running: Are the
+  remote controls logging any command at all? Are browsers popping up at
+  least? Take a good look at the Selenium Remote Control logs while the tests
+  are running.
+
+  If the remote controls on the Windows machine are not even contacted, this
+  is most likely to be a setting/network/browser configuration problem. Check
+  the way you launched the hub and the remote controls, as well as your
+  network.
+
+  If the remote controls on the windows machine are contacted but fail to run
+  the tests properly, this is probably just a problem on the local machine.
+  Try to run Selenium Grid demo exclusively on this machine (or any Selenium
+  Test you have) to understand the nature of the problem in a less complex
+  environment.
+
+  If finding the actual problem still end up being hard, please 
+  [post a message in the Selenium Grid forum](http://clearspace.openqa.org/community/selenium/advanced)
+  with precise information on:
+
+* The O.S. and browser combination that you are using
+* Whether you see browsers popping up or not
+* A screenshot of the Hub console before you launch the tests
+  (The console can usually be accessed at http://localhost:4444/console
+   on the machine running the Hub)
+* The test client side errors (TestNG reports)
+* Selenium Grid Hub logs (`log/hub.log`)
+* Remote Control logs (`log/rc-*.log`)
+
+
  Running the Demo Using a Different Browser
  ------------------------------------------
  
@@ -115,51 +169,6 @@ Customizing Selenium Grid
   
 Analysing Failures
 ==================
-
-  How can I troubleshoot problems when running the demo ?
-  -------------------------------------------------------
-  
-> I started the Hub on the UNIX machine and then I've created 2 
-> remote controls on a Window laptop. This part worked and I can see the
-> Hub console listing the 2 remote controls. 
-> When I start `ant run-demo-in-parallel` on the UNIX box, however, the 
-> following error appears:
->
-    [java] ===============================================
-    [java] Selenium Grid Demo In Parallel
-    [java] Total tests run: 4, Failures: 4, Skips: 0
-    [java] ===============================================
->
-> How can I investigate the problem?
-
-  Here are a few things you can do to try to understand what is going on:
-  
-* Look at the TestNG report under `target/reports` on the test runner machine
-  (the UNIX one in your case), looking fo the actual error messages / stack
-  traces.
-
-* Look at the Windows machine where the remote controls are running: Are the
-  remote controls logging any command at all? Are browsers popping up at
-  least? Take a good look at the Selenium Remote Control logs while the tests
-  are running.
-
-  If the remote controls on the Windows machine are not even contacted, this
-  is most likely to be a setting/network/browser configuration problem. Check
-  the way you launched the hub and the remote controls, as well as your
-  network.
-
-  If the remote controls on the windows machine are contacted but fail to run
-  the tests properly, this is probably just a problem on the local machine.
-  Try to run Selenium Grid demo exclusively on this machine (or any Selenium
-  Test you have) to understand the nature of the problem in a less complex
-  environment.
-
-  If finding the actual problem still end up being hard, please 
-  [send us](http://clearspace.openqa.org/community/selenium/advanced)
-  another message with:
-
-* The test client side errors (TestNG reports)
-* The remote control logs
 
 
  When we test the application with Selenium Grid, we get nondeterministic results
