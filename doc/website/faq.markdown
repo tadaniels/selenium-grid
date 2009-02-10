@@ -373,6 +373,32 @@ Running the Examples Included in Selenium Grid Distribution
 4. Launch the tests with: `rake tests:run_in_parallel`  
 
 
+ The Ruby Example Does Not Seem to Work on Windows!
+--------------------------------------------------
+
+> When running the Ruby example on Windows I get:
+>
+> `[DeepTest] Started DeepTest service at druby://0.0.0.0:6969
+> c:/ruby/lib/ruby/gems/1.8/gems/deep_test-1.2.2/lib/deep_test.rb:15:in fork: the fork() function is unimplemented on this machine (NotImplementedError)`
+
+  This is expected. The Ruby example will *not* work on Windows.
+
+  The Ruby example demonstrates best practices for high ROI in-browser web
+  testing in Ruby. As a consequence it relies on
+  [DeepTest](http://deep-test.rubyforge.org), the best parallel and distributed
+  test runner available for Ruby. In turns, DeepTest make extensive use of
+  `Kernel.fork()`... which is not implemented on Windows.
+
+  This is not really a problem as the Ruby community has widely embraced the
+  Mac OS X and UNIX platforms which provide a far better environment to
+  execute your tests. Besides, with Selenium Grid (or Selenium RC) it is very
+  simple to run your tests on UNIX while driving a web browser running on
+  Windows. So there is no need to run your tests on Windows to test a Windows'
+  browser. Consequently I strongly advise to always run your tests on Linux or
+  Mac OS X and just target a Selenium RC running on a Windows platform when
+  you need to test Internet Explorer. You will also save yourself a lot of
+  headaches as very few Ruby users run on Windows anyway...
+  
 Running Your Tests Against Selenium Grid
 ========================================
 
