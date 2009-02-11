@@ -75,7 +75,7 @@ Running the Demo
   runner machine (the UNIX one in your case), looking for the actual error 
   messages / stack traces.
 
-* Check the Hub and remote control logs under `log/`
+* Check the Hub and remote control logs under the `log/` directory
 
 * Look at the Windows machine where the remote controls are running: Are the
   remote controls logging any command at all? Are browsers popping up at
