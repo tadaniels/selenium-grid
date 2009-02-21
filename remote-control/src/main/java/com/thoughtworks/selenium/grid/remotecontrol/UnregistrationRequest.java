@@ -9,28 +9,29 @@ import java.io.IOException;
 
 /*
  * Registration Request to Selenium Grid Hub.
- *
- * @author Philippe Hanrigou
  */
 public class UnregistrationRequest extends HubRequest {
 
     private static final Log logger = LogFactory.getLog(RegistrationRequest.class);
 
-    public UnregistrationRequest(String seleniumHubURL, String host, String port, String environment) {
-        super(seleniumHubURL, host, port, environment);
+    public UnregistrationRequest(String seleniumHubURL, String host, String port) {
+        super(seleniumHubURL, host, port);
     }
 
     public PostMethod postMethod() {
-        final String uid;
-
-        uid = DigestUtils.shaHex(host + ":" + port);
-        final PostMethod postMethod = new PostMethod(targetURL() + "/remote_controls/" + uid);
-        postMethod.addParameter("host", host);
-        postMethod.addParameter("port", port);
-        postMethod.addParameter("environment", environment());
+        final PostMethod postMethod = new PostMethod(targetURL());
+        postMethod.addParameter("host", host());
+        postMethod.addParameter("port", port());
         postMethod.addParameter("_method", "delete");
 
         return postMethod;
+    }
+
+    private String targetURL() {
+        final String uid;
+
+        uid = DigestUtils.shaHex(host() + ":" + port());
+        return seleniumHubURL() + "/remote_controls/" + uid;
     }
 
     public int execute() throws IOException {

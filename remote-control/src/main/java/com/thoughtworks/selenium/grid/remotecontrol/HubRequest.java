@@ -1,7 +1,7 @@
 package com.thoughtworks.selenium.grid.remotecontrol;
 
-import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.PostMethod;
 
 import java.io.IOException;
 
@@ -10,16 +10,14 @@ import java.io.IOException;
  *
  * @author Philippe Hanrigou
  */
-public class HubRequest {
+public abstract class HubRequest {
 
-    private final String environment;
-    private final String targetURL;
-    protected final String host;
-    protected final String port;
+    private final String seleniumHubURL;
+    private final String host;
+    private final String port;
 
-    public HubRequest(String targetURL, String host, String port, String environment) {
-        this.targetURL = targetURL;
-        this.environment =  environment;
+    public HubRequest(String seleniumHubURL, String host, String port) {
+        this.seleniumHubURL = seleniumHubURL;
         this.host = host;
         this.port = port;
     }
@@ -28,22 +26,17 @@ public class HubRequest {
         return new HttpClient().executeMethod(postMethod());
     }
 
-    public PostMethod postMethod() {
-        final PostMethod postMethod = new PostMethod(targetURL);
-        postMethod.addParameter("host", host);
-        postMethod.addParameter("port", port);
-        postMethod.addParameter("environment", environment);
+    public abstract PostMethod postMethod();
 
-        return postMethod;
+    public String seleniumHubURL() {
+        return seleniumHubURL;
     }
 
-
-    public String targetURL() {
-        return targetURL;
+    public String host() {
+        return host;
     }
 
-    public String environment() {
-        return environment;
+    public String port() {
+        return port;
     }
-
 }
