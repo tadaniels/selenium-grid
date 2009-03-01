@@ -1,0 +1,9 @@
+
+1. Downlaod new Runtime and freeze it under vendor/
+2. Remove the share/ samples/ and docs/ directories
+3. Put JRUBY_HOME/bin first in your PATH
+3. Install Rails :
+    jruby -S gem install rails --no-ri --no-rdoc
+4. Install Jetty Rails
+    jruby -S gem install jetty-rails --no-ri --no-rdoc
+
