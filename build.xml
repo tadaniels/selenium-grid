@@ -62,7 +62,6 @@
       <fileset file="${basedir}/vendor/commons-logging-1.0.4.jar"/>
     </copy>
     <copy todir="${dist}/${artifact}-${version}/lib" overwrite="true">
-      <fileset dir="${basedir}/hub/target/dist/lib"/>
       <fileset dir="${basedir}/remote-control/target/dist/lib"/>
       <fileset dir="${basedir}/tools/target/dist/lib"/>
       <fileset dir="${basedir}/lib" includes="ruby/**/*.rb"/>
@@ -161,7 +160,6 @@
   <target name="aggregate-reports" description="Aggregates subproject reports">
     <copyreports project="infrastructure/core"/>
     <copyreports project="infrastructure/webserver"/>
-    <copyreports project="hub"/>
     <copyreports project="remote-control"/>
     <copyreports project="agent"/>
     <copyreports project="tools"/>

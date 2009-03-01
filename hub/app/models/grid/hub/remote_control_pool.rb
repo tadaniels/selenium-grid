@@ -2,6 +2,7 @@ module Grid
   module Hub
     
     class RemoteControlPool
+      include Grid::Logger
       
       def initialize
         @rc_by_uid = Hash.new
@@ -31,24 +32,36 @@ module Grid
       end
 
       def reserve(environment)
+        logger.info "[reserve][#{Thread.current.object_id}] Reserving a new RC for #{environment}"
         @mutex.synchronize do
-          rc = loop do
+          logger.info "[reserve][#{Thread.current.object_id}] Acquired mutex"
+          rc = loop do            
             rc = find_free_rc_for environment
+            logger.info "[reserve][#{Thread.current.object_id}] Found RC #{rc.inspect}"
             break rc unless rc.nil?
             
+            logger.info "[reserve][#{Thread.current.object_id}] Going to sleep"
             @available_remote_control.wait(@mutex)
+            logger.info "[reserve][#{Thread.current.object_id}] Woke up!"
           end
 
           rc.reserve!
+          logger.info "[reserve][#{Thread.current.object_id}] Reserved RC #{rc.inspect} for #{environment}"
           return rc
         end
       end
       
-      def release(remote_control_proxy)
+      def release(rc)
+        logger.info "[release][#{Thread.current.object_id}] Releasing RC #{rc.inspect}"
         @mutex.synchronize do
-          session_id = remote_control_proxy.session_id
-          remote_control_proxy.release!
+          logger.info "[release][#{Thread.current.object_id}] Acquired lock"
+          session_id = rc.session_id
+          logger.info "[release][#{Thread.current.object_id}] Release"
+          rc.release!
+          logger.info "[release][#{Thread.current.object_id}] Released"
           clear_session_id session_id
+
+          logger.info "[release][#{Thread.current.object_id}] broadcasting"
           @available_remote_control.broadcast
         end
       end

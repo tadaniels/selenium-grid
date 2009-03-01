@@ -34,4 +34,25 @@ unit_tests do
     slow.join    
   end
 
+  test "reserve/release can handle high concurrency" do
+    the_rc = Grid::Hub::RemoteControlProxy.new :host => "a host", :port => 123, :environments => [ "*safari" ]
+    pool = Grid::Hub::RemoteControlPool.new
+    pool.add the_rc
+    fast = Thread.new do
+      10.times do
+        assert_equal the_rc, pool.reserve("*safari")
+        pool.release the_rc
+      end
+    end
+    slow = Thread.new do
+      10.times do
+        assert_equal the_rc, pool.reserve("*safari")
+        pool.release the_rc
+      end
+    end
+    fast.join
+    slow.join    
+    assert the_rc.free?
+  end
+
 end

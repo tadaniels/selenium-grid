@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+    xmlns:admin="http://webns.net/mvcb/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/">
+
+  <channel>
+    <title>Selenium Grid - News</title>
+    <link>http://selenium-grid.seleniumhq.org</link>
+    <description>The Latest News about Selenium Grid</description>
+
+    <item>
+      <title>Some Entry</title>
+      <link>soem Link</link>
+      <description>Blah, Blah</description>
+
+      <content:encoded><![CDATA[
+        asaskdjcasdc
+        asvdasv
+        dsfv
+        sdfvfsdfvsdfv
+      ]]></content:encoded>
+      <dc:date>2009-02-12T10:00:00</dc:date>
+    </item>
+
+  </channel>
+</rss>

@@ -8,6 +8,7 @@ require "logger"
 # from editor
 #
 require File.expand_path(File.dirname(__FILE__) + '/../../config/application_dependencies')
+require File.expand_path(File.dirname(__FILE__) + '/../../app/models/grid/logger')
 require File.expand_path(File.dirname(__FILE__) + '/../../app/models/grid/hub/remote_command')
 Dir[File.dirname(__FILE__) + '/../../app/models/**/*.rb'].each do |filename|
   require File.expand_path(filename)

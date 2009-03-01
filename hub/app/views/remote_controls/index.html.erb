@@ -1,11 +1,17 @@
 <h1>Registered Remote Controls</h1>
 
-<table border="1">
+<% if @pool.remote_controls.empty? %>
+  <p>
+    No available remote controls, please launch 
+    some with ....
+  </p>
+<% else %>
+<table>
   <tr>
     <th>Host</th><th>Port</th><th>Environments</th><th>Free ?</th><th>UID</th>
   </tr>
   <% @pool.remote_controls.each do |rc| %>
-    <tr>
+    <tr class="<%= rc.free? ? 'free' : 'reserved' %>">
       <td><%= rc.host %></td>
       <td><%= rc.port %></td>
       <td><%= rc.environments.join(", ") %></td>
@@ -14,3 +20,6 @@
     </tr>
   <% end %>
 </table>
+
+<% end %>
+
