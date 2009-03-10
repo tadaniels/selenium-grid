@@ -438,7 +438,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
 
   You can find a concrete example on
   how this can be achieved in the standard Selenium Grid distribution under
-  the [`examples/java`](http://svn.seleniumhq.org/svn/selenium-grid/trunk/examples/java/) 
+  the [`examples/java`](http://svn.openqa.org/svn/selenium-grid/trunk/examples/java/) 
   directory.
 
 ### Ruby ###
@@ -449,7 +449,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
 
   You can find a concrete example (a nice test reports) on
   how this can be achieved in the standard Selenium Grid distribution under
-  the [`examples/ruby`](http://svn.seleniumhq.org/svn/selenium-grid/trunk/examples/ruby/) 
+  the [`examples/ruby`](http://svn.openqa.org/svn/selenium-grid/trunk/examples/ruby/) 
   directory.
 
 ### Python ###
@@ -475,7 +475,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
   way I originally started with Ruby and you can find an example on how this
   worked in the Ruby example included in Selenium Grid distribution:
 
-  [`examples/ruby/lib/multi_process_behaviour_runner.rb`](http://svn.seleniumhq.org/svn/selenium-grid/trunk/examples/ruby/lib/multi_process_behaviour_runner.rb)
+  [`examples/ruby/lib/multi_process_behaviour_runner.rb`](http://svn.openqa.org/svn/selenium-grid/trunk/examples/ruby/lib/multi_process_behaviour_runner.rb)
 
   You launch the whole thing with:
 
@@ -517,7 +517,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
   started with Ruby and you can find an example on how this worked in the Ruby
   example included in Selenium Grid distribution:
 
-  [`examples/ruby/lib/multi_process_behaviour_runner.rb`](http://svn.seleniumhq.org/svn/selenium-grid/trunk/examples/ruby/lib/multi_process_behaviour_runner.rb)
+  [`examples/ruby/lib/multi_process_behaviour_runner.rb`](http://svn.openqa.org/svn/selenium-grid/trunk/examples/ruby/lib/multi_process_behaviour_runner.rb)
 
   You launch the whole thing with:
 
@@ -549,7 +549,7 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
   programming language and test runner you are using (for instance 
   `JUnit`, `TestNG`, `Test::Unit` or `RSpec`).
 
-  You can look at the [`examples/ruby`](http://svn.seleniumhq.org/svn/selenium-grid/trunk/examples/ruby/) 
+  You can look at the [`examples/ruby`](http://svn.openqa.org/svn/selenium-grid/trunk/examples/ruby/) 
   directory in the Selenium Grid
   distribution to see how you can use RSpec and Selenium to generate reports
   which [include HTML capture and OS screenshots when a test
