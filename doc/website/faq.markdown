@@ -398,7 +398,29 @@ Running the Examples Included in Selenium Grid Distribution
   Mac OS X and just target a Selenium RC running on a Windows platform when
   you need to test Internet Explorer. You will also save yourself a lot of
   headaches as very few Ruby users run on Windows anyway...
-  
+ 
+
+ Running the Ruby Example Using a Different Browser
+ --------------------------------------------------
+ 
+  Here is how you would do to run the Ruby example with the Safari web browser for instance.
+
+  Launch the Hub the standard way (from the root of Selenium Grid distribution):
+
+    rake hub:start
+
+  Launch a  bunch of remote controls declaring that they provides the Safari environment:
+
+    rake rc:start_all ENVIRONMENT=*safari
+
+  Launch the tests overriding the browser environment variable:
+
+      cd examples/ruby
+      rake tests:run_in_parallel SELENIUM_RC_BROWSER="*safari"
+    
+  Voila! you're done!
+
+
 Running Your Tests Against Selenium Grid
 ========================================
 
