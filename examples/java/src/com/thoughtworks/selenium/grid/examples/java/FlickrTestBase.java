@@ -30,7 +30,7 @@ public class FlickrTestBase {
 
     protected void runFlickrScenario(String searchString) {
         session().open("/");
-        assertTrue(session().getLocation(), session().getLocation().startsWith("http://flickr.com"));
+        assertTrue(session().getLocation(), session().getLocation().contains("flickr.com"));
         session().type("q", searchString);
         session().click("//form[@action='/search/']//input[@type='submit']");
         session().waitForPageToLoad(TIMEOUT);
