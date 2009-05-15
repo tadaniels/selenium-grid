@@ -175,6 +175,7 @@
 
   <target name="automated-demo" description="Fully Automated Demo (for continuous integration)">
       <exec executable="${rake}" dir="${dist}/selenium-grid-${version}" failonerror="true">
+          <arg value="--trace"/>
           <arg value="ci:demo"/>
       </exec>
   </target>
@@ -199,6 +200,7 @@
 
     <target name="automated-ruby-example" description="Fully Automated Ruby Example (for continuous integration)">
       <exec executable="${rake}" dir="${dist}/selenium-grid-${version}" failonerror="true">
+          <arg value="--trace"/>
           <arg value="ci:ruby-example"/>
       </exec>
     </target>
