@@ -7,6 +7,7 @@
       <antReference projectDefault="true" />
       <customJdkName value="" />
       <maximumHeapSize value="128" />
+      <maximumStackSize value="32" />
       <properties />
     </buildFile>
     <buildFile url="file://$PROJECT_DIR$/hub/build.xml">
@@ -14,6 +15,7 @@
       <antReference projectDefault="true" />
       <customJdkName value="" />
       <maximumHeapSize value="128" />
+      <maximumStackSize value="32" />
       <properties />
     </buildFile>
     <buildFile url="file://$PROJECT_DIR$/build.xml">
@@ -21,6 +23,7 @@
       <antReference projectDefault="true" />
       <customJdkName value="" />
       <maximumHeapSize value="128" />
+      <maximumStackSize value="32" />
       <properties />
     </buildFile>
     <buildFile url="file://$PROJECT_DIR$/remote-control/build.xml">
@@ -28,6 +31,7 @@
       <antReference projectDefault="true" />
       <customJdkName value="" />
       <maximumHeapSize value="128" />
+      <maximumStackSize value="32" />
       <properties />
     </buildFile>
   </component>
@@ -69,6 +73,9 @@
       <entry name="?*.tld" />
     </wildcardResourcePatterns>
   </component>
+  <component name="CopyrightManager" default="">
+    <module2copyright />
+  </component>
   <component name="DependenciesAnalyzeManager">
     <option name="myForwardDirection" value="false" />
   </component>
@@ -89,6 +96,7 @@
     <option name="ADDITIONAL_OPTIONS_STRING" value="" />
     <option name="MAXIMUM_HEAP_SIZE" value="128" />
   </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
@@ -132,6 +140,7 @@
         <inspection_tool class="StaticVariableOfConcreteClass" level="WARNING" enabled="true" />
         <inspection_tool class="TypeMayBeWeakened" level="WARNING" enabled="true">
           <option name="useRighthandTypeAsWeakestTypeInAssignments" value="true" />
+          <option name="useParameterizedTypeForCollectionMethods" value="true" />
         </inspection_tool>
         <inspection_tool class="ReplaceAssignmentWithOperatorAssignment" level="WARNING" enabled="true">
           <option name="ignoreLazyOperators" value="true" />
@@ -201,9 +210,7 @@
         <inspection_tool class="LimitedScopeInnerClass" level="WARNING" enabled="true" />
         <inspection_tool class="MarkerInterface" level="WARNING" enabled="true" />
         <inspection_tool class="MissingDeprecatedAnnotation" level="WARNING" enabled="true" />
-        <inspection_tool class="MissingOverrideAnnotation" level="WARNING" enabled="true">
-          <option name="useJdk6Rules" value="false" />
-        </inspection_tool>
+        <inspection_tool class="MissingOverrideAnnotation" level="WARNING" enabled="true" />
         <inspection_tool class="MultipleTopLevelClassesInFile" level="WARNING" enabled="true" />
         <inspection_tool class="NoopMethodInAbstractClass" level="WARNING" enabled="true" />
         <inspection_tool class="ClassInitializer" level="WARNING" enabled="true" />
@@ -258,7 +265,10 @@
           <option name="m_ignoreJavadoc" value="false" />
         </inspection_tool>
         <inspection_tool class="UnnecessaryInterfaceModifier" level="WARNING" enabled="true" />
-        <inspection_tool class="UnnecessaryParentheses" level="WARNING" enabled="true" />
+        <inspection_tool class="UnnecessaryParentheses" level="WARNING" enabled="true">
+          <option name="ignoreClarifyingParentheses" value="false" />
+          <option name="ignoreParenthesesOnConditionals" value="false" />
+        </inspection_tool>
         <inspection_tool class="UnnecessaryQualifierForThis" level="WARNING" enabled="true" />
         <inspection_tool class="UnnecessaryFinalOnParameter" level="WARNING" enabled="true">
           <option name="onlyWarnOnAbstractMethods" value="false" />
@@ -613,7 +623,13 @@
       </item>
     </group>
   </component>
+  <component name="ProjectDetails">
+    <option name="projectName" value="Selenium Grid" />
+  </component>
   <component name="ProjectFileVersion" converted="true" />
+  <component name="ProjectKey">
+    <option name="state" value="project:///Users/ph7/Projects/Selenium-Grid/Selenium Grid.ipr" />
+  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/agent/Agent.iml" filepath="$PROJECT_DIR$/agent/Agent.iml" />
@@ -628,7 +644,7 @@
       <module fileurl="file://$PROJECT_DIR$/infrastructure/webserver/WebServer.iml" filepath="$PROJECT_DIR$/infrastructure/webserver/WebServer.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" assert-keyword="true" jdk-15="true" project-jdk-name="1.5" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.5" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/target/classes" />
   </component>
   <component name="RUBY_DOC_SETTINGS">
@@ -679,7 +695,7 @@
   <component name="libraryTable">
     <library name="Selenium Java Client Driver">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/vendor/selenium-java-client-driver-1.0-SNAPSHOT.jar!/" />
+        <root url="jar://$PROJECT_DIR$/vendor/selenium-java-client-driver-1.0.1.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -718,7 +734,7 @@
     </library>
     <library name="Selenium Remote Control">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/vendor/selenium-server-1.0-SNAPSHOT.jar!/" />
+        <root url="jar://$PROJECT_DIR$/vendor/selenium-server-1.0.1.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -753,14 +769,6 @@
       </CLASSES>
       <JAVADOC />
       <SOURCES />
-    </library>
-    <library name="Core Resources">
-      <CLASSES>
-        <root url="file://$PROJECT_DIR$/core/src/main" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-      <jarDirectory url="file://$PROJECT_DIR$/core/src/main" recursive="false" />
     </library>
     <library name="TestNG">
       <CLASSES>
