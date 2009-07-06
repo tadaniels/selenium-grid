@@ -32,7 +32,9 @@ public class SelfRegisteringRemoteControl {
     }
 
     public void unregister() throws IOException {
-        new UnregistrationRequest(seleniumHubURL, host, port).execute();
+        System.out.println(">>>>> unregister");
+
+        new UnregistrationRequest(seleniumHubURL, host, port, environment).execute();
     }
 
     public String hubURL() {
