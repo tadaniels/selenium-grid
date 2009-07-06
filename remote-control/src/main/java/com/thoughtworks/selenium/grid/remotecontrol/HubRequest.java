@@ -14,8 +14,8 @@ public class HubRequest {
 
     private final String environment;
     private final String targetURL;
-    protected final String host;
-    protected final String port;
+    private final String host;
+    private final String port;
 
     public HubRequest(String targetURL, String host, String port, String environment) {
         this.targetURL = targetURL;

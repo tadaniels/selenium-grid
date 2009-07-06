@@ -14,9 +14,8 @@ public class UnregistrationRequestTest extends UsingClassMock {
 
     @Test
     public void postToHubUsingURLProvidedInConstructor() throws IOException {
-      // return
-      // final HubRequest request = new UnregistrationRequest("http://thehub.url:4444", "", "", "");
-      //   assertEquals("http://thehub.url:4444/registration-manager/unregister", request.postMethod().getURI().toString());
+      final HubRequest request = new UnregistrationRequest("http://thehub.url:4444", "", "", "");
+        assertEquals("http://thehub.url:4444/registration-manager/unregister", request.postMethod().getURI().toString());
     }
 
 }

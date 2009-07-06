@@ -14,7 +14,7 @@ public class RegistrationRequestTest extends UsingClassMock {
     @Test
     public void postToHubUsingURLProvidedInConstructor() throws IOException {
       final HubRequest request = new RegistrationRequest("http://thehub.url:4444", "", "", "");
-        assertEquals("http://thehub.url:4444/remote_controls", request.postMethod().getURI().toString());
+        assertEquals("http://thehub.url:4444/registration-manager/register", request.postMethod().getURI().toString());
     }
 
 }
