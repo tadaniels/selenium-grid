@@ -14,7 +14,7 @@
 
   <path id="compile.classpath">
     <fileset dir="${rootdir}/vendor">
-      <include name="selenium-java-client-driver-*.jar"/>
+      <include name="selenium-java-client-driver-${selenium.version}.jar"/>
       <include name="commons-logging-1.0.4.jar"/>      
     </fileset>
     <pathelement path="${java.class.path}/"/>
