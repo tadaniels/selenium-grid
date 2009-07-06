@@ -2,6 +2,11 @@
                    Selenium Grid ChangeLog
                   =========================
 
+Summary of changes from 1.0.3 to 1.0.4
+======================================
+
+ * Upgraded Selenium RC to 1.0.1
+
 Summary of changes from 1.0.2 to 1.0.3
 ======================================
 
