@@ -7,6 +7,8 @@ require File.dirname(__FILE__) + '/lib/ruby/tcp_socket_extensions'
 require File.dirname(__FILE__) + '/lib/ruby/file_extensions'
 require File.dirname(__FILE__) + '/lib/ruby/java/classpath'
 require File.dirname(__FILE__) + '/lib/ruby/java/vm'
+require File.dirname(__FILE__) + '/lib/ruby/s_grid/hub'
+require File.dirname(__FILE__) + '/lib/ruby/s_grid/remote_control'
 
 desc "Print help"
 task :help do
@@ -58,53 +60,50 @@ end
 
 desc "Restart all  services (Hub a Remote Controls"
 task :'all:restart' do
-  Rake::Task[:'all:stop'].execute("dummy") rescue nil
-  Rake::Task[:'all:start'].execute "dummy"
+  Rake::Task[:'all:stop'].execute([]) rescue nil
+  Rake::Task[:'all:start'].execute []
 end
 
 desc "Launch all  services (Hub a Remote Controls"
 task :'all:start' do
   ENV['BACKGROUND'] = "true"
-  Rake::Task[:'hub:start'].execute "dummy"
+  Rake::Task[:'hub:start'].execute []
   puts "Waiting for Hub to come up..."
-  TCPSocket.wait_for_service :host => "localhost", :port => hub_port
-  Rake::Task[:'rc:start_all'].execute "dummy"
+  hub.wait_until_up_and_running
+  Rake::Task[:'rc:start_all'].execute []
 end
 
 desc "Stop all  services (Hub a Remote Controls"
 task :'all:stop' do
   puts "Stopping all Selenium Grid servers..."
-  Rake::Task[:'rc:stop_all'].execute "dummy"
-  Rake::Task[:'hub:stop'].execute "dummy" rescue nil
+  Rake::Task[:'rc:stop_all'].execute []
+  Rake::Task[:'hub:stop'].execute [] rescue nil
 end
 
 desc "Launch Hub"
 task :'hub:start' do
-  classpath = Java::Classpath.new(File.dirname(__FILE__))
-  classpath = classpath << "." << "lib/selenium-grid-hub-standalone-*.jar"
-  puts classpath.inspect
-  Java::VM.new.run "com.thoughtworks.selenium.grid.hub.HubServer",
-                    :classpath => classpath.definition,
-                    :background => ("true" == ENV['BACKGROUND']),
-                    :log_file => File.native_path(File.dirname(__FILE__) + "/log/hub.log")
+  SGrid::Hub.new.start \
+      :background => ("true" == ENV['BACKGROUND']),
+      :log_file => File.native_path(File.dirname(__FILE__) + "/log/hub.log")
 end
 
 desc "Stop Hub"
 task :'hub:stop' do
   puts "Shutting down Selenium Grid hub..."
-  http = Net::HTTP.new("localhost", hub_port)
-  http.post('/lifecycle-manager', "action=shutdown")
+  hub.shutdown rescue EOFError
 end
 
 desc "Launch Remote Control"
 task :'rc:start' do
-  launch_rc(:port => (ENV['PORT'] || 5555)) 
+  port = ENV['PORT'] || 5555  
+  remote_control(:port => port).start \
+      :background => ENV['BACKGROUND'],
+      :log_file => File.join(File.dirname(__FILE__), "log", "rc-#{port}.log")  
 end
 
 desc "Stop Remote Control"
 task :'rc:stop' do
-  http = Net::HTTP.new("localhost", ENV['PORT'] || 5555)
-  puts http.post('/selenium-server/driver/', "cmd=shutDown")
+  remote_control.stop rescue EOFError
 end
 
 desc "Launch Remote Control"
@@ -112,8 +111,9 @@ task :'rc:start_all' do
   ports = ENV['PORTS'] || "5000-5015"
   port_range = Range.new(*ports.split("-"))
   port_range.each do |port|
-    ENV['BACKGROUND'] = "true"
-    launch_rc(:port => port)
+    remote_control(:port => port, :background => true).start \
+        :background => true,
+        :log_file => File.join(File.dirname(__FILE__), "log", "rc-#{port}.log")
   end
 end
 
@@ -124,8 +124,9 @@ task :'rc:stop_all' do
   port_range.each do |port|
     begin
       puts "Stopping Remote Control on port #{port}"
-      http = Net::HTTP.new("localhost", port)
-      http.post('/selenium-server/driver/', "cmd=shutDown")
+      rc = SGrid::RemoteControl.new :host => ENV['HOST'] || "localhost",      
+                                    :port => port
+      rc.shutdown
     rescue Exception => e
       STDERR.puts "Could not properly shutdown remote control #{port} : #{e}"
     end
@@ -140,52 +141,42 @@ end
 desc "Fully Automated Demo (for continuous integration)"
 task :'ci:demo' do
   begin
-    Rake::Task["all:restart"].execute "dummy"
+    Rake::Task["all:restart"].execute []
 #    sh "ant run-demo-in-parallel"
     sh "ant run-demo-in-sequence"
   ensure
-    Rake::Task["all:stop"].execute "dummy"
+    Rake::Task["all:stop"].execute []
   end
 end
 
 desc "Fully Automated Ruby Example (for continuous integration)"
 task :'ci:ruby-example' do
   begin
-    Rake::Task["all:restart"].execute "dummy"
+    Rake::Task["all:restart"].execute []
 #    sh "(cd  examples/ruby; rake tests:run_in_parallel)"
     sh "(cd  examples/ruby; rake tests:run_in_sequence)"
   ensure
-    Rake::Task["all:stop"].execute "dummy"
+    Rake::Task["all:stop"].execute []
   end
 end
 
-def launch_rc(options)
-    # Selenium Server must be first in classpath
-    classpath = Java::Classpath.new(File.dirname(__FILE__))
-    classpath =  classpath << "." << "vendor/selenium-server-*.jar" << "lib/selenium-grid-remote-control-standalone-*.jar"
-
-    Java::VM.new.run "com.thoughtworks.selenium.grid.remotecontrol.SelfRegisteringRemoteControlLauncher",
-                     :classpath => classpath.definition,
-                     :args => rc_args(options),
-                     :background => ENV['BACKGROUND'],
-                     :log_file => File.join(File.dirname(__FILE__), "log", "rc-#{options[:port]}.log")
-                     
-end
-
-def rc_args(options)
-  args = []
-  args << "-host" << (options[:host] || ENV['HOST'] || "localhost")
-  args << "-port" << options[:port]
-  args << "-hubUrl" << (options[:hub_url] || ENV['HUB_URL'] || "http://localhost:#{hub_port}")
-  args << "-env '#{options[:environment] || ENV['ENVIRONMENT'] || "*firefox"}'" 
-  args << (options[:selenium_args] || ENV['SELENIUM_ARGS'] || "")
-  args
+def config
+  @config ||= YAML.load(File.read(File.dirname(__FILE__) + "/grid_configuration.yml"))
 end
 
 def hub_port
   (ENV["HUB_PORT"] || config["hub"]["port"]).to_i
 end
 
-def config
-  @config ||= YAML.load(File.read(File.dirname(__FILE__) + "/grid_configuration.yml"))
+def hub
+  SGrid::Hub.new :port => hub_port
 end
+
+def remote_control(options={})
+  SGrid::RemoteControl.new(
+      :host => ENV['HOST'] || "localhost",
+      :port => (options[:port] || ENV['PORT'] || 5555),
+      :hub_url => (ENV['HUB_URL'] || "http://localhost:#{hub_port}"),
+      :shutdown_command => ENV['RC_SHUTDOWN_COMMAND'])
+end
+  
