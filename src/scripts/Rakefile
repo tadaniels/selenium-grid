@@ -142,7 +142,7 @@ desc "Fully Automated Demo (for continuous integration)"
 task :'ci:demo' do
   begin
     Rake::Task["all:restart"].execute []
-#    sh "ant run-demo-in-parallel"
+    sh "ant run-demo-in-parallel" unless running_on_openqa_servers
     sh "ant run-demo-in-sequence"
   ensure
     Rake::Task["all:stop"].execute []
@@ -153,7 +153,7 @@ desc "Fully Automated Ruby Example (for continuous integration)"
 task :'ci:ruby-example' do
   begin
     Rake::Task["all:restart"].execute []
-#    sh "(cd  examples/ruby; rake tests:run_in_parallel)"
+    sh "(cd  examples/ruby; rake tests:run_in_parallel)" unless running_on_openqa_servers
     sh "(cd  examples/ruby; rake tests:run_in_sequence)"
   ensure
     Rake::Task["all:stop"].execute []
@@ -179,4 +179,12 @@ def remote_control(options={})
       :hub_url => (ENV['HUB_URL'] || "http://localhost:#{hub_port}"),
       :shutdown_command => ENV['RC_SHUTDOWN_COMMAND'])
 end
-  
+
+# Network is slow as hell on these VMs
+def running_on_openqa_servers
+  begin
+    nil != `hostname -s`.grep(/(xserve|osxvm)/)
+  rescue Exception
+    false
+  end
+end
