@@ -5,9 +5,6 @@ import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProxy;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * PARSE
- */
 public class RemoteControlParser {
 
     public static RemoteControlProxy parse(HttpServletRequest request) {
