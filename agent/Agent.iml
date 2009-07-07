@@ -14,7 +14,6 @@
     <orderEntry type="module" module-name="WebServer" />
     <orderEntry type="library" name="Commons" level="project" />
     <orderEntry type="module" module-name="Core" />
-    <orderEntryProperties />
   </component>
   <component name="RSpecModuleSettingsStorage">
     <RSPEC_MODULE_SETTINGS_STORAGE_ID NAME="RSPEC_SUPPORT_TYPE" VALUE="NONE" />
