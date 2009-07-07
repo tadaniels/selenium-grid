@@ -26,4 +26,8 @@ Contributors
     - Allow re-registration of a remote control that was not
       properly unregistered (http://github.com/caspian311/selenium-grid/commit/ad9069374055040f0ed782fd01dcfa6c949545c0)
 
- 
+ * Shannon Lal
+    - Work on metrics build
+    - Documentation and step-by-step installation tutorials
+
+
