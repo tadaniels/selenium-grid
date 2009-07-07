@@ -4,10 +4,13 @@ import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertTrue;
-import static junit.framework.Assert.fail;
-import org.junit.Test;
-import com.thoughtworks.selenium.grid.hub.ConcurrentAction;
+import static org.junit.Assert.assertSame;
 
+import java.util.Random;
+
+import org.junit.Test;
+
+import com.thoughtworks.selenium.grid.hub.ConcurrentAction;
 
 public class RemoteControlProvisionerTest {
 
@@ -21,13 +24,43 @@ public class RemoteControlProvisionerTest {
         assertTrue(provisioner.availableRemoteControls().contains(remoteControl));
     }
 
-    @Test(expected = IllegalStateException.class)
-    public void anIllegalStateExceptionIsThrownWhenAddingTwoRemoteControlsThatAreEquals() {
+	@Test
+	public void whenAddingTwoRemoteControlsThatAreEqualsTheFirstIsReplacedByTheSecond() {
+		final RemoteControlProvisioner provisioner;
+
+		provisioner = new RemoteControlProvisioner();
+
+		RemoteControlProxy firstRC = new RemoteControlProxy("a", 0, "", 1, null);
+		RemoteControlProxy secondRC = new RemoteControlProxy("a", 0, "", 3, null);
+
+		provisioner.add(firstRC);
+		provisioner.add(secondRC);
+
+		RemoteControlProxy availableRc = provisioner.findNextAvailableRemoteControl();
+		assertSame(secondRC, availableRc);
+	}
+
+	@Test
+	public void whenReplacingRemoteControlFirstRemoveAllRegisteredSessions() {
         final RemoteControlProvisioner provisioner;
 
         provisioner = new RemoteControlProvisioner();
-        provisioner.add(new RemoteControlProxy("a", 0, "", 1, null));
-        provisioner.add(new RemoteControlProxy("a", 0, "", 3, null));
+
+		int arbitraryNumberOfSessions = new Random().nextInt(9);
+		arbitraryNumberOfSessions++; // ensure non-zero number of sessions
+
+		RemoteControlProxy firstRC = new RemoteControlProxy("a", 0, "", 10, null);
+		for (int i = 0; i < arbitraryNumberOfSessions; i++) {
+			firstRC.registerNewSession();
+		}
+		RemoteControlProxy secondRC = new RemoteControlProxy("a", 0, "", 10, null);
+
+		assertEquals(arbitraryNumberOfSessions, firstRC.concurrentSesssionCount());
+
+		provisioner.add(firstRC);
+		provisioner.add(secondRC);
+
+		assertEquals(0, firstRC.concurrentSesssionCount());
     }
 
     @Test
