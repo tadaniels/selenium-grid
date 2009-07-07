@@ -6,6 +6,9 @@ Summary of changes from 1.0.3 to 1.0.4
 ======================================
 
  * Upgraded Selenium RC to 1.0.1
+ * Better error message when there is no registered 
+   remote control for a requested environment.
+ * Direct link to FAQ in Hub console
 
 Summary of changes from 1.0.2 to 1.0.3
 ======================================
