@@ -20,10 +20,6 @@ public abstract class FlickrTestBase {
         session().waitForPageToLoad(TIMEOUT);
         session().click("link=Advanced Search");
         session().waitForPageToLoad(TIMEOUT);
-        session().click("media_photos");
-        session().click("//input[@value='SEARCH']");
-        session().waitForPageToLoad(TIMEOUT);
-        assertTrue(session().isTextPresent(searchString.split(" ")[0]));
     }
 
 }
