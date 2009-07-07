@@ -1,5 +1,5 @@
-Thank you for using Selenium Grid, and open-source tool to
-Selenium transparently distribute your tests on multiple machines so
+Thank you for using Selenium Grid, an open-source tool to
+**transparently distribute your Selenium tests on multiple machines** so
 that you can run your tests in parallel, cutting down the time required
 for running in-browser test suites.
 
@@ -24,9 +24,9 @@ Contributors
 
  * [Matt Todd and Benjamin Lee](http://github.com/caspian311)
     - Allow re-registration of a remote control that was not
-      properly unregistered [patch](http://github.com/caspian311/selenium-grid/commit/ad9069374055040f0ed782fd01dcfa6c949545c0)
+      properly unregistered [(patch)](http://github.com/caspian311/selenium-grid/commit/ad9069374055040f0ed782fd01dcfa6c949545c0)
     - Fixed compilation errors in regression tests 
-      [patch](http://github.com/caspian311/selenium-grid/commit/8127815acc9bf8e43da3345c731daef116480de1)
+      [(patch)](http://github.com/caspian311/selenium-grid/commit/8127815acc9bf8e43da3345c731daef116480de1)
 
  * [Shannon Lal](http://clearspace.openqa.org/people/shannonlal)
     - Work on metrics build
