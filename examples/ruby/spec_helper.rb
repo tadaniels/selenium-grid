@@ -47,7 +47,7 @@ Spec::Runner.configure do |config|
     port = ENV['SELENIUM_RC_PORT'] || 4444
     browser = ENV['SELENIUM_RC_BROWSER'] || "*firefox"
     timeout = ENV['SELENIUM_RC_TIMEOUT'] || 200
-    application_host = ENV['SELENIUM_APPLICATION_HOST'] || "flickr.com"
+    application_host = ENV['SELENIUM_APPLICATION_HOST'] || "images.google.com"
     application_port = ENV['SELENIUM_APPLICATION_PORT'] || "80"
 
     @selenium_driver = Selenium::Client::Driver.new(

@@ -6,7 +6,7 @@ import static org.testng.AssertJUnit.assertTrue;
 /**
  * Base class for Amazon Web Acceptance tests
  */
-public abstract class FlickrTestBase {
+public abstract class GoogleImageTestBase {
 
     public static final String TIMEOUT = "120000";
 
@@ -14,11 +14,16 @@ public abstract class FlickrTestBase {
     protected void runFlickrScenario(String searchString) {
         session().setTimeout(TIMEOUT);
         session().open("/");
-        assertTrue(session().getLocation(), session().getLocation().contains("flickr.com"));
+        assertTrue(session().getLocation(), session().getLocation().contains("images.google.com"));
         session().type("q", searchString);
-        session().click("//form[@action='/search/']//input[@type='submit']");
+        session().click("btnG");
         session().waitForPageToLoad(TIMEOUT);
-        session().click("link=Advanced Search");
+        session().click("link=Advanced Image Search");
+        session().waitForPageToLoad(TIMEOUT);
+        session().click("rimgtype4");
+        session().click("sf");
+        session().select("imgc", "full color");
+        session().click("btnG");
         session().waitForPageToLoad(TIMEOUT);
     }
 

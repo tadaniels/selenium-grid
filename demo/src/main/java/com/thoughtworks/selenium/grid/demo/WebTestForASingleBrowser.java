@@ -19,7 +19,7 @@ import org.testng.annotations.Test;
  * on the Hub and at least one remote control must register as providing
  * this particular environment.
  */
-public class WebTestForASingleBrowser extends FlickrTestBase {
+public class WebTestForASingleBrowser extends GoogleImageTestBase {
 
     @Test(groups = {"demo", "firefox", "default"}, description = "Show off Sarlat on Flickr.")
     @Parameters({"seleniumHost", "seleniumPort", "browser", "webSite"})

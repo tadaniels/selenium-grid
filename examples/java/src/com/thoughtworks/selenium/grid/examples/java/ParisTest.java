@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 /**
  */
-public class ParisTest extends FlickrTestBase {
+public class ParisTest extends GoogleImageTestBase {
 
     @Test(groups = {"example", "firefox", "default"}, description = "Louvre")
     public void louvre() throws Throwable {

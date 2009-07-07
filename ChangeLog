@@ -9,6 +9,9 @@ Summary of changes from 1.0.3 to 1.0.4
  * Better error message when there is no registered 
    remote control for a requested environment.
  * Direct link to FAQ in Hub console
+ * Change Examples to target Google Video: Flickr 
+   randomly drops some requests causing
+   test timeouts
 
 Summary of changes from 1.0.2 to 1.0.3
 ======================================
