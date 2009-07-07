@@ -25,6 +25,8 @@ Contributors
  * `caspian311` (http://github.com/caspian311)
     - Allow re-registration of a remote control that was not
       properly unregistered (http://github.com/caspian311/selenium-grid/commit/ad9069374055040f0ed782fd01dcfa6c949545c0)
+    - Fixed compilation errors in regression tests 
+      (http://github.com/ph7/selenium-grid/commit/fadeabf913353c8939e8d8afc41717995ea5671b)
 
  * Shannon Lal
     - Work on metrics build

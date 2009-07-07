@@ -2,9 +2,13 @@ package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
-import org.junit.Test;
 
 import java.io.IOException;
+
+import org.junit.Test;
+
+import com.thoughtworks.selenium.grid.HttpClient;
+import com.thoughtworks.selenium.grid.Response;
 
 /**
  * TODO
