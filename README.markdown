@@ -22,7 +22,7 @@ Core Team
 Contributors
 ============
 
- * [Matt Todd and Benjamin Lee](http://github.com/caspian311)
+ * [Matt Todd & Benjamin Lee](http://github.com/caspian311)
     - Allow re-registration of a remote control that was not
       properly unregistered [(patch)](http://github.com/caspian311/selenium-grid/commit/ad9069374055040f0ed782fd01dcfa6c949545c0)
     - Fixed compilation errors in regression tests 
