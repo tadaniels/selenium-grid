@@ -27,6 +27,11 @@ Contributors
       properly unregistered [(patch)](http://github.com/caspian311/selenium-grid/commit/ad9069374055040f0ed782fd01dcfa6c949545c0)
     - Fixed compilation errors in regression tests 
       [(patch)](http://github.com/caspian311/selenium-grid/commit/8127815acc9bf8e43da3345c731daef116480de1)
+ 
+ * [Bob Cotton](http://github.com/bcotton/)
+    - grid-configuration.yml-aware version of the Rake instrumentation
+    [(patch 1/2)](http://github.com/bcotton/selenium-grid/commit/7b2df55891b569d32bc20c942e0335aab2536041)
+    [(patch 2/2)](http://github.com/bcotton/selenium-grid/commit/6092daa907a216ad5d6d7ea6d150e90e2e00cf87)
 
  * [Shannon Lal](http://clearspace.openqa.org/people/shannonlal)
     - Work on metrics build
