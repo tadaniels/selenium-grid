@@ -22,13 +22,13 @@ Core Team
 Contributors
 ============
 
- * `caspian311` (http://github.com/caspian311)
+ * Matt Todd and Benjamin Lee (http://github.com/caspian311)
     - Allow re-registration of a remote control that was not
       properly unregistered (http://github.com/caspian311/selenium-grid/commit/ad9069374055040f0ed782fd01dcfa6c949545c0)
     - Fixed compilation errors in regression tests 
-      (http://github.com/ph7/selenium-grid/commit/fadeabf913353c8939e8d8afc41717995ea5671b)
+      (http://github.com/caspian311/selenium-grid/commit/8127815acc9bf8e43da3345c731daef116480de1)
 
- * Shannon Lal
+ * Shannon Lal (http://clearspace.openqa.org/people/shannonlal)
     - Work on metrics build
     - Documentation and step-by-step installation tutorials
 
