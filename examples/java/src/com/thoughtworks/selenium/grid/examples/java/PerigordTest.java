@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 /**
  */
-public class PerigordTest extends FlickrTestBase {
+public class PerigordTest extends GoogleImageTestBase {
 
 
     @Test(groups = {"example", "firefox", "default"}, description = "Lascaux Hall of the Bull")

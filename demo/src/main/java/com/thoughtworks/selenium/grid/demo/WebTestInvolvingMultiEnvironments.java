@@ -19,7 +19,7 @@ import org.testng.annotations.Test;
  * on the Hub and at least one remote control must register as providing
  * this particular environment.
  */
-public class WebTestInvolvingMultiEnvironments extends FlickrTestBase {
+public class WebTestInvolvingMultiEnvironments extends GoogleImageTestBase {
 
     @Parameters({"seleniumHost", "seleniumPort", "firstEnvironment", "webSite"})
     @Test(groups = {"demo", "multiEnvironment"}, description = "Show off Selenium Grid the Firefox Web Browser on Window.")
