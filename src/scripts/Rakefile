@@ -183,7 +183,7 @@ end
 # Network is slow as hell on these VMs
 def running_on_openqa_servers
   begin
-    nil != `hostname -s`.grep(/(xserve|osxvm)/)
+    `hostname -s`.grep(/(xserve|osxvm)/).empty?
   rescue Exception
     false
   end
