@@ -10,7 +10,7 @@ module Java
       command << options[:args].join(' ') if options[:args]
       command << ">\"#{options[:log_file]}\" 2>&1" if options[:log_file]
 
-      if options[:background ]
+      if options[:background]
         if PLATFORM['win32']
           command.unshift("start")
         else
