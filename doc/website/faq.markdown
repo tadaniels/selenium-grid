@@ -232,8 +232,8 @@ Managing the Hub and the Remote Controls
     rake hub:start SELENIUM_ARGS="-multiWindow -debug"
 
 
- How can I use the `-firefoxProfileTemplate` option on Windows?
- --------------------------------------------------------------
+ How can I use the `-firefoxProfileTemplate` option?
+ ---------------------------------------------------
 
   On OS X or UNIX, you can use a custom Firefox profile with Selenium
   Grid by launching the remote controls with the `-firefoxProfileTemplate`

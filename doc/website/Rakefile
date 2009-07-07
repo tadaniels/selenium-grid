@@ -15,6 +15,7 @@ end
 
 task :copy_pages do
   cp Dir["./*.html"], OUTPUT_DIR
+  cp Dir["./*.rss"], OUTPUT_DIR
 end
 
 task :copy_stylesheets do
