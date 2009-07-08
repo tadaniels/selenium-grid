@@ -244,9 +244,9 @@ public class RemoteControlProxyTest extends UsingClassMock {
     	dummyWebServer.stop();
     	
     	assertEquals(3, dummyWebServer.getRequests().size());
-    	assertTrue(dummyWebServer.getRequests().get(0).trim().startsWith("GET /selenium-server/driver/ HTTP/1.1"));
-    	assertTrue(dummyWebServer.getRequests().get(1).trim().startsWith("GET /selenium-server/driver/ HTTP/1.1"));
-    	assertTrue(dummyWebServer.getRequests().get(2).trim().startsWith("GET /selenium-server/driver/ HTTP/1.1"));
+    	assertTrue(dummyWebServer.getRequests().get(0).trim().startsWith("GET /selenium-server/ HTTP/1.1"));
+    	assertTrue(dummyWebServer.getRequests().get(1).trim().startsWith("GET /selenium-server/ HTTP/1.1"));
+    	assertTrue(dummyWebServer.getRequests().get(2).trim().startsWith("GET /selenium-server/ HTTP/1.1"));
     }
     
     @Test

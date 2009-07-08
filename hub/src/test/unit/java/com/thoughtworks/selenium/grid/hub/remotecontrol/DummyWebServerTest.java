@@ -14,7 +14,7 @@ import org.junit.Test;
 import com.thoughtworks.selenium.grid.SocketUtils;
 
 public class DummyWebServerTest {
-	@Test
+	@Test(timeout=2000)
 	public void makeSureTheTestWebServerWorks() throws Exception {
 		int port = SocketUtils.getFreePort();
 		DummyWebServer testWebServer = new DummyWebServer(port);
@@ -43,6 +43,6 @@ public class DummyWebServerTest {
 
 		testWebServer.stop();
 
-		assertEquals(6988, buffer.toString().length());
+		assertEquals(55, buffer.toString().length());
 	}
 }

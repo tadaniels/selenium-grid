@@ -105,7 +105,7 @@ public class RemoteControlProxy {
 	public void ping() throws IOException {
 		Response response = null;
 		try {
-			response = httpClient.get(remoteControlURL());
+			response = httpClient.get("http://" + host + ":" + port + "/selenium-server/");
 		} catch (Exception e) {
 			throw new IOException("Remote Control at " + host + ":" + port + " is unresponsive");
 		}

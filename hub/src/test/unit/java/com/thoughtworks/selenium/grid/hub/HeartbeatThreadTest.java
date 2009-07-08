@@ -1,91 +1,137 @@
 package com.thoughtworks.selenium.grid.hub;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jbehave.classmock.UsingClassMock;
+import org.jbehave.core.mock.Mock;
 import org.junit.Test;
 
 import com.thoughtworks.selenium.grid.HttpClient;
 import com.thoughtworks.selenium.grid.Response;
 import com.thoughtworks.selenium.grid.SocketUtils;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.DummyWebServer;
+import com.thoughtworks.selenium.grid.hub.remotecontrol.DynamicRemoteControlPool;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProxy;
 
-public class HeartbeatThreadTest {
+public class HeartbeatThreadTest extends UsingClassMock {
 	@Test(timeout = 10000)
 	public void heartbeatThreadLoopsThroughAllRCsPingingTheirHttpClients() throws Exception {
-		int port1 = SocketUtils.getFreePort();
-		DummyWebServer rcServer1 = new DummyWebServer(port1);
-		rcServer1.start();
-		
-		int port2 = SocketUtils.getFreePort();
-		DummyWebServer rcServer2 = new DummyWebServer(port2);
-		rcServer2.start();
-		
-		int port3 = SocketUtils.getFreePort();
-		DummyWebServer rcServer3 = new DummyWebServer(port3);
-		rcServer3.start();
+		DummyWebServer rcServer1 = null;
+		DummyWebServer rcServer2 = null;
+		DummyWebServer rcServer3 = null;
 
-		MockHttpClient httpClient1 = new MockHttpClient();
-		RemoteControlProxy rc1 = new RemoteControlProxy("localhost", port1, "environment", 2, httpClient1);
+		try {
+			int port1 = SocketUtils.getFreePort();
+			rcServer1 = new DummyWebServer(port1);
+			rcServer1.start();
 
-		MockHttpClient httpClient2 = new MockHttpClient();
-		RemoteControlProxy rc2 = new RemoteControlProxy("localhost", port2, "environment", 2, httpClient2);
+			int port2 = SocketUtils.getFreePort();
+			rcServer2 = new DummyWebServer(port2);
+			rcServer2.start();
 
-		MockHttpClient httpClient3 = new MockHttpClient();
-		RemoteControlProxy rc3 = new RemoteControlProxy("localhost", port3, "environment", 2, httpClient3);
+			int port3 = SocketUtils.getFreePort();
+			rcServer3 = new DummyWebServer(port3);
+			rcServer3.start();
 
-		RemoteControlProviderStub rcProvider = new RemoteControlProviderStub();
-		rcProvider.rcs.add(rc1);
-		rcProvider.rcs.add(rc2);
-		rcProvider.rcs.add(rc3);
-		HeartbeatThread heartbeatThread = new HeartbeatThread(10000, rcProvider);
+			MockHttpClient httpClient1 = new MockHttpClient();
+			RemoteControlProxy rc1 = new RemoteControlProxy("localhost", port1, "environment", 2,
+					httpClient1);
 
-		assertEquals(0, httpClient1.pingCallCount);
-		assertEquals(0, httpClient2.pingCallCount);
-		assertEquals(0, httpClient3.pingCallCount);
+			MockHttpClient httpClient2 = new MockHttpClient();
+			RemoteControlProxy rc2 = new RemoteControlProxy("localhost", port2, "environment", 2,
+					httpClient2);
 
-		heartbeatThread.start();
-		Thread.sleep(100);
+			MockHttpClient httpClient3 = new MockHttpClient();
+			RemoteControlProxy rc3 = new RemoteControlProxy("localhost", port3, "environment", 2,
+					httpClient3);
 
-		assertEquals(1, httpClient1.pingCallCount);
-		assertEquals(1, httpClient2.pingCallCount);
-		assertEquals(1, httpClient3.pingCallCount);
+			Mock registry = mock(HubRegistry.class);
+			DynamicRemoteControlPoolStub remoteControlPool = new DynamicRemoteControlPoolStub();
+			registry.stubs("remoteControlPool").will(returnValue(remoteControlPool));
 
-		heartbeatThread.interrupt();
-		heartbeatThread.join();
-		
-		rcServer1.stop();
-		rcServer2.stop();
-		rcServer3.stop();
+			remoteControlPool.availableRCs.add(rc1);
+			remoteControlPool.availableRCs.add(rc2);
+			remoteControlPool.availableRCs.add(rc3);
+			HeartbeatThread heartbeatThread = new HeartbeatThread(10000, (HubRegistry) registry);
+
+			assertEquals(0, httpClient1.pingCallCount);
+			assertEquals(0, httpClient2.pingCallCount);
+			assertEquals(0, httpClient3.pingCallCount);
+
+			heartbeatThread.start();
+			Thread.sleep(200);
+
+			assertEquals(1, httpClient1.pingCallCount);
+			assertEquals(1, httpClient2.pingCallCount);
+			assertEquals(1, httpClient3.pingCallCount);
+
+			heartbeatThread.interrupt();
+			heartbeatThread.join();
+		} finally {
+			rcServer1.stop();
+			rcServer2.stop();
+			rcServer3.stop();
+		}
+	}
+	
+	@Test(timeout = 10000)
+	public void whenRCsPingingBlowsUpUnregisterTheRcWithTheHub() throws Exception {
+		DummyWebServer rcServer1 = null;
+
+		try {
+			int port1 = SocketUtils.getFreePort();
+			rcServer1 = new DummyWebServer(port1);
+			rcServer1.shouldGive500 = true;
+			rcServer1.start();
+
+
+			MockHttpClient httpClient1 = new MockHttpClient();
+			RemoteControlProxy rc1 = new RemoteControlProxy("localhost", port1, "environment", 2,
+					httpClient1);
+
+			Mock registry = mock(HubRegistry.class);
+			DynamicRemoteControlPoolStub remoteControlPool = new DynamicRemoteControlPoolStub();
+			registry.stubs("remoteControlPool").will(returnValue(remoteControlPool));
+
+			remoteControlPool.availableRCs.add(rc1);
+			HeartbeatThread heartbeatThread = new HeartbeatThread(10000, (HubRegistry) registry);
+
+			assertNull(remoteControlPool.unregisteredRC);
+			
+			heartbeatThread.start();
+			Thread.sleep(200);
+			
+			heartbeatThread.interrupt();
+			heartbeatThread.join();
+
+			assertEquals(rc1, remoteControlPool.unregisteredRC);
+		} finally {
+			rcServer1.stop();
+		}
 	}
 
 	@Test(timeout = 10000)
 	public void heartbeatThreadSleepsForASpecifiedWhileInBetweenLooping() throws Exception {
-		RemoteControlProviderStub rcProvider = new RemoteControlProviderStub();
-		HeartbeatThread heartbeatThread = new HeartbeatThread(10, rcProvider);
+		Mock registry = mock(HubRegistry.class);
+		DynamicRemoteControlPoolStub remoteControlPool = new DynamicRemoteControlPoolStub();
+		registry.stubs("remoteControlPool").will(returnValue(remoteControlPool));
+
+		assertEquals(0, remoteControlPool.availableRemoteControlsCallCount);
+
+		HeartbeatThread heartbeatThread = new HeartbeatThread(100, (HubRegistry) registry);
 		heartbeatThread.start();
 
-		Thread.sleep(100);
+		Thread.sleep(1000);
 
-		assertEquals(10, rcProvider.availableRemoteControlsCallCount, 1);
+		assertEquals(10, remoteControlPool.availableRemoteControlsCallCount, 1);
 
 		heartbeatThread.interrupt();
 		heartbeatThread.join();
-	}
-
-	private static class RemoteControlProviderStub implements IRemoteControlProvider {
-		private final List<RemoteControlProxy> rcs = new ArrayList<RemoteControlProxy>();
-		private int availableRemoteControlsCallCount;
-
-		@Override
-		public List<RemoteControlProxy> getAvailableRemoteControls() {
-			availableRemoteControlsCallCount++;
-			return rcs;
-		}
 	}
 
 	private static class MockHttpClient extends HttpClient {
@@ -95,6 +141,59 @@ public class HeartbeatThreadTest {
 		public Response get(String url) throws IOException {
 			pingCallCount++;
 			return super.get(url);
+		}
+	}
+
+	private static class DynamicRemoteControlPoolStub implements DynamicRemoteControlPool {
+		private List<RemoteControlProxy> availableRCs = new ArrayList<RemoteControlProxy>();
+		private int availableRemoteControlsCallCount;
+		private RemoteControlProxy unregisteredRC;
+
+		@Override
+		public List<RemoteControlProxy> availableRemoteControls() {
+			availableRemoteControlsCallCount++;
+			return availableRCs;
+		}
+
+		@Override
+		public void register(RemoteControlProxy newRemoteControl) {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public List<RemoteControlProxy> reservedRemoteControls() {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public boolean unregister(RemoteControlProxy remoteControl) {
+			this.unregisteredRC = remoteControl;
+			return true;
+		}
+
+		@Override
+		public void associateWithSession(RemoteControlProxy remoteControl, String sessionId) {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public void release(RemoteControlProxy remoteControl) {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public void releaseForSession(String sessionId) {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public RemoteControlProxy reserve(Environment environment) {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public RemoteControlProxy retrieve(String sessionId) {
+			throw new UnsupportedOperationException();
 		}
 	}
 }

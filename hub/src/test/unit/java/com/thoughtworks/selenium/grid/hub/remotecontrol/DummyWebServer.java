@@ -14,7 +14,7 @@ import java.util.List;
 public class DummyWebServer {
 	private final List<String> requestsReceived = new ArrayList<String>();
 
-	boolean shouldGive500;
+	public boolean shouldGive500;
 	
 	private Socket socket;
 	private ServerSocket serverSocket;
@@ -64,7 +64,7 @@ public class DummyWebServer {
 		public void run() {
 			InputStream inputStream = null;
 			OutputStream outputStream = null;
-			InputStream contentStream = null;
+			String content = null;
 			try {
 				outputStream = socket.getOutputStream();
 				inputStream = socket.getInputStream();
@@ -84,21 +84,22 @@ public class DummyWebServer {
 
 				PrintWriter out = new PrintWriter(outputStream);
 				if (shouldGive500) {
-					contentStream = getClass().getResourceAsStream("DummyWebServerBadContent.txt");
+					content = 	"HTTP/0.9 500 Error\n" +
+								"Content-Type: text/html\n"	+
+								"Content-Length: 1\n" +
+								"\n";
 				} else {
-					contentStream = getClass().getResourceAsStream("DummyWebServerGoodContent.txt");
+					content = 	"HTTP/0.9 200 OK" + 
+								"Content-Type: text/html" + 
+								"Content-Length: 1" + 
+								"\n";
 				}
-				BufferedReader contentReader = new BufferedReader(new InputStreamReader(
-						contentStream));
-				while ((line = contentReader.readLine()) != null) {
-					out.println(line);
-				}
+				out.println(content);
 				out.flush();
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			} finally {
 				try {
-					contentStream.close();
 					outputStream.close();
 					inputStream.close();
 					socket.close();
