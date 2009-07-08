@@ -1,14 +1,18 @@
 package com.thoughtworks.selenium.grid.hub;
 
-import com.thoughtworks.selenium.grid.configuration.HubConfiguration;
-import com.thoughtworks.selenium.grid.hub.management.RegistrationServlet;
-import com.thoughtworks.selenium.grid.hub.management.UnregistrationServlet;
-import com.thoughtworks.selenium.grid.hub.management.LifecycleManagerServlet;
-import com.thoughtworks.selenium.grid.hub.management.console.ConsoleServlet;
+import java.util.List;
+
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.handler.ContextHandlerCollection;
 import org.mortbay.jetty.servlet.Context;
 import org.mortbay.jetty.servlet.ServletHolder;
+
+import com.thoughtworks.selenium.grid.configuration.HubConfiguration;
+import com.thoughtworks.selenium.grid.hub.management.LifecycleManagerServlet;
+import com.thoughtworks.selenium.grid.hub.management.RegistrationServlet;
+import com.thoughtworks.selenium.grid.hub.management.UnregistrationServlet;
+import com.thoughtworks.selenium.grid.hub.management.console.ConsoleServlet;
+import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProxy;
 
 /**
  * Self contained Selenium Grid Hub. Uses Jetty to as a standalone web application.
@@ -36,6 +40,14 @@ public class HubServer {
         root.addServlet(new ServletHolder(new UnregistrationServlet()), "/registration-manager/unregister");
         root.addServlet(new ServletHolder(new LifecycleManagerServlet()), "/lifecycle-manager");
 
+        new HeartbeatThread(10000, new IRemoteControlProvider() {
+			@Override
+			public List<RemoteControlProxy> getAvailableRemoteControls() {
+				return HubRegistry.registry().remoteControlPool().availableRemoteControls();
+			}
+        	
+        }).start();
+        
         server.start();
         server.join();
     }
