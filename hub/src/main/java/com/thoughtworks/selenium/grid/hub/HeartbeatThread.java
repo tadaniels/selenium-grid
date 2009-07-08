@@ -19,25 +19,42 @@ public class HeartbeatThread extends Thread {
 	@Override
 	public void run() {
 		while (true) {
-			List<RemoteControlProxy> availableRemoteControls = registry.remoteControlPool()
-					.availableRemoteControls();
 			List<RemoteControlProxy> remotesToUnregister = new ArrayList<RemoteControlProxy>();
-			for (RemoteControlProxy rc : availableRemoteControls) {
-				try {
-					rc.ping();
-				} catch (IOException e) {
-					remotesToUnregister.add(rc);
-				}
-			}
-			
+
+			checkAvailableRCs(remotesToUnregister);
+			checkActiveRCs(remotesToUnregister);
+
 			for (RemoteControlProxy rc : remotesToUnregister) {
 				registry.remoteControlPool().unregister(rc);
 			}
-			
+
 			try {
 				sleep(sleepTime);
 			} catch (InterruptedException e) {
 				break;
+			}
+		}
+	}
+
+	private void checkActiveRCs(List<RemoteControlProxy> remotesToUnregister) {
+		List<RemoteControlProxy> remoteControls = registry.remoteControlPool()
+				.reservedRemoteControls();
+		checkRemoteControls(remotesToUnregister, remoteControls);
+	}
+
+	private void checkAvailableRCs(List<RemoteControlProxy> remotesToUnregister) {
+		List<RemoteControlProxy> remoteControls = registry.remoteControlPool()
+				.availableRemoteControls();
+		checkRemoteControls(remotesToUnregister, remoteControls);
+	}
+
+	private void checkRemoteControls(List<RemoteControlProxy> remotesToUnregister,
+			List<RemoteControlProxy> remoteControls) {
+		for (RemoteControlProxy rc : remoteControls) {
+			try {
+				rc.ping();
+			} catch (IOException e) {
+				remotesToUnregister.add(rc);
 			}
 		}
 	}

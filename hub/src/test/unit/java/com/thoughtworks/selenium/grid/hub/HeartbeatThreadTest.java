@@ -49,6 +49,7 @@ public class HeartbeatThreadTest extends UsingClassMock {
 			MockHttpClient httpClient3 = new MockHttpClient();
 			RemoteControlProxy rc3 = new RemoteControlProxy("localhost", port3, "environment", 2,
 					httpClient3);
+			rc3.registerNewSession();
 
 			Mock registry = mock(HubRegistry.class);
 			DynamicRemoteControlPoolStub remoteControlPool = new DynamicRemoteControlPoolStub();
@@ -56,7 +57,7 @@ public class HeartbeatThreadTest extends UsingClassMock {
 
 			remoteControlPool.availableRCs.add(rc1);
 			remoteControlPool.availableRCs.add(rc2);
-			remoteControlPool.availableRCs.add(rc3);
+			remoteControlPool.activeRCs.add(rc3);
 			HeartbeatThread heartbeatThread = new HeartbeatThread(10000, (HubRegistry) registry);
 
 			assertEquals(0, httpClient1.pingCallCount);
@@ -145,10 +146,14 @@ public class HeartbeatThreadTest extends UsingClassMock {
 	}
 
 	private static class DynamicRemoteControlPoolStub implements DynamicRemoteControlPool {
+		private List<RemoteControlProxy> activeRCs = new ArrayList<RemoteControlProxy>();
 		private List<RemoteControlProxy> availableRCs = new ArrayList<RemoteControlProxy>();
+		
 		private int availableRemoteControlsCallCount;
-		private RemoteControlProxy unregisteredRC;
+		private int activeRemoteControlProxyCallCount;
 
+		private RemoteControlProxy unregisteredRC;
+		
 		@Override
 		public List<RemoteControlProxy> availableRemoteControls() {
 			availableRemoteControlsCallCount++;
@@ -162,7 +167,8 @@ public class HeartbeatThreadTest extends UsingClassMock {
 
 		@Override
 		public List<RemoteControlProxy> reservedRemoteControls() {
-			throw new UnsupportedOperationException();
+			activeRemoteControlProxyCallCount++;
+			return activeRCs;
 		}
 
 		@Override
