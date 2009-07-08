@@ -1,10 +1,10 @@
 package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
+import java.io.IOException;
+
+import com.thoughtworks.selenium.grid.HttpClient;
 import com.thoughtworks.selenium.grid.HttpParameters;
 import com.thoughtworks.selenium.grid.Response;
-import com.thoughtworks.selenium.grid.HttpClient;
-
-import java.io.IOException;
 
 /**
  * Local interface to a real remote control running somewhere in the grid.
@@ -101,4 +101,17 @@ public class RemoteControlProxy {
     public boolean canHandleNewSession() {
         return concurrentSessionCount < concurrentSessionMax;
     }
+
+	public void ping() throws IOException {
+		Response response = null;
+		try {
+			response = httpClient.get("http://" + host + ":" + port + "/selenium-server/");
+		} catch (Exception e) {
+			throw new IOException("Remote Control at " + host + ":" + port + " is unresponsive");
+		}
+		
+		if (response.statusCode() != 200) {
+			throw new IOException("Remote Control at " + host + ":" + port + " did not respond correctly");
+		}
+	}
 }
