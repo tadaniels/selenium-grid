@@ -664,7 +664,8 @@ proxy. If you run multiple Remote Controls at the same time you can
 see the problems coming! ;-)
 
 **Currently, the only robust solution for running multiple IE instances
-with Selenium Grid is to use virtualization.**
+on a single machine with Selenium Grid is to use virtualization** 
+(multiple VMs, a single IE instance per VM).
 
  This said, I am not satisfied wit the current state of affairs and I
  am currently working on better support for IE in Selenium Grid 1.2.
