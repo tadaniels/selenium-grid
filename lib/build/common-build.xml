@@ -8,6 +8,8 @@
   <property name="build.output" location="target/classes"/>
   <property name="dist" location="${basedir}/target/dist"/>
   <property name="test.src" location="src/test/unit/java"/>
+  <property name="test.functional.output" location="target/test-functional-classes"/>
+  <property name="test.functional.src" location="src/test/functional"/>
   <property name="test.output" location="target/test-classes"/>
   <property name="test.reports" location="target/test-reports"/>
   <property name="metrics.reports" location="target/metrics"/>
@@ -37,7 +39,7 @@
 
   <path id="junit.classpath" />
   
-  <path id="testing.classpath">
+  <path id="unit-testing.classpath">
     <path refid="compile.classpath"/>
     <path refid="junit.core.classpath"/>
     <path refid="junit.classpath"/>
@@ -45,6 +47,16 @@
     <path refid="cobertura.classpath"/>
     <pathelement location="${build.output}"/>
     <pathelement location="${test.output}"/>
+  </path>
+
+  <path id="functional-testing.classpath">
+    <path refid="compile.classpath"/>
+    <path refid="junit.core.classpath"/>
+    <path refid="junit.classpath"/>
+    <path refid="mocking.classpath"/>
+    <path refid="cobertura.classpath"/>
+    <pathelement location="${build.output}"/>
+    <pathelement location="${test.functional.output}"/>
   </path>
 
   <path id="pmd.classpath">
@@ -90,7 +102,7 @@
     </copy>
   </target>
 
-  <target name="compile-tests" depends="compile" description="compile tests">
+  <target name="compile-unit-tests" depends="compile" description="compile tests">
     <mkdir dir="${test.output}"/>
     <mkdir dir="${test.reports}"/>
 
@@ -101,7 +113,7 @@
            target="1.5"
            debug="true"
            deprecation="true">
-      <classpath refid="testing.classpath"/>
+      <classpath refid="unit-testing.classpath"/>
     </javac>
   </target>
 
@@ -116,7 +128,7 @@
       </copy>
       <junit printSummary="no" haltonerror="true" haltonfailure="true" fork="true" dir="${test.reports}">
         <options/>
-        <classpath refid="testing.classpath"/>
+        <classpath refid="unit-testing.classpath"/>
         <formatter type="xml"/>
         <formatter type="plain"/>
         <batchtest todir="${test.reports}">
@@ -128,10 +140,54 @@
     </sequential>
   </macrodef>
 
-  <target name="test" depends="compile, compile-tests" description="run tests">
+  <target name="compile-functional-tests" depends="compile" description="compile tests">
+    <mkdir dir="${test.functional.output}"/>
+    <mkdir dir="${test.reports}"/>
+
+    <javac srcdir="${test.functional.src}"
+           destdir="${test.functional.output}"
+           excludes="**/package.html"
+           source="1.5"
+           target="1.5"
+           debug="true"
+           deprecation="true">
+      <classpath refid="functional-testing.classpath"/>
+    </javac>
+  </target>
+
+  <macrodef name="run-functional-tests">
+    <element name="options" optional="true"/>
+    <sequential>
+      <mkdir dir="${test.functional.output}"/>
+      <mkdir dir="${test.reports}"/>
+
+      <copy todir="${test.functional.output}" verbose="true">
+        <fileset dir="${test.functional.src}" includes="**/*.html"/>
+      </copy>
+      <junit printSummary="no" haltonerror="true" haltonfailure="true" fork="true" dir="${test.reports}">
+        <options/>
+        <classpath refid="functional-testing.classpath"/>
+        <formatter type="xml"/>
+        <formatter type="plain"/>
+        <batchtest todir="${test.reports}">
+          <fileset dir="${test.functional.src}">
+            <include name="**/*Test.java"/>
+          </fileset>
+        </batchtest>
+      </junit>
+    </sequential>
+  </macrodef>
+
+  <target name="test-unit" depends="compile, compile-unit-tests" description="run unit tests">
     <run-unit-tests/>
   </target>
-  
+
+  <target name="test-functional" depends="compile, compile-functional-tests" description="run functional tests">
+    <run-functional-tests/>
+  </target>
+
+  <target name="test" depends="test-unit, test-functional" description="run unit and functinal tests" />
+
   <target name="package" depends="test" description="Package as a jar">
     <mkdir dir="${dist}/lib"/>
     <jar jarfile="${dist}/lib/${artifact}-${version}.jar" basedir="${build.output}">
@@ -185,7 +241,7 @@
     </pmd>
   </target>
 
-  <target name="coverage-analysis" depends="compile, compile-tests" description="Gather code coverage metrics">
+  <target name="coverage-analysis" depends="compile, compile-unit-tests" description="Gather code coverage metrics">
     <taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
 
     <delete file="${build.output}/cobertura.ser" />

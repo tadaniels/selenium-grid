@@ -687,6 +687,7 @@
       </map>
     </option>
     <option name="myVersion" value="123" />
+    <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />

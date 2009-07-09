@@ -1,10 +1,10 @@
 package com.thoughtworks.selenium.grid.hub;
 
+import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProxy;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProxy;
 
 public class HeartbeatThread extends Thread {
 	private final long sleepTime;

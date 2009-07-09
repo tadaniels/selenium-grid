@@ -38,7 +38,7 @@ public class HubServer {
         root.addServlet(new ServletHolder(new LifecycleManagerServlet()), "/lifecycle-manager");
 
         new HeartbeatThread(10000, HubRegistry.registry()).start();
-        
+
         server.start();
         server.join();
     }

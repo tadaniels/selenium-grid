@@ -46,12 +46,20 @@ public class RemoteControlProxy {
         return environment;
     }
 
-    public String remoteControlURL() {
-        return "http://" + host + ":" + port + "/selenium-server/driver/";
+    public String remoteControlPingURL() {
+        return remoteControlURLFor("/core/Blank.html");
+    }
+
+    public String remoteControlDriverURL() {
+        return remoteControlURLFor("/selenium-server/driver/");
+    }
+
+    public String remoteControlURLFor(String path) {
+        return "http://" + host + ":" + port + path;
     }
 
     public Response forward(HttpParameters parameters) throws IOException {
-        return httpClient.post(remoteControlURL(), parameters);
+        return httpClient.post(remoteControlDriverURL(), parameters);
     }
 
     public String toString() {
@@ -103,13 +111,13 @@ public class RemoteControlProxy {
     }
 
 	public void ping() throws IOException {
-		Response response = null;
+		final Response response;
 		try {
-			response = httpClient.get("http://" + host + ":" + port + "/selenium-server/");
+			response = httpClient.get(remoteControlPingURL());
 		} catch (Exception e) {
 			throw new IOException("Remote Control at " + host + ":" + port + " is unresponsive");
 		}
-		
+
 		if (response.statusCode() != 200) {
 			throw new IOException("Remote Control at " + host + ":" + port + " did not respond correctly");
 		}

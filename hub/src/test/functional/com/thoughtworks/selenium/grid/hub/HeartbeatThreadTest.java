@@ -1,22 +1,20 @@
 package com.thoughtworks.selenium.grid.hub;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.jbehave.classmock.UsingClassMock;
-import org.jbehave.core.mock.Mock;
-import org.junit.Test;
-
 import com.thoughtworks.selenium.grid.HttpClient;
 import com.thoughtworks.selenium.grid.Response;
 import com.thoughtworks.selenium.grid.SocketUtils;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.DummyWebServer;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.DynamicRemoteControlPool;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProxy;
+import org.jbehave.classmock.UsingClassMock;
+import org.jbehave.core.mock.Mock;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HeartbeatThreadTest extends UsingClassMock {
 	@Test(timeout = 10000)
@@ -154,50 +152,41 @@ public class HeartbeatThreadTest extends UsingClassMock {
 
 		private RemoteControlProxy unregisteredRC;
 		
-		@Override
 		public List<RemoteControlProxy> availableRemoteControls() {
 			availableRemoteControlsCallCount++;
 			return availableRCs;
 		}
 
-		@Override
 		public void register(RemoteControlProxy newRemoteControl) {
 			throw new UnsupportedOperationException();
 		}
 
-		@Override
 		public List<RemoteControlProxy> reservedRemoteControls() {
 			activeRemoteControlProxyCallCount++;
 			return activeRCs;
 		}
 
-		@Override
 		public boolean unregister(RemoteControlProxy remoteControl) {
 			this.unregisteredRC = remoteControl;
 			return true;
 		}
 
-		@Override
 		public void associateWithSession(RemoteControlProxy remoteControl, String sessionId) {
 			throw new UnsupportedOperationException();
 		}
 
-		@Override
 		public void release(RemoteControlProxy remoteControl) {
 			throw new UnsupportedOperationException();
 		}
 
-		@Override
 		public void releaseForSession(String sessionId) {
 			throw new UnsupportedOperationException();
 		}
 
-		@Override
 		public RemoteControlProxy reserve(Environment environment) {
 			throw new UnsupportedOperationException();
 		}
 
-		@Override
 		public RemoteControlProxy retrieve(String sessionId) {
 			throw new UnsupportedOperationException();
 		}
