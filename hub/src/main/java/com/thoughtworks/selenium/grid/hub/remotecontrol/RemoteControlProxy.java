@@ -1,15 +1,20 @@
 package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
-import java.io.IOException;
-
 import com.thoughtworks.selenium.grid.HttpClient;
 import com.thoughtworks.selenium.grid.HttpParameters;
 import com.thoughtworks.selenium.grid.Response;
+import com.thoughtworks.selenium.grid.hub.HubServer;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import java.io.IOException;
 
 /**
  * Local interface to a real remote control running somewhere in the grid.
  */
 public class RemoteControlProxy {
+
+    private final static Log LOGGER = LogFactory.getLog(HubServer.class);
 
     private final int concurrentSessionMax;
     private int concurrentSessionCount;
@@ -110,16 +115,21 @@ public class RemoteControlProxy {
         return concurrentSessionCount < concurrentSessionMax;
     }
 
-	public void ping() throws IOException {
-		final Response response;
-		try {
-			response = httpClient.get(remoteControlPingURL());
-		} catch (Exception e) {
-			throw new IOException("Remote Control at " + host + ":" + port + " is unresponsive");
-		}
+	public boolean alive() {
+        final Response response;
 
-		if (response.statusCode() != 200) {
-			throw new IOException("Remote Control at " + host + ":" + port + " did not respond correctly");
-		}
-	}
+        try {
+            response = httpClient.get(remoteControlPingURL());
+        } catch (Exception e) {
+            LOGGER.info("Remote Control at " + host + ":" + port + " is unresponsive");
+            return false;
+        }
+
+        if (response.statusCode() != 200) {
+            LOGGER.info("Remote Control at " + host + ":" + port + " did not respond correctly");
+            return false;
+        }
+        return true;
+    }
+
 }

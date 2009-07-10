@@ -17,120 +17,135 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HeartbeatThreadTest extends UsingClassMock {
+
 	@Test(timeout = 10000)
 	public void heartbeatThreadLoopsThroughAllRCsPingingTheirHttpClients() throws Exception {
+        final DynamicRemoteControlPoolStub remoteControlPool;
+        final MockHttpClient httpClient1;
+        final MockHttpClient httpClient2;
+        final MockHttpClient httpClient3;
 		DummyWebServer rcServer1 = null;
 		DummyWebServer rcServer2 = null;
 		DummyWebServer rcServer3 = null;
+        final Thread pollerThread;
+        final RemoteControlProxy rc1;
+        final RemoteControlProxy rc2;
+        final RemoteControlProxy rc3;
+        final Mock registry;
+        final int port1;
+        final int port2;
+        final int port3;
 
 		try {
-			int port1 = SocketUtils.getFreePort();
-			rcServer1 = new DummyWebServer(port1);
+            port1 = SocketUtils.getFreePort();
+            rcServer1 = new DummyWebServer(port1);
 			rcServer1.start();
 
-			int port2 = SocketUtils.getFreePort();
-			rcServer2 = new DummyWebServer(port2);
+            port2 = SocketUtils.getFreePort();
+            rcServer2 = new DummyWebServer(port2);
 			rcServer2.start();
 
-			int port3 = SocketUtils.getFreePort();
-			rcServer3 = new DummyWebServer(port3);
+            port3 = SocketUtils.getFreePort();
+            rcServer3 = new DummyWebServer(port3);
 			rcServer3.start();
 
-			MockHttpClient httpClient1 = new MockHttpClient();
-			RemoteControlProxy rc1 = new RemoteControlProxy("localhost", port1, "environment", 2,
-					httpClient1);
+            httpClient1 = new MockHttpClient();
+            rc1 = new RemoteControlProxy("localhost", port1, "environment", 2, httpClient1);
 
-			MockHttpClient httpClient2 = new MockHttpClient();
-			RemoteControlProxy rc2 = new RemoteControlProxy("localhost", port2, "environment", 2,
-					httpClient2);
+            httpClient2 = new MockHttpClient();
+            rc2 = new RemoteControlProxy("localhost", port2, "environment", 2, httpClient2);
 
-			MockHttpClient httpClient3 = new MockHttpClient();
-			RemoteControlProxy rc3 = new RemoteControlProxy("localhost", port3, "environment", 2,
-					httpClient3);
-			rc3.registerNewSession();
+            httpClient3 = new MockHttpClient();
+            rc3 = new RemoteControlProxy("localhost", port3, "environment", 2, httpClient3);
+            rc3.registerNewSession();
 
-			Mock registry = mock(HubRegistry.class);
-			DynamicRemoteControlPoolStub remoteControlPool = new DynamicRemoteControlPoolStub();
-			registry.stubs("remoteControlPool").will(returnValue(remoteControlPool));
+            registry = mock(HubRegistry.class);
+            remoteControlPool = new DynamicRemoteControlPoolStub();
+            registry.stubs("remoteControlPool").will(returnValue(remoteControlPool));
 
 			remoteControlPool.availableRCs.add(rc1);
 			remoteControlPool.availableRCs.add(rc2);
 			remoteControlPool.activeRCs.add(rc3);
-			HeartbeatThread heartbeatThread = new HeartbeatThread(10000, (HubRegistry) registry);
-
-			assertEquals(0, httpClient1.pingCallCount);
+            pollerThread = new Thread(new RemoteControlPoller(10, (HubRegistry) registry));
+            assertEquals(0, httpClient1.pingCallCount);
 			assertEquals(0, httpClient2.pingCallCount);
 			assertEquals(0, httpClient3.pingCallCount);
 
-			heartbeatThread.start();
+			pollerThread.start();
 			Thread.sleep(200);
 
 			assertEquals(1, httpClient1.pingCallCount);
 			assertEquals(1, httpClient2.pingCallCount);
 			assertEquals(1, httpClient3.pingCallCount);
 
-			heartbeatThread.interrupt();
-			heartbeatThread.join();
+			pollerThread.interrupt();
+			pollerThread.join();
 		} finally {
-			rcServer1.stop();
-			rcServer2.stop();
-			rcServer3.stop();
+			if (null != rcServer1) { rcServer1.stop(); }
+			if (null != rcServer2) { rcServer2.stop(); }
+			if (null != rcServer3) { rcServer3.stop(); }
 		}
 	}
 	
 	@Test(timeout = 10000)
 	public void whenRCsPingingBlowsUpUnregisterTheRcWithTheHub() throws Exception {
-		DummyWebServer rcServer1 = null;
+		DummyWebServer rcServer = null;
+        final Mock registry;
+        final DynamicRemoteControlPoolStub pool;
+        final MockHttpClient httpClient;
+        final Thread pollerThread;
+        final int port;
 
 		try {
-			int port1 = SocketUtils.getFreePort();
-			rcServer1 = new DummyWebServer(port1);
-			rcServer1.shouldGive500 = true;
-			rcServer1.start();
+            port = SocketUtils.getFreePort();
+            rcServer = new DummyWebServer(port);
+			rcServer.shouldGive500 = true;
+			rcServer.start();
 
 
-			MockHttpClient httpClient1 = new MockHttpClient();
-			RemoteControlProxy rc1 = new RemoteControlProxy("localhost", port1, "environment", 2,
-					httpClient1);
+            httpClient = new MockHttpClient();
+            RemoteControlProxy rc1 = new RemoteControlProxy("localhost", port, "environment", 2, httpClient);
 
-			Mock registry = mock(HubRegistry.class);
-			DynamicRemoteControlPoolStub remoteControlPool = new DynamicRemoteControlPoolStub();
-			registry.stubs("remoteControlPool").will(returnValue(remoteControlPool));
+            registry = mock(HubRegistry.class);
+            pool = new DynamicRemoteControlPoolStub();
+            registry.stubs("remoteControlPool").will(returnValue(pool));
 
-			remoteControlPool.availableRCs.add(rc1);
-			HeartbeatThread heartbeatThread = new HeartbeatThread(10000, (HubRegistry) registry);
+			pool.availableRCs.add(rc1);
+            pollerThread = new Thread(new RemoteControlPoller(10, (HubRegistry) registry));
 
-			assertNull(remoteControlPool.unregisteredRC);
+            assertNull(pool.unregisteredRC);
 			
-			heartbeatThread.start();
+			pollerThread.start();
 			Thread.sleep(200);
 			
-			heartbeatThread.interrupt();
-			heartbeatThread.join();
+			pollerThread.interrupt();
+			pollerThread.join();
 
-			assertEquals(rc1, remoteControlPool.unregisteredRC);
+			assertEquals(rc1, pool.unregisteredRC);
 		} finally {
-			rcServer1.stop();
+			if (null != rcServer) { rcServer.stop(); }
 		}
 	}
 
 	@Test(timeout = 10000)
 	public void heartbeatThreadSleepsForASpecifiedWhileInBetweenLooping() throws Exception {
-		Mock registry = mock(HubRegistry.class);
-		DynamicRemoteControlPoolStub remoteControlPool = new DynamicRemoteControlPoolStub();
-		registry.stubs("remoteControlPool").will(returnValue(remoteControlPool));
+        DynamicRemoteControlPoolStub pool;
+        final Thread pollerThread;
+		Mock registry;
 
-		assertEquals(0, remoteControlPool.availableRemoteControlsCallCount);
+        registry = mock(HubRegistry.class);
+        pool = new DynamicRemoteControlPoolStub();
+        registry.stubs("remoteControlPool").will(returnValue(pool));
+		assertEquals(0, pool.availableRemoteControlsCallCount);
 
-		HeartbeatThread heartbeatThread = new HeartbeatThread(100, (HubRegistry) registry);
-		heartbeatThread.start();
+        pollerThread = new Thread(new RemoteControlPoller(0.1, (HubRegistry) registry));
+        pollerThread.start();
 
 		Thread.sleep(1000);
+		assertEquals(10, pool.availableRemoteControlsCallCount, 1);
 
-		assertEquals(10, remoteControlPool.availableRemoteControlsCallCount, 1);
-
-		heartbeatThread.interrupt();
-		heartbeatThread.join();
+		pollerThread.interrupt();
+		pollerThread.join();
 	}
 
 	private static class MockHttpClient extends HttpClient {
@@ -148,7 +163,6 @@ public class HeartbeatThreadTest extends UsingClassMock {
 		private List<RemoteControlProxy> availableRCs = new ArrayList<RemoteControlProxy>();
 		
 		private int availableRemoteControlsCallCount;
-		private int activeRemoteControlProxyCallCount;
 
 		private RemoteControlProxy unregisteredRC;
 		
@@ -162,7 +176,6 @@ public class HeartbeatThreadTest extends UsingClassMock {
 		}
 
 		public List<RemoteControlProxy> reservedRemoteControls() {
-			activeRemoteControlProxyCallCount++;
 			return activeRCs;
 		}
 

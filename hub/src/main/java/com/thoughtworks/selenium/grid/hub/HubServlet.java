@@ -19,7 +19,7 @@ import java.io.IOException;
  */
 public class HubServlet extends HttpServlet {
 
-    private final static Log logger = LogFactory.getLog(HubServer.class);
+    private final static Log LOGGER = LogFactory.getLog(HubServer.class);
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,19 +46,19 @@ public class HubServlet extends HttpServlet {
         final SeleneseCommand command;
         final Response response;
 
-        logger.info("Processing '" + parameters.toString() + "'");
+        LOGGER.info("Processing '" + parameters.toString() + "'");
         try {
             command = new HttpCommandParser(parameters).parse(environmentManager);
             response = command.execute(pool);
         } catch (CommandParsingException e) {
-            logger.error("Failed to parse '" + parameters.toString() + "' : " + e.getMessage());
+            LOGGER.error("Failed to parse '" + parameters.toString() + "' : " + e.getMessage());
             return new Response(e.getMessage());
         } catch (NoSuchEnvironmentException e) {
-            logger.error("Could not find any remote control providing the '" + e.environment() +
+            LOGGER.error("Could not find any remote control providing the '" + e.environment() +
                          "' environment. Please make sure you started some remote controls which registered as offering this environment.");
             return new Response(e.getMessage());
         }
-        logger.info("Responding with " + response.statusCode() + "/ '" + response.body() + "'");
+        LOGGER.info("Responding with " + response.statusCode() + "/ '" + response.body() + "'");
 
         return response;
     }

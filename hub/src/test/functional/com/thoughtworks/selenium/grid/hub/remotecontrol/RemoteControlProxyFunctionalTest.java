@@ -14,53 +14,45 @@ public class RemoteControlProxyFunctionalTest extends UsingClassMock {
 
     @Test
     public void pingingAnRcMakesAGetRequestAndEnsuresA200ResponseCode() throws Exception {
-    	int port = SocketUtils.getFreePort();
-    	DummyWebServer dummyWebServer = new DummyWebServer(port);
-    	dummyWebServer.start();
-    	RemoteControlProxy rc = new RemoteControlProxy("localhost", port, "environment", 1, new HttpClient());
+        int port = SocketUtils.getFreePort();
+        DummyWebServer dummyWebServer = new DummyWebServer(port);
+        dummyWebServer.start();
+        RemoteControlProxy rc = new RemoteControlProxy("localhost", port, "environment", 1, new HttpClient());
 
-    	rc.ping();
-    	rc.ping();
-    	rc.ping();
+        rc.alive();
+        rc.alive();
+        rc.alive();
 
-    	dummyWebServer.stop();
+        dummyWebServer.stop();
 
-    	assertEquals(3, dummyWebServer.getRequests().size());
-    	assertTrue(dummyWebServer.getRequests().get(0).trim().startsWith("GET /selenium-server/ HTTP/1.1"));
-    	assertTrue(dummyWebServer.getRequests().get(1).trim().startsWith("GET /selenium-server/ HTTP/1.1"));
-    	assertTrue(dummyWebServer.getRequests().get(2).trim().startsWith("GET /selenium-server/ HTTP/1.1"));
+        assertEquals(3, dummyWebServer.getRequests().size());
+        assertTrue(dummyWebServer.getRequests().get(0).trim().startsWith("GET /core/Blank.html HTTP/1.1"));
+        assertTrue(dummyWebServer.getRequests().get(1).trim().startsWith("GET /core/Blank.html HTTP/1.1"));
+        assertTrue(dummyWebServer.getRequests().get(2).trim().startsWith("GET /core/Blank.html HTTP/1.1"));
     }
 
     @Test
     public void ifTheRCGivesANon200ResponseCodeThePingThrowsAnIOException() throws Exception {
-    	int port = SocketUtils.getFreePort();
-    	DummyWebServer dummyWebServer = new DummyWebServer(port);
-    	dummyWebServer.shouldGive500 = true;
-    	dummyWebServer.start();
-    	String host = "localhost";
-		RemoteControlProxy rc = new RemoteControlProxy(host, port, "environment", 1, new HttpClient());
+        int port = SocketUtils.getFreePort();
+        DummyWebServer dummyWebServer = new DummyWebServer(port);
+        dummyWebServer.shouldGive500 = true;
+        String host = "localhost";
+        RemoteControlProxy rc;
 
-    	try {
-			rc.ping();
-			fail("Should have thrown an IOException");
-		} catch (IOException e) {
-			assertEquals("Remote Control at " + host + ":" + port + " did not respond correctly", e.getMessage());
-		} finally {
-			dummyWebServer.stop();
-		}
+        try {
+            dummyWebServer.start();
+            rc = new RemoteControlProxy(host, port, "environment", 1, new HttpClient());
+            assertTrue(!rc.alive());
+        } finally {
+            dummyWebServer.stop();
+        }
     }
 
     @Test
     public void ifTheRCIsntThereThePingThrowsAnIOException() throws Exception {
-    	int port = SocketUtils.getFreePort();
-    	String host = "localhost";
-		RemoteControlProxy rc = new RemoteControlProxy(host, port, "environment", 1, new HttpClient());
-
-    	try {
-			rc.ping();
-			fail("Should have thrown an IOException");
-		} catch (IOException e) {
-			assertEquals("Remote Control at " + host + ":" + port + " is unresponsive", e.getMessage());
-		}
+        int port = SocketUtils.getFreePort();
+        String host = "localhost";
+        RemoteControlProxy rc = new RemoteControlProxy(host, port, "environment", 1, new HttpClient());
+        assertTrue(!rc.alive());
     }
 }

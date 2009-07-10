@@ -19,6 +19,7 @@ public class HubServer {
     public static void main(String[] args) throws Exception {
         final ContextHandlerCollection contexts;
         final HubConfiguration configuration;
+        final Thread pollerThread;
         final Server server;
         final Context root;
 
@@ -37,10 +38,18 @@ public class HubServer {
         root.addServlet(new ServletHolder(new UnregistrationServlet()), "/registration-manager/unregister");
         root.addServlet(new ServletHolder(new LifecycleManagerServlet()), "/lifecycle-manager");
 
-        new HeartbeatThread(10000, HubRegistry.registry()).start();
+        startRemoteControlPoller();
 
         server.start();
         server.join();
+    }
+
+    protected static void startRemoteControlPoller() {
+        final Thread pollerThread;
+
+        pollerThread = new Thread(new RemoteControlPoller(10, HubRegistry.registry()),
+                                  "RC Poller Heartbeat");
+        pollerThread.start();
     }
 
 }
