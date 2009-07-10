@@ -524,6 +524,100 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
     }
 
     @Test
+    public void allRegisteredRemoteControlsReturnAnEmptyArrayWhenThereIsNoEnvironment() {
+        assertTrue(new GlobalRemoteControlPool().allRegisteredRemoteControls().isEmpty());
+        verifyMocks();
+    }
+
+    @Test
+    public void allRegisteredRemoteControlsReturnAllAvailableRemoteControlsForAllEnvironmentsWhenNoneAreReserved() {
+        final HealthyRemoteControl anotherRCForTheSecondEnvironment;
+        final HealthyRemoteControl aRCForAnotherEnvironment;
+        final List<RemoteControlProxy> allRegisteredRemoteControls;
+        final EnvironmentManager environmentManager;
+        final Environment firstEnvironment;
+        final Environment secondEnvironment;
+        final GlobalRemoteControlPool pool;
+        final HealthyRemoteControl aRC;
+
+
+        environmentManager = new EnvironmentManager();
+        firstEnvironment = new Environment("first environment", "*chrome");
+        secondEnvironment = new Environment("second environment", "*chrome");
+        environmentManager.addEnvironment(firstEnvironment);
+        environmentManager.addEnvironment(secondEnvironment);
+
+        pool = new GlobalRemoteControlPool();
+        aRC = new HealthyRemoteControl("first host", 0, "first environment", null);
+        aRCForAnotherEnvironment = new HealthyRemoteControl("second host", 0, "second environment", null);
+        pool.register(aRC);
+        pool.register(aRCForAnotherEnvironment);
+        anotherRCForTheSecondEnvironment = new HealthyRemoteControl("third host", 0, "second environment", null);
+        pool.register(anotherRCForTheSecondEnvironment);
+
+        allRegisteredRemoteControls = pool.allRegisteredRemoteControls();
+        assertEquals(3, allRegisteredRemoteControls.size());
+        assertTrue(allRegisteredRemoteControls.contains(aRC));
+        assertTrue(allRegisteredRemoteControls.contains(aRCForAnotherEnvironment));
+        assertTrue(allRegisteredRemoteControls.contains(anotherRCForTheSecondEnvironment));
+    }
+
+    @Test
+    public void allRegisteredRemoteControlsReturnsAvailableAndReservedRemoteControls() {
+        final List<RemoteControlProxy> allRegisteredRemoteControls;
+        final EnvironmentManager environmentManager;
+        final Environment anEnvironment;
+        final GlobalRemoteControlPool pool;
+        final HealthyRemoteControl anotherRC;
+        final HealthyRemoteControl aRC;
+
+
+        environmentManager = new EnvironmentManager();
+        anEnvironment = new Environment("an environment", "*chrome");
+        environmentManager.addEnvironment(anEnvironment);
+
+        pool = new GlobalRemoteControlPool();
+        aRC = new HealthyRemoteControl("first host", 0, "an environment", null);
+        anotherRC = new HealthyRemoteControl("second host", 0, "an environment", null);
+        pool.register(aRC);
+        pool.register(anotherRC);
+        pool.reserve(anEnvironment);
+
+        allRegisteredRemoteControls = pool.allRegisteredRemoteControls();
+        assertEquals(2, allRegisteredRemoteControls.size());
+        assertTrue(allRegisteredRemoteControls.contains(aRC));
+        assertTrue(allRegisteredRemoteControls.contains(anotherRC));
+    }
+
+    @Test
+    public void allRegisteredRemoteControlsReturnsAllReservedRemoteControls() {
+        final List<RemoteControlProxy> allRegisteredRemoteControls;
+        final EnvironmentManager environmentManager;
+        final Environment anEnvironment;
+        final GlobalRemoteControlPool pool;
+        final HealthyRemoteControl anotherRC;
+        final HealthyRemoteControl aRC;
+
+
+        environmentManager = new EnvironmentManager();
+        anEnvironment = new Environment("an environment", "*chrome");
+        environmentManager.addEnvironment(anEnvironment);
+
+        pool = new GlobalRemoteControlPool();
+        aRC = new HealthyRemoteControl("first host", 0, "an environment", null);
+        anotherRC = new HealthyRemoteControl("second host", 0, "an environment", null);
+        pool.register(aRC);
+        pool.register(anotherRC);
+        pool.reserve(anEnvironment);
+        pool.reserve(anEnvironment);
+
+        allRegisteredRemoteControls = pool.allRegisteredRemoteControls();
+        assertEquals(2, allRegisteredRemoteControls.size());
+        assertTrue(allRegisteredRemoteControls.contains(aRC));
+        assertTrue(allRegisteredRemoteControls.contains(anotherRC));
+    }
+
+    @Test
     public void logSessionMapDoesNotBombWhenThereIsNoSession() {
         final GlobalRemoteControlPool pool;
 

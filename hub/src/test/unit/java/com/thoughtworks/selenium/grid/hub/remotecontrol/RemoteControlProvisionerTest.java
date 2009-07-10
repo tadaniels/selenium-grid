@@ -361,4 +361,30 @@ public class RemoteControlProvisionerTest {
         assertTrue(provisioner.availableRemoteControls().contains(remoteControl));
     }
 
+    @Test
+    public void allRemoteControlsReturnsAnEmptyArrayWhenNoneHaveBeenAdded() {
+      assertTrue(new RemoteControlProvisioner().allRemoteControls().isEmpty());
+    }
+
+    @Test
+    public void allRemoteControlsReturnsAvailableRemoteControls() {
+        final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
+        final RemoteControlProxy remoteControl = new HealthyRemoteControl("", 0, "", null);
+
+        provisioner.add(remoteControl);
+        assertEquals(1, provisioner.allRemoteControls().size());
+        assertTrue(provisioner.allRemoteControls().contains(remoteControl));
+    }
+
+    @Test
+    public void allRemoteControlsReturnsReservedRemoteControls() {
+        final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
+        final RemoteControlProxy remoteControl = new HealthyRemoteControl("", 0, "", null);
+
+        provisioner.add(remoteControl);
+        provisioner.reserve();
+        assertEquals(1, provisioner.allRemoteControls().size());
+        assertTrue(provisioner.allRemoteControls().contains(remoteControl));
+    }
+
 }

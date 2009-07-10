@@ -122,6 +122,19 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
         return reservedRemoteControls;
     }
 
+    public List<RemoteControlProxy> allRegisteredRemoteControls() {
+        final List<RemoteControlProxy> allRemoteControls;
+
+        allRemoteControls = new LinkedList<RemoteControlProxy>();
+        synchronized(provisionersByEnvironment) {
+            for (RemoteControlProvisioner provisioner : provisionersByEnvironment.values()) {
+                allRemoteControls.addAll(provisioner.allRemoteControls());
+            }
+        }
+
+        return allRemoteControls;
+    }
+    
     public RemoteControlProvisioner getProvisioner(String environment) {
         return provisionersByEnvironment.get(environment);
     }

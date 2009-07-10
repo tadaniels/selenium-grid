@@ -1,5 +1,8 @@
 package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,13 +10,10 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 /**
  * Central authority to track registered remote controls and grant exclusive
  * access to a remote control for a while.
- *
+ * <p/>
  * A client will block if it attempts to reserve a remote control and none is
  * available. The call will return as soon as a remote control becomes available
  * again.
@@ -134,7 +134,7 @@ public class RemoteControlProvisioner {
     protected RemoteControlProxy blockUntilARemoteControlIsAvailable() {
         RemoteControlProxy availableRemoteControl;
 
-        while(true) {
+        while (true) {
             try {
                 availableRemoteControl = findNextAvailableRemoteControl();
                 while (null == availableRemoteControl) {
@@ -171,5 +171,15 @@ public class RemoteControlProvisioner {
         remoteControlAvailable.signalAll();
     }
 
-    
+
+    public List<RemoteControlProxy> allRemoteControls() {
+        final LinkedList<RemoteControlProxy> allRemoteControls;
+
+        allRemoteControls = new LinkedList<RemoteControlProxy>();
+        for (RemoteControlProxy remoteControl : remoteControls) {
+            allRemoteControls.add(remoteControl);
+        }
+
+        return allRemoteControls;
+    }
 }
