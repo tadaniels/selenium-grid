@@ -3,19 +3,17 @@ package com.thoughtworks.selenium.grid.hub.remotecontrol;
 import static com.thoughtworks.selenium.grid.AssertionHelper.assertDistinctHashCodes;
 import static com.thoughtworks.selenium.grid.AssertionHelper.assertNotEquals;
 import static com.thoughtworks.selenium.grid.AssertionHelper.assertSameHashCode;
+import com.thoughtworks.selenium.grid.HttpClient;
+import com.thoughtworks.selenium.grid.HttpParameters;
+import com.thoughtworks.selenium.grid.Response;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
-
-import java.io.IOException;
-
 import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import org.junit.Test;
 
-import com.thoughtworks.selenium.grid.HttpClient;
-import com.thoughtworks.selenium.grid.HttpParameters;
-import com.thoughtworks.selenium.grid.Response;
+import java.io.IOException;
 
 
 public class RemoteControlProxyTest extends UsingClassMock {

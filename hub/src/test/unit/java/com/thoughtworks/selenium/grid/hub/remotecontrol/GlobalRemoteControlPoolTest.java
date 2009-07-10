@@ -1,16 +1,14 @@
 package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
+import com.thoughtworks.selenium.grid.hub.Environment;
+import com.thoughtworks.selenium.grid.hub.NoSuchEnvironmentException;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertSame;
 import static junit.framework.Assert.assertTrue;
-
 import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import org.junit.Test;
-
-import com.thoughtworks.selenium.grid.hub.Environment;
-import com.thoughtworks.selenium.grid.hub.NoSuchEnvironmentException;
 
 
 public class GlobalRemoteControlPoolTest extends UsingClassMock {

@@ -1,12 +1,11 @@
 package com.thoughtworks.selenium.grid;
 
-import org.junit.Test;
-import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 public class JoinTest {
 
@@ -17,9 +16,9 @@ public class JoinTest {
 
     @Test
     public void toStringOnACollectionWithASingleElementReturnThisElementConvertedToAString() {
-        final List collection;
+        final List<Object> collection;
 
-        collection = new LinkedList();
+        collection = new LinkedList<Object>();
         collection.add(new Object() {
             public String toString() {
                 return "string conversion of single element";
@@ -31,9 +30,9 @@ public class JoinTest {
 
     @Test
     public void toStringOnACollectionWithAMultipleElementReturnTheseElementsConvertedToAStringSeparatedByTheSepatorGivenInTheConstructor() {
-        final List collection;
+        final List<Object> collection;
 
-        collection = new LinkedList();
+        collection = new LinkedList<Object>();
         collection.add(new Object() {
             public String toString() {
                 return "string conversion of first element";
