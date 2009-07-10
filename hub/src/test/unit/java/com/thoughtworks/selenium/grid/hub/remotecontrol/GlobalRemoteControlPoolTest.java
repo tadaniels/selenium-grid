@@ -6,6 +6,7 @@ import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertSame;
 import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.assertFalse;
 import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import org.junit.Test;
@@ -320,7 +321,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         pool.register(remoteControl);
         pool.reserve(new Environment("an environment", ""));
         pool.release(remoteControl);
-        assertEquals(0 , remoteControl.concurrentSesssionCount());
+        assertFalse(remoteControl.sesssionInProgress());
     }
 
     @Test

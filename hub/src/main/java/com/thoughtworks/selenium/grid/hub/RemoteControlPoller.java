@@ -23,13 +23,13 @@ public class RemoteControlPoller implements Runnable {
     }
 
     public void pollAllRegisteredRemoteControls() {
-        unregisterAllUnresponsiveRemoteControls();
-
         try {
             Thread.sleep(pollingIntervalInMilliseconds);
         } catch (InterruptedException e) {
             this.done = true;
         }
+
+        unregisterAllUnresponsiveRemoteControls();
     }
 
     public void unregisterAllUnresponsiveRemoteControls() {

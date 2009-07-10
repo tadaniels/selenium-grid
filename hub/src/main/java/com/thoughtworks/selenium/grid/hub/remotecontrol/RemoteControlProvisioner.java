@@ -32,7 +32,7 @@ public class RemoteControlProvisioner {
     }
 
     public RemoteControlProxy reserve() {
-        final RemoteControlProxy remoteControl;
+        RemoteControlProxy remoteControl;
 
         try {
             remoteControlListLock.lock();
@@ -65,19 +65,23 @@ public class RemoteControlProvisioner {
         try {
             remoteControlListLock.lock();
             if (remoteControls.contains(newRemoteControl)) {
-				RemoteControlProxy existingRemoteControl = remoteControls.get(remoteControls
-						.indexOf(newRemoteControl));
-				int concurrentSesssionCount = existingRemoteControl.concurrentSesssionCount();
-				for (int i = 0; i < concurrentSesssionCount; i++) {
-					existingRemoteControl.unregisterSession();
-				}
-				remoteControls.remove(existingRemoteControl);
+                tearDownExistingRemoteControl(newRemoteControl);
             }
             remoteControls.add(newRemoteControl);
             signalThatARemoteControlHasBeenMadeAvailable();
         } finally {
             remoteControlListLock.unlock();
         }
+    }
+
+    public void tearDownExistingRemoteControl(RemoteControlProxy newRemoteControl) {
+        final RemoteControlProxy oldRemoteControl;
+
+        oldRemoteControl = remoteControls.get(remoteControls.indexOf(newRemoteControl));
+        if (oldRemoteControl.sesssionInProgress()) {
+            oldRemoteControl.unregisterSession();
+        }
+        remoteControls.remove(oldRemoteControl);
     }
 
     public boolean remove(RemoteControlProxy remoteControl) {
@@ -116,7 +120,7 @@ public class RemoteControlProvisioner {
 
         reservedRemoteControls = new LinkedList<RemoteControlProxy>();
         for (RemoteControlProxy remoteControl : remoteControls) {
-            if (remoteControl.concurrentSesssionCount() >= 1) {
+            if (remoteControl.sesssionInProgress()) {
                 reservedRemoteControls.add(remoteControl);
             }
         }

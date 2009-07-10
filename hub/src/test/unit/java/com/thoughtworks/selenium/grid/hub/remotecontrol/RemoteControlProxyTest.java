@@ -45,17 +45,17 @@ public class RemoteControlProxyTest extends UsingClassMock {
     }
 
     @Test
-    public void concurrentSessionCountReturnsZeroByDefault() {
-        assertEquals(0, new RemoteControlProxy("a host", 0, "", null).concurrentSesssionCount());
+    public void sesssionInProgressReturnsFalseByDefault() {
+        assertFalse(new RemoteControlProxy("a host", 0, "", null).sesssionInProgress());
     }
 
     @Test
-    public void concurrentSessionCountReturnsOneAfterCallingRegisterNewSession() {
+    public void sesssionInProgressReturnsTrueAfterCallingRegisterNewSession() {
         final RemoteControlProxy remoteControl;
 
         remoteControl = new RemoteControlProxy("a host", 0, "", null);
         remoteControl.registerNewSession();
-        assertEquals(1, remoteControl.concurrentSesssionCount());
+        assertTrue(remoteControl.sesssionInProgress());
     }
 
     @Test(expected = IllegalStateException.class)
@@ -68,17 +68,17 @@ public class RemoteControlProxyTest extends UsingClassMock {
     }
 
     @Test
-    public void unregisterSessionDecreasesConcurrentSessionCountByOne() {
+    public void unregisterSessionDecreasesSetSessionInProgressToFalse() {
         final RemoteControlProxy remoteControl;
 
         remoteControl = new RemoteControlProxy("a host", 0, "", null);
         remoteControl.registerNewSession();
         remoteControl.unregisterSession();
-        assertEquals(0, remoteControl.concurrentSesssionCount());
+        assertFalse(remoteControl.sesssionInProgress());
     }
 
     @Test(expected = IllegalStateException.class)
-    public void unregisterSessionThrowsAnIllegalStateExceptionWhenConcurrentSessionCountIsZero() {
+    public void unregisterSessionThrowsAnIllegalStateExceptionWhenThereIsNoSessionInProgress() {
         final RemoteControlProxy remoteControl;
 
         remoteControl = new RemoteControlProxy("a host", 0, "", null);
@@ -133,17 +133,17 @@ public class RemoteControlProxyTest extends UsingClassMock {
 
     @Test
     public void toStringMethodReturnsAHumanFriendlyDescriptionWithServerAndPortInformation() {
-        assertEquals("[RemoteControlProxy grid.thoughtworks.org:4444#0]",
+        assertEquals("[RemoteControlProxy grid.thoughtworks.org:4444#false]",
                      new RemoteControlProxy("grid.thoughtworks.org", 4444, "", null).toString());
     }
 
     @Test
-    public void toStringIncludesconcurrentSessinCount() {
+    public void toStringIncludesSessionInProgressInformation() {
         final RemoteControlProxy remoteControl;
 
         remoteControl = new RemoteControlProxy("grid.org", 4444, "", null);
         remoteControl.registerNewSession();
-        assertEquals("[RemoteControlProxy grid.org:4444#1]",
+        assertEquals("[RemoteControlProxy grid.org:4444#true]",
                      remoteControl.toString());
     }
 

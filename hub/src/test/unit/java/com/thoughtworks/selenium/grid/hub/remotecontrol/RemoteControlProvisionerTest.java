@@ -23,17 +23,18 @@ public class RemoteControlProvisionerTest {
 	@Test
 	public void whenAddingTwoRemoteControlsThatAreEqualsTheFirstIsReplacedByTheSecond() {
 		final RemoteControlProvisioner provisioner;
+        final RemoteControlProxy availableRc;
 
 		provisioner = new RemoteControlProvisioner();
 
-		RemoteControlProxy firstRC = new RemoteControlProxy("a", 0, "", null);
-		RemoteControlProxy secondRC = new RemoteControlProxy("a", 0, "", null);
+		RemoteControlProxy oldRC = new RemoteControlProxy("a", 0, "", null);
+		RemoteControlProxy newRC = new RemoteControlProxy("a", 0, "", null);
 
-		provisioner.add(firstRC);
-		provisioner.add(secondRC);
+		provisioner.add(oldRC);
+		provisioner.add(newRC);
 
-		RemoteControlProxy availableRc = provisioner.findNextAvailableRemoteControl();
-		assertSame(secondRC, availableRc);
+        availableRc = provisioner.findNextAvailableRemoteControl();
+        assertSame(newRC, availableRc);
 	}
 
 	@Test
@@ -46,12 +47,12 @@ public class RemoteControlProvisionerTest {
 
 	    firstRC.registerNewSession();
 
-		assertEquals(1, firstRC.concurrentSesssionCount());
+		assertTrue(firstRC.sesssionInProgress());
 
         provisioner.add(firstRC);
         provisioner.add(secondRC);
 
-		assertEquals(0, firstRC.concurrentSesssionCount());
+		assertFalse(firstRC.sesssionInProgress());
     }
 
     @Test

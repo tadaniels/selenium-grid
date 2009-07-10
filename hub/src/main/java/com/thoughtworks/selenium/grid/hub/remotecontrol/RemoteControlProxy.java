@@ -16,7 +16,7 @@ public class RemoteControlProxy {
 
     private final static Log LOGGER = LogFactory.getLog(HubServer.class);
 
-    private int concurrentSessionCount;
+    private boolean sessionInProgress;
     private final HttpClient httpClient;
     private final String environment;
     private final String host;
@@ -33,7 +33,7 @@ public class RemoteControlProxy {
         this.host = host;
         this.port = port;
         this.environment = environment;
-        this.concurrentSessionCount = 0;
+        this.sessionInProgress = false;
         this.httpClient = httpClient;
     }
 
@@ -67,7 +67,7 @@ public class RemoteControlProxy {
 
     public String toString() {
         return "[RemoteControlProxy " + host + ":" + port + "#"
-                + concurrentSessionCount + "]";
+                + sessionInProgress + "]";
     }
 
     public boolean equals(Object other) {
@@ -87,30 +87,26 @@ public class RemoteControlProxy {
         return (host + port).hashCode();
     }
 
-    public int concurrentSessionsMax() {
-        return 1;
-    }
-
-    public int concurrentSesssionCount() {
-        return concurrentSessionCount;
+    public boolean sesssionInProgress() {
+        return sessionInProgress;
     }
 
     public void registerNewSession() {
-        if (concurrentSessionCount == 1) {
+        if (sessionInProgress) {
             throw new IllegalStateException("Exceeded concurrent session max for " + toString());
         }
-        concurrentSessionCount += 1;
+        sessionInProgress = true;
     }
 
     public void unregisterSession() {
-        if (0 == concurrentSessionCount) {
+        if (!sessionInProgress) {
             throw new IllegalStateException("Unregistering session on an idle remote control : " + toString());
         }
-        concurrentSessionCount -= 1;
+        sessionInProgress = false;
     }
 
     public boolean canHandleNewSession() {
-        return concurrentSessionCount < 1;
+        return  !sesssionInProgress();
     }
 
 	public boolean unreliable() {
