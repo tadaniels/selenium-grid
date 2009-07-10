@@ -182,11 +182,16 @@
     <run-unit-tests/>
   </target>
 
-  <target name="test-functional" depends="compile, compile-functional-tests" description="run functional tests">
-    <run-functional-tests/>
+  <target name="test-functional" depends="compile" if="${test.functional.src.exists}"
+          description="run functional tests">
+    <antcall target="compile-functional-tests" />
+    <run-functional-tests />
   </target>
 
-  <target name="test" depends="test-unit, test-functional" description="run unit and functinal tests" />
+  <target name="test" depends="test-unit" description="run unit and functional tests" >
+    <available file="${test.functional.src}" property="test.functional.src.exists" />
+    <antcall target="test-functional" />
+  </target>
 
   <target name="package" depends="test" description="Package as a jar">
     <mkdir dir="${dist}/lib"/>

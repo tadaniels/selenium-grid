@@ -7,8 +7,6 @@ import static junit.framework.Assert.assertTrue;
 import org.jbehave.classmock.UsingClassMock;
 import org.junit.Test;
 
-import java.io.IOException;
-
 
 public class RemoteControlProxyFunctionalTest extends UsingClassMock {
 
@@ -19,9 +17,9 @@ public class RemoteControlProxyFunctionalTest extends UsingClassMock {
         dummyWebServer.start();
         RemoteControlProxy rc = new RemoteControlProxy("localhost", port, "environment", 1, new HttpClient());
 
-        rc.alive();
-        rc.alive();
-        rc.alive();
+        rc.unreliable();
+        rc.unreliable();
+        rc.unreliable();
 
         dummyWebServer.stop();
 
@@ -42,7 +40,7 @@ public class RemoteControlProxyFunctionalTest extends UsingClassMock {
         try {
             dummyWebServer.start();
             rc = new RemoteControlProxy(host, port, "environment", 1, new HttpClient());
-            assertTrue(!rc.alive());
+            assertTrue(rc.unreliable());
         } finally {
             dummyWebServer.stop();
         }
@@ -53,6 +51,6 @@ public class RemoteControlProxyFunctionalTest extends UsingClassMock {
         int port = SocketUtils.getFreePort();
         String host = "localhost";
         RemoteControlProxy rc = new RemoteControlProxy(host, port, "environment", 1, new HttpClient());
-        assertTrue(!rc.alive());
+        assertTrue(rc.unreliable());
     }
 }

@@ -115,21 +115,21 @@ public class RemoteControlProxy {
         return concurrentSessionCount < concurrentSessionMax;
     }
 
-	public boolean alive() {
+	public boolean unreliable() {
         final Response response;
 
         try {
             response = httpClient.get(remoteControlPingURL());
         } catch (Exception e) {
             LOGGER.info("Remote Control at " + host + ":" + port + " is unresponsive");
-            return false;
+            return true;
         }
 
         if (response.statusCode() != 200) {
             LOGGER.info("Remote Control at " + host + ":" + port + " did not respond correctly");
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
 }

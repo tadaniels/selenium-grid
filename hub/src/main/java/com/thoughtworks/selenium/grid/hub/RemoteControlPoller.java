@@ -42,7 +42,7 @@ public class RemoteControlPoller implements Runnable {
 
     public void unregisterUnresponsiveRemoteControls(List<RemoteControlProxy> remoteControls) {
         for (RemoteControlProxy rc : remoteControls) {
-            if (!rc.alive()) {
+            if (rc.unreliable()) {
                 registry.remoteControlPool().unregister(rc);
             }
         }
