@@ -2,8 +2,6 @@ package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
 import com.thoughtworks.selenium.grid.hub.HubRegistry;
 
-import java.util.List;
-
 public class RemoteControlPoller implements Runnable {
     private final long pollingIntervalInMilliseconds;
     private final HubRegistry registry;
@@ -35,15 +33,14 @@ public class RemoteControlPoller implements Runnable {
         final DynamicRemoteControlPool pool;
 
         pool = registry.remoteControlPool();
-        unregisterUnresponsiveRemoteControls(pool.availableRemoteControls());
-        unregisterUnresponsiveRemoteControls(pool.reservedRemoteControls());
+        for (RemoteControlProxy rc : pool.allRegisteredRemoteControls()) {
+            unregisterRemoteControlIfUnresponsive(rc);
+        }
     }
 
-    public void unregisterUnresponsiveRemoteControls(List<RemoteControlProxy> remoteControls) {
-        for (RemoteControlProxy rc : remoteControls) {
-            if (rc.unreliable()) {
-                registry.remoteControlPool().unregister(rc);
-            }
+    private void unregisterRemoteControlIfUnresponsive(RemoteControlProxy rc) {
+        if (rc.unreliable()) {
+            registry.remoteControlPool().unregister(rc);
         }
     }
 
