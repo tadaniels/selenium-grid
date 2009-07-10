@@ -20,66 +20,49 @@ public class RemoteControlProxyTest extends UsingClassMock {
 
     @Test(expected = IllegalArgumentException.class)
     public void contructorThrowsIllegalArgumentExceptionWhenServerIsNull() {
-        new RemoteControlProxy(null, 5555, null, 1, null);
+        new RemoteControlProxy(null, 5555, null, null);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void contructorThrowsIllegalArgumentExceptionWhenEnvironementIsNull() {
-        new RemoteControlProxy("localhost", 1234, null, 1, null);
+        new RemoteControlProxy("localhost", 1234, null, null);
     }
 
     @Test
     public void hostReturnsTheHostSpecifiedInConstructor() {
-        assertEquals("a host", new RemoteControlProxy("a host", 0, "", 1, null).host());
+        assertEquals("a host", new RemoteControlProxy("a host", 0, "", null).host());
     }
 
     @Test
     public void portReturnsThePortSpecifiedInConstructor() {
-        assertEquals(24, new RemoteControlProxy("", 24, "", 1, null).port());
+        assertEquals(24, new RemoteControlProxy("", 24, "", null).port());
     }
 
     @Test
     public void environmentReturnsTheEnvironmentSpecifiedInConstructor() {
-        assertEquals("an environment", new RemoteControlProxy("", 0, "an environment", 1, null).environment());
-
-    }
-
-    @Test
-    public void concurrentSessionsMaxReturnsTheValueSpecifiedInConstructor() {
-        assertEquals(24, new RemoteControlProxy("", 0, "an environment", 24, null).concurrentSessionsMax());
+        assertEquals("an environment", new RemoteControlProxy("", 0, "an environment", null).environment());
 
     }
 
     @Test
     public void concurrentSessionCountReturnsZeroByDefault() {
-        assertEquals(0, new RemoteControlProxy("a host", 0, "", 1, null).concurrentSesssionCount());
+        assertEquals(0, new RemoteControlProxy("a host", 0, "", null).concurrentSesssionCount());
     }
 
     @Test
     public void concurrentSessionCountReturnsOneAfterCallingRegisterNewSession() {
         final RemoteControlProxy remoteControl;
 
-        remoteControl = new RemoteControlProxy("a host", 0, "", 1, null);
+        remoteControl = new RemoteControlProxy("a host", 0, "", null);
         remoteControl.registerNewSession();
         assertEquals(1, remoteControl.concurrentSesssionCount());
-    }
-
-    @Test
-    public void concurrentSessionCountReturnsThreeAfterCallingRegisterNewSessionThreTimes() {
-        final RemoteControlProxy remoteControl;
-
-        remoteControl = new RemoteControlProxy("a host", 0, "", 3, null);
-        remoteControl.registerNewSession();
-        remoteControl.registerNewSession();
-        remoteControl.registerNewSession();
-        assertEquals(3, remoteControl.concurrentSesssionCount());
     }
 
     @Test(expected = IllegalStateException.class)
     public void registerNewSessionThrowsAnIllegalStateExpressionWhenRegisteringMoreSessionThanAllowedByConcurrentSessionMax() {
         final RemoteControlProxy remoteControl;
 
-        remoteControl = new RemoteControlProxy("a host", 0, "", 1, null);
+        remoteControl = new RemoteControlProxy("a host", 0, "", null);
         remoteControl.registerNewSession();
         remoteControl.registerNewSession();
     }
@@ -88,7 +71,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
     public void unregisterSessionDecreasesConcurrentSessionCountByOne() {
         final RemoteControlProxy remoteControl;
 
-        remoteControl = new RemoteControlProxy("a host", 0, "", 1, null);
+        remoteControl = new RemoteControlProxy("a host", 0, "", null);
         remoteControl.registerNewSession();
         remoteControl.unregisterSession();
         assertEquals(0, remoteControl.concurrentSesssionCount());
@@ -98,7 +81,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
     public void unregisterSessionThrowsAnIllegalStateExceptionWhenConcurrentSessionCountIsZero() {
         final RemoteControlProxy remoteControl;
 
-        remoteControl = new RemoteControlProxy("a host", 0, "", 1, null);
+        remoteControl = new RemoteControlProxy("a host", 0, "", null);
         remoteControl.unregisterSession();
     }
 
@@ -106,8 +89,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
     public void canHandleNewSessionReturnTrueWhenConcurrentSessinCountIsLowerThanConcurrentSessionMax() {
         final RemoteControlProxy remoteControl;
 
-        remoteControl = new RemoteControlProxy("a host", 0, "", 2, null);
-        remoteControl.registerNewSession();
+        remoteControl = new RemoteControlProxy("a host", 0, "", null);
         assertTrue(remoteControl.canHandleNewSession());
     }
 
@@ -115,20 +97,20 @@ public class RemoteControlProxyTest extends UsingClassMock {
     public void canHandleNewSessionReturnFalseWhenConcurrentSessinCountIsEqualToConcurrentSessionMax() {
         final RemoteControlProxy remoteControl;
 
-        remoteControl = new RemoteControlProxy("a host", 0, "", 1, null);
+        remoteControl = new RemoteControlProxy("a host", 0, "", null);
         remoteControl.registerNewSession();
         assertFalse(remoteControl.canHandleNewSession());
     }
 
     @Test
     public void remoteControlDriverURLTargetsTheSeleniumDriver() {
-        final RemoteControlProxy proxy = new RemoteControlProxy("localhost", 5555, "", 1, null);
+        final RemoteControlProxy proxy = new RemoteControlProxy("localhost", 5555, "", null);
         assertEquals("http://localhost:5555/selenium-server/driver/", proxy.remoteControlDriverURL());
     }
 
     @Test
     public void remoteControlPingURLTargetsTheBlankPage() {
-        final RemoteControlProxy proxy = new RemoteControlProxy("localhost", 5555, "", 1, null);
+        final RemoteControlProxy proxy = new RemoteControlProxy("localhost", 5555, "", null);
         assertEquals("http://localhost:5555/core/Blank.html", proxy.remoteControlPingURL());
     }
 
@@ -143,7 +125,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
         client = mock(HttpClient.class);
         parameters = new HttpParameters();
         client.expects("post").with(eq("http://foo:10/selenium-server/driver/"), eq(parameters)).will(returnValue(expectedResponse));
-        proxy = new RemoteControlProxy("foo", 10, "", 1, (HttpClient) client);
+        proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
         assertEquals(expectedResponse, proxy.forward(parameters));
 
         verifyMocks();
@@ -151,25 +133,24 @@ public class RemoteControlProxyTest extends UsingClassMock {
 
     @Test
     public void toStringMethodReturnsAHumanFriendlyDescriptionWithServerAndPortInformation() {
-        assertEquals("[RemoteControlProxy grid.thoughtworks.org:4444 0/24]",
-                     new RemoteControlProxy("grid.thoughtworks.org", 4444, "", 24, null).toString());
+        assertEquals("[RemoteControlProxy grid.thoughtworks.org:4444#0]",
+                     new RemoteControlProxy("grid.thoughtworks.org", 4444, "", null).toString());
     }
 
     @Test
     public void toStringIncludesconcurrentSessinCount() {
         final RemoteControlProxy remoteControl;
 
-        remoteControl = new RemoteControlProxy("grid.thoughtworks.org", 4444, "", 15, null);
+        remoteControl = new RemoteControlProxy("grid.org", 4444, "", null);
         remoteControl.registerNewSession();
-        remoteControl.registerNewSession();
-        assertEquals("[RemoteControlProxy grid.thoughtworks.org:4444 2/15]",
+        assertEquals("[RemoteControlProxy grid.org:4444#1]",
                      remoteControl.toString());
     }
 
     @SuppressWarnings({"EqualsBetweenInconvertibleTypes"})
     @Test
     public void aRemoteControlsIsNotEqualToARandomObject() {
-        assertNotEquals(new RemoteControlProxy("a.host.com", 24, "", 1, new HttpClient()), "a random object");
+        assertNotEquals(new RemoteControlProxy("a.host.com", 24, "", new HttpClient()), "a random object");
     }
 
 
@@ -177,14 +158,14 @@ public class RemoteControlProxyTest extends UsingClassMock {
     public void aRemoteControlsIsNotEqualToItself() {
         final RemoteControlProxy aRemoteControl;
 
-        aRemoteControl = new RemoteControlProxy("a.host.com", 24, "", 1, new HttpClient());
+        aRemoteControl = new RemoteControlProxy("a.host.com", 24, "", new HttpClient());
         assertEquals(aRemoteControl, aRemoteControl);
     }
 
     @Test
     public void twoRemoteControlsAreEqualIfTheirHostAndPortMatch() {
-        assertEquals(new RemoteControlProxy("a.host.com", 24, "", 1, new HttpClient()),
-                     new RemoteControlProxy("a.host.com", 24, "", 1, new HttpClient()));
+        assertEquals(new RemoteControlProxy("a.host.com", 24, "", new HttpClient()),
+                     new RemoteControlProxy("a.host.com", 24, "", new HttpClient()));
     }
 
     @Test
@@ -192,8 +173,8 @@ public class RemoteControlProxyTest extends UsingClassMock {
         final RemoteControlProxy anotherRemoteControl;
         final RemoteControlProxy aRemoteControl;
 
-        aRemoteControl = new RemoteControlProxy("a.host.com", 24, "", 1, new HttpClient());
-        anotherRemoteControl = new RemoteControlProxy("another.host.com", 24, "", 1, new HttpClient());
+        aRemoteControl = new RemoteControlProxy("a.host.com", 24, "", new HttpClient());
+        anotherRemoteControl = new RemoteControlProxy("another.host.com", 24, "", new HttpClient());
         assertNotEquals(aRemoteControl, anotherRemoteControl);
     }
 
@@ -202,15 +183,15 @@ public class RemoteControlProxyTest extends UsingClassMock {
         final RemoteControlProxy anotherRemoteControl;
         final RemoteControlProxy aRemoteControl;
 
-        aRemoteControl = new RemoteControlProxy("a.host.com", 24, "", 1, new HttpClient());
-        anotherRemoteControl = new RemoteControlProxy("a.host.com", 64, "", 1, new HttpClient());
+        aRemoteControl = new RemoteControlProxy("a.host.com", 24, "", new HttpClient());
+        anotherRemoteControl = new RemoteControlProxy("a.host.com", 64, "", new HttpClient());
         assertNotEquals(aRemoteControl, anotherRemoteControl);
     }
 
     @Test
     public void twoRemoteControlsHaveTheSameHashcodeIfTheirHostAndPortMatch() {
-        assertSameHashCode(new RemoteControlProxy("a.host.com", 24, "", 1, new HttpClient()),
-                           new RemoteControlProxy("a.host.com", 24, "", 1, new HttpClient()));
+        assertSameHashCode(new RemoteControlProxy("a.host.com", 24, "", new HttpClient()),
+                           new RemoteControlProxy("a.host.com", 24, "", new HttpClient()));
     }
 
     @Test
@@ -218,8 +199,8 @@ public class RemoteControlProxyTest extends UsingClassMock {
         final RemoteControlProxy anotherRemoteControl;
         final RemoteControlProxy aRemoteControl;
 
-        aRemoteControl = new RemoteControlProxy("a.host.com", 24, "", 1, new HttpClient());
-        anotherRemoteControl = new RemoteControlProxy("another.host.com", 24, "", 1, new HttpClient());
+        aRemoteControl = new RemoteControlProxy("a.host.com", 24, "", new HttpClient());
+        anotherRemoteControl = new RemoteControlProxy("another.host.com", 24, "", new HttpClient());
         assertDistinctHashCodes(aRemoteControl, anotherRemoteControl);
     }
 
@@ -228,8 +209,8 @@ public class RemoteControlProxyTest extends UsingClassMock {
         final RemoteControlProxy anotherRemoteControl;
         final RemoteControlProxy aRemoteControl;
 
-        aRemoteControl = new RemoteControlProxy("a.host.com", 24, "", 1, new HttpClient());
-        anotherRemoteControl = new RemoteControlProxy("a.host.com", 64, "", 1, new HttpClient());
+        aRemoteControl = new RemoteControlProxy("a.host.com", 24, "", new HttpClient());
+        anotherRemoteControl = new RemoteControlProxy("a.host.com", 64, "", new HttpClient());
         assertDistinctHashCodes(aRemoteControl, anotherRemoteControl);
     }
 
@@ -242,7 +223,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
         client = mock(HttpClient.class);
         successfulResponse = new Response(200, "");
         client.expects("get").with(eq("http://foo:10/core/Blank.html")).will(returnValue(successfulResponse));
-        proxy = new RemoteControlProxy("foo", 10, "", 1, (HttpClient) client);
+        proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
         assertFalse(proxy.unreliable());
 
         verifyMocks();
@@ -257,7 +238,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
         client = mock(HttpClient.class);
         successfulResponse = new Response(500, "");
         client.expects("get").with(eq("http://foo:10/core/Blank.html")).will(returnValue(successfulResponse));
-        proxy = new RemoteControlProxy("foo", 10, "", 1, (HttpClient) client);
+        proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
         assertTrue(proxy.unreliable());
 
         verifyMocks();
@@ -272,7 +253,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
         client = mock(HttpClient.class);
         client.expects("get").with(eq("http://foo:10/core/Blank.html")).
                will(throwException(new RuntimeException("Simulated Error")));
-        proxy = new RemoteControlProxy("foo", 10, "", 1, (HttpClient) client);
+        proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
         assertTrue(proxy.unreliable());
 
         verifyMocks();

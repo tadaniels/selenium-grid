@@ -42,7 +42,7 @@ public class ConsoleControllerTest extends UsingClassMock {
         final Mock remoteControlPool;
         final Mock registry;
 
-        expectedRemoteControls = Arrays.asList(new RemoteControlProxy("", 0, "", 1, null));
+        expectedRemoteControls = Arrays.asList(new RemoteControlProxy("", 0, "", null));
         registry = mock(HubRegistry.class);
         remoteControlPool = mock(DynamicRemoteControlPool.class);
         registry.stubs("environmentManager").will(returnValue(mock(EnvironmentManager.class)));
@@ -62,7 +62,7 @@ public class ConsoleControllerTest extends UsingClassMock {
         final Mock remoteControlPool;
         final Mock registry;
 
-        expectedRemoteControls = Arrays.asList(new RemoteControlProxy("", 0, "", 1, null));
+        expectedRemoteControls = Arrays.asList(new RemoteControlProxy("", 0, "", null));
         registry = mock(HubRegistry.class);
         remoteControlPool = mock(DynamicRemoteControlPool.class);
         registry.stubs("environmentManager").will(returnValue(mock(EnvironmentManager.class)));
@@ -133,7 +133,7 @@ public class ConsoleControllerTest extends UsingClassMock {
 
         response = mock(HttpServletResponse.class);
         response.stubs("getWriter").will(returnValue(mock(PrintWriter.class)));
-        remoteControls = new RemoteControlProxy[]{new RemoteControlProxy("a host", 0, "an environment", 1, null)};
+        remoteControls = new RemoteControlProxy[]{new RemoteControlProxy("a host", 0, "an environment", null)};
         page = new Page("index.html");
         page.set("environments", new Environment[] { new Environment("a environment", "a browser")});
         page.set("availableRemoteControls", remoteControls);

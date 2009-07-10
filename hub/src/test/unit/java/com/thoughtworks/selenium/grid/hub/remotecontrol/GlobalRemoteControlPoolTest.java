@@ -19,7 +19,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("", 0, "an environment", 1, null);
+        remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
             protected RemoteControlProvisioner getProvisioner(String environment) {
@@ -39,7 +39,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("", 0, "an environment", 1, null);
+        remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
             protected RemoteControlProvisioner getProvisioner(String environment) {
@@ -60,7 +60,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("", 0, "an environment", 1, null);
+        remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
             protected RemoteControlProvisioner getProvisioner(String environment) {
@@ -79,7 +79,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("", 0, "", 1, null);
+        remoteControl = new RemoteControlProxy("", 0, "", null);
         pool = new GlobalRemoteControlPool();
 
         pool.register(remoteControl);
@@ -95,7 +95,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("", 0, "an environment", 1, null);
+        remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
             protected RemoteControlProvisioner getProvisioner(String environment) {
@@ -136,7 +136,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
     @Test
     public void getRemoteControlReturnsTheRemoteControlHasBeenAssociatedWithASpecificSession() {
         final GlobalRemoteControlPool pool = new GlobalRemoteControlPool();
-        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", 1, null);
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", null);
 
         pool.associateWithSession(remoteControl, "a session id");
         assertEquals(remoteControl, pool.retrieve("a session id"));
@@ -146,15 +146,15 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
     public void associateWithSessionThrowsAnIllegalStateExceptionWhenSessionIdIsAlreadyRegistered() {
         final GlobalRemoteControlPool pool = new GlobalRemoteControlPool();
 
-        pool.associateWithSession(new RemoteControlProxy("", 0, "", 1, null), "shared session id");
-        pool.associateWithSession(new RemoteControlProxy("", 0, "", 1, null), "shared session id");
+        pool.associateWithSession(new RemoteControlProxy("", 0, "", null), "shared session id");
+        pool.associateWithSession(new RemoteControlProxy("", 0, "", null), "shared session id");
     }
 
     @Test
     public void associateWithSessionKeepsTrackOfEachSessionIndependently() {
         final GlobalRemoteControlPool pool = new GlobalRemoteControlPool();
-        final RemoteControlProxy firstRemoteControl = new RemoteControlProxy("", 0, "", 1, null);
-        final RemoteControlProxy secondRemoteControl = new RemoteControlProxy("", 0, "", 1, null);
+        final RemoteControlProxy firstRemoteControl = new RemoteControlProxy("", 0, "", null);
+        final RemoteControlProxy secondRemoteControl = new RemoteControlProxy("", 0, "", null);
 
         pool.associateWithSession(firstRemoteControl, "first session id");
         pool.associateWithSession(secondRemoteControl, "second session id");
@@ -168,7 +168,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;                                                
 
-        remoteControl = new RemoteControlProxy("", 0, "an environment", 1, null);
+        remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         pool = new GlobalRemoteControlPool();
         pool.register(remoteControl);
         pool.reserve(new Environment("an environment", ""));
@@ -189,7 +189,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("", 0, "an environment", 1, null);
+        remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
             protected RemoteControlProvisioner getProvisioner(String environment) {
@@ -212,7 +212,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("", 0, "an environment", 1, null);
+        remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
             protected RemoteControlProvisioner getProvisioner(String environment) {
@@ -265,7 +265,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final Environment environment;
         final RemoteControlProxy remoteControl;
 
-        remoteControl = new RemoteControlProxy("", 0, "an environment", 1, null);
+        remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         environment = new Environment("an environment", "*firefox");
         pool = new GlobalRemoteControlPool();
         pool.register(remoteControl);
@@ -279,7 +279,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("host", 0, "an environment", 1, null);
+        remoteControl = new RemoteControlProxy("host", 0, "an environment", null);
         pool = new GlobalRemoteControlPool();
         pool.register(remoteControl);
         pool.associateWithSession(remoteControl, "a session id");
@@ -298,7 +298,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("host", 0, "an environment", 1, null);
+        remoteControl = new RemoteControlProxy("host", 0, "an environment", null);
         pool = new GlobalRemoteControlPool();
 
         pool.register(remoteControl);
@@ -314,7 +314,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("host", 0, "an environment", 1, null);
+        remoteControl = new RemoteControlProxy("host", 0, "an environment", null);
         pool = new GlobalRemoteControlPool();
 
         pool.register(remoteControl);
@@ -327,7 +327,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
     public void getReturnsRemoteControlThatHaveBeenAssociatedWithASession() {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
-        remoteControl = new RemoteControlProxy("host", 0, "an environment", 1, null);
+        remoteControl = new RemoteControlProxy("host", 0, "an environment", null);
         pool = new GlobalRemoteControlPool();
 
         pool.register(remoteControl);
@@ -438,8 +438,8 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy anotherRemoteControl;
         final GlobalRemoteControlPool pool;
 
-        aRemoteControl = new RemoteControlProxy("host", 4444, "an environment", 1, null);
-        anotherRemoteControl = new RemoteControlProxy("host", 4445, "an environment", 1, null);
+        aRemoteControl = new RemoteControlProxy("host", 4444, "an environment", null);
+        anotherRemoteControl = new RemoteControlProxy("host", 4445, "an environment", null);
         pool = new GlobalRemoteControlPool();
 
         pool.register(aRemoteControl);

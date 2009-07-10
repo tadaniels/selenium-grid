@@ -50,13 +50,13 @@ public class HeartbeatThreadTest extends UsingClassMock {
 			rcServer3.start();
 
             httpClient1 = new MockHttpClient();
-            rc1 = new RemoteControlProxy("localhost", port1, "environment", 2, httpClient1);
+            rc1 = new RemoteControlProxy("localhost", port1, "environment", httpClient1);
 
             httpClient2 = new MockHttpClient();
-            rc2 = new RemoteControlProxy("localhost", port2, "environment", 2, httpClient2);
+            rc2 = new RemoteControlProxy("localhost", port2, "environment", httpClient2);
 
             httpClient3 = new MockHttpClient();
-            rc3 = new RemoteControlProxy("localhost", port3, "environment", 2, httpClient3);
+            rc3 = new RemoteControlProxy("localhost", port3, "environment", httpClient3);
             rc3.registerNewSession();
 
             registry = mock(HubRegistry.class);
@@ -104,7 +104,7 @@ public class HeartbeatThreadTest extends UsingClassMock {
 
 
             httpClient = new MockHttpClient();
-            RemoteControlProxy rc1 = new RemoteControlProxy("localhost", port, "environment", 2, httpClient);
+            RemoteControlProxy rc1 = new RemoteControlProxy("localhost", port, "environment", httpClient);
 
             registry = mock(HubRegistry.class);
             pool = new DynamicRemoteControlPoolStub();

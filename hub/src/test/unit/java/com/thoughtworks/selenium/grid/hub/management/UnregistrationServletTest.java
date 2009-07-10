@@ -27,7 +27,7 @@ public class UnregistrationServletTest extends UsingClassMock {
         expectedResponse = mock(HttpServletResponse.class);
         registry = mock(HubRegistry.class);
         remoteControlPool = mock(DynamicRemoteControlPool.class);
-        expectedRemoteControl = new RemoteControlProxy("a host", 24, "an environment", 1, null);
+        expectedRemoteControl = new RemoteControlProxy("a host", 24, "an environment", null);
         servlet = new UnregistrationServlet() {
 
             protected HubRegistry registry() {

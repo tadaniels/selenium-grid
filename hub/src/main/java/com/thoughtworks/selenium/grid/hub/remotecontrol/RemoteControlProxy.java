@@ -16,7 +16,6 @@ public class RemoteControlProxy {
 
     private final static Log LOGGER = LogFactory.getLog(HubServer.class);
 
-    private final int concurrentSessionMax;
     private int concurrentSessionCount;
     private final HttpClient httpClient;
     private final String environment;
@@ -24,7 +23,7 @@ public class RemoteControlProxy {
     private final int port;
 
 
-    public RemoteControlProxy(String host, int port, String environment, int concurrentSessionMax, HttpClient httpClient) {
+    public RemoteControlProxy(String host, int port, String environment, HttpClient httpClient) {
         if (null == host) {
             throw new IllegalArgumentException("host cannot be null");
         }
@@ -34,7 +33,6 @@ public class RemoteControlProxy {
         this.host = host;
         this.port = port;
         this.environment = environment;
-        this.concurrentSessionMax = concurrentSessionMax;
         this.concurrentSessionCount = 0;
         this.httpClient = httpClient;
     }
@@ -68,8 +66,8 @@ public class RemoteControlProxy {
     }
 
     public String toString() {
-        return "[RemoteControlProxy " + host + ":" + port + " "
-                                      + concurrentSessionCount  + "/" + concurrentSessionMax + "]";
+        return "[RemoteControlProxy " + host + ":" + port + "#"
+                + concurrentSessionCount + "]";
     }
 
     public boolean equals(Object other) {
@@ -90,7 +88,7 @@ public class RemoteControlProxy {
     }
 
     public int concurrentSessionsMax() {
-        return concurrentSessionMax;
+        return 1;
     }
 
     public int concurrentSesssionCount() {
@@ -98,7 +96,7 @@ public class RemoteControlProxy {
     }
 
     public void registerNewSession() {
-        if (concurrentSessionCount == concurrentSessionMax) {
+        if (concurrentSessionCount == 1) {
             throw new IllegalStateException("Exceeded concurrent session max for " + toString());
         }
         concurrentSessionCount += 1;
@@ -112,7 +110,7 @@ public class RemoteControlProxy {
     }
 
     public boolean canHandleNewSession() {
-        return concurrentSessionCount < concurrentSessionMax;
+        return concurrentSessionCount < 1;
     }
 
 	public boolean unreliable() {

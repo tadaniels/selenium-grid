@@ -23,7 +23,7 @@ public class SeleniumRCProxyIntegrationTest {
 	@Test
 	public void forwardGetNewBrowserSessionToRemoteControl() throws IOException {
 		HttpClient client = new HttpClient();
-		RemoteControlProxy proxy = new RemoteControlProxy("localhost", VALID_PORT, "env", 1, client);
+		RemoteControlProxy proxy = new RemoteControlProxy("localhost", VALID_PORT, "env", client);
 		HttpParameters parameters = new HttpParameters();
 		parameters.put("cmd", "getNewBrowserSession");
 		parameters.put("1", "*firefox");

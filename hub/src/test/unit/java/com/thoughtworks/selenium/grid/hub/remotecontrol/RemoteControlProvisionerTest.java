@@ -1,23 +1,19 @@
 package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
+import com.thoughtworks.selenium.grid.hub.ConcurrentAction;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertSame;
-
-import java.util.Random;
-
 import org.junit.Test;
-
-import com.thoughtworks.selenium.grid.hub.ConcurrentAction;
 
 public class RemoteControlProvisionerTest {
 
     @Test
     public void onceAddedARemoteControlIsPartOfTheAvailableList() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy remoteControl = new RemoteControlProxy("a", 0, "", 1, null);
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("a", 0, "", null);
 
         provisioner.add(remoteControl);
         assertEquals(1, provisioner.availableRemoteControls().size());
@@ -30,8 +26,8 @@ public class RemoteControlProvisionerTest {
 
 		provisioner = new RemoteControlProvisioner();
 
-		RemoteControlProxy firstRC = new RemoteControlProxy("a", 0, "", 1, null);
-		RemoteControlProxy secondRC = new RemoteControlProxy("a", 0, "", 3, null);
+		RemoteControlProxy firstRC = new RemoteControlProxy("a", 0, "", null);
+		RemoteControlProxy secondRC = new RemoteControlProxy("a", 0, "", null);
 
 		provisioner.add(firstRC);
 		provisioner.add(secondRC);
@@ -45,29 +41,28 @@ public class RemoteControlProvisionerTest {
         final RemoteControlProvisioner provisioner;
 
         provisioner = new RemoteControlProvisioner();
+		RemoteControlProxy firstRC = new RemoteControlProxy("a", 0, "", null);
+        RemoteControlProxy secondRC = new RemoteControlProxy("a", 0, "", null);
 
-		int arbitraryNumberOfSessions = new Random().nextInt(9);
-		arbitraryNumberOfSessions++; // ensure non-zero number of sessions
+	    firstRC.registerNewSession();
 
-		RemoteControlProxy firstRC = new RemoteControlProxy("a", 0, "", 10, null);
-		for (int i = 0; i < arbitraryNumberOfSessions; i++) {
-			firstRC.registerNewSession();
-		}
-		RemoteControlProxy secondRC = new RemoteControlProxy("a", 0, "", 10, null);
+		assertEquals(1, firstRC.concurrentSesssionCount());
 
-		assertEquals(arbitraryNumberOfSessions, firstRC.concurrentSesssionCount());
-
-		provisioner.add(firstRC);
-		provisioner.add(secondRC);
+        provisioner.add(firstRC);
+        provisioner.add(secondRC);
 
 		assertEquals(0, firstRC.concurrentSesssionCount());
     }
 
     @Test
     public void multipleRemoteControlsCanBeAdded() {
-        final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy firstRemoteControl = new RemoteControlProxy("a", 0, "", 1, null);
-        final RemoteControlProxy secondRemoteControl = new RemoteControlProxy("b", 0, "", 1, null);
+        final RemoteControlProvisioner provisioner;
+        final RemoteControlProxy firstRemoteControl;
+        final RemoteControlProxy secondRemoteControl;
+
+        provisioner = new RemoteControlProvisioner();
+        firstRemoteControl = new RemoteControlProxy("a", 0, "", null);
+        secondRemoteControl = new RemoteControlProxy("b", 0, "", null);
 
         provisioner.add(firstRemoteControl);
         provisioner.add(secondRemoteControl);
@@ -79,7 +74,7 @@ public class RemoteControlProvisionerTest {
     @Test
     public void onceRemovedARemoteControlIsNotPartOfTheAvailableList() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", 1, null);
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", null);
         provisioner.add(remoteControl);
 
         provisioner.remove(remoteControl);
@@ -89,8 +84,8 @@ public class RemoteControlProvisionerTest {
     @Test
     public void removeOnlyRemovesASpecificRemoteControl() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy firstRemoteControl = new RemoteControlProxy("a", 0, "", 1, null);
-        final RemoteControlProxy secondRemoteControl = new RemoteControlProxy("b", 0, "", 1, null);
+        final RemoteControlProxy firstRemoteControl = new RemoteControlProxy("a", 0, "", null);
+        final RemoteControlProxy secondRemoteControl = new RemoteControlProxy("b", 0, "", null);
         provisioner.add(firstRemoteControl);
         provisioner.add(secondRemoteControl);
 
@@ -102,13 +97,13 @@ public class RemoteControlProvisionerTest {
     @Test
     public void removeReturnsFalseForARemoteControlThanHasNeverBeenAdded() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        assertFalse(provisioner.remove(new RemoteControlProxy("", 0, "", 1, null)));
+        assertFalse(provisioner.remove(new RemoteControlProxy("", 0, "", null)));
     }
 
     @Test
     public void removeReturnsTrueForAnAvailableRemoteControl() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", 1, null);
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", null);
         provisioner.add(remoteControl);
 
         assertTrue(provisioner.remove(remoteControl));
@@ -117,7 +112,7 @@ public class RemoteControlProvisionerTest {
     @Test
     public void removeReturnsTrueForAReservedRemoteControl() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", 1, null);
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", null);
         provisioner.add(remoteControl);
         provisioner.reserve();
 
@@ -132,8 +127,8 @@ public class RemoteControlProvisionerTest {
     @Test
     public void reserveReturnsTheFirstAvailableRemoteControl() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy firstRemoteControl = new RemoteControlProxy("a", 0, "", 1, null);
-        final RemoteControlProxy secondRemoteControl = new RemoteControlProxy("b", 0, "", 1, null);
+        final RemoteControlProxy firstRemoteControl = new RemoteControlProxy("a", 0, "", null);
+        final RemoteControlProxy secondRemoteControl = new RemoteControlProxy("b", 0, "", null);
         provisioner.add(firstRemoteControl);
         provisioner.add(secondRemoteControl);
 
@@ -143,12 +138,11 @@ public class RemoteControlProvisionerTest {
     @Test
     public void reserveReturnsAvailableRemoteControlInOrderWhileThenCanHandleNewSessions() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy firstRemoteControl = new RemoteControlProxy("a", 0, "", 2, null);
-        final RemoteControlProxy secondRemoteControl = new RemoteControlProxy("b", 0, "", 1, null);
+        final RemoteControlProxy firstRemoteControl = new RemoteControlProxy("a", 0, "", null);
+        final RemoteControlProxy secondRemoteControl = new RemoteControlProxy("b", 0, "", null);
         provisioner.add(firstRemoteControl);
         provisioner.add(secondRemoteControl);
 
-        assertEquals(firstRemoteControl, provisioner.reserve());
         assertEquals(firstRemoteControl, provisioner.reserve());
         assertEquals(secondRemoteControl, provisioner.reserve());
     }
@@ -156,7 +150,7 @@ public class RemoteControlProvisionerTest {
     @Test
     public void reserveBlocksUntilARemoteControlIsReleasedWhenThereIsAtLeastOneRegisteredRemoteControl() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy remoteControl = new RemoteControlProxy("a", 0, "", 1, null);
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("a", 0, "", null);
 
         provisioner.add(remoteControl);
         provisioner.reserve();
@@ -176,8 +170,8 @@ public class RemoteControlProvisionerTest {
         final RemoteControlProxy secondRemoteControl;
 
         provisioner = new RemoteControlProvisioner();
-        firstRemoteControl = new RemoteControlProxy("a", 0, "", 1, null);
-        secondRemoteControl = new RemoteControlProxy("b", 0, "", 1, null);
+        firstRemoteControl = new RemoteControlProxy("a", 0, "", null);
+        secondRemoteControl = new RemoteControlProxy("b", 0, "", null);
 
         provisioner.add(firstRemoteControl);
         provisioner.reserve();
@@ -202,8 +196,8 @@ public class RemoteControlProvisionerTest {
         final RemoteControlProxy secondRemoteControl;
 
         provisioner = new RemoteControlProvisioner();
-        firstRemoteControl = new RemoteControlProxy("a", 0, "", 1, null);
-        secondRemoteControl = new RemoteControlProxy("b", 0, "", 1, null);
+        firstRemoteControl = new RemoteControlProxy("a", 0, "", null);
+        secondRemoteControl = new RemoteControlProxy("b", 0, "", null);
         provisioner.add(firstRemoteControl);
         provisioner.add(secondRemoteControl);
 
@@ -217,8 +211,8 @@ public class RemoteControlProvisionerTest {
         final RemoteControlProxy secondRemoteControl;
 
         provisioner = new RemoteControlProvisioner();
-        firstRemoteControl = new RemoteControlProxy("a", 0, "", 1, null);
-        secondRemoteControl = new RemoteControlProxy("b", 0, "", 1, null);
+        firstRemoteControl = new RemoteControlProxy("a", 0, "", null);
+        secondRemoteControl = new RemoteControlProxy("b", 0, "", null);
         provisioner.add(firstRemoteControl);
         provisioner.add(secondRemoteControl);
 
@@ -233,8 +227,8 @@ public class RemoteControlProvisionerTest {
         final RemoteControlProxy secondRemoteControl;
 
         provisioner = new RemoteControlProvisioner();
-        firstRemoteControl = new RemoteControlProxy("a", 0, "", 1, null);
-        secondRemoteControl = new RemoteControlProxy("b", 0, "", 1, null);
+        firstRemoteControl = new RemoteControlProxy("a", 0, "", null);
+        secondRemoteControl = new RemoteControlProxy("b", 0, "", null);
         provisioner.add(firstRemoteControl);
         provisioner.add(secondRemoteControl);
 
@@ -246,7 +240,7 @@ public class RemoteControlProvisionerTest {
     @Test
     public void onceReservedARemoteControlIsNotAvailableAnymore() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", 1, null);
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", null);
         provisioner.add(remoteControl);
 
         provisioner.reserve();
@@ -256,7 +250,7 @@ public class RemoteControlProvisionerTest {
     @Test
     public void releaseMakesAReservedRemoteControlAvailable() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", 1, null);
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", null);
         provisioner.add(remoteControl);
 
         provisioner.reserve();
@@ -272,7 +266,7 @@ public class RemoteControlProvisionerTest {
     @Test
     public void reservedRemoteControlsReturnsAnEmptyArrayWhenRemoteControlHasBeenAddedButNotReserved() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", 1, null);
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", null);
 
         provisioner.add(remoteControl);
         assertTrue(provisioner.reservedRemoteControls().isEmpty());
@@ -281,7 +275,7 @@ public class RemoteControlProvisionerTest {
     @Test
     public void reservedRemoteControlsReturnsARemoteControlThatHaveBeenReserved() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", 1, null);
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", null);
 
         provisioner.add(remoteControl);
         provisioner.reserve();
@@ -297,7 +291,7 @@ public class RemoteControlProvisionerTest {
     @Test
     public void availableRemoteControlsReturnsARemoteControlThanHasBeenAdded() {
         final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
-        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", 1, null);
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("", 0, "", null);
 
         provisioner.add(remoteControl);
         assertEquals(1, provisioner.availableRemoteControls().size());

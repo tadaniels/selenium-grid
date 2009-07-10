@@ -15,7 +15,7 @@ public class RemoteControlProxyFunctionalTest extends UsingClassMock {
         int port = SocketUtils.getFreePort();
         DummyWebServer dummyWebServer = new DummyWebServer(port);
         dummyWebServer.start();
-        RemoteControlProxy rc = new RemoteControlProxy("localhost", port, "environment", 1, new HttpClient());
+        RemoteControlProxy rc = new RemoteControlProxy("localhost", port, "environment", new HttpClient());
 
         rc.unreliable();
         rc.unreliable();
@@ -39,7 +39,7 @@ public class RemoteControlProxyFunctionalTest extends UsingClassMock {
 
         try {
             dummyWebServer.start();
-            rc = new RemoteControlProxy(host, port, "environment", 1, new HttpClient());
+            rc = new RemoteControlProxy(host, port, "environment", new HttpClient());
             assertTrue(rc.unreliable());
         } finally {
             dummyWebServer.stop();
@@ -50,7 +50,7 @@ public class RemoteControlProxyFunctionalTest extends UsingClassMock {
     public void ifTheRCIsntThereThePingThrowsAnIOException() throws Exception {
         int port = SocketUtils.getFreePort();
         String host = "localhost";
-        RemoteControlProxy rc = new RemoteControlProxy(host, port, "environment", 1, new HttpClient());
+        RemoteControlProxy rc = new RemoteControlProxy(host, port, "environment", new HttpClient());
         assertTrue(rc.unreliable());
     }
 }
