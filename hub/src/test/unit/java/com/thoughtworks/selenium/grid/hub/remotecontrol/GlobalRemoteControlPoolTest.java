@@ -1,15 +1,18 @@
 package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
 import com.thoughtworks.selenium.grid.hub.Environment;
+import com.thoughtworks.selenium.grid.hub.EnvironmentManager;
 import com.thoughtworks.selenium.grid.hub.NoSuchEnvironmentException;
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertSame;
 import static junit.framework.Assert.assertTrue;
-import static junit.framework.Assert.assertFalse;
 import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import org.junit.Test;
+
+import java.util.List;
 
 
 public class GlobalRemoteControlPoolTest extends UsingClassMock {
@@ -340,42 +343,91 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
     @Test
     public void availableRemoteControlsReturnAnEmptyArrayWhenThereIsNoEnvironment() {
         assertTrue(new GlobalRemoteControlPool().availableRemoteControls().isEmpty());
-        verifyMocks();
     }
 
-//    @Test
-//    public void availableRemoteControlsReturnAvailableRemoteControlsForAllEnvironments() {
-//        final List<RemoteControlProxy> remoteControlsForFirstPool;
-//        final List<RemoteControlProxy> remoteControlsForSecondPool;
-//        final List<RemoteControlProxy> availableRemoteControls;
-//        final EnvironmentManager environmentManager;
-//        final Environment firstEnvironment;
-//        final Environment secondEnvironment;
-//        final Mock firstEnvironmentPool;
-//        final Mock secondEnvironmentPool;
-//
-//        remoteControlsForFirstPool = Arrays.asList(new RemoteControlProxy("first host", 0, "first environment", 1, null));
-//        remoteControlsForSecondPool = Arrays.asList(
-//                new RemoteControlProxy("second host", 0, "second environment", 1, null),
-//                new RemoteControlProxy("third host", 0, "second environment", 1, null)
-//        );
-//        firstEnvironmentPool = mock(DynamicRemoteControlPool.class);
-//        secondEnvironmentPool = mock(DynamicRemoteControlPool.class);
-//        firstEnvironment = new Environment("first environment", "*chrome", (DynamicRemoteControlPool) firstEnvironmentPool);
-//        secondEnvironment = new Environment("second environment", "*chrome", (DynamicRemoteControlPool) secondEnvironmentPool);
-//        environmentManager = new EnvironmentManager();
-//        environmentManager.addEnvironment(firstEnvironment);
-//        environmentManager.addEnvironment(secondEnvironment);
-//
-//        firstEnvironmentPool.stubs("availableRemoteControls").will(returnValue(remoteControlsForFirstPool));
-//        secondEnvironmentPool.stubs("availableRemoteControls").will(returnValue(remoteControlsForSecondPool));
-//
-//        availableRemoteControls = new GlobalRemoteControlPool().availableRemoteControls();
-//        assertEquals(3, availableRemoteControls.size());
-//        assertTrue(availableRemoteControls.containsAll(remoteControlsForFirstPool));
-//        assertTrue(availableRemoteControls.containsAll(remoteControlsForSecondPool));
-//        verifyMocks();
-//    }
+    @Test
+    public void availableRemoteControlsReturnAvailableRemoteControlsForAllEnvironments() {
+        final HealthyRemoteControl anotherRCForTheSecondEnvironment;
+        final HealthyRemoteControl aRCForAnotherEnvironment;
+        final List<RemoteControlProxy> availableRemoteControls;
+        final EnvironmentManager environmentManager;
+        final Environment firstEnvironment;
+        final Environment secondEnvironment;
+        final GlobalRemoteControlPool pool;
+        final HealthyRemoteControl aRC;
+
+        
+        environmentManager = new EnvironmentManager();
+        firstEnvironment = new Environment("first environment", "*chrome");
+        secondEnvironment = new Environment("second environment", "*chrome");
+        environmentManager.addEnvironment(firstEnvironment);
+        environmentManager.addEnvironment(secondEnvironment);
+
+        pool = new GlobalRemoteControlPool();
+        aRC = new HealthyRemoteControl("first host", 0, "first environment", null);
+        aRCForAnotherEnvironment = new HealthyRemoteControl("second host", 0, "second environment", null);
+        pool.register(aRC);
+        pool.register(aRCForAnotherEnvironment);
+        anotherRCForTheSecondEnvironment = new HealthyRemoteControl("third host", 0, "second environment", null);
+        pool.register(anotherRCForTheSecondEnvironment);
+
+        availableRemoteControls = pool.availableRemoteControls();
+        assertEquals(3, availableRemoteControls.size());
+        assertTrue(availableRemoteControls.contains(aRC));
+        assertTrue(availableRemoteControls.contains(aRCForAnotherEnvironment));
+        assertTrue(availableRemoteControls.contains(anotherRCForTheSecondEnvironment));
+    }
+
+    @Test
+    public void availableRemoteControlsDoNotReturnReservedRemoteControls() {
+        final List<RemoteControlProxy> availableRemoteControls;
+        final EnvironmentManager environmentManager;
+        final Environment anEnvironment;
+        final GlobalRemoteControlPool pool;
+        final HealthyRemoteControl anotherRC;
+        final HealthyRemoteControl aRC;
+
+
+        environmentManager = new EnvironmentManager();
+        anEnvironment = new Environment("an environment", "*chrome");
+        environmentManager.addEnvironment(anEnvironment);
+
+        pool = new GlobalRemoteControlPool();
+        aRC = new HealthyRemoteControl("first host", 0, "an environment", null);
+        anotherRC = new HealthyRemoteControl("second host", 0, "an environment", null);
+        pool.register(aRC);
+        pool.register(anotherRC);
+        pool.reserve(anEnvironment);
+
+        availableRemoteControls = pool.availableRemoteControls();
+        assertEquals(1, availableRemoteControls.size());
+        assertFalse(availableRemoteControls.contains(aRC));
+        assertTrue(availableRemoteControls.contains(anotherRC));
+    }
+
+    @Test
+    public void availableRemoteControlsIsEmptyWhenAllRemoteControlsAreReserved() {
+        final EnvironmentManager environmentManager;
+        final Environment anEnvironment;
+        final GlobalRemoteControlPool pool;
+        final HealthyRemoteControl anotherRC;
+        final HealthyRemoteControl aRC;
+
+
+        environmentManager = new EnvironmentManager();
+        anEnvironment = new Environment("an environment", "*chrome");
+        environmentManager.addEnvironment(anEnvironment);
+
+        pool = new GlobalRemoteControlPool();
+        aRC = new HealthyRemoteControl("first host", 0, "an environment", null);
+        anotherRC = new HealthyRemoteControl("second host", 0, "an environment", null);
+        pool.register(aRC);
+        pool.register(anotherRC);
+        pool.reserve(anEnvironment);
+        pool.reserve(anEnvironment);
+
+        assertTrue(pool.availableRemoteControls().isEmpty());
+    }
 
     @Test
     public void reservedRemoteControlsReturnAnEmptyArrayWhenThereIsNoEnvironment() {
@@ -383,47 +435,93 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         verifyMocks();
     }
 
-//    @Test
-//    public void reservedRemoteControlsReturnAvailableRemoteControlsForAllEnvironments() {
-//        final List<RemoteControlProxy> remoteControlsForFirstPool;
-//        final List<RemoteControlProxy> remoteControlsForSecondPool;
-//        final List<RemoteControlProxy> reservedRemoteControls;
-//        final EnvironmentManager environmentManager;
-//        final Environment firstEnvironment;
-//        final Environment secondEnvironment;
-//        final Mock firstEnvironmentPool;
-//        final Mock secondEnvironmentPool;
-//        GlobalRemoteControlPool pool;
-//
-//        remoteControlsForFirstPool = Arrays.asList(new RemoteControlProxy("first host", 0, "first environment", 1, null));
-//        remoteControlsForSecondPool = Arrays.asList(
-//                new RemoteControlProxy("second host", 0, "second environment", 1, null),
-//                new RemoteControlProxy("third host", 0, "second environment", 1, null)
-//        );
-//        firstEnvironmentPool = mock(DynamicRemoteControlPool.class);
-//        secondEnvironmentPool = mock(DynamicRemoteControlPool.class);
-//        firstEnvironment = new Environment("first environment", "*chrome");
-//        secondEnvironment = new Environment("second environment", "*chrome");
-//        environmentManager = new EnvironmentManager();
-//        environmentManager.addEnvironment(firstEnvironment);
-//        environmentManager.addEnvironment(secondEnvironment);
-//
-//        firstEnvironmentPool.stubs("reservedRemoteControls").will(returnValue(remoteControlsForFirstPool));
-//        secondEnvironmentPool.stubs("reservedRemoteControls").will(returnValue(remoteControlsForSecondPool));
-//
-//        pool = new GlobalRemoteControlPool();
-//        pool.add
-//        reservedRemoteControls = pool.reservedRemoteControls();
-//        assertEquals(3, reservedRemoteControls.size());
-//        assertTrue(reservedRemoteControls.containsAll(remoteControlsForFirstPool));
-//        assertTrue(reservedRemoteControls.containsAll(remoteControlsForSecondPool));
-//        verifyMocks();
-//    }
+    @Test
+    public void reservedRemoteControlsReturnsReservedRemoteControlsForAllEnvironemnt() {
+        final HealthyRemoteControl anotherRCForTheSecondEnvironment;
+        final HealthyRemoteControl aRCForAnotherEnvironment;
+        final List<RemoteControlProxy> reservedRemoteControls;
+        final EnvironmentManager environmentManager;
+        final Environment firstEnvironment;
+        final Environment secondEnvironment;
+        final GlobalRemoteControlPool pool;
+        final HealthyRemoteControl aRC;
 
-//    @Test
-//    public void fixme() {
-//        fail("look hard at impl, espcialy sync code");
-//    }
+
+        environmentManager = new EnvironmentManager();
+        firstEnvironment = new Environment("first environment", "*chrome");
+        secondEnvironment = new Environment("second environment", "*chrome");
+        environmentManager.addEnvironment(firstEnvironment);
+        environmentManager.addEnvironment(secondEnvironment);
+
+        pool = new GlobalRemoteControlPool();
+        aRC = new HealthyRemoteControl("first host", 0, "first environment", null);
+        aRCForAnotherEnvironment = new HealthyRemoteControl("second host", 0, "second environment", null);
+        pool.register(aRC);
+        pool.register(aRCForAnotherEnvironment);
+        anotherRCForTheSecondEnvironment = new HealthyRemoteControl("third host", 0, "second environment", null);
+        pool.register(anotherRCForTheSecondEnvironment);
+
+        pool.reserve(firstEnvironment);
+        pool.reserve(secondEnvironment);
+        pool.reserve(secondEnvironment);
+
+        reservedRemoteControls = pool.reservedRemoteControls();
+        assertEquals(3, reservedRemoteControls.size());
+        assertTrue(reservedRemoteControls.contains(aRC));
+        assertTrue(reservedRemoteControls.contains(aRCForAnotherEnvironment));
+        assertTrue(reservedRemoteControls.contains(anotherRCForTheSecondEnvironment));
+        verifyMocks();
+    }
+
+    @Test
+    public void reservedRemoteControlsDoNotReturnAvailableRemoteControls() {
+        final List<RemoteControlProxy> reservedRemoteControls;
+        final EnvironmentManager environmentManager;
+        final Environment anEnvironment;
+        final GlobalRemoteControlPool pool;
+        final HealthyRemoteControl anotherRC;
+        final HealthyRemoteControl aRC;
+
+
+        environmentManager = new EnvironmentManager();
+        anEnvironment = new Environment("an environment", "*chrome");
+        environmentManager.addEnvironment(anEnvironment);
+
+        pool = new GlobalRemoteControlPool();
+        aRC = new HealthyRemoteControl("first host", 0, "an environment", null);
+        anotherRC = new HealthyRemoteControl("second host", 0, "an environment", null);
+        pool.register(aRC);
+        pool.register(anotherRC);
+        pool.reserve(anEnvironment);
+
+        reservedRemoteControls = pool.reservedRemoteControls();
+        assertEquals(1, reservedRemoteControls.size());
+        assertTrue(reservedRemoteControls.contains(aRC));
+        assertFalse(reservedRemoteControls.contains(anotherRC));
+        verifyMocks();
+    }
+
+    @Test
+    public void reservedRemoteControlsIsEmptyWhenNoRemoteControlsAreReserved() {
+        final EnvironmentManager environmentManager;
+        final Environment anEnvironment;
+        final GlobalRemoteControlPool pool;
+        final HealthyRemoteControl anotherRC;
+        final HealthyRemoteControl aRC;
+
+
+        environmentManager = new EnvironmentManager();
+        anEnvironment = new Environment("an environment", "*chrome");
+        environmentManager.addEnvironment(anEnvironment);
+
+        pool = new GlobalRemoteControlPool();
+        aRC = new HealthyRemoteControl("first host", 0, "an environment", null);
+        anotherRC = new HealthyRemoteControl("second host", 0, "an environment", null);
+        pool.register(aRC);
+        pool.register(anotherRC);
+
+        assertTrue(pool.reservedRemoteControls().isEmpty());
+    }
 
     @Test
     public void logSessionMapDoesNotBombWhenThereIsNoSession() {
