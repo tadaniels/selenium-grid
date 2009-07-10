@@ -121,9 +121,15 @@ public class RemoteControlProxyTest extends UsingClassMock {
     }
 
     @Test
-    public void remoteControlURLTargetsASpecificSeleniumRC() {
+    public void remoteControlDriverURLTargetsTheSeleniumDriver() {
         final RemoteControlProxy proxy = new RemoteControlProxy("localhost", 5555, "", 1, null);
         assertEquals("http://localhost:5555/selenium-server/driver/", proxy.remoteControlDriverURL());
+    }
+
+    @Test
+    public void remoteControlPingURLTargetsTheBlankPage() {
+        final RemoteControlProxy proxy = new RemoteControlProxy("localhost", 5555, "", 1, null);
+        assertEquals("http://localhost:5555/core/Blank.html", proxy.remoteControlPingURL());
     }
 
     @Test
@@ -225,6 +231,51 @@ public class RemoteControlProxyTest extends UsingClassMock {
         aRemoteControl = new RemoteControlProxy("a.host.com", 24, "", 1, new HttpClient());
         anotherRemoteControl = new RemoteControlProxy("a.host.com", 64, "", 1, new HttpClient());
         assertDistinctHashCodes(aRemoteControl, anotherRemoteControl);
+    }
+
+    @Test
+    public void unreliableReturnsFalseWhenTheResponseIsSuccesfull() throws IOException {
+        final RemoteControlProxy proxy;
+        final Response successfulResponse;
+        final Mock client;
+
+        client = mock(HttpClient.class);
+        successfulResponse = new Response(200, "");
+        client.expects("get").with(eq("http://foo:10/core/Blank.html")).will(returnValue(successfulResponse));
+        proxy = new RemoteControlProxy("foo", 10, "", 1, (HttpClient) client);
+        assertFalse(proxy.unreliable());
+
+        verifyMocks();
+    }
+
+    @Test
+    public void unreliableReturnsTrueWhenTheResponseIsA500() throws IOException {
+        final RemoteControlProxy proxy;
+        final Response successfulResponse;
+        final Mock client;
+
+        client = mock(HttpClient.class);
+        successfulResponse = new Response(500, "");
+        client.expects("get").with(eq("http://foo:10/core/Blank.html")).will(returnValue(successfulResponse));
+        proxy = new RemoteControlProxy("foo", 10, "", 1, (HttpClient) client);
+        assertTrue(proxy.unreliable());
+
+        verifyMocks();
+    }
+
+    @SuppressWarnings({"ThrowableInstanceNeverThrown"})
+    @Test
+    public void unreliableReturnsTrueWhenTheRemoteControlCannotBeReached() throws IOException {
+        final RemoteControlProxy proxy;
+        final Mock client;
+
+        client = mock(HttpClient.class);
+        client.expects("get").with(eq("http://foo:10/core/Blank.html")).
+               will(throwException(new RuntimeException("Simulated Error")));
+        proxy = new RemoteControlProxy("foo", 10, "", 1, (HttpClient) client);
+        assertTrue(proxy.unreliable());
+
+        verifyMocks();
     }
 
 }

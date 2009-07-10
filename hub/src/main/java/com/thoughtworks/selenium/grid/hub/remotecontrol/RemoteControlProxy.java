@@ -125,7 +125,6 @@ public class RemoteControlProxy {
             LOGGER.warn("Remote Control at " + host + ":" + port + " is unresponsive");
             return true;
         }
-
         if (response.statusCode() != 200) {
             LOGGER.warn("Remote Control at " + host + ":" + port + " did not respond correctly");
             return true;
