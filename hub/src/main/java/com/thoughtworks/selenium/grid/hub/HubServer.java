@@ -38,7 +38,7 @@ public class HubServer {
         root.addServlet(new ServletHolder(new UnregistrationServlet()), "/registration-manager/unregister");
         root.addServlet(new ServletHolder(new LifecycleManagerServlet()), "/lifecycle-manager");
 
-        startRemoteControlPoller();
+//        startRemoteControlPoller();
 
         server.start();
         server.join();

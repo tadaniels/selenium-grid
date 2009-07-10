@@ -119,14 +119,15 @@ public class RemoteControlProxy {
         final Response response;
 
         try {
+            LOGGER.debug("Polling Remote Control at " + host + ":" + port);
             response = httpClient.get(remoteControlPingURL());
         } catch (Exception e) {
-            LOGGER.info("Remote Control at " + host + ":" + port + " is unresponsive");
+            LOGGER.warn("Remote Control at " + host + ":" + port + " is unresponsive");
             return true;
         }
 
         if (response.statusCode() != 200) {
-            LOGGER.info("Remote Control at " + host + ":" + port + " did not respond correctly");
+            LOGGER.warn("Remote Control at " + host + ":" + port + " did not respond correctly");
             return true;
         }
         return false;
