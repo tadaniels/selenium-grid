@@ -10,6 +10,7 @@ import com.thoughtworks.selenium.grid.hub.management.LifecycleManagerServlet;
 import com.thoughtworks.selenium.grid.hub.management.RegistrationServlet;
 import com.thoughtworks.selenium.grid.hub.management.UnregistrationServlet;
 import com.thoughtworks.selenium.grid.hub.management.console.ConsoleServlet;
+import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlPoller;
 
 /**
  * Self contained Selenium Grid Hub. Uses Jetty to as a standalone web application.

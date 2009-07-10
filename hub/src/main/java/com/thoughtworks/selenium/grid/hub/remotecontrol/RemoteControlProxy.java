@@ -50,15 +50,15 @@ public class RemoteControlProxy {
     }
 
     public String remoteControlPingURL() {
-        return remoteControlURLFor("/core/Blank.html");
+        return remoteControlURLFor("core/Blank.html");
     }
 
     public String remoteControlDriverURL() {
-        return remoteControlURLFor("/selenium-server/driver/");
+        return remoteControlURLFor("driver/");
     }
 
     public String remoteControlURLFor(String path) {
-        return "http://" + host + ":" + port + path;
+        return "http://" + host + ":" + port + "/selenium-server/" + path;
     }
 
     public Response forward(HttpParameters parameters) throws IOException {

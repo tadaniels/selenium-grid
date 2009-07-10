@@ -42,6 +42,13 @@ public class RemoteControlProvisioner {
             }
 
             remoteControl = blockUntilARemoteControlIsAvailable();
+            while (remoteControl.unreliable()) {
+                tearDownExistingRemoteControl(remoteControl);
+                if (remoteControls.isEmpty()) {
+                    return null;
+                }
+                remoteControl = blockUntilARemoteControlIsAvailable();
+            }
             remoteControl.registerNewSession();
             LOGGER.info("Reserved remote control" + remoteControl);
             return remoteControl;
@@ -78,9 +85,6 @@ public class RemoteControlProvisioner {
         final RemoteControlProxy oldRemoteControl;
 
         oldRemoteControl = remoteControls.get(remoteControls.indexOf(newRemoteControl));
-        if (oldRemoteControl.sesssionInProgress()) {
-            oldRemoteControl.unregisterSession();
-        }
         remoteControls.remove(oldRemoteControl);
     }
 

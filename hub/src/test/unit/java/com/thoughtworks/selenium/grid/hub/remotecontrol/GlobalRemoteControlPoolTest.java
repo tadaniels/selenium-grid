@@ -23,7 +23,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
-            protected RemoteControlProvisioner getProvisioner(String environment) {
+            public RemoteControlProvisioner getProvisioner(String environment) {
                 assertEquals("an environment", environment);
                 return (RemoteControlProvisioner) provisioner;
             }
@@ -43,7 +43,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
-            protected RemoteControlProvisioner getProvisioner(String environment) {
+            public RemoteControlProvisioner getProvisioner(String environment) {
                 assertEquals("an environment", environment);
                 return (RemoteControlProvisioner) provisioner;
             }
@@ -64,7 +64,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
-            protected RemoteControlProvisioner getProvisioner(String environment) {
+            public RemoteControlProvisioner getProvisioner(String environment) {
                 assertEquals("an environment", environment);
                 return (RemoteControlProvisioner) provisioner;
             }
@@ -99,7 +99,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
-            protected RemoteControlProvisioner getProvisioner(String environment) {
+            public RemoteControlProvisioner getProvisioner(String environment) {
                 assertEquals("an environment", environment);
                 return (RemoteControlProvisioner) provisioner;
             }
@@ -115,7 +115,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final GlobalRemoteControlPool pool;
 
         pool = new GlobalRemoteControlPool() {
-            protected RemoteControlProvisioner getProvisioner(String environment) {
+            public RemoteControlProvisioner getProvisioner(String environment) {
                 assertEquals("an environment", environment);
                 return null;
             }
@@ -169,7 +169,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;                                                
 
-        remoteControl = new RemoteControlProxy("", 0, "an environment", null);
+        remoteControl = new HealthyRemoteControl("", 0, "an environment", null);
         pool = new GlobalRemoteControlPool();
         pool.register(remoteControl);
         pool.reserve(new Environment("an environment", ""));
@@ -193,7 +193,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
-            protected RemoteControlProvisioner getProvisioner(String environment) {
+            public RemoteControlProvisioner getProvisioner(String environment) {
                 assertEquals("an environment", environment);
                 return (RemoteControlProvisioner) provisioner;
             }
@@ -216,7 +216,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         remoteControl = new RemoteControlProxy("", 0, "an environment", null);
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
-            protected RemoteControlProvisioner getProvisioner(String environment) {
+            public RemoteControlProvisioner getProvisioner(String environment) {
                 assertEquals("an environment", environment);
                 return (RemoteControlProvisioner) provisioner;
             }
@@ -266,7 +266,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final Environment environment;
         final RemoteControlProxy remoteControl;
 
-        remoteControl = new RemoteControlProxy("", 0, "an environment", null);
+        remoteControl = new HealthyRemoteControl("", 0, "an environment", null);
         environment = new Environment("an environment", "*firefox");
         pool = new GlobalRemoteControlPool();
         pool.register(remoteControl);
@@ -299,7 +299,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("host", 0, "an environment", null);
+        remoteControl = new HealthyRemoteControl("host", 0, "an environment", null);
         pool = new GlobalRemoteControlPool();
 
         pool.register(remoteControl);
@@ -315,7 +315,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("host", 0, "an environment", null);
+        remoteControl = new HealthyRemoteControl("host", 0, "an environment", null);
         pool = new GlobalRemoteControlPool();
 
         pool.register(remoteControl);
@@ -439,8 +439,8 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy anotherRemoteControl;
         final GlobalRemoteControlPool pool;
 
-        aRemoteControl = new RemoteControlProxy("host", 4444, "an environment", null);
-        anotherRemoteControl = new RemoteControlProxy("host", 4445, "an environment", null);
+        aRemoteControl = new HealthyRemoteControl("host", 4444, "an environment", null);
+        anotherRemoteControl = new HealthyRemoteControl("host", 4445, "an environment", null);
         pool = new GlobalRemoteControlPool();
 
         pool.register(aRemoteControl);

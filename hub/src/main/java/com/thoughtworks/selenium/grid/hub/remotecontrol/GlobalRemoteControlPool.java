@@ -122,7 +122,7 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
         return reservedRemoteControls;
     }
 
-    protected RemoteControlProvisioner getProvisioner(String environment) {
+    public RemoteControlProvisioner getProvisioner(String environment) {
         return provisionersByEnvironment.get(environment);
     }
 

@@ -6,6 +6,9 @@ import com.thoughtworks.selenium.grid.SocketUtils;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.DummyWebServer;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.DynamicRemoteControlPool;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProxy;
+import com.thoughtworks.selenium.grid.hub.remotecontrol.HealthyRemoteControl;
+import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlPoller;
+import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProvisioner;
 import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import static org.junit.Assert.assertEquals;
@@ -50,13 +53,13 @@ public class HeartbeatThreadTest extends UsingClassMock {
 			rcServer3.start();
 
             httpClient1 = new MockHttpClient();
-            rc1 = new RemoteControlProxy("localhost", port1, "environment", httpClient1);
+            rc1 = new HealthyRemoteControl("localhost", port1, "environment", httpClient1);
 
             httpClient2 = new MockHttpClient();
-            rc2 = new RemoteControlProxy("localhost", port2, "environment", httpClient2);
+            rc2 = new HealthyRemoteControl("localhost", port2, "environment", httpClient2);
 
             httpClient3 = new MockHttpClient();
-            rc3 = new RemoteControlProxy("localhost", port3, "environment", httpClient3);
+            rc3 = new HealthyRemoteControl("localhost", port3, "environment", httpClient3);
             rc3.registerNewSession();
 
             registry = mock(HubRegistry.class);
@@ -203,5 +206,9 @@ public class HeartbeatThreadTest extends UsingClassMock {
 		public RemoteControlProxy retrieve(String sessionId) {
 			throw new UnsupportedOperationException();
 		}
-	}
+
+        public RemoteControlProvisioner getProvisioner(String environment) {
+            throw new UnsupportedOperationException();
+        }
+    }
 }

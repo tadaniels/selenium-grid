@@ -1,23 +1,22 @@
-package com.thoughtworks.selenium.grid.hub;
+package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
-import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProxy;
-import com.thoughtworks.selenium.grid.hub.remotecontrol.DynamicRemoteControlPool;
+import com.thoughtworks.selenium.grid.hub.HubRegistry;
 
 import java.util.List;
 
 public class RemoteControlPoller implements Runnable {
     private final long pollingIntervalInMilliseconds;
     private final HubRegistry registry;
-    private boolean done;
+    private boolean active;
 
     public RemoteControlPoller(double pollingIntervalInSeconds, HubRegistry registry) {
         this.pollingIntervalInMilliseconds = (long) (pollingIntervalInSeconds * 1000);
         this.registry = registry;
-        this.done = false;
+        this.active = true;
     }
 
     public void run() {
-        while (!done) {
+        while (active) {
             pollAllRegisteredRemoteControls();
         }
     }
@@ -26,7 +25,7 @@ public class RemoteControlPoller implements Runnable {
         try {
             Thread.sleep(pollingIntervalInMilliseconds);
         } catch (InterruptedException e) {
-            this.done = true;
+            this.active = false;
         }
 
         unregisterAllUnresponsiveRemoteControls();
