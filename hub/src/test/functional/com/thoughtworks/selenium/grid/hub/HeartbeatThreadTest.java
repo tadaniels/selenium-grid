@@ -5,12 +5,11 @@ import com.thoughtworks.selenium.grid.Response;
 import com.thoughtworks.selenium.grid.SocketUtils;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.DummyWebServer;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.DynamicRemoteControlPool;
-import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProxy;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.HealthyRemoteControl;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlPoller;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProvisioner;
+import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProxy;
 import org.jbehave.classmock.UsingClassMock;
-import org.jbehave.core.mock.Mock;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import org.junit.Test;
@@ -34,7 +33,6 @@ public class HeartbeatThreadTest extends UsingClassMock {
         final RemoteControlProxy rc1;
         final RemoteControlProxy rc2;
         final RemoteControlProxy rc3;
-        final Mock registry;
         final int port1;
         final int port2;
         final int port3;
@@ -62,14 +60,12 @@ public class HeartbeatThreadTest extends UsingClassMock {
             rc3 = new HealthyRemoteControl("localhost", port3, "environment", httpClient3);
             rc3.registerNewSession();
 
-            registry = mock(HubRegistry.class);
             remoteControlPool = new DynamicRemoteControlPoolStub();
-            registry.stubs("remoteControlPool").will(returnValue(remoteControlPool));
 
 			remoteControlPool.availableRCs.add(rc1);
 			remoteControlPool.availableRCs.add(rc2);
 			remoteControlPool.activeRCs.add(rc3);
-            pollerThread = new Thread(new RemoteControlPoller(10, (HubRegistry) registry));
+            pollerThread = new Thread(new RemoteControlPoller(10, remoteControlPool));
             assertEquals(0, httpClient1.pingCallCount);
 			assertEquals(0, httpClient2.pingCallCount);
 			assertEquals(0, httpClient3.pingCallCount);
@@ -93,7 +89,6 @@ public class HeartbeatThreadTest extends UsingClassMock {
 	@Test(timeout = 10000)
 	public void whenRCsPingingBlowsUpUnregisterTheRcWithTheHub() throws Exception {
 		DummyWebServer rcServer = null;
-        final Mock registry;
         final DynamicRemoteControlPoolStub pool;
         final MockHttpClient httpClient;
         final Thread pollerThread;
@@ -109,12 +104,10 @@ public class HeartbeatThreadTest extends UsingClassMock {
             httpClient = new MockHttpClient();
             RemoteControlProxy rc1 = new RemoteControlProxy("localhost", port, "environment", httpClient);
 
-            registry = mock(HubRegistry.class);
             pool = new DynamicRemoteControlPoolStub();
-            registry.stubs("remoteControlPool").will(returnValue(pool));
 
 			pool.availableRCs.add(rc1);
-            pollerThread = new Thread(new RemoteControlPoller(10, (HubRegistry) registry));
+            pollerThread = new Thread(new RemoteControlPoller(10, pool));
 
             assertNull(pool.unregisteredRC);
 			
@@ -134,14 +127,11 @@ public class HeartbeatThreadTest extends UsingClassMock {
 	public void heartbeatThreadSleepsForASpecifiedWhileInBetweenLooping() throws Exception {
         DynamicRemoteControlPoolStub pool;
         final Thread pollerThread;
-		Mock registry;
 
-        registry = mock(HubRegistry.class);
         pool = new DynamicRemoteControlPoolStub();
-        registry.stubs("remoteControlPool").will(returnValue(pool));
-		assertEquals(0, pool.availableRemoteControlsCallCount);
+ 		assertEquals(0, pool.availableRemoteControlsCallCount);
 
-        pollerThread = new Thread(new RemoteControlPoller(0.1, (HubRegistry) registry));
+        pollerThread = new Thread(new RemoteControlPoller(0.1, pool));
         pollerThread.start();
 
 		Thread.sleep(1000);

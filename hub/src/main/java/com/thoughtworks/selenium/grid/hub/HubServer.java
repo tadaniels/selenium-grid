@@ -1,16 +1,14 @@
 package com.thoughtworks.selenium.grid.hub;
 
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.handler.ContextHandlerCollection;
-import org.mortbay.jetty.servlet.Context;
-import org.mortbay.jetty.servlet.ServletHolder;
-
 import com.thoughtworks.selenium.grid.configuration.HubConfiguration;
 import com.thoughtworks.selenium.grid.hub.management.LifecycleManagerServlet;
 import com.thoughtworks.selenium.grid.hub.management.RegistrationServlet;
 import com.thoughtworks.selenium.grid.hub.management.UnregistrationServlet;
 import com.thoughtworks.selenium.grid.hub.management.console.ConsoleServlet;
-import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlPoller;
+import org.mortbay.jetty.Server;
+import org.mortbay.jetty.handler.ContextHandlerCollection;
+import org.mortbay.jetty.servlet.Context;
+import org.mortbay.jetty.servlet.ServletHolder;
 
 /**
  * Self contained Selenium Grid Hub. Uses Jetty to as a standalone web application.
@@ -20,7 +18,6 @@ public class HubServer {
     public static void main(String[] args) throws Exception {
         final ContextHandlerCollection contexts;
         final HubConfiguration configuration;
-        final Thread pollerThread;
         final Server server;
         final Context root;
 
@@ -48,8 +45,9 @@ public class HubServer {
     protected static void startRemoteControlPoller() {
         final Thread pollerThread;
 
-        pollerThread = new Thread(new RemoteControlPoller(10, HubRegistry.registry()),
-                                  "RC Poller Heartbeat");
+        pollerThread = new Thread(
+                HubRegistry.registry().remoteControlPoller(),
+                "RC Poller Heartbeat");
         pollerThread.start();
     }
 

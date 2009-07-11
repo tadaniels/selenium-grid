@@ -1,16 +1,27 @@
 package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
-import com.thoughtworks.selenium.grid.hub.HubRegistry;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class RemoteControlPoller implements Runnable {
     private final long pollingIntervalInMilliseconds;
-    private final HubRegistry registry;
+    private final DynamicRemoteControlPool pool;
     private boolean active;
 
-    public RemoteControlPoller(double pollingIntervalInSeconds, HubRegistry registry) {
+    private static final Log LOGGER = LogFactory.getLog(RemoteControlPoller.class);
+
+    public RemoteControlPoller(double pollingIntervalInSeconds, DynamicRemoteControlPool pool) {
         this.pollingIntervalInMilliseconds = (long) (pollingIntervalInSeconds * 1000);
-        this.registry = registry;
+        this.pool = pool;
         this.active = true;
+    }
+
+    public boolean active() {
+        return this.active;
+    }
+
+    public void stop() {
+        this.active = false;
     }
 
     public void run() {
@@ -21,19 +32,19 @@ public class RemoteControlPoller implements Runnable {
 
     public void pollAllRegisteredRemoteControls() {
         sleepForALittleWhile();
-        registry.remoteControlPool().unregisterAllUnresponsiveRemoteControls();
-    }
-
-    public void stop() {
-        this.active = false;
+        pool.unregisterAllUnresponsiveRemoteControls();
     }
 
     protected void sleepForALittleWhile() {
         try {
-            Thread.sleep(pollingIntervalInMilliseconds);
+            Thread.sleep(pollingIntervalInMilliseconds());
         } catch (InterruptedException e) {
-            stop(); // TODO - This is wrong
+            LOGGER.warn("Interrupted!");
         }
+    }
+
+    public long pollingIntervalInMilliseconds() {
+        return pollingIntervalInMilliseconds;
     }
 
 

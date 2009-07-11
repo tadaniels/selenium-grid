@@ -44,4 +44,15 @@ public class HubRegistryTest {
                    HubRegistry.registry().lifecycleManager());
     }
 
+    @Test
+    public void remoteControlPollerReturnsAValidPoller() {
+        assertNotNull(HubRegistry.registry().remoteControlPoller());
+    }
+
+    @Test
+    public void remoteControlPollerReturnsAUniqueInstance() {
+        assertSame(HubRegistry.registry().remoteControlPoller(),
+                   HubRegistry.registry().remoteControlPoller());
+    }
+
 }

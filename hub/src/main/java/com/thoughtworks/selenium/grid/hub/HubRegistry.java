@@ -5,6 +5,7 @@ import com.thoughtworks.selenium.grid.configuration.GridConfiguration;
 import com.thoughtworks.selenium.grid.configuration.ResourceLocator;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.DynamicRemoteControlPool;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.GlobalRemoteControlPool;
+import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlPoller;
 import com.thoughtworks.selenium.grid.hub.management.LifecycleManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -63,6 +64,11 @@ public class HubRegistry {
             lifecycleManager = new LifecycleManager();
         }
         return lifecycleManager;
+    }
+
+    public RemoteControlPoller remoteControlPoller() {
+        // TODO - hard coded interval
+        return new RemoteControlPoller(10, remoteControlPool());
     }
 
 }
