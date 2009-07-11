@@ -23,7 +23,7 @@ public class EchoRemoteControl extends SelfRegisteringRemoteControl implements H
     public static void main(String[] args) throws Exception {
         final EchoRemoteControl remoteControl = new EchoRemoteControl("http://localhost:4444", "*firefox", "localhost", "5555");
         remoteControl.register();
-        remoteControl.ensureUnregisterOnExit();
+        remoteControl.ensureUnregisterOnShutdown();
         remoteControl.launch(new String[0]);
     }
 

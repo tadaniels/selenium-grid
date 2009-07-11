@@ -60,7 +60,7 @@ public class SelfRegisteringRemoteControl {
         SeleniumServer.main(args);
     }
 
-    protected void ensureUnregisterOnExit() {
+    protected void ensureUnregisterOnShutdown() {
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 try {

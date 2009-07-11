@@ -37,7 +37,7 @@ public class HubServer {
         root.addServlet(new ServletHolder(new LifecycleManagerServlet()), "/lifecycle-manager");
 
         startRemoteControlPoller();
-        ensureRemoteControlPollerStopOnExit();
+        ensureRemoteControlPollerStopOnShutdown();
 
         server.start();
         server.join();
@@ -52,7 +52,7 @@ public class HubServer {
         pollerThread.start();
     }
 
-    protected static void ensureRemoteControlPollerStopOnExit() {
+    protected static void ensureRemoteControlPollerStopOnShutdown() {
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 HubRegistry.registry().remoteControlPoller().stop();

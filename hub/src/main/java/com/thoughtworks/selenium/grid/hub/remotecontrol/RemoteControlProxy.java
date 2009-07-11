@@ -50,7 +50,7 @@ public class RemoteControlProxy {
     }
 
     public String remoteControlPingURL() {
-        return remoteControlURLFor("core/Blank.html");
+        return remoteControlURLFor("heartbeat");
     }
 
     public String remoteControlDriverURL() {

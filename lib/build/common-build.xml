@@ -99,6 +99,7 @@
     <copy todir="${build.output}" verbose="true">
       <fileset dir="${build.src}" includes="**/*.html"/>
       <fileset dir="${build.src}" includes="**/*.yml"/>
+      <fileset dir="${build.src}" includes="**/heartbeat"/>
     </copy>
   </target>
 

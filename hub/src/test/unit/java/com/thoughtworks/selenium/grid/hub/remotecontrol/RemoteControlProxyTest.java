@@ -111,7 +111,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
     @Test
     public void remoteControlPingURLTargetsTheBlankPage() {
         final RemoteControlProxy proxy = new RemoteControlProxy("localhost", 5555, "", null);
-        assertEquals("http://localhost:5555/selenium-server/core/Blank.html", proxy.remoteControlPingURL());
+        assertEquals("http://localhost:5555/selenium-server/heartbeat", proxy.remoteControlPingURL());
     }
 
     @Test
@@ -222,7 +222,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
 
         client = mock(HttpClient.class);
         successfulResponse = new Response(200, "");
-        client.expects("get").with(eq("http://foo:10/selenium-server/core/Blank.html")).will(returnValue(successfulResponse));
+        client.expects("get").with(eq("http://foo:10/selenium-server/heartbeat")).will(returnValue(successfulResponse));
         proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
         assertFalse(proxy.unreliable());
 
@@ -237,7 +237,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
 
         client = mock(HttpClient.class);
         successfulResponse = new Response(500, "");
-        client.expects("get").with(eq("http://foo:10/selenium-server/core/Blank.html")).will(returnValue(successfulResponse));
+        client.expects("get").with(eq("http://foo:10/selenium-server/heartbeat")).will(returnValue(successfulResponse));
         proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
         assertTrue(proxy.unreliable());
 
@@ -251,7 +251,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
         final Mock client;
 
         client = mock(HttpClient.class);
-        client.expects("get").with(eq("http://foo:10/selenium-server/core/Blank.html")).
+        client.expects("get").with(eq("http://foo:10/selenium-server/heartbeat")).
                will(throwException(new RuntimeException("Simulated Error")));
         proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
         assertTrue(proxy.unreliable());

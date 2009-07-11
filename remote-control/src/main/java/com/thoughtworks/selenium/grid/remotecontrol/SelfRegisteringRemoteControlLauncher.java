@@ -23,7 +23,7 @@ public class SelfRegisteringRemoteControlLauncher {
                 options.hubURL(), options.environment(), options.host(), options.port());
         try {
             server.register();
-            server.ensureUnregisterOnExit();
+            server.ensureUnregisterOnShutdown();
             server.launch(options.seleniumServerArgs());
         } catch (ConnectException e) {
             logger.error("Could not contact the Selenium Hub at '" + server.hubURL() + "' : " + e.getMessage()
