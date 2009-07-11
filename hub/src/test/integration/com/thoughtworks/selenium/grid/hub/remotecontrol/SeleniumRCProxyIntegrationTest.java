@@ -11,11 +11,6 @@ import com.thoughtworks.selenium.grid.HttpClient;
 import com.thoughtworks.selenium.grid.HttpParameters;
 import com.thoughtworks.selenium.grid.Response;
 
-/**
- * TODO
- * 
- * @author: Philippe Hanrigou
- */
 public class SeleniumRCProxyIntegrationTest {
 
 	private static final int VALID_PORT = 5555;
