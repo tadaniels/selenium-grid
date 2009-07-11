@@ -7,8 +7,6 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * Fake Selenium Remote Control echoing received request. Useful for debugging and testing purposes.
- *
- * @author Philippe Hanrigou
  */
 public class EchoRemoteControl extends SelfRegisteringRemoteControl implements HttpRequestProcessor {
 

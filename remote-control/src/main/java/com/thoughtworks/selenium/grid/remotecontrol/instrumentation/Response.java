@@ -5,8 +5,6 @@ import java.io.IOException;
 
 /**
  * HTTP Response
- *
- * @author Philippe Hanrigou
  */
 public class Response {
     private static final String CRLF = "\r\n";

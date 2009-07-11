@@ -7,8 +7,6 @@ import java.io.IOException;
 
 /**
  * Selenium Remote Control Request to Grid Hub.
- *
- * @author Philippe Hanrigou
  */
 public class HubRequest {
 

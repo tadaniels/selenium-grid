@@ -7,8 +7,6 @@ import java.net.ConnectException;
 
 /**
  * Launch a Self-registering Selenium Remote Control.
- *
- * @author Philippe Hanrigou
  */
 public class SelfRegisteringRemoteControlLauncher {
 
@@ -19,6 +17,7 @@ public class SelfRegisteringRemoteControlLauncher {
         final SelfRegisteringRemoteControl server;
         final OptionParser.Options options;
 
+        // TODO - Bundle a heartbeat resource
         options = new OptionParser().parseOptions(args);
         server = new SelfRegisteringRemoteControl(
                 options.hubURL(), options.environment(), options.host(), options.port());

@@ -7,8 +7,6 @@ import java.io.IOException;
 
 /**
  * Registration Request to Selenium Grid Hub.
- *
- * @author Philippe Hanrigou
  */
 public class RegistrationRequest extends HubRequest {
 

@@ -37,7 +37,7 @@ public class HubServer {
         root.addServlet(new ServletHolder(new LifecycleManagerServlet()), "/lifecycle-manager");
 
         startRemoteControlPoller();
-        // TODO stop poller in exit hook
+        ensureRemoteControlPollerStopOnExit();
 
         server.start();
         server.join();
@@ -50,6 +50,14 @@ public class HubServer {
                 HubRegistry.registry().remoteControlPoller(),
                 "RC Poller Heartbeat");
         pollerThread.start();
+    }
+
+    protected static void ensureRemoteControlPollerStopOnExit() {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                HubRegistry.registry().remoteControlPoller().stop();
+            }
+        });
     }
 
 }

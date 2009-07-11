@@ -14,8 +14,6 @@ import java.net.Socket;
 /**
  * Single-threaded basic HTTP Server used only for testing purposes. No pretention to be robust,
  * compliant or scalable: Only strives to be lightweight and good enough for Selenium Grid testing purposes.
- *
- * @author Philippe Hanrigou
  */
 public class SimplisticHttpServer {
 
