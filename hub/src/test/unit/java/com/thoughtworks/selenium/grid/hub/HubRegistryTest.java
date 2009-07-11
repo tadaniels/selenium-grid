@@ -2,6 +2,7 @@ package com.thoughtworks.selenium.grid.hub;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 
@@ -53,6 +54,15 @@ public class HubRegistryTest {
     public void remoteControlPollerReturnsAUniqueInstance() {
         assertSame(HubRegistry.registry().remoteControlPoller(),
                    HubRegistry.registry().remoteControlPoller());
+    }
+
+    @Test
+    public void remoteControlPollerReturnsAValidPollers() {
+        final HubRegistry registry;
+
+        registry = new HubRegistry();
+        registry.gridConfiguration().getHub().setRemoteControlPollingIntervalInSeconds(24);
+        assertEquals(24000, registry.remoteControlPoller().pollingIntervalInMilliseconds());
     }
 
 }

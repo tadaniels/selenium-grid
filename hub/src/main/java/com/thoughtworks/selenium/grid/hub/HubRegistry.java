@@ -23,6 +23,7 @@ public class HubRegistry {
     private EnvironmentManager environmentManager;
     private GridConfiguration gridConfiguration;
     private LifecycleManager lifecycleManager;
+    private RemoteControlPoller poller;
 
     public static synchronized HubRegistry registry() {
         if (null == singleton) {
@@ -41,7 +42,7 @@ public class HubRegistry {
     public synchronized EnvironmentManager environmentManager() {
         if (null == environmentManager) {
             environmentManager = new EnvironmentManager();
-            for (EnvironmentConfiguration envConfig :gridConfiguration().getHub().getEnvironments()) {
+            for (EnvironmentConfiguration envConfig : gridConfiguration().getHub().getEnvironments()) {
                 environmentManager.addEnvironment(new Environment(envConfig.getName(), envConfig.getBrowser()));
             }
         }
@@ -66,9 +67,13 @@ public class HubRegistry {
         return lifecycleManager;
     }
 
-    public RemoteControlPoller remoteControlPoller() {
-        // TODO - hard coded interval
-        return new RemoteControlPoller(10, remoteControlPool());
+    public synchronized RemoteControlPoller remoteControlPoller() {
+        if (null == poller) {
+            poller = new RemoteControlPoller(
+                    gridConfiguration().getHub().getRemoteControlPollingIntervalInSeconds(),
+                    remoteControlPool());
+        }
+        return poller;
     }
 
 }

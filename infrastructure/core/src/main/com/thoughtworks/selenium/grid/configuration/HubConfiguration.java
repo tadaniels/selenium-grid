@@ -6,11 +6,13 @@ package com.thoughtworks.selenium.grid.configuration;
 public class HubConfiguration {
 
     private int port;
+    private double remoteControlPollingIntervalInSeconds;
     private EnvironmentConfiguration[] environments;
 
     public HubConfiguration() {
-        setPort(4444);
-        environments = new EnvironmentConfiguration[] {};
+        this.port = 4444;
+        this.environments = new EnvironmentConfiguration[] {};
+        this.remoteControlPollingIntervalInSeconds = 3 * 60;
     }
 
     public int getPort() {
@@ -29,4 +31,11 @@ public class HubConfiguration {
         this.environments = environments;
     }
 
+    public double getRemoteControlPollingIntervalInSeconds() {
+        return remoteControlPollingIntervalInSeconds;
+    }
+
+    public void setRemoteControlPollingIntervalInSeconds(double intervalInSeconds) {
+        this.remoteControlPollingIntervalInSeconds = intervalInSeconds;
+    }
 }

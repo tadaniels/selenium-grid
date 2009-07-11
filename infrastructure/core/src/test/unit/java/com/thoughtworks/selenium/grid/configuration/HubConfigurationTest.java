@@ -33,5 +33,16 @@ public class HubConfigurationTest {
         assertEquals(expected, hubConfiguration.getEnvironments());
     }
 
+    @Test
+    public void defaultRemoteControlPollingIntervalInSecondsIs3Minutes() {
+        assertEquals(180.0, new HubConfiguration().getRemoteControlPollingIntervalInSeconds());
+    }
+
+    @Test
+    public void defaultRemoteControlPollingIntervalInSecondsCanBeSetToANonDefaultValue() {
+        final HubConfiguration configuration = new HubConfiguration();
+        configuration.setRemoteControlPollingIntervalInSeconds(5);
+        assertEquals(5.0, configuration.getRemoteControlPollingIntervalInSeconds());
+    }
 
 }
