@@ -18,4 +18,5 @@ public interface DynamicRemoteControlPool extends RemoteControlPool {
 
     List<RemoteControlProxy> reservedRemoteControls();
 
+    void unregisterAllUnresponsiveRemoteControls();
 }

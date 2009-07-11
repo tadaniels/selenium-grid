@@ -644,4 +644,54 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         pool.logSessionMap();
     }
 
+    @Test
+    public void unregisterRemoteControlIfUnresponsiveDoesNotUnregisterAHealthyRemoteControl() {
+        final RemoteControlProxy healthyRC;
+        final GlobalRemoteControlPool pool;
+
+        healthyRC = new HealthyRemoteControl("host", 4444, "an environment", null);
+        pool = new GlobalRemoteControlPool();
+        pool.register(healthyRC);
+
+        pool.unregisterAllUnresponsiveRemoteControls();
+        assertTrue(pool.allRegisteredRemoteControls().contains(healthyRC));
+    }
+
+    @Test
+    public void unregisterRemoteControlIfUnresponsiveUnregistersARemoteControlThatIsUnreliable() {
+        final RemoteControlProxy unreliableRC;
+        final GlobalRemoteControlPool pool;
+
+        unreliableRC = new UnreliableRemoteControl("host", 4444, "an environment", null);
+        pool = new GlobalRemoteControlPool();
+        pool.register(unreliableRC);
+
+        pool.unregisterAllUnresponsiveRemoteControls();
+        assertTrue(pool.allRegisteredRemoteControls().isEmpty());
+    }
+
+    @Test
+    public void unregisterAllUnresponsiveRemoteControlsUnregistersOnlyUnavailableRemoteControls() {
+        final RemoteControlProxy anUnreliableRC;
+        final RemoteControlProxy anotherUnreliableRC;
+        final RemoteControlProxy aHealthyRC;
+        final RemoteControlProxy anotherHealthyRC;
+        final GlobalRemoteControlPool pool;
+
+        anUnreliableRC = new UnreliableRemoteControl("host", 4444, "an environment", null);
+        anotherUnreliableRC = new UnreliableRemoteControl("host", 4445, "another environment", null);
+        aHealthyRC = new HealthyRemoteControl("host", 4446, "another environment", null);
+        anotherHealthyRC = new HealthyRemoteControl("host", 4447, "another environment", null);
+        pool = new GlobalRemoteControlPool();
+        pool.register(anUnreliableRC);
+        pool.register(anotherUnreliableRC);
+        pool.register(aHealthyRC);
+        pool.register(anotherHealthyRC);
+
+        pool.unregisterAllUnresponsiveRemoteControls();
+        assertEquals(2, pool.allRegisteredRemoteControls().size());
+        assertTrue(pool.allRegisteredRemoteControls().contains(aHealthyRC));
+        assertTrue(pool.allRegisteredRemoteControls().contains(anotherHealthyRC));
+    }
+
 }

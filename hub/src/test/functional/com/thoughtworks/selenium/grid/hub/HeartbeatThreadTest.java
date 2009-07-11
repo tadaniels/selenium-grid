@@ -210,5 +210,13 @@ public class HeartbeatThreadTest extends UsingClassMock {
         public RemoteControlProvisioner getProvisioner(String environment) {
             throw new UnsupportedOperationException();
         }
+
+        public List<RemoteControlProxy> allRegisteredRemoteControls() {
+            throw new UnsupportedOperationException();
+        }
+
+        public void unregisterAllUnresponsiveRemoteControls() {
+            throw new UnsupportedOperationException();
+        }
     }
 }

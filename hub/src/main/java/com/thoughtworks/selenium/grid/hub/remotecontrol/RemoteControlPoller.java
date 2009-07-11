@@ -20,28 +20,21 @@ public class RemoteControlPoller implements Runnable {
     }
 
     public void pollAllRegisteredRemoteControls() {
+        sleepForALittleWhile();
+        registry.remoteControlPool().unregisterAllUnresponsiveRemoteControls();
+    }
+
+    public void stop() {
+        this.active = false;
+    }
+
+    protected void sleepForALittleWhile() {
         try {
             Thread.sleep(pollingIntervalInMilliseconds);
         } catch (InterruptedException e) {
-            this.active = false;
-        }
-
-        unregisterAllUnresponsiveRemoteControls();
-    }
-
-    public void unregisterAllUnresponsiveRemoteControls() {
-        final DynamicRemoteControlPool pool;
-
-        pool = registry.remoteControlPool();
-        for (RemoteControlProxy rc : pool.allRegisteredRemoteControls()) {
-            unregisterRemoteControlIfUnresponsive(rc);
+            stop(); // TODO - This is wrong
         }
     }
 
-    private void unregisterRemoteControlIfUnresponsive(RemoteControlProxy rc) {
-        if (rc.unreliable()) {
-            registry.remoteControlPool().unregister(rc);
-        }
-    }
 
 }
