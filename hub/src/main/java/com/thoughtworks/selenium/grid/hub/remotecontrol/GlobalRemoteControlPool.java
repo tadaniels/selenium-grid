@@ -16,11 +16,11 @@ import java.util.Map;
 public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
 
     private static final Log LOGGER = LogFactory.getLog(GlobalRemoteControlPool.class);
-    private final Map<String, RemoteControlProxy> remoteControlsBySessionIds;
+    private final Map<String, RemoteControlSession> remoteControlsBySessionIds;
     private final Map<String, RemoteControlProvisioner> provisionersByEnvironment;
 
     public GlobalRemoteControlPool() {
-        this.remoteControlsBySessionIds = new HashMap<String, RemoteControlProxy>();
+        this.remoteControlsBySessionIds = new HashMap<String, RemoteControlSession>();
         this.provisionersByEnvironment = new HashMap<String, RemoteControlProvisioner>();
     }
 
@@ -42,8 +42,10 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
         synchronized(provisionersByEnvironment) {
             synchronized (remoteControlsBySessionIds) {
                 status = getProvisioner(remoteControl.environment()).remove(remoteControl);
-                if (remoteControlsBySessionIds.containsValue(remoteControl)) {
-                    removeFromSessionMap(remoteControl);
+                for (RemoteControlSession session : remoteControlsBySessionIds.values()) {
+                    if (session.remoteControl().equals(remoteControl)) {
+                        removeFromSessionMap(session);
+                    }
                 }
             }
         }
@@ -72,7 +74,10 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
                         "Session '" + sessionId + "' is already asssociated with " + remoteControlsBySessionIds.get(sessionId));
             }
             synchronized (remoteControlsBySessionIds) {
-                remoteControlsBySessionIds.put(sessionId, remoteControl);
+                final RemoteControlSession newSession;
+  
+                newSession = new RemoteControlSession(sessionId, remoteControl);
+                remoteControlsBySessionIds.put(sessionId, newSession);
             }
         }
         if (LOGGER.isDebugEnabled()) {
@@ -140,19 +145,24 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
     }
 
     protected RemoteControlProxy getRemoteControlForSession(String sessionId) {
-        return remoteControlsBySessionIds.get(sessionId);
+        final RemoteControlSession session;
+
+        session = remoteControlsBySessionIds.get(sessionId);
+        if (null == session) { return null; }
+
+        return session.remoteControl();
     }
 
-    protected void removeFromSessionMap(RemoteControlProxy remoteControl) {
-        for (Map.Entry<String, RemoteControlProxy> entry : remoteControlsBySessionIds.entrySet()) {
-            if (entry.getValue().equals(remoteControl)) {
+    protected void removeFromSessionMap(RemoteControlSession session) {
+        for (Map.Entry<String, RemoteControlSession> entry : remoteControlsBySessionIds.entrySet()) {
+            if (entry.getValue().equals(session)) {
                 remoteControlsBySessionIds.remove(entry.getKey());
             }
         }
     }
 
     protected void logSessionMap() {
-        for (Map.Entry<String, RemoteControlProxy> entry : remoteControlsBySessionIds.entrySet()) {
+        for (Map.Entry<String, RemoteControlSession> entry : remoteControlsBySessionIds.entrySet()) {
             LOGGER.debug(entry.getKey() + " => " + entry.getValue());
         }
     }
