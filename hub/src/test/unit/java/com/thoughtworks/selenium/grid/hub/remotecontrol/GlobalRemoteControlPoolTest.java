@@ -12,6 +12,7 @@ import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -232,37 +233,6 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         verifyMocks();
     }
 
-//    @Test
-//    public void availableRemoteControlsReturnAvailableRemoteControlsOfTheProvisioner() {
-//        final Mock provisioner;
-//        final List<RemoteControlProxy> expectedList;
-//        final GlobalRemoteControlPool pool;
-//
-//        expectedList = new ArrayList<RemoteControlProxy>();
-//        provisioner = mock(RemoteControlProvisioner.class);
-//        pool = new GlobalRemoteControlPool();
-//        provisioner.expects("availableRemoteControls").will(returnValue(expectedList));
-//
-//        assertEquals(expectedList, pool.availableRemoteControls());
-//        verifyMocks();
-//    }
-
-//    @Test
-//    public void reservedRemoteControlsReturnAvailableRemoteControlsOfTheProvisioner() {
-//        final Mock provisioner;
-//        final List<RemoteControlProxy> expectedList;
-//        final GlobalRemoteControlPool pool;
-//
-//        expectedList = new ArrayList<RemoteControlProxy>();
-//        provisioner = mock(RemoteControlProvisioner.class);
-//        pool = new GlobalRemoteControlPool();
-//        provisioner.expects("reservedRemoteControls").will(returnValue(expectedList));
-//
-//        assertEquals(expectedList, pool.reservedRemoteControls());
-//        verifyMocks();
-//    }
-
-    
     @Test
     public void reserveReturnsTheRemoteControlReservedOnEnvironmentPool() {
         final GlobalRemoteControlPool pool;
@@ -694,4 +664,26 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         assertTrue(pool.allRegisteredRemoteControls().contains(anotherHealthyRC));
     }
 
+    @Test
+    public void updateSessionLastActiveAtUpdatesLastActiveAtOnTheSession() {
+        final RemoteControlProxy remoteControl;
+        final RemoteControlSession session;
+        final GlobalRemoteControlPool pool;
+        final long creationTime;
+        final long now;
+
+        remoteControl = new HealthyRemoteControl("host", 24, "env", null);
+        pool = new GlobalRemoteControlPool();
+
+        pool.register(remoteControl);
+        pool.associateWithSession(remoteControl, "a session id");
+        now = new Date().getTime();
+        creationTime = now - 10;
+        pool.getRemoteControlSession("a session id").updateLastActiveAt(creationTime);
+        pool.updateSessionLastActiveAt("a session id");
+        session = pool.getRemoteControlSession("a session id");
+        assertTrue(session.lastActiveAt() > creationTime);
+        assertTrue(session.lastActiveAt() >= now);
+        assertTrue(session.lastActiveAt() <= now + 10 * 1000);
+    }
 }

@@ -30,6 +30,11 @@ public class RemoteControlSession {
     }
 
     public void updateLastActiveAt() {
-        this.lastActiveAt = new Date().getTime();
+        updateLastActiveAt(new Date().getTime());
     }
+
+    protected void updateLastActiveAt(long newLastActiveAt) {
+        this.lastActiveAt = newLastActiveAt;
+    }
+
 }

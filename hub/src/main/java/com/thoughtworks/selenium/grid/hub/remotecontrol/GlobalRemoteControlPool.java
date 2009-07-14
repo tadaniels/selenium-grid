@@ -147,10 +147,12 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
     protected RemoteControlProxy getRemoteControlForSession(String sessionId) {
         final RemoteControlSession session;
 
-        session = remoteControlsBySessionIds.get(sessionId);
-        if (null == session) { return null; }
+        session = getRemoteControlSession(sessionId);
+        return (null == session)? null : session.remoteControl();
+    }
 
-        return session.remoteControl();
+    protected RemoteControlSession getRemoteControlSession(String sessionId) {
+        return remoteControlsBySessionIds.get(sessionId);
     }
 
     protected void removeFromSessionMap(RemoteControlSession session) {
@@ -173,14 +175,18 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
 
     public void unregisterAllUnresponsiveRemoteControls() {
         for (RemoteControlProxy rc : allRegisteredRemoteControls()) {
-            unregisterRemoteControlIfUnresponsive(rc);
+            unregisterRemoteControlIfUnreliable(rc);
         }
     }
 
-    protected void unregisterRemoteControlIfUnresponsive(RemoteControlProxy rc) {
+    protected void unregisterRemoteControlIfUnreliable(RemoteControlProxy rc) {
         if (rc.unreliable()) {
+            LOGGER.warn("Unregistering unreliable RC " + rc);
             unregister(rc);
         }
     }
 
+    public void updateSessionLastActiveAt(String sessionId) {
+        getRemoteControlSession(sessionId).updateLastActiveAt();
+    }
 }
