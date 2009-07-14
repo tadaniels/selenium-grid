@@ -1,5 +1,6 @@
 hub:
    port: 4444
+   remoteControlPollingIntervalInSeconds: 180
    environments:
        - name:    "Firefox on Windows"
          browser: "*firefox"

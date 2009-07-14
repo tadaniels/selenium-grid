@@ -53,6 +53,16 @@ public class GridConfigurationTest {
     }
 
     @Test
+    public void parseRemoteControlPollingIntervalInSecondsAsDefinedInYaml() {
+        final GridConfiguration configuration;
+
+        configuration = GridConfiguration.parse(new StringReader(
+                "hub: \n"
+              + "  remoteControlPollingIntervalInSeconds: 24"));
+        assertEquals(24.0, configuration.getHub().getRemoteControlPollingIntervalInSeconds());
+    }
+
+    @Test
     public void parseHubEnvironmentsAsDefinedInYaml() {
         final EnvironmentConfiguration[] environments;
         final GridConfiguration configuration;
