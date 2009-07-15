@@ -51,4 +51,5 @@ public interface RemoteControlPool {
      */
     void releaseForSession(String sessionId);
 
+    void updateSessionLastActiveAt(String sessionId);
 }

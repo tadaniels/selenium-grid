@@ -55,4 +55,23 @@ public class SeleneseCommandTest extends UsingClassMock {
         assertEquals("ERROR: Selenium Driver error: No sessionId provided for command 'foo => \"bar\"'", response.body());
     }
 
+    @Test
+    public void executeUpdatesTheSessionLastActiveAt() throws Exception {
+        final Mock remoteControl;
+        final SeleneseCommand command;
+        final Response expectedResponse;
+        final Mock pool;
+
+        command = new SeleneseCommand("a session id", new HttpParameters());
+        expectedResponse = new Response(0, "");
+        remoteControl = mock(RemoteControlProxy.class);
+        pool = mock(RemoteControlPool.class);
+        pool.stubs("retrieve").with("a session id").will(returnValue(remoteControl));
+        remoteControl.stubs("forward").with(command.parameters()).will(returnValue(expectedResponse));
+        pool.expects("updateSessionLastActiveAt").with("a session id").times(2);
+
+        command.execute((RemoteControlPool) pool);
+        verifyMocks();
+    }
+
 }

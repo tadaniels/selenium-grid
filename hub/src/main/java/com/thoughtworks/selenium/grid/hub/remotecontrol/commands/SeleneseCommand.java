@@ -30,12 +30,17 @@ public class SeleneseCommand {
 
     public Response execute(RemoteControlPool pool) throws IOException {
         final RemoteControlProxy remoteControl;
+        final Response response;
 
         if (null == sessionId) {
             return new Response("Selenium Driver error: No sessionId provided for command '" + parameters.toString() + "'");
         }
         remoteControl = pool.retrieve(sessionId());
-        return remoteControl.forward(parameters());
+        pool.updateSessionLastActiveAt(sessionId);
+        response = remoteControl.forward(parameters());
+        pool.updateSessionLastActiveAt(sessionId);
+
+        return response;
     }
 
 }

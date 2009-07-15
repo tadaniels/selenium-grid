@@ -208,5 +208,9 @@ public class HeartbeatThreadTest extends UsingClassMock {
         public void unregisterAllUnresponsiveRemoteControls() {
             throw new UnsupportedOperationException();
         }
+
+        public void updateSessionLastActiveAt(String sessionId) {
+            throw new UnsupportedOperationException();
+        }
     }
 }

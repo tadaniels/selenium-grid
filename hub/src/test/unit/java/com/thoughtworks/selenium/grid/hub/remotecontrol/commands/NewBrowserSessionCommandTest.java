@@ -171,4 +171,24 @@ public class NewBrowserSessionCommandTest extends UsingClassMock {
         verifyMocks();
     }
 
+    @Test
+    public void executeCallsUpdateSessionLastActiveAtWithTheSession() throws IOException {
+        final NewBrowserSessionCommand command;
+        final Mock remoteControl;
+        final Mock pool;
+        final Environment environment;
+
+        pool = mock(DynamicRemoteControlPool.class);
+        remoteControl = mock(RemoteControlProxy.class);
+        environment = new Environment("an environment", "*browser");
+        command = new NewBrowserSessionCommand(environment, new HttpParameters());
+        remoteControl.stubs("forward").will(returnValue(new Response(0, "OK,1234")));
+        pool.stubs("reserve").will(returnValue(remoteControl));
+        pool.stubs("associateWithSession");
+        pool.expects("updateSessionLastActiveAt").with(eq("1234"));
+
+        command.execute((RemoteControlPool) pool);
+        verifyMocks();
+    }
+
 }
