@@ -63,6 +63,16 @@ public class GridConfigurationTest {
     }
 
     @Test
+    public void parseSessionMaxIdleTimeInSecondsAsDefinedInYaml() {
+        final GridConfiguration configuration;
+
+        configuration = GridConfiguration.parse(new StringReader(
+                "hub: \n"
+              + "  sessionMaxIdleTimeInSeconds: 64"));
+        assertEquals(64.0, configuration.getHub().getSessionMaxIdleTimeInSeconds());
+    }
+
+    @Test
     public void parseHubEnvironmentsAsDefinedInYaml() {
         final EnvironmentConfiguration[] environments;
         final GridConfiguration configuration;

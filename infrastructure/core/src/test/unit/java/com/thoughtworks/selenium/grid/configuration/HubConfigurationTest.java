@@ -39,10 +39,22 @@ public class HubConfigurationTest {
     }
 
     @Test
-    public void defaultRemoteControlPollingIntervalInSecondsCanBeSetToANonDefaultValue() {
+    public void remoteControlPollingIntervalInSecondsCanBeSetToANonDefaultValue() {
         final HubConfiguration configuration = new HubConfiguration();
         configuration.setRemoteControlPollingIntervalInSeconds(5);
         assertEquals(5.0, configuration.getRemoteControlPollingIntervalInSeconds());
+    }
+
+    @Test
+    public void defaultSessionMaxIdleTimeInSecondsIs5Minutes() {
+        assertEquals(300.0, new HubConfiguration().getSessionMaxIdleTimeInSeconds());
+    }
+
+    @Test
+    public void sessionMaxIdleTimeInSecondsCanBeSetToANonDefaultValue() {
+        final HubConfiguration configuration = new HubConfiguration();
+        configuration.setSessionMaxIdleTimeInSeconds(24);
+        assertEquals(24.0, configuration.getSessionMaxIdleTimeInSeconds());
     }
 
 }
