@@ -11,6 +11,7 @@ import static junit.framework.Assert.assertTrue;
 import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import org.junit.Test;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Date;
 import java.util.List;
@@ -638,6 +639,59 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
 
         pool.unregisterAllUnresponsiveRemoteControls();
         assertTrue(pool.allRegisteredRemoteControls().isEmpty());
+    }
+
+    @Test
+    public void releaseSessionIfIdleForTooLongDoesReleaseTheSessionWhenIdleForToLong() {
+        final RemoteControlProxy aRC;
+        final GlobalRemoteControlPool pool;
+
+        aRC = new HealthyRemoteControl("host", 4444, "an environment", null);
+        pool = new GlobalRemoteControlPool();
+        pool.register(aRC);
+        pool.reserve(new Environment("an environment", "a browser"));
+        pool.associateWithSession(aRC, "a session id");
+
+        pool.releaseSessionIfIdleForTooLong(new RemoteControlSession("a session id", aRC), 0);
+        assertNull(pool.getRemoteControlForSession("a session id"));
+        assertTrue(pool.availableRemoteControls().contains(aRC));
+        assertTrue(pool.allRegisteredRemoteControls().contains(aRC));
+    }
+
+    @Test
+    public void releaseSessionIfIdleForTooLongDoesNotReleaseTheSessionWhenIdleForLessThanTheMaxIdleInterval() {
+        final RemoteControlProxy aRC;
+        final GlobalRemoteControlPool pool;
+
+        aRC = new HealthyRemoteControl("host", 4444, "an environment", null);
+        pool = new GlobalRemoteControlPool();
+        pool.register(aRC);
+        pool.reserve(new Environment("an environment", "a browser"));
+        pool.associateWithSession(aRC, "a session id");
+
+        pool.releaseSessionIfIdleForTooLong(new RemoteControlSession("a session id", aRC), 10);
+        assertNotNull(pool.getRemoteControlForSession("a session id"));
+        assertFalse(pool.availableRemoteControls().contains(aRC));
+        assertTrue(pool.allRegisteredRemoteControls().contains(aRC));
+    }
+
+    @Test
+    public void releaseSessionIfIdleForTooLongConvertTheMaxIdleIntervalFromSecondsToMilliseconds() {
+        final RemoteControlProxy aRC;
+        final GlobalRemoteControlPool pool;
+        final Mock session;
+
+        aRC = new HealthyRemoteControl("host", 4444, "an environment", null);
+        pool = new GlobalRemoteControlPool();
+        pool.register(aRC);
+        pool.reserve(new Environment("an environment", "a browser"));
+        pool.associateWithSession(aRC, "a session id");
+        session = mock(RemoteControlSession.class);
+        session.stubs("sessionId").will(returnValue("a session id"));
+        session.expects("innactiveForMoreThan").with(eq(20000)).will(returnValue(true));
+
+        pool.releaseSessionIfIdleForTooLong((RemoteControlSession) session, 20);
+        assertNull(pool.getRemoteControlForSession("a session id"));
     }
 
     @Test
