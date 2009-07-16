@@ -36,7 +36,7 @@ public class RemoteControlPoller implements Runnable {
 
     public void garbageCollectRemoteControls() {
         sleepForALittleWhile();
-        LOGGER.debug("Garbage collecting unavailable RCs and stale sessions...");
+        LOGGER.info("Garbage collecting unavailable RCs and stale sessions...");
         pool.unregisterAllUnresponsiveRemoteControls();
         pool.recycleAllSessionsIdleForTooLong(sessionMaxIdleTimeInSeconds);
     }
