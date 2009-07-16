@@ -1,8 +1,8 @@
 package com.thoughtworks.selenium.grid.hub.management.console;
 
-import com.thoughtworks.selenium.grid.hub.HubRegistry;
 import com.thoughtworks.selenium.grid.hub.Environment;
 import com.thoughtworks.selenium.grid.hub.EnvironmentManager;
+import com.thoughtworks.selenium.grid.hub.HubRegistry;
 import com.thoughtworks.selenium.grid.hub.management.console.mvc.Page;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.DynamicRemoteControlPool;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProxy;
@@ -12,7 +12,6 @@ import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import org.junit.Test;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -96,7 +95,7 @@ public class ConsoleControllerTest extends UsingClassMock {
     }
 
     @Test
-    public void processRendersThePageReturnedByTheListAction() throws IOException, ServletException {
+    public void processRendersThePageReturnedByTheListAction() throws IOException {
         final ConsoleController controller;
         final Page expectedPage;
         final Mock expectedResponse;

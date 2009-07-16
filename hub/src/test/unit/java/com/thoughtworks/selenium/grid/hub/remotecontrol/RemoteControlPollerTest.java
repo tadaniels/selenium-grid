@@ -36,15 +36,31 @@ public class RemoteControlPollerTest extends UsingClassMock {
     }
 
     @Test
-    public void pollAllRegisteredRemoteControlsCallsUnregisterAllUnresponsiveRemoteControlsOnThePool() throws IOException {
+    public void garbageCollectRemoteControlsCallsUnregisterAllUnresponsiveRemoteControlsOnThePool() {
         final RemoteControlPoller poller;
         final Mock pool;
 
         pool = mock(DynamicRemoteControlPool.class);
         poller = new RemoteControlPoller((DynamicRemoteControlPool) pool, 0, 0);
+        pool.stubs("recycleAllSessionsIdleForTooLong");
 
         pool.expects("unregisterAllUnresponsiveRemoteControls");
-        poller.pollAllRegisteredRemoteControls();
+        poller.garbageCollectRemoteControls();
+
+        verifyMocks();
+    }
+
+    @Test
+    public void garbageCollectRemoteControlsCallsRecycleAllSessionsIdleForTooLongOnThePool() {
+        final RemoteControlPoller poller;
+        final Mock pool;
+
+        pool = mock(DynamicRemoteControlPool.class);
+        poller = new RemoteControlPoller((DynamicRemoteControlPool) pool, 0, 37.2);
+        pool.stubs("unregisterAllUnresponsiveRemoteControls");
+
+        pool.expects("recycleAllSessionsIdleForTooLong").with(eq(37.2));
+        poller.garbageCollectRemoteControls();
 
         verifyMocks();
     }

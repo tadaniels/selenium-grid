@@ -7,8 +7,6 @@ import java.io.IOException;
 
 /**
  * Web Controller processing HTTP requests.
- *
- * @author: Philippe Hanrigou
  */
 public class Controller {
 

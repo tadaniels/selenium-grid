@@ -215,7 +215,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
     }
 
     @Test
-    public void unreliableReturnsFalseWhenTheResponseIsSuccesfull() throws IOException {
+    public void unreliableReturnsFalseWhenTheResponseIsSuccesfull() {
         final RemoteControlProxy proxy;
         final Response successfulResponse;
         final Mock client;
@@ -230,7 +230,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
     }
 
     @Test
-    public void unreliableReturnsTrueWhenTheResponseIsA500() throws IOException {
+    public void unreliableReturnsTrueWhenTheResponseIsA500() {
         final RemoteControlProxy proxy;
         final Response successfulResponse;
         final Mock client;
@@ -246,7 +246,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
 
     @SuppressWarnings({"ThrowableInstanceNeverThrown"})
     @Test
-    public void unreliableReturnsTrueWhenTheRemoteControlCannotBeReached() throws IOException {
+    public void unreliableReturnsTrueWhenTheRemoteControlCannotBeReached() {
         final RemoteControlProxy proxy;
         final Mock client;
 

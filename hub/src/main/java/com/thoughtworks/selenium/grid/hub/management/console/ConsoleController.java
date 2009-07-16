@@ -4,7 +4,6 @@ import com.thoughtworks.selenium.grid.hub.HubRegistry;
 import com.thoughtworks.selenium.grid.hub.management.console.mvc.Controller;
 import com.thoughtworks.selenium.grid.hub.management.console.mvc.Page;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -15,7 +14,7 @@ public class ConsoleController extends Controller {
         super(registry);
     }
 
-    public void process(HttpServletResponse response) throws ServletException, IOException {
+    public void process(HttpServletResponse response) throws IOException {
         final Page page = list();
         render(page, response);
     }

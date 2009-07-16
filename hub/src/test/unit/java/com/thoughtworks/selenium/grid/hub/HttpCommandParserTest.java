@@ -1,16 +1,14 @@
 package com.thoughtworks.selenium.grid.hub;
 
+import com.thoughtworks.selenium.grid.HttpParameters;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.commands.NewBrowserSessionCommand;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.commands.SeleneseCommand;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.commands.TestCompleteCommand;
-import com.thoughtworks.selenium.grid.HttpParameters;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import org.junit.Test;
-
-import java.io.IOException;
 
 
 public class HttpCommandParserTest extends UsingClassMock {
@@ -100,7 +98,7 @@ public class HttpCommandParserTest extends UsingClassMock {
 
     
     @Test(expected = CommandParsingException.class)
-    public void executeThrowsCommandParsingExceptionForNewBrowserSessionWhenEnvironmentIsNotKnown() throws IOException {
+    public void executeThrowsCommandParsingExceptionForNewBrowserSessionWhenEnvironmentIsNotKnown() {
         final Mock environmentManager;
         final HttpParameters parameters;
 
@@ -116,7 +114,7 @@ public class HttpCommandParserTest extends UsingClassMock {
     }
 
     @Test(expected = CommandParsingException.class)
-    public void executeThrowsCommandParsingExceptionForAGenericSeleneseCommandWhenSessionIdIsNull() throws IOException {
+    public void executeThrowsCommandParsingExceptionForAGenericSeleneseCommandWhenSessionIdIsNull() {
         final Mock environmentManager;
         final HttpParameters parameters;
 
@@ -129,7 +127,7 @@ public class HttpCommandParserTest extends UsingClassMock {
     }
 
     @Test(expected = CommandParsingException.class)
-    public void executeThrowsCommandParsingExceptionForTestCompleteCommandWhenSessionIdIsNull() throws IOException {
+    public void executeThrowsCommandParsingExceptionForTestCompleteCommandWhenSessionIdIsNull() {
         final Mock environmentManager;
         final HttpParameters parameters;
 

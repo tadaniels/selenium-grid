@@ -7,11 +7,13 @@ import org.junit.Test;
 public class NoSuchEnvironmentExceptionTest {
 
     @Test
+    @SuppressWarnings({"ThrowableInstanceNeverThrown"})
     public void environmentReturnsTheOneProvidedInTheConstructor() {
       assertEquals("*safari", new NoSuchEnvironmentException("*safari").environment());
     }
 
     @Test
+    @SuppressWarnings({"ThrowableInstanceNeverThrown"})
     public void messageIsExplicit() {
       assertEquals("com.thoughtworks.selenium.grid.hub.NoSuchEnvironmentException: Could not find any remote control providing the '*safari' environment. " +
                    "Please make sure you started some remote controls which registered as offering " +

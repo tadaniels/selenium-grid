@@ -80,7 +80,7 @@ public class HubServletTest extends UsingClassMock {
     }
 
     @Test
-    public void forwardExecuteTheSeleneseCommandOnTheAppropriateRemoteControl() throws IOException, NoSuchMethodException {
+    public void forwardExecuteTheSeleneseCommandOnTheAppropriateRemoteControl() throws IOException {
         final HttpParameters requestParameters;
         final Mock environmentManager;
         final Mock remoteControl;
@@ -106,7 +106,7 @@ public class HubServletTest extends UsingClassMock {
 
     @SuppressWarnings({"ThrowableInstanceNeverThrown"})
     @Test
-    public void forwardReturnAnErrorMessageWhenACommandParsingExceptionIsThrown() throws IOException, NoSuchMethodException {
+    public void forwardReturnAnErrorMessageWhenACommandParsingExceptionIsThrown() throws IOException {
         final HttpParameters requestParameters;
         final Mock environmentManager;
         final Response response;
@@ -130,7 +130,7 @@ public class HubServletTest extends UsingClassMock {
 
     @SuppressWarnings({"ThrowableInstanceNeverThrown"})
     @Test
-    public void forwardReturnAnErrorMessageWhenANoSuchEnvironmentExceptionIsThrown() throws IOException, NoSuchMethodException {
+    public void forwardReturnAnErrorMessageWhenANoSuchEnvironmentExceptionIsThrown() throws IOException {
         final HttpParameters requestParameters;
         final Mock environmentManager;
         final Response response;

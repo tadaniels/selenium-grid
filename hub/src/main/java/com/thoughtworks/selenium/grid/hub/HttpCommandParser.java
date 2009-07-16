@@ -7,8 +7,6 @@ import com.thoughtworks.selenium.grid.HttpParameters;
 
 /**
  * Parse HTTP commands targeting a Remote Control
- *
- * @author: Philippe Hanrigou
  */
 public class HttpCommandParser {
 

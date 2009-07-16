@@ -19,4 +19,7 @@ public interface DynamicRemoteControlPool extends RemoteControlPool {
     List<RemoteControlProxy> reservedRemoteControls();
 
     void unregisterAllUnresponsiveRemoteControls();
+
+    void recycleAllSessionsIdleForTooLong(double maxIdleTimeInSeconds);
+
 }

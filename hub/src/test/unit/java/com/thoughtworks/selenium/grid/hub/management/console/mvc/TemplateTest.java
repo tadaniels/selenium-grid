@@ -25,7 +25,7 @@ public class TemplateTest extends UsingClassMock {
     }
 
     @Test
-    public void renderPlainContentAsIs() throws IOException, TemplateException {
+    public void renderPlainContentAsIs() throws IOException {
         final Template template;
 
         template = new Template("Hello World");
@@ -33,7 +33,7 @@ public class TemplateTest extends UsingClassMock {
     }
 
     @Test
-    public void renderInterpretsAssignedVariables() throws IOException, TemplateException {
+    public void renderInterpretsAssignedVariables() throws IOException {
         final Map<String, Object> assigns;
         final Template template;
 
@@ -44,7 +44,7 @@ public class TemplateTest extends UsingClassMock {
     }
 
     @Test
-    public void renderIteratesOnCollections() throws IOException, TemplateException {
+    public void renderIteratesOnCollections() throws IOException {
         final Map<String, Object> bindings;
         final Template template;
 
@@ -55,7 +55,7 @@ public class TemplateTest extends UsingClassMock {
     }
 
     @Test
-    public void readTemplateFromAReaderWhenProvidedInConstructor() throws IOException, TemplateException {
+    public void readTemplateFromAReaderWhenProvidedInConstructor() throws IOException {
         final Template template;
 
         template = new Template(new StringReader("Template Content"));
@@ -63,7 +63,7 @@ public class TemplateTest extends UsingClassMock {
     }
 
     @Test
-    public void readTemplateFromAFreemarkerTemplateWhenProvidedInConstructor() throws IOException, TemplateException {
+    public void readTemplateFromAFreemarkerTemplateWhenProvidedInConstructor() throws IOException {
         final freemarker.template.Template freemarkerTemplate;
         final Template template;
 
