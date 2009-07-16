@@ -1,9 +1,9 @@
 package com.thoughtworks.selenium.grid.regressiontests;
 
-import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.*;
+import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.closeSeleniumSession;
+import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.session;
+import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.startSeleniumSession;
 import static org.testng.Assert.assertTrue;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -57,7 +57,6 @@ public class CyrilicTests {
      * test runs in these fields has typed '??????????' (wrong symbols). In this
      * case application do not pass to the next step and test fails.
      *
-     * @throws Exception
      */
     @Test(groups = {"regression", "cyrilic"}, description = "Click, select and type Cyrilic")
     @Parameters({"seleniumHost", "seleniumPort", "browser"})

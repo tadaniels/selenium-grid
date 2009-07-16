@@ -17,7 +17,7 @@ public class ThreadSafeSeleniumSessionStorage {
     /**
      * Thread local Selenium driver instance so that we can run in multi-threaded mode.
      */
-    private static ThreadLocal<Selenium> threadLocalSelenium = new ThreadLocal<Selenium>();
+    private static final ThreadLocal<Selenium> threadLocalSelenium = new ThreadLocal<Selenium>();
 
 
     public static void startSeleniumSession(String seleniumHost, int seleniumPort, String browser, String webSite) {
@@ -27,7 +27,7 @@ public class ThreadSafeSeleniumSessionStorage {
         LOGGER.info("Got Selenese session:" + session());
     }
 
-    public static void closeSeleniumSession() throws Exception {
+    public static void closeSeleniumSession() {
         LOGGER.info("Closing Selenese session: " + session());
         if (null != session()) {
             session().stop();

@@ -18,7 +18,7 @@ public class JVMLauncher {
         this.mainClass = mainClass;
     }
 
-    public JVMHandle launchNewJVM() throws IOException, InterruptedException {
+    public JVMHandle launchNewJVM() throws IOException {
         return new JVMHandle(newProcessBuilder().start());
        }
 

@@ -18,22 +18,22 @@ public class HubRequestTest extends UsingClassMock {
     }
 
     @Test
-    public void targetURLReturnsThetargetURLProvidedInConstructor() throws IOException {
+    public void targetURLReturnsThetargetURLProvidedInConstructor() {
         assertEquals("http://target-url", new HubRequest("http://target-url", "", "", "").targetURL());
     }
 
     @Test
-    public void postHostAsProvidedInConstructor() throws IOException {
+    public void postHostAsProvidedInConstructor() {
         assertEquals("The Host", new HubRequest("", "The Host", "", "").postMethod().getParameter("host").getValue());
     }
 
     @Test
-    public void postPortAsProvidedInConstructor() throws IOException {
+    public void postPortAsProvidedInConstructor() {
         assertEquals("The Port", new HubRequest("", "", "The Port", "").postMethod().getParameter("port").getValue());
     }
 
     @Test
-    public void postEnvironmnetAsProvidedInConstructor() throws IOException {
+    public void postEnvironmnetAsProvidedInConstructor() {
         assertEquals("The Env", new HubRequest("", "", "", "The Env").postMethod().getParameter("environment").getValue());
     }
 

@@ -12,7 +12,7 @@ import java.io.PrintStream;
 public class JVMHandle {
     private final Process process;
 
-    public JVMHandle(Process process) throws IOException {
+    public JVMHandle(Process process) {
         this.process = process;
     }
 

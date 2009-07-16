@@ -6,7 +6,7 @@ import java.util.Collection;
  * Returns a string created by converting each element of the array to
  * a string, separated by speparator.
  */
-public class Join extends Object {
+public class Join {
 
     private final Collection collection;
     private final String separator;

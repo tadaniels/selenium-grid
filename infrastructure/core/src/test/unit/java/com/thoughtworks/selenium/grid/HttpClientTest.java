@@ -1,12 +1,10 @@
 package com.thoughtworks.selenium.grid;
 
-import junit.framework.Assert;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
+import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import org.junit.Test;
@@ -85,7 +83,7 @@ public class HttpClientTest extends UsingClassMock {
     }
 
     @Test
-    public void buildPostMethodUsesParamsProvidedAsParameter() throws IOException {
+    public void buildPostMethodUsesParamsProvidedAsParameter() {
         final HttpParameters parameters;
         final PostMethod postmethod;
 
@@ -162,15 +160,12 @@ public class HttpClientTest extends UsingClassMock {
     @Test
     public void postReturnTheResultOfAPostRequestAsUTF8FormEncodingEncoding() throws IOException {
         final Response expectedResponse;
-        final HttpParameters parameters;
         final HttpClient httpClient;
 
         expectedResponse = new Response(null);
         httpClient = new HttpClient(null) {
 
             protected Response request(HttpMethod method) throws IOException {
-                final HttpMethodParams params;
-
                 assertEquals("application/x-www-form-urlencoded; ; charset=UTF-8",
                              method.getRequestHeader("Content-Type").getValue());
                 return expectedResponse;

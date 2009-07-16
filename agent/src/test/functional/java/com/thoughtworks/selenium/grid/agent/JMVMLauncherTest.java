@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 public class JMVMLauncherTest {
-    public static int SECOND = 1000;
+    public static final int SECOND = 1000;
 
     @Test
     public void canLaunchAnAgentAndStopIt() throws IOException, InterruptedException {
@@ -28,7 +28,7 @@ public class JMVMLauncherTest {
 
     
     @Test
-    public void canCaptureProcessOutut() throws IOException, InterruptedException { 
+    public void canCaptureProcessOutut() throws IOException { 
         final Classpath classpath;
         final JVMLauncher launcher;
         final JVMHandle handle;

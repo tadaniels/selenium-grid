@@ -3,9 +3,7 @@ package com.thoughtworks.selenium.grid.hub;
 import static com.thoughtworks.selenium.grid.AssertionHelper.assertDistinctHashCodes;
 import static com.thoughtworks.selenium.grid.AssertionHelper.assertNotEquals;
 import static com.thoughtworks.selenium.grid.AssertionHelper.assertSameHashCode;
-import com.thoughtworks.selenium.grid.hub.remotecontrol.DynamicRemoteControlPool;
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertSame;
 import org.jbehave.classmock.UsingClassMock;
 import org.junit.Test;
 

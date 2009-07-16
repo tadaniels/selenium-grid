@@ -51,7 +51,7 @@ public class HttpParameters {
         for (String name : orderedNames) {
             builder.append(name);
             builder.append(" => \"");
-            builder.append(get((String) name));
+            builder.append(get(name));
             builder.append("\", ");
         }
         if (!parameterMap.isEmpty()) {

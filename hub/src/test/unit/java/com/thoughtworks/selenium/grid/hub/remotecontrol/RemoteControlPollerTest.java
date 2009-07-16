@@ -7,8 +7,6 @@ import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import org.junit.Test;
 
-import java.io.IOException;
-
 public class RemoteControlPollerTest extends UsingClassMock {
 
     @Test
