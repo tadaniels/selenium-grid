@@ -13,21 +13,26 @@ public class RemoteControlPollerTest extends UsingClassMock {
 
     @Test
     public void activeIsTrueJustAfterThePollerHasBeenCreated() {
-        assertTrue(new RemoteControlPoller(0, null).active());
+        assertTrue(new RemoteControlPoller(null, 0, 0).active());
     }
 
     @Test
     public void activeIsFalseOnceStopHasBeenCalled() {
         final RemoteControlPoller poller;
 
-        poller = new RemoteControlPoller(0, null);
+        poller = new RemoteControlPoller(null, 0, 0);
         poller.stop();
         assertFalse(poller.active());
     }
 
     @Test
     public void pollingIntervalInMillisecondsIsDerivedFromTheConstructorValueInSeconds() {
-        assertEquals(1000, new RemoteControlPoller(1, null).pollingIntervalInMilliseconds());
+        assertEquals(1000, new RemoteControlPoller(null, 1, 0).pollingIntervalInMilliseconds());
+    }
+
+    @Test
+    public void sessionMaxIdleTimeInSecondsIsTheOneProvidedInTheConstructor() {
+        assertEquals(37.2, new RemoteControlPoller(null, 1, 37.2).sessionMaxIdleTimeInSeconds());
     }
 
     @Test
@@ -36,7 +41,7 @@ public class RemoteControlPollerTest extends UsingClassMock {
         final Mock pool;
 
         pool = mock(DynamicRemoteControlPool.class);
-        poller = new RemoteControlPoller(0, (DynamicRemoteControlPool) pool);
+        poller = new RemoteControlPoller((DynamicRemoteControlPool) pool, 0, 0);
 
         pool.expects("unregisterAllUnresponsiveRemoteControls");
         poller.pollAllRegisteredRemoteControls();

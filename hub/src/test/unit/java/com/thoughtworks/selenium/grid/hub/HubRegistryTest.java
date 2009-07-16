@@ -62,7 +62,9 @@ public class HubRegistryTest {
 
         registry = new HubRegistry();
         registry.gridConfiguration().getHub().setRemoteControlPollingIntervalInSeconds(24);
+        registry.gridConfiguration().getHub().setSessionMaxIdleTimeInSeconds(33);
         assertEquals(24000, registry.remoteControlPoller().pollingIntervalInMilliseconds());
+        assertEquals(33.0, registry.remoteControlPoller().sessionMaxIdleTimeInSeconds(), 0);
     }
 
 }

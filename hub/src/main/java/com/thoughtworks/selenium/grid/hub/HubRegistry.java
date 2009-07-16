@@ -3,6 +3,7 @@ package com.thoughtworks.selenium.grid.hub;
 import com.thoughtworks.selenium.grid.configuration.EnvironmentConfiguration;
 import com.thoughtworks.selenium.grid.configuration.GridConfiguration;
 import com.thoughtworks.selenium.grid.configuration.ResourceLocator;
+import com.thoughtworks.selenium.grid.configuration.HubConfiguration;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.DynamicRemoteControlPool;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.GlobalRemoteControlPool;
 import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlPoller;
@@ -68,10 +69,15 @@ public class HubRegistry {
     }
 
     public synchronized RemoteControlPoller remoteControlPoller() {
+        final HubConfiguration hubConfiguration;
+
         if (null == poller) {
+            hubConfiguration = gridConfiguration().getHub();
             poller = new RemoteControlPoller(
-                    gridConfiguration().getHub().getRemoteControlPollingIntervalInSeconds(),
-                    remoteControlPool());
+                    remoteControlPool(),
+                    hubConfiguration.getRemoteControlPollingIntervalInSeconds(),
+                    hubConfiguration.getSessionMaxIdleTimeInSeconds()
+            );
         }
         return poller;
     }
