@@ -190,11 +190,18 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
         getRemoteControlSession(sessionId).updateLastActiveAt();
     }
 
+    public void releaseAllSessionsIdleForTooLong(double maxIdleTimeInSeconds) {
+        for (Map.Entry<String, RemoteControlSession> entry : remoteControlsBySessionIds.entrySet()) {
+            releaseSessionIfIdleForTooLong(entry.getValue(), maxIdleTimeInSeconds);
+        }
+    }
+
     public void releaseSessionIfIdleForTooLong(RemoteControlSession session, double maxIdleTimeInSeconds) {
         final int maxIdleTImeInMilliseconds;
         
         maxIdleTImeInMilliseconds = (int) (maxIdleTimeInSeconds * 1000);
         if (session.innactiveForMoreThan(maxIdleTImeInMilliseconds)) {
+            LOGGER.warn("Releasing session IDLE for more than " + maxIdleTimeInSeconds + " seconds: " + session);
             releaseForSession(session.sessionId());
         }
     }

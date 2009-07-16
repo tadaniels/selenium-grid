@@ -695,6 +695,36 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
     }
 
     @Test
+    public void releaseAllSessionsIdleForTooLongDoesNotAffectRemoteControlsNotAssociatedWithASession() {
+        final RemoteControlProxy healthyRC;
+        final GlobalRemoteControlPool pool;
+
+        healthyRC = new HealthyRemoteControl("host", 4444, "an environment", null);
+        pool = new GlobalRemoteControlPool();
+        pool.register(healthyRC);
+
+        pool.releaseAllSessionsIdleForTooLong(0.0);
+        assertFalse(pool.reservedRemoteControls().contains(healthyRC));
+        assertTrue(pool.allRegisteredRemoteControls().contains(healthyRC));
+    }
+
+    @Test
+    public void releaseAllSessionsIdleForTooLongDoesReleaseRemoteControlsAssociatedWithASessionAndIdleForTooLong() {
+        final RemoteControlProxy rc;
+        final GlobalRemoteControlPool pool;
+
+        rc = new HealthyRemoteControl("host", 4444, "an environment", null);
+        pool = new GlobalRemoteControlPool();
+        pool.register(rc);
+        pool.reserve(new Environment("an environment", "a browser"));
+        pool.associateWithSession(rc, "a session id");
+
+        pool.releaseAllSessionsIdleForTooLong(0.0);
+        assertNull(pool.getRemoteControlForSession("a session id"));
+        assertTrue(pool.allRegisteredRemoteControls().contains(rc));
+    }
+
+    @Test
     public void unregisterAllUnresponsiveRemoteControlsUnregistersOnlyUnavailableRemoteControls() {
         final RemoteControlProxy anUnreliableRC;
         final RemoteControlProxy anotherUnreliableRC;
