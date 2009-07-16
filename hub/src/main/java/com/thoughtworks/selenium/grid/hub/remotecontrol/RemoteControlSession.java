@@ -30,11 +30,22 @@ public class RemoteControlSession {
     }
 
     public void updateLastActiveAt() {
-        updateLastActiveAt(new Date().getTime());
+        updateLastActiveAt(now());
+    }
+
+    public boolean innactiveSince(long millisecondsSinceEpoch) {
+        return lastActiveAt() <= millisecondsSinceEpoch;
     }
 
     protected void updateLastActiveAt(long newLastActiveAt) {
         this.lastActiveAt = newLastActiveAt;
     }
 
+    protected long now() {
+        return new Date().getTime();
+    }
+
+    public boolean innactiveForMoreThan(int milliseconds) {
+        return innactiveSince(now() - milliseconds);
+    }
 }
