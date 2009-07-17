@@ -1,6 +1,5 @@
 package com.thoughtworks.selenium.grid.remotecontrol;
 
-import junit.framework.Assert;
 import static junit.framework.Assert.assertEquals;
 import org.jbehave.classmock.UsingClassMock;
 import org.junit.Test;

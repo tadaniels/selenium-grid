@@ -1,5 +1,6 @@
 package com.thoughtworks.selenium.grid.hub.management.console;
 
+import com.thoughtworks.selenium.grid.hub.HubRegistry;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -8,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
-import com.thoughtworks.selenium.grid.hub.HubRegistry;
 
 /**
  * Gateway to Selenium Farm.

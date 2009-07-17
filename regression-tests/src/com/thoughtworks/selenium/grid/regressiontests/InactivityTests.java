@@ -1,7 +1,6 @@
 package com.thoughtworks.selenium.grid.regressiontests;
 
 import com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage;
-import org.testng.AssertJUnit;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 

@@ -1,7 +1,7 @@
 package com.thoughtworks.selenium.grid.regressiontests;
 
-import org.testng.annotations.Parameters;
 import com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage;
+import org.testng.annotations.Parameters;
 
 /**
  * Check that Selenium Grid handles Unicode Characters properly

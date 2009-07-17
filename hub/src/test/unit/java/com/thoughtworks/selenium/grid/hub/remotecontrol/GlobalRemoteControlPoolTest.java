@@ -10,8 +10,8 @@ import static junit.framework.Assert.assertSame;
 import static junit.framework.Assert.assertTrue;
 import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
-import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
 
 import java.util.Date;
 import java.util.List;

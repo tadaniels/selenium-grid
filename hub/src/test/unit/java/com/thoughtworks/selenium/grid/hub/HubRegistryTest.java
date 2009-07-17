@@ -1,8 +1,8 @@
 package com.thoughtworks.selenium.grid.hub;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 

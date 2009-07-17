@@ -1,7 +1,6 @@
 package com.thoughtworks.selenium.grid.remotecontrol.instrumentation;
 
 import com.thoughtworks.selenium.grid.remotecontrol.SelfRegisteringRemoteControl;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

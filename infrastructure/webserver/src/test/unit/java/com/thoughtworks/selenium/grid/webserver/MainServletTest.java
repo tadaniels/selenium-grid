@@ -1,5 +1,6 @@
 package com.thoughtworks.selenium.grid.webserver;
 
+import com.thoughtworks.selenium.grid.HttpParameters;
 import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import static org.junit.Assert.assertEquals;
@@ -14,10 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
-import java.util.Map;
 import java.util.HashMap;
-
-import com.thoughtworks.selenium.grid.HttpParameters;
+import java.util.Map;
 
 public class MainServletTest extends UsingClassMock {
 

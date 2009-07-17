@@ -1,7 +1,7 @@
 package com.thoughtworks.selenium.grid.configuration;
 
-import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertTrue;
 import org.junit.Test;
 
 

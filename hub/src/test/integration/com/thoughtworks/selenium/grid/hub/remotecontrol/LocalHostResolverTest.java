@@ -1,5 +1,7 @@
 package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
+import org.junit.Test;
+
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -8,8 +10,6 @@ import java.util.Collections;
 import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.List;
-
-import org.junit.Test;
 
 /**
  * Experimenting on educated guess for which address a remote control should

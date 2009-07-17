@@ -6,9 +6,9 @@ import static junit.framework.Assert.assertTrue;
 import org.jbehave.classmock.UsingClassMock;
 import org.junit.Test;
 
-import java.util.Set;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class HttpParametersTest extends UsingClassMock {
 
