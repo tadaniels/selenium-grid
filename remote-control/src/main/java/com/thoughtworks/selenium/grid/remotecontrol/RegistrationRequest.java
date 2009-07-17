@@ -12,8 +12,11 @@ public class RegistrationRequest extends HubRequest {
 
     private static final Log LOGGER = LogFactory.getLog(RegistrationRequest.class);
 
-    public RegistrationRequest(String seleniumHubURL, String host, String port, String environment) {
-      super(seleniumHubURL + "/registration-manager/register", host, port, environment);
+    public RegistrationRequest(RegistrationInfo registrationInfo) {
+      super(registrationInfo.hubURL() + "/registration-manager/register",
+            registrationInfo.host(),
+            registrationInfo.port(),
+            registrationInfo.environment());
     }
 
 

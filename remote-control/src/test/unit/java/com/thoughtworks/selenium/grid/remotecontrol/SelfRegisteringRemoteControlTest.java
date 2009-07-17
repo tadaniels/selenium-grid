@@ -4,29 +4,25 @@ import static junit.framework.Assert.assertEquals;
 import org.jbehave.classmock.UsingClassMock;
 import org.junit.Test;
 
-/**
- * {@link com.thoughtworks.selenium.grid.remotecontrol.HubRequest} Unit test class.
- */
 public class SelfRegisteringRemoteControlTest extends UsingClassMock {
 
     @Test
-    public void hubURLIsTheOneProvidedInTheConstructor() {
-        assertEquals("The URL", new SelfRegisteringRemoteControl("The URL", "", "", "").hubURL());
+    public void registrationInfoIsTheOneProvidedInTheConstructor() {
+        final RegistrationInfo info;
+
+        info = new RegistrationInfo("The URL", "", "", "");
+        assertEquals(info, new SelfRegisteringRemoteControl(info).registrationInfo());
     }
 
     @Test
-    public void environmentIsTheOneProvidedInTheConstructor() {
-        assertEquals("The Environment", new SelfRegisteringRemoteControl("", "The Environment", "", "").environment());
-    }
+    public void registrationInfoCanBProvidedWithAConvenienceConstructor() {
+        final SelfRegisteringRemoteControl rc;
 
-    @Test
-    public void hostIsTheOneProvidedInTheConstructor() {
-        assertEquals("The Host", new SelfRegisteringRemoteControl("", "", "The Host", "").host());
-    }
-
-    @Test
-    public void portIsTheOneProvidedInTheConstructor() {
-        assertEquals("The Port", new SelfRegisteringRemoteControl("", "", "", "The Port").port());
+        rc = new SelfRegisteringRemoteControl("The URL", "The Environment", "The Host", "The Port");
+        assertEquals("The URL", rc.registrationInfo().hubURL());
+        assertEquals("The Environment", rc.registrationInfo().environment());
+        assertEquals("The Host", rc.registrationInfo().host());
+        assertEquals("The Port", rc.registrationInfo().port());
     }
 
 }

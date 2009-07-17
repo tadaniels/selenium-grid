@@ -1,6 +1,7 @@
 package com.thoughtworks.selenium.grid.remotecontrol.instrumentation;
 
 import com.thoughtworks.selenium.grid.remotecontrol.SelfRegisteringRemoteControl;
+import com.thoughtworks.selenium.grid.remotecontrol.RegistrationInfo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -11,8 +12,8 @@ public class EchoRemoteControl extends SelfRegisteringRemoteControl implements H
 
     private static final Log logger = LogFactory.getLog(SimplisticHttpServer.class);
 
-    public EchoRemoteControl(String seleniumHubURL, String environment, String host, String port) {
-        super(seleniumHubURL, environment, host, port);
+    public EchoRemoteControl(RegistrationInfo registrationInfo) {
+        super(registrationInfo);
     }
 
     public void launch(String[] args) throws Exception {
@@ -20,7 +21,11 @@ public class EchoRemoteControl extends SelfRegisteringRemoteControl implements H
     }
 
     public static void main(String[] args) throws Exception {
-        final EchoRemoteControl remoteControl = new EchoRemoteControl("http://localhost:4444", "*firefox", "localhost", "5555");
+        final RegistrationInfo registrationInfo;
+        final EchoRemoteControl remoteControl;
+
+        registrationInfo = new RegistrationInfo("http://localhost:4444", "*firefox", "localhost", "5555");        
+        remoteControl = new EchoRemoteControl(registrationInfo);
         remoteControl.register();
         remoteControl.ensureUnregisterOnShutdown();
         remoteControl.launch(new String[0]);

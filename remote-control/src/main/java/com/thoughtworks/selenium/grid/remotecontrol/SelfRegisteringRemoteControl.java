@@ -8,56 +8,43 @@ import java.io.IOException;
 
 /*
  * Selenium Remote Control that registers/unregisters itself to a central Hub when it starts/stops.
- *
- * @author Philippe Hanrigou
  */
 public class SelfRegisteringRemoteControl {
 
 
     private static final Log logger = LogFactory.getLog(SelfRegisteringRemoteControlLauncher.class);
-    private final String seleniumHubURL;
-    private final String environment;
-    private final String host;
-    private final String port;
+    private final RegistrationInfo registrationInfo;
 
     public SelfRegisteringRemoteControl(String seleniumHubURL, String environment, String host, String port) {
-        this.seleniumHubURL = seleniumHubURL;
-        this.environment = environment;
-        this.host = host;
-        this.port = port;
+        this(new RegistrationInfo(seleniumHubURL, environment, host, port));
+    }
+
+    public SelfRegisteringRemoteControl(RegistrationInfo registrationInfo) {
+        this.registrationInfo = registrationInfo;
+    }
+
+    public RegistrationInfo registrationInfo() {
+        return registrationInfo;
     }
 
     public void register() throws IOException {
-        new RegistrationRequest(seleniumHubURL, host, port, environment).execute();
+        new RegistrationRequest(registrationInfo).execute();
     }
 
     public void unregister() throws IOException {
-        new UnregistrationRequest(seleniumHubURL, host, port, environment).execute();
+        new UnregistrationRequest(registrationInfo).execute();
     }
-
-    public String hubURL() {
-        return seleniumHubURL;
-    }
-
-    public String environment() {
-        return environment;
-    }
-
-    public String host() {
-        return host;
-    }
-
-    public String port() {
-        return port;
-    }
-
 
     public void launch(String[] args) throws Exception {
+        logStartingMessages(args);
+        SeleniumServer.main(args);
+    }
+
+    protected void logStartingMessages(String[] args) {
         logger.info("Starting selenium server with options:");
         for (String arg : args) {
             logger.info(arg);
         }
-        SeleniumServer.main(args);
     }
 
     protected void ensureUnregisterOnShutdown() {

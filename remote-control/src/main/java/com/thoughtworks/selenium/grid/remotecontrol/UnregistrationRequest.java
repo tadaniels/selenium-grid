@@ -12,8 +12,11 @@ public class UnregistrationRequest extends HubRequest {
 
     private static final Log logger = LogFactory.getLog(RegistrationRequest.class);
 
-    public UnregistrationRequest(String seleniumHubURL, String host, String port, String environment) {
-        super(seleniumHubURL + "/registration-manager/unregister", host, port, environment);
+    public UnregistrationRequest(RegistrationInfo registrationInfo) {
+        super(registrationInfo.hubURL() + "/registration-manager/unregister",
+              registrationInfo.host(),
+              registrationInfo.port(),
+              registrationInfo.environment());
     }
 
 

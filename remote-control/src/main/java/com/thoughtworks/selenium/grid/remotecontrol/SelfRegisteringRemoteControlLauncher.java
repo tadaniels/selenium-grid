@@ -10,25 +10,28 @@ import java.net.ConnectException;
  */
 public class SelfRegisteringRemoteControlLauncher {
 
-    private static final Log logger = LogFactory.getLog(SelfRegisteringRemoteControlLauncher.class);
+    private static final Log LOGGER = LogFactory.getLog(SelfRegisteringRemoteControlLauncher.class);
 
 
     public static void main(String[] args) throws Exception {
         final SelfRegisteringRemoteControl server;
+        final RegistrationInfo registrationInfo;
         final OptionParser.Options options;
 
         // TODO - Bundle a heartbeat resource
         options = new OptionParser().parseOptions(args);
-        server = new SelfRegisteringRemoteControl(
+        registrationInfo = new RegistrationInfo(
                 options.hubURL(), options.environment(), options.host(), options.port());
+        server = new SelfRegisteringRemoteControl(registrationInfo);
         try {
             server.register();
             server.ensureUnregisterOnShutdown();
             server.launch(options.seleniumServerArgs());
         } catch (ConnectException e) {
-            logger.error("Could not contact the Selenium Hub at '" + server.hubURL() + "' : " + e.getMessage()
+            LOGGER.error("Could not contact the Selenium Hub at '" + server.registrationInfo().hubURL()
+                    + "' : " + e.getMessage()
                     + ". Check that the Hub is running and check its status at "
-                    + server.hubURL() + "/console");
+                    + server.registrationInfo().hubURL() + "/console");
             throw e;
         }
     }

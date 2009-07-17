@@ -6,9 +6,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-/**
- * {@link HubRequest} unit test class.
- */
 public class HubRequestTest extends UsingClassMock {
 
     @Test
