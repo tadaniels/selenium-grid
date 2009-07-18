@@ -35,7 +35,7 @@ public class SelfRegisteringRemoteControl {
         new UnregistrationRequest(registrationInfo).execute();
     }
 
-    public boolean canReachHub() throws IOException {
+    public boolean canReachHub() {
         return new HeartbeatRequest(registrationInfo).execute();
     }
 

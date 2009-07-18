@@ -65,6 +65,7 @@ public class HeartbeatRequestTest extends UsingClassMock {
     }
 
     @Test
+    @SuppressWarnings({"ThrowableInstanceNeverThrown"})
     public void executeReturnsFalseWhenAccessingHearbeatURLRaises() {
         final RegistrationInfo info;
         final HeartbeatRequest request;
