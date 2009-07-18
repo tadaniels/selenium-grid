@@ -15,11 +15,7 @@ public class SelfRegisteringRemoteControl {
     private static final Log logger = LogFactory.getLog(SelfRegisteringRemoteControlLauncher.class);
     private final RegistrationInfo registrationInfo;
 
-    public SelfRegisteringRemoteControl(String seleniumHubURL, String environment, String host, String port) {
-        this(new RegistrationInfo(seleniumHubURL, environment, host, port));
-    }
-
-    public SelfRegisteringRemoteControl(RegistrationInfo registrationInfo) {
+    public SelfRegisteringRemoteControl(RegistrationInfo registrationInfo, int hubPollerIntervalInSeconds) {
         this.registrationInfo = registrationInfo;
     }
 

@@ -13,7 +13,7 @@ public class EchoRemoteControl extends SelfRegisteringRemoteControl implements H
     private static final Log logger = LogFactory.getLog(SimplisticHttpServer.class);
 
     public EchoRemoteControl(RegistrationInfo registrationInfo) {
-        super(registrationInfo);
+        super(registrationInfo, 180);
     }
 
     public void launch(String[] args) throws Exception {

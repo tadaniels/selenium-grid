@@ -11,18 +11,7 @@ public class SelfRegisteringRemoteControlTest extends UsingClassMock {
         final RegistrationInfo info;
 
         info = new RegistrationInfo("The URL", "", "", "");
-        assertEquals(info, new SelfRegisteringRemoteControl(info).registrationInfo());
-    }
-
-    @Test
-    public void registrationInfoCanBProvidedWithAConvenienceConstructor() {
-        final SelfRegisteringRemoteControl rc;
-
-        rc = new SelfRegisteringRemoteControl("The URL", "The Environment", "The Host", "The Port");
-        assertEquals("The URL", rc.registrationInfo().hubURL());
-        assertEquals("The Environment", rc.registrationInfo().environment());
-        assertEquals("The Host", rc.registrationInfo().host());
-        assertEquals("The Port", rc.registrationInfo().port());
+        assertEquals(info, new SelfRegisteringRemoteControl(info, 0).registrationInfo());
     }
 
 }

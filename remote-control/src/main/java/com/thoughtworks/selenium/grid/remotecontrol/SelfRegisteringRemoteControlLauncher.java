@@ -18,11 +18,11 @@ public class SelfRegisteringRemoteControlLauncher {
         final RegistrationInfo registrationInfo;
         final OptionParser.Options options;
 
-        // TODO - Bundle a heartbeat resource
         options = new OptionParser().parseOptions(args);
         registrationInfo = new RegistrationInfo(
                 options.hubURL(), options.environment(), options.host(), options.port());
-        server = new SelfRegisteringRemoteControl(registrationInfo);
+        server = new SelfRegisteringRemoteControl(registrationInfo,
+                                                  options.hubPollerIntervalInSeconds());
         try {
             server.register();
             server.ensureUnregisterOnShutdown();

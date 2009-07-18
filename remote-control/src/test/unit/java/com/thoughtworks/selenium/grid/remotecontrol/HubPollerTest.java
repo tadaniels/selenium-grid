@@ -15,7 +15,7 @@ public class HubPollerTest extends UsingClassMock {
     public void remoteControlIsTheOneProvidedInTheConstructor() {
         final SelfRegisteringRemoteControl rc;
 
-        rc = new SelfRegisteringRemoteControl(null);
+        rc = new SelfRegisteringRemoteControl(null, 0);
         assertEquals(rc, new HubPoller(rc).remoteControl());
     }
 
@@ -23,7 +23,7 @@ public class HubPollerTest extends UsingClassMock {
     public void lostConnectionToHubCanBeInjectedInTheConstructor() {
         final SelfRegisteringRemoteControl rc;
 
-        rc = new SelfRegisteringRemoteControl(null);
+        rc = new SelfRegisteringRemoteControl(null, 0);
         assertTrue(new HubPoller(rc, true).lostConnectionToHub());
     }
 

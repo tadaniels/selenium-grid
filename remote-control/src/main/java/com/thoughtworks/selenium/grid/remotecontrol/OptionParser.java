@@ -14,6 +14,7 @@ public class OptionParser {
         private String port;
         private String environment;
         private String hubURL;
+        private int hubPollerIntervalInSeconds;
         private final List<String> seleniumServerOptions;
 
         protected Options() {
@@ -21,6 +22,7 @@ public class OptionParser {
             this.port = "5555";
             this.environment = "*firefox";
             this.hubURL = "http://localhost:4444";
+            this.hubPollerIntervalInSeconds = 180;
             this.seleniumServerOptions = new ArrayList<String>(10);
         }
 
@@ -38,6 +40,10 @@ public class OptionParser {
 
         public String hubURL() {
             return hubURL;
+        }
+
+        public int hubPollerIntervalInSeconds() {
+            return hubPollerIntervalInSeconds;
         }
 
         public List<String> seleniumServerOptions() {
@@ -63,6 +69,10 @@ public class OptionParser {
         public String[] seleniumServerArgs() {
             return seleniumServerOptions.toArray(new String[seleniumServerOptions.size()]);
         }
+
+        public void setHubPollerIntervalInSeconds(String hubPollerIntervalInSeconds) {
+            this.hubPollerIntervalInSeconds = Integer.parseInt(hubPollerIntervalInSeconds);
+        }
     }
 
     protected Options parseOptions(String[] args) {
@@ -80,6 +90,8 @@ public class OptionParser {
                 options.setEnvironment(args[++i]);
             } else if ("-hubURL".equalsIgnoreCase(args[i])) {
                 options.setHubURL(args[++i]);
+            } else if ("-hubPollerIntervalInSeconds".equalsIgnoreCase(args[i])) {
+                options.setHubPollerIntervalInSeconds(args[++i]);
             } else {
                 options.seleniumServerOptions.add(args[i]);
             }
