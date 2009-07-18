@@ -35,6 +35,10 @@ public class SelfRegisteringRemoteControl {
         new UnregistrationRequest(registrationInfo).execute();
     }
 
+    public boolean canReachHub() throws IOException {
+        return new HeartbeatRequest(registrationInfo).execute();
+    }
+
     public void launch(String[] args) throws Exception {
         logStartingMessages(args);
         SeleniumServer.main(args);
