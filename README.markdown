@@ -12,6 +12,8 @@ for running in-browser test suites.
 
  * Official repository: `git://github.com/ph7/selenium-grid.git`
 
+ * Project Management: `http://www.pivotaltracker.com/projects/2406`
+
 If you have any problem [contact Philippe Hanrigou](http://ph7spot.com/about/contact_me)
 
 Core Team
