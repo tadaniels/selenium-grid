@@ -2,6 +2,76 @@
  * Stylesheet for Selenium Grid website home page.
  */
 
+body {
+  background: #ddd;
+}
+
+table#topics {
+  border: thin solid #444;
+  background: white;
+  margin: 0 6em;
+  border-spacing: 0 0;
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+table#topics thead {
+}
+
+table#topics thead tr td {
+  width: 16%;
+  border-right: solid thin #666;
+  border-bottom: solid thin #666;
+  padding: .5em 1em 1.2em 1em;
+  vertical-align: top;
+
+  -webkit-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+table#topics thead tr td h2 {
+  padding: 0 0 .3em 0;
+  margin: 0;
+}
+
+table#topics thead tr td p {
+  padding: 0;
+  margin: 0;
+  color: #444;
+}
+
+table#topics thead tr td div.content {
+  display: none;
+}
+
+table#topics tbody tr {
+  height: 30em;
+  vertical-align: top;
+}
+
+table#topics tbody tr td h3 {
+  font-size: 1.4em;
+}
+
+table#topics tbody tr td p {
+  margin-left: 2em;
+  font-size: 1em;
+  color: #111;
+}
+
+table#topics tbody tr td#displayed-content {
+  padding: 2em 2em;
+}
+
+object.video {
+  float: right;
+  margin: 2em 1em 1em 1em;
+}
+
 div.marketing-banner {
   margin: 1.5em 2em 0 3em; 
   text-align: center
