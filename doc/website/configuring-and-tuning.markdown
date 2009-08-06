@@ -1,0 +1,94 @@
+Title: Selenium Grid FAQ
+CSS: stylesheets/site.css stylesheets/document.css stylesheets/faq.css
+Use numbered headers: false
+
+<div class="header">
+  <a href="index.html"><img alt="Selenium_grid_logo_large" src="images/selenium-grid-logo-large.png"/></a>
+  <p>Configuring and Tuning</p>
+</div>
+
+Table Of Content:
+{: class=toc}
+
+* This will become a table of contents (this text will be scraped).
+{:toc}
+
+Selenium Grid Main Configuration File
+=====================================
+
+  Once you have Selenium Grid up and running, you might want to tweak some of
+  its settings.
+
+  Most of Selenium Grid configuration is defined in the
+  `grid_configuration.yml` file located at the root of Selenium Grid
+  installation directory *on the machine where the Hub is running*.
+
+  This file is in the human friendly YAML format, which should be mostly
+  self explanatory.
+  
+Defining New Environments
+=========================
+
+  Selenium Grid provides predefined environments for standard browsers
+  to get you started, however chances are than very soon you will want 
+  to define your own.
+
+  To define a new environment, edit the `grid_configuration.yml` file 
+  located at the root of Selenium Grid installation directory 
+  *on the machine where the Hub is running*:
+  
+  Search for a section like:
+
+    hub:
+	   port: 4444
+	   # ...
+	   environments:
+	       - name:    "Firefox on Windows"
+	         browser: "*firefox"
+	       - name:    "Firefox on OS X"
+	         browser: "*firefox"
+	       - name:    "IE on Windows"
+	         browser: "*iehta"
+	
+  An environment is just an binding between an arbitrary string you pick (the name)
+  and an real Selenium browser string that will be used to start the session on the
+  actual remote control (`*firefox`, `safari`, `*iexplore`, `*hta`, ...). To add
+  a new one just add a new entry in the list, starting with a dash (`-`) and keeping the
+  same indentation level. For instance to add a new environment called 
+  "Shinny New Environment" that will use the `*safari` mode:
+
+      hub:
+         port: 4444
+         # ...
+         environments:
+             - name:    "Firefox on Windows"
+               browser: "*firefox"
+             - name:    "Firefox on OS X"
+               browser: "*firefox"
+             - name:    "IE on Windows"
+               browser: "*iehta"
+             - name:    "Shinny New Environment"
+               browser: "*iehta"
+
+    
+Changing Hub's Port
+===================
+
+  By default Selenium Grid Hub is started on port 4444, which is
+  also Selenium RC default port (on purpose as from the test
+  point of view, the Hub looks just like a regular RC).
+
+  You can change the Hub port by editing the `grid_configuration.yml` file
+  located at the root of Selenium Grid installation directory *on the machine
+  where the Hub is running*:
+
+  Search for a section like:
+
+    hub:
+	   port: 4444	   
+
+  And change `4444` to the port number of your liking. For instance:
+
+    hub:
+         port: 1234
+

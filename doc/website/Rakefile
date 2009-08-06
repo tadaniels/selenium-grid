@@ -2,7 +2,7 @@
 # Generate documentation to be published on Selenium Grid website  
 #
 
-task :default => [ :generate_faq, :copy_stylesheets, :copy_images, :copy_pages]
+task :default => [ :generate_markdown, :copy_stylesheets, :copy_javascripts, :copy_images, :copy_pages]
 
 OUTPUT_DIR = "../../../Selenium Grid Website/src/main/webapp"
 
@@ -29,8 +29,9 @@ task :copy_javascripts do
 end
 
 
-task :generate_faq do
+task :generate_markdown do
   sh "maruku faq.markdown"
+  sh "maruku configuring-and-tuning.markdown"
 end
 
 task :'images:generate' do
