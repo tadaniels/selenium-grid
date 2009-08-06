@@ -30,7 +30,7 @@ module SGrid
       args << "-host" << @host
       args << "-port" << @port
       args << "-hubUrl" << @hub_url
-      args << "-env '#{options[:environment] || ENV['ENVIRONMENT'] || "*firefox"}'" 
+      args << %Q{-env "#{options[:environment] || ENV['ENVIRONMENT'] || '*firefox'}"} 
       args << (options[:selenium_args] || ENV['SELENIUM_ARGS'] || "")
       args
     end
