@@ -6,6 +6,7 @@
 # *~
 target
 doc/website/faq.html
+doc/website/configuring-and-tuning.html
 examples/ruby/tmp
 test-output
 .dotest

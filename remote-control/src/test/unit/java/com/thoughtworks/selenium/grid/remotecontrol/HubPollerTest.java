@@ -16,7 +16,7 @@ public class HubPollerTest extends UsingClassMock {
         final SelfRegisteringRemoteControl rc;
 
         rc = new SelfRegisteringRemoteControl(null, 0);
-        assertEquals(rc, new HubPoller(rc).remoteControl());
+        assertEquals(rc, new HubPoller(rc, 0).remoteControl());
     }
 
     @Test
@@ -24,12 +24,12 @@ public class HubPollerTest extends UsingClassMock {
         final SelfRegisteringRemoteControl rc;
 
         rc = new SelfRegisteringRemoteControl(null, 0);
-        assertTrue(new HubPoller(rc, true).lostConnectionToHub());
+        assertTrue(new HubPoller(rc, 0, true).lostConnectionToHub());
     }
 
     @Test
     public void lostConnectionToHubIsFalseByDefault() {
-        assertFalse(new HubPoller(null).lostConnectionToHub());
+        assertFalse(new HubPoller(null, 0).lostConnectionToHub());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class HubPollerTest extends UsingClassMock {
 
         rc = mock(SelfRegisteringRemoteControl.class);
         rc.expects("canReachHub").will(returnValue(false));
-        poller = new HubPoller((SelfRegisteringRemoteControl) rc);
+        poller = new HubPoller((SelfRegisteringRemoteControl) rc, 0);
         poller.checkConnectionToHub();
         assertTrue(poller.lostConnectionToHub());
         verifyMocks();
@@ -51,7 +51,7 @@ public class HubPollerTest extends UsingClassMock {
         final HubPoller poller;
 
         rc = mock(SelfRegisteringRemoteControl.class);
-        poller = new HubPoller((SelfRegisteringRemoteControl) rc);
+        poller = new HubPoller((SelfRegisteringRemoteControl) rc, 0);
         rc.expects("canReachHub").will(returnValue(true));
         poller.checkConnectionToHub();
         assertFalse(poller.lostConnectionToHub());
@@ -64,7 +64,7 @@ public class HubPollerTest extends UsingClassMock {
         final HubPoller poller;
 
         rc = mock(SelfRegisteringRemoteControl.class);
-        poller = new HubPoller((SelfRegisteringRemoteControl) rc, true);
+        poller = new HubPoller((SelfRegisteringRemoteControl) rc, 0, true);
         rc.expects("canReachHub").will(returnValue(true));
         rc.expects("register");
         poller.checkConnectionToHub();

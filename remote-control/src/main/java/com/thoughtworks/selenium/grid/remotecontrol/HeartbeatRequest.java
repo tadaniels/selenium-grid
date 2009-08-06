@@ -1,12 +1,9 @@
 package com.thoughtworks.selenium.grid.remotecontrol;
 
+import com.thoughtworks.selenium.grid.HttpClient;
+import com.thoughtworks.selenium.grid.Response;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import java.io.IOException;
-
-import com.thoughtworks.selenium.grid.Response;
-import com.thoughtworks.selenium.grid.HttpClient;
 
 /**
  * Heartbeat Request to Selenium Grid Hub.
@@ -17,7 +14,7 @@ public class HeartbeatRequest {
     private final String heartBeatURL;
 
     public HeartbeatRequest(RegistrationInfo registrationInfo) {
-        heartBeatURL = registrationInfo.hubURL() + "/console";
+        heartBeatURL = registrationInfo.hubURL() + "/heartbeat";
     }
 
     public String heartBeatURL() {

@@ -16,7 +16,7 @@ public class HeartbeatRequestTest extends UsingClassMock {
         final RegistrationInfo info;
 
         info = new RegistrationInfo("http://thehub.url:4444", "", "", "");
-        assertEquals("http://thehub.url:4444/console",
+        assertEquals("http://thehub.url:4444/heartbeat",
                      new  HeartbeatRequest(info).heartBeatURL());
     }
 
@@ -36,7 +36,7 @@ public class HeartbeatRequestTest extends UsingClassMock {
                 return (HttpClient) httpClient;
             }
         };
-        httpClient.expects("get").with(eq("http://thehub.url:4444/console"))
+        httpClient.expects("get").with(eq("http://thehub.url:4444/heartbeat"))
                   .will(returnValue(successfulResponse));
         assertTrue(request.execute());
         verifyMocks();
@@ -58,7 +58,7 @@ public class HeartbeatRequestTest extends UsingClassMock {
                 return (HttpClient) httpClient;
             }
         };
-        httpClient.expects("get").with(eq("http://thehub.url:4444/console"))
+        httpClient.expects("get").with(eq("http://thehub.url:4444/heartbeat"))
                   .will(returnValue(errorResponse));
         assertFalse(request.execute());
         verifyMocks();
@@ -79,7 +79,7 @@ public class HeartbeatRequestTest extends UsingClassMock {
                 return (HttpClient) httpClient;
             }
         };
-        httpClient.expects("get").with(eq("http://thehub.url:4444/console"))
+        httpClient.expects("get").with(eq("http://thehub.url:4444/heartbeat"))
                   .will(throwException(new RuntimeException("simulate an exception")));
         assertFalse(request.execute());
         verifyMocks();
