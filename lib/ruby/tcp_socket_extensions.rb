@@ -10,7 +10,8 @@ class TCPSocket
         begin
           socket = TCPSocket.new(options[:host], options[:port])
           return
-        rescue Errno::ECONNREFUSED
+        rescue Errno::ECONNREFUSED,
+               Errno::EBADF             # Windows
           puts ".\n"
           sleep 2
         end
