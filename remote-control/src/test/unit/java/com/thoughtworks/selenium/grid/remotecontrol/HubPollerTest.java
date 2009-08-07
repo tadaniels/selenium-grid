@@ -20,16 +20,24 @@ public class HubPollerTest extends UsingClassMock {
     }
 
     @Test
-    public void lostConnectionToHubCanBeInjectedInTheConstructor() {
+    public void pollingIntervalIsTheOneProvidedInTheConstructor() {
         final SelfRegisteringRemoteControl rc;
 
         rc = new SelfRegisteringRemoteControl(null, 0);
-        assertTrue(new HubPoller(rc, 0, true).lostConnectionToHub());
+        assertEquals(3000, new HubPoller(rc, 3).pollingIntervalInMilliseconds());
     }
 
     @Test
     public void lostConnectionToHubIsFalseByDefault() {
         assertFalse(new HubPoller(null, 0).lostConnectionToHub());
+    }
+
+    @Test
+    public void lostConnectionToHubCanBeInjectedInTheConstructor() {
+        final SelfRegisteringRemoteControl rc;
+
+        rc = new SelfRegisteringRemoteControl(null, 0);
+        assertTrue(new HubPoller(rc, 0, true).lostConnectionToHub());
     }
 
     @Test
@@ -70,6 +78,20 @@ public class HubPollerTest extends UsingClassMock {
         poller.checkConnectionToHub();
         assertFalse(poller.lostConnectionToHub());
         verifyMocks();
+    }
+
+    @Test
+    public void activeIsTrueByDefault() {
+        assertTrue(new HubPoller(null, 0).active());
+    }
+
+    @Test
+    public void activeIsFalseAfterCallingStop() {
+        final HubPoller poller;
+
+        poller = new HubPoller(null, 0);
+        poller.stop();
+        assertFalse(poller.active());
     }
 
 }

@@ -25,10 +25,15 @@ public class HubPoller {
         this.rc = rc;
         this.pollingIntervalInSeconds = pollingIntervalInSeconds;
         this.lostConnectionToHub = lostConnectionToHub;
+        this.active = true;
     }
 
     public SelfRegisteringRemoteControl remoteControl() {
         return this.rc;
+    }
+
+    public long pollingIntervalInMilliseconds() {
+        return pollingIntervalInSeconds * 1000;
     }
     
     public boolean lostConnectionToHub() {
@@ -78,8 +83,5 @@ public class HubPoller {
         }
     }
 
-    public long pollingIntervalInMilliseconds() {
-        return pollingIntervalInSeconds + 1000;
-    }
 
 }
