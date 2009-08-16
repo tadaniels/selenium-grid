@@ -208,6 +208,17 @@
         </section>
       </manifest>
     </jar>
+    <jar jarfile="${dist}/lib/${artifact}-${version}-sources.jar" basedir="${build.src}">
+      <manifest>
+        <attribute name="Built-By" value="OpenQA.org"/>
+        <attribute name="Build-Time" value="${DSTAMP}${TSTAMP}"/>
+        <section name="common">
+          <attribute name="Specification-Title" value="${name}"/>
+          <attribute name="Specification-Version" value="${version}"/>
+          <attribute name="Specification-Vendor" value="OpenQA.org"/>
+        </section>
+      </manifest>
+    </jar>
   </target>
 
   <macrodef name="package-standalone-jar">
