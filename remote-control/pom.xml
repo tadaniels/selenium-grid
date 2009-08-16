@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.seleniumhq.selenium.grid</groupId>
+    <artifactId>selenium-grid-parent</artifactId>
+    <version>1.0.4</version>
+  </parent>
+  <artifactId>selenium-grid-remote-control</artifactId>
+  <name>Selenium Grid Remote Control</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>selenium-grid-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium.server</groupId>
+      <artifactId>selenium-server</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>
