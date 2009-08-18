@@ -54,6 +54,7 @@ public class SelfRegisteringRemoteControl {
 
     protected void logStartingMessages(String[] args) {
         logger.info("Starting selenium server with options:" + registrationInfo);
+        logger.info("hubPollerInterval: " + hubPoller.pollingIntervalInMilliseconds() + " ms");
         for (String arg : args) {
             logger.info(arg);
         }

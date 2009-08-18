@@ -44,6 +44,7 @@ public class HubPoller implements Runnable {
         LOGGER.info("Checking connection to hub...");
         if (rc.canReachHub()) {
             if (lostConnectionToHub) {
+                LOGGER.info("Hub is back up, let's register again!");
                 try {
                     rc.register();
                 } catch (IOException e) {
@@ -52,6 +53,7 @@ public class HubPoller implements Runnable {
             }
             lostConnectionToHub = false;
         } else {
+            LOGGER.warn("Lost connection to hub!");
             lostConnectionToHub = true;
         }
     }

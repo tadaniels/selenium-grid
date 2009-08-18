@@ -11,6 +11,7 @@ import org.apache.commons.logging.LogFactory;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.net.ProtocolException;
 
 /**
  * Selenese command requesting a new session for a specific browser/environment.
