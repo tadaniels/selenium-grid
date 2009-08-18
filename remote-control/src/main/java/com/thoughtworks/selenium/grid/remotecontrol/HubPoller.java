@@ -9,7 +9,7 @@ import java.io.IOException;
  * Periodicaly Poll Hub to check it is still up and re-register automatically
  * when the Hub disappears and come back up.
  */
-public class HubPoller {
+public class HubPoller implements Runnable {
     private static final Log LOGGER = LogFactory.getLog(HubPoller.class);
     private final SelfRegisteringRemoteControl rc;
     private final int pollingIntervalInSeconds;

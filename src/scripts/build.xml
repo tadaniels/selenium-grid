@@ -101,7 +101,9 @@
       <arg value="${hubURL}"/>
       <arg value="-env"/>
       <arg value="${environment}"/>
-      <arg line="${seleniumArgs}"/>      
+      <arg value="-hubPollerIntervalInSeconds"/>
+      <arg value="${hubPollerIntervalInSeconds}"/>
+      <arg line="${seleniumArgs}"/>
     </java>
   </target>
   
