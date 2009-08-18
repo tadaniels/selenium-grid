@@ -48,7 +48,7 @@
     <build-subprojects target="build"/>
   </target>
 
-  <target name="dist" depends="dist-bin, dist-src" description="Build binary and source distributions"/>
+  <target name="dist" depends="dist-bin" description="Build binary and source distributions"/>
 
   <target name="build-bin-dist" description="Package subprojects">
 
@@ -106,36 +106,6 @@
     <zip destfile="${dist}/selenium-grid-${version}-bin.zip">
       <fileset dir="${dist}" includes="${artifact}-${version}/**/*"/>
     </zip>
-
-    <tar destfile="${dist}/selenium-grid-${version}-bin.tar.bz2" compression="bzip2">
-      <fileset dir="${dist}" includes="${artifact}-${version}/**/*"/>
-    </tar>
-  </target>
-
-  <target name="dist-src" description="Package source distribution">
-    <mkdir dir="${dist}"/>
-    <delete file="${dist}/selenium-grid-${version}-src*.zip" failonerror="false"/>
-    <zip destfile="${dist}/selenium-grid-${version}-src.zip">
-      <fileset dir="${basedir}">
-        <exclude name="**/corp_website/**"/>
-        <exclude name="**/dist/**"/>
-        <exclude name="**/target/**"/>
-        <exclude name=".git/**"/>
-        <exclude name="**/.git/**/*"/>
-      </fileset>
-    </zip>
-
-    <delete file="${dist}/selenium-grid-${version}-src*.tar.bz2" failonerror="false"/>
-    <tar destfile="${dist}/selenium-grid-${version}-src.tar.bz2" compression="bzip2">
-      <fileset dir="${basedir}">
-        <exclude name="**/corp_website/**"/>
-        <exclude name="**/dist/**"/>
-        <exclude name="**/target/**"/>
-        <exclude name=".git/**"/>
-        <exclude name="**/.git/**/*"/>
-      </fileset>
-    </tar>
-
   </target>
 
   <target name="pmd-analysis" description="Uses PMD to perform static analysis of the code">
