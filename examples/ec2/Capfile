@@ -32,6 +32,25 @@ namespace :grid do
     remote_control_farms_count.times do
       rc.boot
     end
+    
+    if cloud.farms.length == 0
+      puts <<-EOS
+        +++++++++++++++++++++++++++++++++++++++++++++++
+        Error: No remote controls started!
+      
+        Check above output for errors. You probably hit your EC2 instance limit.
+        +++++++++++++++++++++++++++++++++++++++++++++++      
+      EOS
+      exit 1
+    elsif cloud.farms.length != remote_control_farms_count
+      puts <<-EOS
+        +++++++++++++++++++++++++++++++++++++++++++++++
+        Warning: started #{cloud.farms.length} remote controls, requested #{remote_control_farms_count}.
+      
+        Check above output for errors. You probably hit your EC2 instance limit during rc:boot.
+        +++++++++++++++++++++++++++++++++++++++++++++++
+      EOS
+    end
     ec2_client.authorize_port 22
     ec2_client.authorize_port 4444
     ec2_client.authorize_port 5900
@@ -62,7 +81,7 @@ namespace :grid do
     hub.stop
   end
 
-  desc "Display infoemation about current Selenium Grid"
+  desc "Display information about current Selenium Grid"
   task :info do
     template = ERB.new <<-EOS
     
@@ -164,9 +183,13 @@ namespace :rc do
   task :boot do
     SeleniumGrid::AWS::Cloud.update do |cloud|
       puts "Starting a new EC2 Instance..."
-      new_farm = SeleniumGrid::AWS::Server.boot_and_acquire_dns ami, :keypair => keypair_name
-      cloud.farms << new_farm
-      puts "Started new Remote Control farm at #{new_farm.public_dns}"
+      begin
+        new_farm = SeleniumGrid::AWS::Server.boot_and_acquire_dns ami, :keypair => keypair_name
+        cloud.farms << new_farm
+        puts "Started new Remote Control farm at #{new_farm.public_dns}"
+      rescue
+        puts "Failed to boot new Remote Control farm."
+      end
     end
     set :cloud, SeleniumGrid::AWS::Cloud.load
   end
