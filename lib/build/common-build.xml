@@ -301,7 +301,7 @@
           <file name="remote-control/build.xml"/>
           <file name="tools/build.xml"/>
           <file name="demo/build.xml"/>
-          <file name="examples/java/build.xml"/>
+          <file name="examples/java-testng/build.xml"/>
           <file name="regression-tests"/>
         </filelist>
       </subant>

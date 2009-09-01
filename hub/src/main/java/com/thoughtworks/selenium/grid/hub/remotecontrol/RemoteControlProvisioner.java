@@ -43,6 +43,7 @@ public class RemoteControlProvisioner {
 
             remoteControl = blockUntilARemoteControlIsAvailable();
             while (remoteControl.unreliable()) {
+                LOGGER.warn("Reserved RC " + remoteControl + " is detected as unreliable, unregistering it and reserving a new one...");
                 tearDownExistingRemoteControl(remoteControl);
                 if (remoteControls.isEmpty()) {
                     return null;

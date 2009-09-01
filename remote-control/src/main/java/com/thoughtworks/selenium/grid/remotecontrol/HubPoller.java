@@ -9,7 +9,7 @@ import java.io.IOException;
  * Periodicaly Poll Hub to check it is still up and re-register automatically
  * when the Hub disappears and come back up.
  */
-public class HubPoller {
+public class HubPoller implements Runnable {
     private static final Log LOGGER = LogFactory.getLog(HubPoller.class);
     private final SelfRegisteringRemoteControl rc;
     private final int pollingIntervalInSeconds;
@@ -44,6 +44,7 @@ public class HubPoller {
         LOGGER.info("Checking connection to hub...");
         if (rc.canReachHub()) {
             if (lostConnectionToHub) {
+                LOGGER.info("Hub is back up, let's register again!");
                 try {
                     rc.register();
                 } catch (IOException e) {
@@ -52,6 +53,7 @@ public class HubPoller {
             }
             lostConnectionToHub = false;
         } else {
+            LOGGER.warn("Lost connection to hub!");
             lostConnectionToHub = true;
         }
     }

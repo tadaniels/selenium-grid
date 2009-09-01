@@ -26,4 +26,11 @@ public class RegistrationInfoTest extends UsingClassMock {
         assertEquals("The Port", new RegistrationInfo("", "", "", "The Port").port());
     }
 
+    @Test
+    public void toStringReturhsAHumanFriendlyMessage() {
+        assertEquals(
+            "[RegistrationInfo seleniumHubURL='http://the.hub:4444', env='*firefox', host='the.rc', port='5555']", 
+            new RegistrationInfo("http://the.hub:4444", "*firefox", "the.rc", "5555").toString());
+    }
+
 }

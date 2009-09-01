@@ -8,7 +8,8 @@
   <property name="seleniumHost" value="localhost" />
   <property name="seleniumPort" value="4444" />
   <property name="browser" value="*firefox" />
-  
+  <property name="hubPollerIntervalInSeconds" value="30" />
+
   <taskdef resource="testngtasks" classpath="${basedir}/vendor/testng-5.7-jdk15.jar"/>
   
   <path id="remote-control.classpath">
@@ -101,7 +102,9 @@
       <arg value="${hubURL}"/>
       <arg value="-env"/>
       <arg value="${environment}"/>
-      <arg line="${seleniumArgs}"/>      
+      <arg value="-hubPollerIntervalInSeconds"/>
+      <arg value="${hubPollerIntervalInSeconds}"/>
+      <arg line="${seleniumArgs}"/>
     </java>
   </target>
   

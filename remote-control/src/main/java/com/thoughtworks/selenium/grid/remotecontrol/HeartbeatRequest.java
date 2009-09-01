@@ -28,11 +28,11 @@ public class HeartbeatRequest {
             LOGGER.info("Ping Hub at " + heartBeatURL);
             response = httpClient().get(heartBeatURL);
         } catch (Exception e) {
-            LOGGER.warn("Remote Control at " + heartBeatURL + " is unresponsive");
+            LOGGER.warn("Hub at " + heartBeatURL + " is unresponsive");
             return false;
         }
         if (response.statusCode() != 200) {
-            LOGGER.warn("Remote Control at " + heartBeatURL + " did not respond correctly");
+            LOGGER.warn("Hub at " + heartBeatURL + " did not respond correctly");
             return false;
         }
 

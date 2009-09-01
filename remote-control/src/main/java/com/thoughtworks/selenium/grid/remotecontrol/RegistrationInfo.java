@@ -32,4 +32,17 @@ public class RegistrationInfo {
         return port;
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer description;
+
+        description = new StringBuffer("[RegistrationInfo ");
+        description.append("seleniumHubURL='").append(seleniumHubURL).append("', ");
+        description.append("env='").append(environment).append("', ");
+        description.append("host='").append(host).append("', ");
+        description.append("port='").append(port).append("'");
+        description.append("]");        
+
+        return description.toString();
+    }
 }
