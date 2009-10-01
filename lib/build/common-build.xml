@@ -31,7 +31,7 @@
 
   <path id="junit.core.classpath">
     <fileset dir="${rootdir}/vendor">
-      <include name="junit-4.4.jar"/>
+      <include name="junit-4.7.jar"/>
     </fileset>
     <pathelement location="${build.output}"/>
     <pathelement path="${java.class.path}/"/>

@@ -667,9 +667,10 @@
       <module fileurl="file://$PROJECT_DIR$/infrastructure/core/Core.iml" filepath="$PROJECT_DIR$/infrastructure/core/Core.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo/Demo.iml" filepath="$PROJECT_DIR$/demo/Demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/hub/Hub.iml" filepath="$PROJECT_DIR$/hub/Hub.iml" />
-      <module fileurl="file://$PROJECT_DIR$/examples/java-testng/Java Example.iml" filepath="$PROJECT_DIR$/examples/java-testng/Java Example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/examples/java-junit/JUnit Example.iml" filepath="$PROJECT_DIR$/examples/java-junit/JUnit Example.iml" />
       <module fileurl="file://$PROJECT_DIR$/regression-tests/Regression Tests.iml" filepath="$PROJECT_DIR$/regression-tests/Regression Tests.iml" />
       <module fileurl="file://$PROJECT_DIR$/remote-control/Remote Control.iml" filepath="$PROJECT_DIR$/remote-control/Remote Control.iml" />
+      <module fileurl="file://$PROJECT_DIR$/examples/java-testng/TestNG Example.iml" filepath="$PROJECT_DIR$/examples/java-testng/TestNG Example.iml" />
       <module fileurl="file://$PROJECT_DIR$/tools/Tools.iml" filepath="$PROJECT_DIR$/tools/Tools.iml" />
       <module fileurl="file://$PROJECT_DIR$/infrastructure/webserver/WebServer.iml" filepath="$PROJECT_DIR$/infrastructure/webserver/WebServer.iml" />
     </modules>
@@ -745,7 +746,6 @@
         <root url="jar://$PROJECT_DIR$/vendor/proxytoys-0.2.1.jar!/" />
         <root url="jar://$PROJECT_DIR$/vendor/cglib-nodep-2.1_3.jar!/" />
         <root url="jar://$PROJECT_DIR$/vendor/jmock-junit4-2.2.0.jar!/" />
-        <root url="jar://$PROJECT_DIR$/vendor/junit-4.4.jar!/" />
         <root url="jar://$PROJECT_DIR$/vendor/objenesis-1.0.jar!/" />
         <root url="jar://$PROJECT_DIR$/vendor/jbehave-1.0.1.jar!/" />
         <root url="jar://$PROJECT_DIR$/vendor/jmock-2.2.0.jar!/" />
@@ -797,6 +797,7 @@
     <library name="Commons">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/vendor/commons-logging-1.0.4.jar!/" />
+        <root url="jar://$PROJECT_DIR$/vendor/junit-4.7.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -804,6 +805,13 @@
     <library name="TestNG">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/vendor/testng-5.7-jdk15.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="JUnit">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/vendor/junit-4.7.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />

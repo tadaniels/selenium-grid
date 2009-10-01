@@ -15,6 +15,7 @@ public class MainServlet extends HttpServlet {
     private RouteResolver routeResolver;
 
 
+    @SuppressWarnings({"unchecked"})
     public void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
