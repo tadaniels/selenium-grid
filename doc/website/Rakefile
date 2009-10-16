@@ -4,13 +4,13 @@
 
 task :default => [ :generate_markdown, :copy_stylesheets, :copy_javascripts, :copy_images, :copy_pages]
 
-OUTPUT_DIR = "../../../Selenium Grid Website/src/main/webapp"
+OUTPUT_DIR = File.expand_path("../../../Selenium Grid Website/src/main/webapp")
 
 task :copy_images do
   mkdir_p File.join(OUTPUT_DIR, "images")
-  cp Dir["images/*.png"], File.join(OUTPUT_DIR, "images")
+  sh %Q{cp -rf images/* "#{File.join(OUTPUT_DIR, 'images')}"}
   mkdir_p File.join(OUTPUT_DIR, "diagrams")
-  cp Dir["diagrams/*.png"], File.join(OUTPUT_DIR, "diagrams")
+  cp Dir["diagrams/**/*.png"], File.join(OUTPUT_DIR, "diagrams")
 end
 
 task :copy_pages do

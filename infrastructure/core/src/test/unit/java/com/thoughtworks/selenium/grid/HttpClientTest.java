@@ -35,7 +35,7 @@ public class HttpClientTest extends UsingClassMock {
         final Response response;
         final Mock method;
         final Mock httpClient;
-	final String date = "32 d" + '\uA9C3' + "cembre";
+        final String date = "32 d" + '\uA9C3' + "cembre";
 
         httpClient = mock(org.apache.commons.httpclient.HttpClient.class);
         method = mock(PostMethod.class);
