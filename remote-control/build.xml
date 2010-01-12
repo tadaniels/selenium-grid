@@ -14,7 +14,7 @@
 
   <path id="compile.classpath">
     <fileset dir="${rootdir}/vendor">
-      <include name="selenium-server-${selenium.version}.jar"/>
+      <include name="selenium-server-${selenium.version}-standalone.jar"/>
     </fileset>
     <fileset dir="${rootdir}/vendor">
       <include name="commons-httpclient-3.0.1.jar"/>
