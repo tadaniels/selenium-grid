@@ -125,6 +125,31 @@ public class RemoteControlProvisionerTest {
     }
 
     @Test
+    public void containsReturnsFalseWhenNoRemoteControlHasBeenAdded() {
+        final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
+
+        assertFalse(provisioner.contains(new RemoteControlProxy("a", 0, "", null)));
+    }
+
+    @Test
+    public void containsReturnsTrueWhenRemoteControlHasBeenAdded() {
+        final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("a", 0, "", null);
+
+        provisioner.add(remoteControl);
+        assertTrue(provisioner.contains(remoteControl));
+    }
+
+    @Test
+    public void containsReturnsFalseWhenARemoteControlHasNotBeenAdded() {
+        final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
+        final RemoteControlProxy remoteControl = new RemoteControlProxy("a", 0, "", null);
+
+        provisioner.add(remoteControl);
+        assertFalse(provisioner.contains(new RemoteControlProxy("b", 0, "", null)));
+    }
+
+    @Test
     public void reserveReturnsNullWhenThereIsNoRegisteredRemoteControlToAvoidDeadlocks() {
         assertNull(new RemoteControlProvisioner().reserve());
     }

@@ -770,4 +770,41 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         assertTrue(session.lastActiveAt() >= now);
         assertTrue(session.lastActiveAt() <= now + 10 * 1000);
     }
+
+    @Test
+    public void isRegisteredReturnsTrueWhenRemoteControlIsRegistered() {
+        final RemoteControlProxy remoteControl;
+        final GlobalRemoteControlPool pool;
+
+        remoteControl = new RemoteControlProxy("", 0, "an environment", null);
+        pool = new GlobalRemoteControlPool();
+
+        pool.register(remoteControl);
+        assertTrue(pool.isRegistered(remoteControl));
+    }
+
+    @Test
+    public void isRegisteredReturnsTrueWhenRemoteControlHasNeverBeenRegistered() {
+        final GlobalRemoteControlPool pool;
+
+        pool = new GlobalRemoteControlPool();
+        assertFalse(pool.isRegistered( new RemoteControlProxy("", 0, "an environment", null)));
+    }
+
+    @Test
+    public void isRegisteredReturnsTrueWhenRemoteControlAreRegisteredWithMultipleEnvironments() {
+        final RemoteControlProxy aRemoteControl;
+        final RemoteControlProxy anotherRemoteControl;
+        final GlobalRemoteControlPool pool;
+
+        aRemoteControl = new RemoteControlProxy("a", 0, "an environment", null);
+        anotherRemoteControl = new RemoteControlProxy("b", 0, "another environment", null);
+        pool = new GlobalRemoteControlPool();
+
+        pool.register(aRemoteControl);
+        pool.register(anotherRemoteControl);
+        assertTrue(pool.isRegistered(aRemoteControl));
+        assertTrue(pool.isRegistered(anotherRemoteControl));
+    }
+    
 }

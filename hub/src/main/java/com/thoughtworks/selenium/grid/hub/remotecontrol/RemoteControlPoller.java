@@ -21,11 +21,11 @@ public class RemoteControlPoller implements Runnable {
     }
 
     public boolean active() {
-        return this.active;
+        return active;
     }
 
     public void stop() {
-        this.active = false;
+        active = false;
     }
 
     public void run() {

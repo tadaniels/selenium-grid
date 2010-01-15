@@ -166,7 +166,6 @@
         <inspection_tool class="AssignmentUsedAsCondition" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="CStyleArrayDeclaration" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="CallToStringConcatCanBeReplacedByOperator" enabled="true" level="WARNING" enabled_by_default="true" />
-        <inspection_tool class="CastToConcreteClass" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="ChainedEquality" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="ClassComplexity" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="m_limit" value="80" />
@@ -227,7 +226,6 @@
           <option name="ignorePrivateMethodsAndFields" value="false" />
         </inspection_tool>
         <inspection_tool class="DeserializableClassInSecureContext" enabled="true" level="WARNING" enabled_by_default="true" />
-        <inspection_tool class="DesignForExtension" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="DisjointPackage" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="EmptyClass" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="ExternalizableWithSerializationMethods" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -245,13 +243,7 @@
         <inspection_tool class="FinalClass" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="FinalMethod" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="FinalMethodInFinalClass" enabled="true" level="WARNING" enabled_by_default="true" />
-        <inspection_tool class="HardcodedFileSeparators" enabled="true" level="WARNING" enabled_by_default="true">
-          <option name="m_recognizeExampleMediaType" value="false" />
-        </inspection_tool>
         <inspection_tool class="HardcodedLineSeparators" enabled="true" level="WARNING" enabled_by_default="true" />
-        <inspection_tool class="ImplicitCallToSuper" enabled="true" level="WARNING" enabled_by_default="true">
-          <option name="m_ignoreForObjectSubclasses" value="false" />
-        </inspection_tool>
         <inspection_tool class="IncrementDecrementUsedAsExpression" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="InnerClassOnInterface" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="m_ignoreInnerInterfaces" value="false" />
@@ -262,7 +254,6 @@
         <inspection_tool class="InstanceVariableInitialization" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="m_ignorePrimitives" value="false" />
         </inspection_tool>
-        <inspection_tool class="InstanceVariableOfConcreteClass" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="InstanceVariableUninitializedUse" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="m_ignorePrimitives" value="false" />
         </inspection_tool>
@@ -276,13 +267,12 @@
         <inspection_tool class="LoadLibraryWithNonConstantString" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="LocalCanBeFinal" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="REPORT_VARIABLES" value="true" />
-          <option name="REPORT_PARAMETERS" value="true" />
+          <option name="REPORT_PARAMETERS" value="false" />
         </inspection_tool>
         <inspection_tool class="LocalVariableHidingMemberVariable" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="m_ignoreInvisibleFields" value="true" />
           <option name="m_ignoreStaticMethods" value="true" />
         </inspection_tool>
-        <inspection_tool class="LocalVariableOfConcreteClass" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="MarkerInterface" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="MethodCount" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="m_limit" value="20" />
@@ -300,7 +290,6 @@
         <inspection_tool class="MethodOverridesPackageLocalMethod" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="MethodOverridesPrivateMethod" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="MethodOverridesStaticMethod" enabled="true" level="WARNING" enabled_by_default="true" />
-        <inspection_tool class="MethodReturnOfConcreteClass" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="MethodWithMultipleLoops" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="MissingDeprecatedAnnotation" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="MissingOverrideAnnotation" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -314,11 +303,6 @@
           <option name="limit" value="100" />
         </inspection_tool>
         <inspection_tool class="MultipleDeclaration" enabled="true" level="WARNING" enabled_by_default="true" />
-        <inspection_tool class="MultipleReturnPointsPerMethod" enabled="true" level="WARNING" enabled_by_default="true">
-          <option name="ignoreGuardClauses" value="false" />
-          <option name="ignoreEqualsMethod" value="false" />
-          <option name="m_limit" value="1" />
-        </inspection_tool>
         <inspection_tool class="MultipleTopLevelClassesInFile" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="NativeMethods" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="NestedAssignment" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -361,14 +345,6 @@
         <inspection_tool class="PackageWithTooManyClasses" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="limit" value="10" />
         </inspection_tool>
-        <inspection_tool class="ParameterHidingMemberVariable" enabled="true" level="WARNING" enabled_by_default="true">
-          <option name="m_ignoreInvisibleFields" value="true" />
-          <option name="m_ignoreStaticMethodParametersHidingInstanceFields" value="false" />
-          <option name="m_ignoreForConstructors" value="false" />
-          <option name="m_ignoreForPropertySetters" value="false" />
-          <option name="m_ignoreForAbstractMethods" value="false" />
-        </inspection_tool>
-        <inspection_tool class="ParameterOfConcreteClass" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="ParametersPerConstructor" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="m_limit" value="5" />
         </inspection_tool>
@@ -469,7 +445,6 @@
         <inspection_tool class="UnnecessaryBlockStatement" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="UnnecessaryConstructor" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="UnnecessaryEnumModifier" enabled="true" level="WARNING" enabled_by_default="true" />
-        <inspection_tool class="UnnecessaryFinalOnLocalVariable" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="UnnecessaryFinalOnParameter" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="onlyWarnOnAbstractMethods" value="false" />
         </inspection_tool>
@@ -486,7 +461,6 @@
         <inspection_tool class="UnnecessaryThis" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="UnsecureRandomNumberGeneration" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="UseOfAWTPeerClass" enabled="true" level="WARNING" enabled_by_default="true" />
-        <inspection_tool class="UseOfAnotherObjectsPrivateField" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="UseOfJDBCDriverClass" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="UseOfProcessBuilder" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="UseOfSunClasses" enabled="true" level="WARNING" enabled_by_default="true" />
