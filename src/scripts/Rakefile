@@ -103,7 +103,7 @@ end
 
 desc "Stop Remote Control"
 task :'rc:stop' do
-  remote_control.stop rescue EOFError
+  remote_control.shutdown rescue EOFError
 end
 
 desc "Launch Remote Control"
