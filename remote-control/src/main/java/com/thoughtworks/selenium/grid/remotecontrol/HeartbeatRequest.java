@@ -1,6 +1,7 @@
 package com.thoughtworks.selenium.grid.remotecontrol;
 
 import com.thoughtworks.selenium.grid.HttpClient;
+import com.thoughtworks.selenium.grid.HttpParameters;
 import com.thoughtworks.selenium.grid.Response;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -11,17 +12,19 @@ import org.apache.commons.logging.LogFactory;
 public class HeartbeatRequest {
 
     private static final Log LOGGER = LogFactory.getLog(HeartbeatRequest.class);
+    public static enum Status { DOWN, UNREGISTERED, OK }
     private final String heartBeatURL;
 
     public HeartbeatRequest(RegistrationInfo registrationInfo) {
-        heartBeatURL = registrationInfo.hubURL() + "/heartbeat";
+        heartBeatURL = registrationInfo.hubURL() + "/heartbeat?host=" + registrationInfo.host()
+                                                 + "&port=" + registrationInfo.port();
     }
 
     public String heartBeatURL() {
         return heartBeatURL;
     }
 
-    public boolean execute() {
+    public Status execute() {
         final Response response;
 
         try {
@@ -29,14 +32,18 @@ public class HeartbeatRequest {
             response = httpClient().get(heartBeatURL);
         } catch (Exception e) {
             LOGGER.warn("Hub at " + heartBeatURL + " is unresponsive");
-            return false;
+            return Status.DOWN;
         }
         if (response.statusCode() != 200) {
             LOGGER.warn("Hub at " + heartBeatURL + " did not respond correctly");
-            return false;
+            return Status.DOWN;
+        }
+        if (!response.body().equals("Hub : OK")) {
+            LOGGER.warn("Hub at " + heartBeatURL + " does not have us as registered");
+            return Status.UNREGISTERED;
         }
 
-        return true;
+        return Status.OK;
     }
 
     protected HttpClient httpClient() {

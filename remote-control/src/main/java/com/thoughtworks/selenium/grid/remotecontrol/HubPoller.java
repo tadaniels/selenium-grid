@@ -2,6 +2,7 @@ package com.thoughtworks.selenium.grid.remotecontrol;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import com.thoughtworks.selenium.grid.remotecontrol.HeartbeatRequest.Status;
 
 import java.io.IOException;
 
@@ -14,56 +15,43 @@ public class HubPoller implements Runnable {
     private final SelfRegisteringRemoteControl rc;
     private final int pollingIntervalInSeconds;
     private boolean active;
-    private boolean lostConnectionToHub;
 
-    public HubPoller(SelfRegisteringRemoteControl rc, int pollingIntervalInSeconds) {
-        this(rc, pollingIntervalInSeconds, false);
-    }
-
-    protected HubPoller(SelfRegisteringRemoteControl rc, int pollingIntervalInSeconds,
-                        boolean lostConnectionToHub) {
+    protected HubPoller(SelfRegisteringRemoteControl rc, int pollingIntervalInSeconds) {
         this.rc = rc;
         this.pollingIntervalInSeconds = pollingIntervalInSeconds;
-        this.lostConnectionToHub = lostConnectionToHub;
         this.active = true;
     }
 
     public SelfRegisteringRemoteControl remoteControl() {
-        return this.rc;
+        return rc;
     }
 
     public long pollingIntervalInMilliseconds() {
         return pollingIntervalInSeconds * 1000;
     }
     
-    public boolean lostConnectionToHub() {
-        return lostConnectionToHub;
-    }
-
     public void checkConnectionToHub() {
+        final Status status;
+
         LOGGER.info("Checking connection to hub...");
-        if (rc.canReachHub()) {
-            if (lostConnectionToHub) {
-                LOGGER.info("Hub is back up, let's register again!");
-                try {
-                    rc.register();
-                } catch (IOException e) {
-                    LOGGER.error("Internal error while checking hub connection", e);
-                }
+        status = rc.canReachHub();
+        if (status.equals(Status.UNREGISTERED)) {
+            try {
+                rc.register();
+            } catch (IOException e) {
+                LOGGER.error("Internal error while checking hub connection", e);
             }
-            lostConnectionToHub = false;
-        } else {
+        } else if (status.equals(Status.DOWN)) {
             LOGGER.warn("Lost connection to hub!");
-            lostConnectionToHub = true;
         }
     }
 
     public boolean active() {
-        return this.active;
+        return active;
     }
 
     public void stop() {
-        this.active = false;
+        active = false;
     }
 
     public void run() {
