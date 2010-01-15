@@ -84,13 +84,15 @@ desc "Launch Hub"
 task :'hub:start' do
   SGrid::Hub.new.start \
       :background => ("true" == ENV['BACKGROUND']),
-      :log_file => File.native_path(File.dirname(__FILE__) + "/log/hub.log")
+      :log_file => File.native_path(File.dirname(__FILE__) + "/log/hub.log"),
+      :pid_file => File.join(File.dirname(__FILE__), "pid", "hub.pid")
 end
 
 desc "Stop Hub"
 task :'hub:stop' do
   puts "Shutting down Selenium Grid hub..."
   hub.shutdown rescue EOFError
+  FileUtils.rm_f File.join(File.dirname(__FILE__), "pid", "hub.pid")
 end
 
 desc "Launch Remote Control"
@@ -98,12 +100,14 @@ task :'rc:start' do
   port = ENV['PORT'] || 5555  
   remote_control(:port => port).start \
       :background => ENV['BACKGROUND'],
-      :log_file => File.join(File.dirname(__FILE__), "log", "rc-#{port}.log")  
+      :log_file => File.join(File.dirname(__FILE__), "log", "rc-#{port}.log"),
+      :pid_file => File.join(File.dirname(__FILE__), "pid", "rc-#{port}.pid")
 end
 
 desc "Stop Remote Control"
 task :'rc:stop' do
   remote_control.shutdown rescue EOFError
+  FileUtils.rm_f File.join(File.dirname(__FILE__), "pid", "rc-#{port}.pid")
 end
 
 desc "Launch Remote Control"
@@ -113,7 +117,8 @@ task :'rc:start_all' do
   port_range.each do |port|
     remote_control(:port => port, :background => true).start \
         :background => true,
-        :log_file => File.join(File.dirname(__FILE__), "log", "rc-#{port}.log")
+        :log_file => File.join(File.dirname(__FILE__), "log", "rc-#{port}.log"),
+        :pid_file => File.join(File.dirname(__FILE__), "pid", "rc-#{port}.pid")
   end
 end
 
@@ -127,6 +132,7 @@ task :'rc:stop_all' do
       rc = SGrid::RemoteControl.new :host => ENV['HOST'] || "localhost",      
                                     :port => port
       rc.shutdown
+      FileUtils.rm_f File.join(File.dirname(__FILE__), "pid", "rc-#{port}.pid")
     rescue Exception => e
       STDERR.puts "Could not properly shutdown remote control #{port} : #{e}"
     end

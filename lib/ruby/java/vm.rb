@@ -15,7 +15,10 @@ module Java
           command.unshift("start")
         else
           command << "&"
+          command << " echo $! > #{options[:pid_file]}" if options[:pid_file]
         end
+      else
+        command << "; echo $! > #{options[:pid_file]}" if options[:pid_file]
       end
 
       sh command.join(' ')
