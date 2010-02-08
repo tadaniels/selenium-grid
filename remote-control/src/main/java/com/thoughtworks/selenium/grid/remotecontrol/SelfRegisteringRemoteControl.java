@@ -33,7 +33,7 @@ public class SelfRegisteringRemoteControl {
         new UnregistrationRequest(registrationInfo).execute();
     }
 
-    public boolean canReachHub() {
+    public HeartbeatRequest.Status canReachHub() {
         return new HeartbeatRequest(registrationInfo).execute();
     }
 

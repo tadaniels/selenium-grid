@@ -2,8 +2,26 @@
                    Selenium Grid ChangeLog
                   =========================
 
-Summary of changes from 1.0.3 to 1.0.4
-======================================
+Summary of changes from 1.0.4 to 1.0.5 (Jan 2010)
+=================================================
+
+ * Allow RC's to re-register with the Hub even if already registered
+
+ * Remove registered RCs when detected as unreliable at reservation time
+
+ * Periodically poll RCs and remove the ones detected as unreliable
+
+ * RC -> Hub automatic reconnection 
+
+ * Fixed Rake automation on Windows 
+   http://github.com/ph7/selenium-grid/issues/closed#issue/2
+ 
+ * Upgraded RC so that Firefox automation works on Snow Leopard
+
+ * Fixed demo and example test cases (Changes in Google images) 
+
+Summary of changes from 1.0.3 to 1.0.4 (Jul 7 2009)
+===================================================
 
  * Upgraded Selenium RC to 1.0.1
  * Better error message when there is no registered 

@@ -82,6 +82,11 @@ public class RemoteControlProvisioner {
         }
     }
 
+    /** Not Thread-safe */
+    public boolean contains(RemoteControlProxy remoteControl) {
+        return remoteControls.contains(remoteControl);
+    }
+
     public void tearDownExistingRemoteControl(RemoteControlProxy newRemoteControl) {
         final RemoteControlProxy oldRemoteControl;
 
@@ -104,7 +109,7 @@ public class RemoteControlProvisioner {
      * @return All available remote controls. Never null.
      */
     public List<RemoteControlProxy> availableRemoteControls() {
-        LinkedList<RemoteControlProxy> availableremoteControls;
+        final LinkedList<RemoteControlProxy> availableremoteControls;
 
         availableremoteControls = new LinkedList<RemoteControlProxy>();
         for (RemoteControlProxy remoteControl : remoteControls) {
@@ -121,7 +126,7 @@ public class RemoteControlProvisioner {
      * @return All reserved remote controls. Never null.
      */
     public List<RemoteControlProxy> reservedRemoteControls() {
-        LinkedList<RemoteControlProxy> reservedRemoteControls;
+        final LinkedList<RemoteControlProxy> reservedRemoteControls;
 
         reservedRemoteControls = new LinkedList<RemoteControlProxy>();
         for (RemoteControlProxy remoteControl : remoteControls) {

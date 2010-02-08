@@ -11,7 +11,7 @@ require "selenium/rake/tasks"
 require "selenium/client"
 require "selenium/rspec/spec_helper"
 
-require File.expand_path(File.dirname(__FILE__) + "/flickr_example")
+require File.expand_path(File.dirname(__FILE__) + "/google_image_example")
 
 Spec::Runner.configure do |config|
 

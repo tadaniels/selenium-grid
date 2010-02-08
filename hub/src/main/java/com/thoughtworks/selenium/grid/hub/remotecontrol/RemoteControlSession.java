@@ -14,7 +14,6 @@ public class RemoteControlSession {
         this.sessionId = sessionId;
         this.remoteControl = remoteControl;
         updateLastActiveAt();
-
     }
 
     public String sessionId() {

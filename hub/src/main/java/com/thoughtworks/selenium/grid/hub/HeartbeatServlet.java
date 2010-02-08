@@ -1,10 +1,14 @@
 package com.thoughtworks.selenium.grid.hub;
 
+import com.thoughtworks.selenium.grid.hub.remotecontrol.DynamicRemoteControlPool;
+import com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlProxy;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.text.ParseException;
 
 /**
  * Provides feedback that the Hub is still up and running
@@ -15,12 +19,31 @@ public class HeartbeatServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        reply(response);
+        reply(request.getParameter("host"), request.getParameter("port"), response);
     }
 
-    protected void reply(HttpServletResponse response) throws IOException {
+    protected void reply(String host, String port, HttpServletResponse response) throws IOException {
         response.setContentType("text/plain");
-        response.getWriter().write("Hub : OK");
+        if (registeredRemoteControl(host, port)) {
+            response.getWriter().write("Hub : OK");
+        } else {
+            response.getWriter().write("Hub : Not Registered");
+        }
+    }
+
+    protected boolean registeredRemoteControl(String host, String port) {
+        final RemoteControlProxy remoteControl;
+
+        try {
+          remoteControl = new RemoteControlProxy(host, Integer.parseInt(port), "dummy", null);
+        } catch(NumberFormatException e) {
+            return false;
+        }
+        return remoteControlPool().isRegistered(remoteControl);
+    }
+
+    protected DynamicRemoteControlPool remoteControlPool() {
+        return HubRegistry.registry().remoteControlPool();
     }
 
 }

@@ -22,7 +22,11 @@ module SeleniumGrid
       def launch(ami, options ={})
         output = ec2_shell "ec2-run-instances #{ami} -k #{options[:keypair]}"
         output =~ /INSTANCE\s+(i-\S+)\s+ami-/
-        $1
+        if $1 != nil
+          $1
+        else
+          raise InstanceLaunchError, output
+        end
       end
 
       def shutdown(instance_id)
@@ -51,4 +55,8 @@ module SeleniumGrid
               
     end
   end
+  
+  class InstanceLaunchError < StandardError
+  end
+  
 end

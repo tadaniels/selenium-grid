@@ -35,13 +35,14 @@ public class HttpClientTest extends UsingClassMock {
         final Response response;
         final Mock method;
         final Mock httpClient;
+        final String date = "32 d" + '\uA9C3' + "cembre";
 
         httpClient = mock(org.apache.commons.httpclient.HttpClient.class);
         method = mock(PostMethod.class);
-        method.expects("getResponseBody").will(returnValue("32 décembre".getBytes("utf-8")));
+        method.expects("getResponseBody").will(returnValue(date.getBytes("UTF-8")));
         HttpClient client = new HttpClient((org.apache.commons.httpclient.HttpClient) httpClient);
         response = client.request((PostMethod) method);
-        assertEquals("32 décembre", response.body());
+        assertEquals(date, response.body());
         verifyMocks();
     }
 

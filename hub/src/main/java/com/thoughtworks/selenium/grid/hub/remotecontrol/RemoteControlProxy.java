@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class RemoteControlProxy {
 
-    private final static Log LOGGER = LogFactory.getLog(HubServer.class);
+    private static final Log LOGGER = LogFactory.getLog(HubServer.class);
 
     private boolean sessionInProgress;
     private final HttpClient httpClient;

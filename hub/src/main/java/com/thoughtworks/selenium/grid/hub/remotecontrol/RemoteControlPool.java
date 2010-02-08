@@ -12,8 +12,8 @@ public interface RemoteControlPool {
      *
      * @param environment  Environment that the remote control must provide. Should not be null.
      * @return Reserved remote control. Never null.
-     * @see com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlPool#release(RemoteControlProxy)
-     * @see com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlPool#releaseForSession(String)
+     * @see RemoteControlPool#release(RemoteControlProxy)
+     * @see RemoteControlPool#releaseForSession(String)
      */
     RemoteControlProxy reserve(Environment environment);
 
@@ -23,7 +23,7 @@ public interface RemoteControlPool {
      *
      * @param remoteControl Reserved remote control to be associated with session. Should not be null.
      * @param sessionId     Id of the session to associate the remote control with. Should not be null.
-     * @see com.thoughtworks.selenium.grid.hub.remotecontrol.RemoteControlPool#retrieve(String)
+     * @see RemoteControlPool#retrieve(String)
      */
     void associateWithSession(RemoteControlProxy remoteControl, String sessionId);
 

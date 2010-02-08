@@ -12,6 +12,8 @@ public interface DynamicRemoteControlPool extends RemoteControlPool {
 
     boolean unregister(RemoteControlProxy remoteControl);
 
+    boolean isRegistered(RemoteControlProxy remoteControl);
+
     List<RemoteControlProxy> allRegisteredRemoteControls();
 
     List<RemoteControlProxy> availableRemoteControls();

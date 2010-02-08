@@ -28,17 +28,15 @@ public class GoogleImageTestBase {
         closeSeleniumSession();
     }
 
-    protected void runFlickrScenario(String searchString) {
+    protected void runScenario(String searchString) {
         session().open("/");
         assertTrue(session().getLocation(), session().getLocation().contains("images.google.com"));
         session().type("q", searchString);
         session().click("btnG");
         session().waitForPageToLoad(TIMEOUT);
-        session().click("link=Advanced Image Search");
-        session().waitForPageToLoad(TIMEOUT);
-        session().click("rimgtype4");
-        session().click("sf");
-        session().select("imgc", "full color");
+        session().click("rptgl");
+        session().click("imgsz_l");
+        session().click("imgtype_photo");
         session().click("btnG");
         session().waitForPageToLoad(TIMEOUT);
     }

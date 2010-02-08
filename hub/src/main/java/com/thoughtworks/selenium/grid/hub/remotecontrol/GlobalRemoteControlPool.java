@@ -139,7 +139,16 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
 
         return allRemoteControls;
     }
-    
+
+    public boolean isRegistered(RemoteControlProxy remoteControl) {
+        for (RemoteControlProvisioner provisioner : provisionersByEnvironment.values()) {
+            if (provisioner.contains(remoteControl)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public RemoteControlProvisioner getProvisioner(String environment) {
         return provisionersByEnvironment.get(environment);
     }

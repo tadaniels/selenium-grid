@@ -14,7 +14,7 @@
 
   <path id="compile.classpath">
     <fileset dir="${rootdir}/vendor">
-      <include name="selenium-server-${selenium.version}.jar"/>
+      <include name="selenium-server-${selenium.version}-standalone.jar"/>
     </fileset>
     <fileset dir="${rootdir}/vendor">
       <include name="commons-httpclient-3.0.1.jar"/>
@@ -54,6 +54,7 @@
   <property name="port" value="5555"/>
   <property name="hubURL" value="http://localhost:4444"/>
   <property name="environment" value="*firefox"/>
+  <property name="hubPollerIntervalInSeconds" value="30"/>
   <property name="seleniumArgs" value=""/>
   <target name="run" description="Launch a remote control">
     <java classpathref="runtime.classpath"
@@ -74,6 +75,8 @@
       <arg value="${hubURL}"/>
       <arg value="-env"/>
       <arg value="${environment}"/>
+      <arg value="-hubPollerIntervalInSeconds"/>
+      <arg value="${hubPollerIntervalInSeconds}"/>
       <arg line="${seleniumArgs}"/>
     </java>
   </target>
