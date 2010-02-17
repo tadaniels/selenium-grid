@@ -11,7 +11,17 @@
 
   <build>
     <sourceDirectory>src/main</sourceDirectory>
-    <testSourceDirectory>src/test/unit/java</testSourceDirectory>
   </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium.client-drivers</groupId>
+      <artifactId>selenium-java-client-driver</artifactId>
+    </dependency>
+  </dependencies>
 
 </project>

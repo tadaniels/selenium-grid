@@ -11,12 +11,10 @@
   <modules>
     <module>hub</module>
     <module>infrastructure/core</module>
+    <module>infrastructure/webserver</module>
     <module>remote-control</module>
-    <!--
-      <module>infrastructure/webserver</module>
-      <module>agent</module>
-      <module>tools</module>
-      -->
+    <module>agent</module>
+    <module>tools</module>
   </modules>
 
   <dependencies>
@@ -28,6 +26,16 @@
     <dependency>
       <groupId>org.jbehave</groupId>
       <artifactId>jbehave</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>proxytoys</groupId>
+      <artifactId>proxytoys</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>cglib</groupId>
+      <artifactId>cglib</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -42,7 +50,7 @@
       <dependency>
         <groupId>commons-logging</groupId>
         <artifactId>commons-logging</artifactId>
-        <version>1.0.5-SNAPSHOT</version>
+        <version>1.0.4</version>
       </dependency>
       <dependency>
         <groupId>commons-httpclient</groupId>
@@ -64,6 +72,11 @@
           <artifactId>org.mortbay.jetty</artifactId> </exclusion>
           </exclusions>
         -->
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium.client-drivers</groupId>
+        <artifactId>selenium-java-client-driver</artifactId>
+        <version>1.0.1</version>
       </dependency>
       <!--
         <dependency> <groupId>org.mortbay.jetty</groupId>
@@ -88,17 +101,45 @@
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>4.4</version>
+        <version>4.7</version>
       </dependency>
       <dependency>
         <groupId>org.jbehave</groupId>
         <artifactId>jbehave</artifactId>
         <version>1.0.1</version>
       </dependency>
+      <dependency>
+        <groupId>proxytoys</groupId>
+        <artifactId>proxytoys</artifactId>
+        <version>0.2.1</version>
+      </dependency>
+      <dependency>
+        <groupId>cglib</groupId>
+        <artifactId>cglib</artifactId>
+        <version>2.1_3</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
   <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/unit/java</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>${project.build.sourceDirectory}</directory>
+        <excludes>
+          <exclude>*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>${project.build.testSourceDirectory}</directory>
+        <excludes>
+          <exclude>*.java</exclude>
+        </excludes>
+      </testResource>
+    </testResources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

@@ -12,7 +12,6 @@
 
   <build>
     <sourceDirectory>src/main</sourceDirectory>
-    <testSourceDirectory>src/test/unit/java</testSourceDirectory>
   </build>
 
   <dependencies>

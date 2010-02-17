@@ -9,9 +9,4 @@
   <artifactId>selenium-grid-demo</artifactId>
   <name>Selenium Grid Demo</name>
 
-  <build>
-    <sourceDirectory>src/main</sourceDirectory>
-    <testSourceDirectory>src/test/unit/java</testSourceDirectory>
-  </build>
-
 </project>

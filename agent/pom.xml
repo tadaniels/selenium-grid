@@ -9,9 +9,12 @@
   <artifactId>selenium-grid-agent</artifactId>
   <name>Selenium Grid Agent</name>
 
-  <build>
-    <sourceDirectory>src/main</sourceDirectory>
-    <testSourceDirectory>src/test/unit/java</testSourceDirectory>
-  </build>
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>selenium-grid-webserver</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
 
 </project>
