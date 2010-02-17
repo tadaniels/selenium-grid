@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.seleniumhq.selenium.grid</groupId>
   <artifactId>selenium-grid-parent</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Selenium Grid parent</name>
   <url>http://selenium-grid.openqa.org/</url>
@@ -42,7 +42,7 @@
       <dependency>
         <groupId>commons-logging</groupId>
         <artifactId>commons-logging</artifactId>
-        <version>1.0.4</version>
+        <version>1.0.5-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>commons-httpclient</groupId>

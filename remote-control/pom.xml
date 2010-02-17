@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.seleniumhq.selenium.grid</groupId>
     <artifactId>selenium-grid-parent</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
   </parent>
   <artifactId>selenium-grid-remote-control</artifactId>
   <name>Selenium Grid Remote Control</name>
