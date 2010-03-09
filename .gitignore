@@ -7,6 +7,7 @@
 target
 doc/website/faq.html
 doc/website/configuring-and-tuning.html
+doc/website/self-healing.html
 examples/ruby/tmp
 test-output
 .dotest
