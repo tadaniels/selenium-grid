@@ -30,8 +30,7 @@ end
 
 
 task :generate_markdown do
-  sh "maruku faq.markdown"
-  sh "maruku configuring-and-tuning.markdown"
+  Dir["*.markdown"].each {|file| sh "maruku #{file}"}
 end
 
 task :'images:generate' do
