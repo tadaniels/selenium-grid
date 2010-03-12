@@ -496,12 +496,6 @@ I have some test cases and I want to run them against Selenium Grid, what do I n
      runner.run(Dir['*_spec.rb'])
     end
 
-  Good luck in your quest for the ultimate parallel test runner for your
-  favorite language. Please [contact me](http://ph7spot.com/about/contact_me) if you
-  figure out the best solution for your language, I will put it in the documentation.
-  Even better, send me an example, I will include it in Selenium Grid
-  distribution.
-
  Is there a way to generate test reports using Selenium?
  -------------------------------------------------------
 
