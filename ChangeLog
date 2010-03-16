@@ -2,8 +2,8 @@
                    Selenium Grid ChangeLog
                   =========================
 
-Summary of changes from 1.0.4 to 1.0.5 (March 2010)
-===================================================
+Summary of changes from 1.0.4 to 1.0.5 (March 16 2010)
+======================================================
 
  * Allow RC's to re-register with the Hub even if already registered
 
@@ -19,6 +19,8 @@ Summary of changes from 1.0.4 to 1.0.5 (March 2010)
  * Upgraded RC so that Firefox automation works on Snow Leopard
 
  * Fixed demo and example test cases (Changes in Google images) 
+
+ * Upgraded Selenium Remote Control to 1.0.3
 
 Summary of changes from 1.0.3 to 1.0.4 (Jul 7 2009)
 ===================================================
