@@ -2,7 +2,7 @@
   -------
 
   Note: Selenium Grid needs a new maintainer, 
-  [**I stopped working on this this project**](http://ph7spot.com/blog/selenium-grid-needs-a-new-maintainer)
+  [**I will no longer be actively working on this project**](http://ph7spot.com/blog/selenium-grid-needs-a-new-maintainer)
 
   -------
 
