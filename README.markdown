@@ -1,3 +1,11 @@
+
+  -------
+
+  Note: Selenium Grid needs a new maintainer, 
+  [**I stopped working on this this project**](http://ph7spot.com/blog/selenium-grid-needs-a-new-maintainer)
+
+  -------
+
 Thank you for using Selenium Grid, an open-source tool to
 **transparently distribute your Selenium tests on multiple machines** so
 that you can run your tests in parallel, cutting down the time required
