@@ -46,3 +46,5 @@ Contributors
  * [Kevin Menard](http://nirvdrum.com/)
     - [Patch](http://github.com/ph7/selenium-grid/commit/240e2d846ffac6784ca25c5c05aed023bd431751) for concurrent modification issues 
 
+ * [Christian Eager](http://perpenduum.com)
+    - [Patch](http://github.com/eager/selenium-grid/commit/2c1a5fb4ec7937977e007eca9ac356bb1ed64d16) to fix "Errors for ec2-run-instances cause erratic grid instantiation in ec2 example"
