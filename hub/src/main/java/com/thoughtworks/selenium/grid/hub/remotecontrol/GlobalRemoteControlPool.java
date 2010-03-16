@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  * Monolithic Remote Control Pool keeping track of all environment and all sessions.
@@ -20,8 +22,8 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
     private final Map<String, RemoteControlProvisioner> provisionersByEnvironment;
 
     public GlobalRemoteControlPool() {
-        this.remoteControlsBySessionIds = new HashMap<String, RemoteControlSession>();
-        this.provisionersByEnvironment = new HashMap<String, RemoteControlProvisioner>();
+        remoteControlsBySessionIds = new HashMap<String, RemoteControlSession>();
+        provisionersByEnvironment = new HashMap<String, RemoteControlProvisioner>();
     }
 
     public void register(RemoteControlProxy newRemoteControl) {
@@ -200,9 +202,21 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
     }
 
     public void recycleAllSessionsIdleForTooLong(double maxIdleTimeInSeconds) {
-        for (Map.Entry<String, RemoteControlSession> entry : remoteControlsBySessionIds.entrySet()) {
-            recycleSessionIfIdleForTooLong(entry.getValue(), maxIdleTimeInSeconds);
+        for (RemoteControlSession session : iteratorSafeRemoteControlSessions()) {
+            recycleSessionIfIdleForTooLong(session, maxIdleTimeInSeconds);
         }
+    }
+
+    public Set<RemoteControlSession> iteratorSafeRemoteControlSessions() {
+        final Set<RemoteControlSession> iteratorSafeCopy;
+
+        iteratorSafeCopy = new HashSet<RemoteControlSession>();
+        synchronized (remoteControlsBySessionIds) {
+            for (Map.Entry<String, RemoteControlSession> entry : remoteControlsBySessionIds.entrySet()) {
+                iteratorSafeCopy.add(entry.getValue());
+            }
+        }
+        return iteratorSafeCopy;
     }
 
     public void recycleSessionIfIdleForTooLong(RemoteControlSession session, double maxIdleTimeInSeconds) {
