@@ -43,4 +43,6 @@ Contributors
     - Work on metrics build
     - Documentation and step-by-step installation tutorials
 
+ * [Kevin Menard](http://nirvdrum.com/)
+    - [Patch](http://github.com/ph7/selenium-grid/commit/240e2d846ffac6784ca25c5c05aed023bd431751) for concurrent modification issues 
 
