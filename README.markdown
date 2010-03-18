@@ -1,3 +1,11 @@
+
+  -------
+
+  Note: Selenium Grid needs a new maintainer, 
+  [**I will no longer be actively working on this project**](http://ph7spot.com/blog/selenium-grid-needs-a-new-maintainer)
+
+  -------
+
 Thank you for using Selenium Grid, an open-source tool to
 **transparently distribute your Selenium tests on multiple machines** so
 that you can run your tests in parallel, cutting down the time required
@@ -43,4 +51,8 @@ Contributors
     - Work on metrics build
     - Documentation and step-by-step installation tutorials
 
+ * [Kevin Menard](http://nirvdrum.com/)
+    - [Patch](http://github.com/ph7/selenium-grid/commit/240e2d846ffac6784ca25c5c05aed023bd431751) for concurrent modification issues 
 
+ * [Christian Eager](http://perpenduum.com)
+    - [Patch](http://github.com/eager/selenium-grid/commit/2c1a5fb4ec7937977e007eca9ac356bb1ed64d16) to fix "Errors for ec2-run-instances cause erratic grid instantiation in ec2 example"
