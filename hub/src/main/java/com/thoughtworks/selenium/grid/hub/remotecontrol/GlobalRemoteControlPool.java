@@ -6,11 +6,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.HashSet;
 
 /**
  * Monolithic Remote Control Pool keeping track of all environment and all sessions.
@@ -43,11 +44,18 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
 
         synchronized(provisionersByEnvironment) {
             synchronized (remoteControlsBySessionIds) {
+                Set<RemoteControlSession> sessionsToRemove = new HashSet<RemoteControlSession>();
+
                 status = getProvisioner(remoteControl.environment()).remove(remoteControl);
                 for (RemoteControlSession session : remoteControlsBySessionIds.values()) {
                     if (session.remoteControl().equals(remoteControl)) {
-                        removeFromSessionMap(session);
+                        sessionsToRemove.add(session);
                     }
+                }
+
+                // Remove the session separately from the loop where we found it to avoid issues with concurrent modification.
+                for (RemoteControlSession session : sessionsToRemove) {
+                    removeFromSessionMap(session);
                 }
             }
         }
@@ -167,9 +175,12 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
     }
 
     protected void removeFromSessionMap(RemoteControlSession session) {
-        for (Map.Entry<String, RemoteControlSession> entry : remoteControlsBySessionIds.entrySet()) {
+        // Use a real iterator to avoid issues with concurrent modification.
+        for (final Iterator<Map.Entry<String, RemoteControlSession>> it = remoteControlsBySessionIds.entrySet().iterator(); it.hasNext();) {
+            final Map.Entry<String, RemoteControlSession> entry = it.next();
+
             if (entry.getValue().equals(session)) {
-                remoteControlsBySessionIds.remove(entry.getKey());
+                it.remove();
             }
         }
     }
