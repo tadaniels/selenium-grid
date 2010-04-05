@@ -2,6 +2,17 @@
                    Selenium Grid ChangeLog
                   =========================
 
+Summary of changes from 1.0.5 to 1.0.6 (April 5 2010)
+===================================================
+
+ * Fixed issue with shutting down workers with Rakefile
+ 
+ * Added PID file support for hub and worker started via Rakefile,
+   making it easier to use a process monitor such as monit
+
+ * Fixed some concurrent modification issues that may have resulted
+   in NullPointerExceptions
+
 Summary of changes from 1.0.4 to 1.0.5 (March 16 2010)
 ======================================================
 
