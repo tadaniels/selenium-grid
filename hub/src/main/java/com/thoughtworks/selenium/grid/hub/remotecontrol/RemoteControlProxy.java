@@ -87,7 +87,7 @@ public class RemoteControlProxy {
         return (host + port).hashCode();
     }
 
-    public boolean sesssionInProgress() {
+    public boolean sessionInProgress() {
         return sessionInProgress;
     }
 
@@ -106,7 +106,7 @@ public class RemoteControlProxy {
     }
 
     public boolean canHandleNewSession() {
-        return  !sesssionInProgress();
+        return  !sessionInProgress();
     }
 
 	public boolean unreliable() {

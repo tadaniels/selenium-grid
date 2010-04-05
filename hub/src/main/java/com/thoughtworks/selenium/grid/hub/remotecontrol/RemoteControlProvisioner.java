@@ -130,7 +130,7 @@ public class RemoteControlProvisioner {
 
         reservedRemoteControls = new LinkedList<RemoteControlProxy>();
         for (RemoteControlProxy remoteControl : remoteControls) {
-            if (remoteControl.sesssionInProgress()) {
+            if (remoteControl.sessionInProgress()) {
                 reservedRemoteControls.add(remoteControl);
             }
         }

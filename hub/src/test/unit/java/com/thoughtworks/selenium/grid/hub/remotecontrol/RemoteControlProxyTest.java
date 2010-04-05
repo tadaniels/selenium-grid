@@ -45,8 +45,8 @@ public class RemoteControlProxyTest extends UsingClassMock {
     }
 
     @Test
-    public void sesssionInProgressReturnsFalseByDefault() {
-        assertFalse(new RemoteControlProxy("a host", 0, "", null).sesssionInProgress());
+    public void sessionInProgressReturnsFalseByDefault() {
+        assertFalse(new RemoteControlProxy("a host", 0, "", null).sessionInProgress());
     }
 
     @Test
@@ -55,7 +55,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
 
         remoteControl = new RemoteControlProxy("a host", 0, "", null);
         remoteControl.registerNewSession();
-        assertTrue(remoteControl.sesssionInProgress());
+        assertTrue(remoteControl.sessionInProgress());
     }
 
     @Test(expected = IllegalStateException.class)
@@ -74,7 +74,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
         remoteControl = new RemoteControlProxy("a host", 0, "", null);
         remoteControl.registerNewSession();
         remoteControl.unregisterSession();
-        assertFalse(remoteControl.sesssionInProgress());
+        assertFalse(remoteControl.sessionInProgress());
     }
 
     @Test(expected = IllegalStateException.class)

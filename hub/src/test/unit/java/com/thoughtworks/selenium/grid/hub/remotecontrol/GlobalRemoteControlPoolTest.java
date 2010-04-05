@@ -295,7 +295,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         pool.register(remoteControl);
         pool.reserve(new Environment("an environment", ""));
         pool.release(remoteControl);
-        assertFalse(remoteControl.sesssionInProgress());
+        assertFalse(remoteControl.sessionInProgress());
     }
 
     @Test

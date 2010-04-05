@@ -47,7 +47,7 @@ public class RemoteControlProvisionerTest {
 
 	    oldRC.registerNewSession();
 
-		assertTrue(oldRC.sesssionInProgress());
+		assertTrue(oldRC.sessionInProgress());
 
         provisioner.add(oldRC);
         provisioner.add(newRC);
@@ -56,7 +56,7 @@ public class RemoteControlProvisionerTest {
         assertEquals(1, provisioner.availableRemoteControls().size());
         assertEquals(newRC,
                      provisioner.availableRemoteControls().get(0));
-		assertFalse(newRC.sesssionInProgress());
+		assertFalse(newRC.sessionInProgress());
     }
 
     @Test
