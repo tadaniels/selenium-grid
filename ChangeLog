@@ -2,7 +2,7 @@
                    Selenium Grid ChangeLog
                   =========================
 
-Summary of changes from 1.0.5 to 1.0.6 (April 5 2010)
+Summary of changes from 1.0.5 to 1.0.6 (April 8 2010)
 ===================================================
 
  * Fixed issue with shutting down workers with Rakefile
