@@ -18,9 +18,9 @@ for running in-browser test suites.
  * [Documentation](http://selenium-grid.seleniumhq.org) or 
    under `./doc/website/index.html`
 
- * Official repository: `git://github.com/nirvdrum/selenium-grid.git`
+ * [Official repository](git://github.com/nirvdrum/selenium-grid.git)
 
- * Issue tracker: `http://code.google.com/p/selenium/issues/list`
+ * [Issue tracker](http://code.google.com/p/selenium/issues/list)
 
 Core Team
 =========
