@@ -30,7 +30,7 @@ Core Team
 Contributors
 ============
 
- * [Philippe Hanrigou](http://github.com/ph7/): Original author, primary contributor, and previous maintainer.
+ * [Philippe Hanrigou](http://ph7spot.com/): Original author, primary contributor, and previous maintainer.
 
  * [Anonymous z](http://www.somethingnimble.com/collaborators/z)
     - Original motivation, butt kicking, and code review
