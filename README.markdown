@@ -1,8 +1,8 @@
 
   -------
 
-  Note: Selenium Grid needs a new maintainer, 
-  [**I will no longer be actively working on this project**](http://ph7spot.com/blog/selenium-grid-needs-a-new-maintainer)
+  Note: Selenium Grid changed maintainers.  If you previously watched or forked ph7's repository, please note that it is no longer maintained
+  and nirvdrum's fork is where all active work will take place.
 
   -------
 
@@ -18,17 +18,19 @@ for running in-browser test suites.
  * [Documentation](http://selenium-grid.seleniumhq.org) or 
    under `./doc/website/index.html`
 
- * Official repository: `git://github.com/ph7/selenium-grid.git`
+ * Official repository: `git://github.com/nirvdrum/selenium-grid.git`
 
- * Project Management: `http://www.pivotaltracker.com/projects/2406`
+ * Issue tracker: `http://code.google.com/p/selenium/issues/list`
 
 Core Team
 =========
 
- * Philippe Hanrigou (`ph7`): Original author and main contributor
+ * [Kevin Menard](http://nirvdrum.com/): Current maintainer.
 
 Contributors
 ============
+
+ * [Philippe Hanrigou](http://github.com/ph7/): Original author, primary contributor, and previous maintainer.
 
  * [Anonymous z](http://www.somethingnimble.com/collaborators/z)
     - Original motivation, butt kicking, and code review
@@ -50,9 +52,6 @@ Contributors
  * [Shannon Lal](http://clearspace.openqa.org/people/shannonlal)
     - Work on metrics build
     - Documentation and step-by-step installation tutorials
-
- * [Kevin Menard](http://nirvdrum.com/)
-    - [Patch](http://github.com/ph7/selenium-grid/commit/240e2d846ffac6784ca25c5c05aed023bd431751) for concurrent modification issues 
 
  * [Christian Eager](http://perpenduum.com)
     - [Patch](http://github.com/eager/selenium-grid/commit/2c1a5fb4ec7937977e007eca9ac356bb1ed64d16) to fix "Errors for ec2-run-instances cause erratic grid instantiation in ec2 example"
