@@ -8,6 +8,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Local interface to a real remote control running somewhere in the grid.
@@ -102,7 +104,21 @@ public class RemoteControlProxy {
         if (!sessionInProgress) {
             throw new IllegalStateException("Unregistering session on an idle remote control : " + toString());
         }
+
         sessionInProgress = false;
+    }
+
+    public void terminateSession(String sessionId) {
+        try {
+            Map<String, String[]> params = new HashMap<String, String[]>();
+            params.put("cmd", new String[] { "testComplete" });
+            params.put("sessionId", new String[] { sessionId });
+
+            forward(new HttpParameters(params));
+        }
+        catch (IOException e) {
+            LOGGER.warn("Exception telling remote control to kill its session:" + e.getMessage());
+        }
     }
 
     public boolean canHandleNewSession() {

@@ -1,5 +1,6 @@
 package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
+import com.thoughtworks.selenium.grid.HttpClient;
 import com.thoughtworks.selenium.grid.hub.Environment;
 import com.thoughtworks.selenium.grid.hub.EnvironmentManager;
 import com.thoughtworks.selenium.grid.hub.NoSuchEnvironmentException;
@@ -174,7 +175,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;                                                
 
-        remoteControl = new HealthyRemoteControl("", 0, "an environment", null);
+        remoteControl = new HealthyRemoteControl("", 0, "an environment", new HttpClient());
         pool = new GlobalRemoteControlPool();
         pool.register(remoteControl);
         pool.reserve(new Environment("an environment", ""));
@@ -195,7 +196,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new RemoteControlProxy("", 0, "an environment", null);
+        remoteControl = new RemoteControlProxy("", 0, "an environment", new HttpClient());
         provisioner = mock(RemoteControlProvisioner.class);
         pool = new GlobalRemoteControlPool() {
             public RemoteControlProvisioner getProvisioner(String environment) {
@@ -273,7 +274,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
-        remoteControl = new HealthyRemoteControl("host", 0, "an environment", null);
+        remoteControl = new HealthyRemoteControl("host", 0, "an environment", new HttpClient());
         pool = new GlobalRemoteControlPool();
 
         pool.register(remoteControl);
@@ -642,11 +643,14 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
     }
 
     @Test
-    public void recycleSessionIfIdleForTooLongDoesReleaseTheSessionWhenIdleForToLong() {
+    public void recycleSessionIfIdleForTooLongDoesReleaseTheSessionWhenIdleForTooLong() {
         final RemoteControlProxy aRC;
         final GlobalRemoteControlPool pool;
 
-        aRC = new HealthyRemoteControl("host", 4444, "an environment", null);
+        final Mock httpClient = mock(HttpClient.class);
+        httpClient.stubs("post");
+        aRC = new HealthyRemoteControl("host", 4444, "an environment", (HttpClient) httpClient);
+
         pool = new GlobalRemoteControlPool();
         pool.register(aRC);
         pool.reserve(new Environment("an environment", "a browser"));
@@ -681,7 +685,10 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final GlobalRemoteControlPool pool;
         final Mock session;
 
-        aRC = new HealthyRemoteControl("host", 4444, "an environment", null);
+        final Mock httpClient = mock(HttpClient.class);
+        httpClient.stubs("post");
+        aRC = new HealthyRemoteControl("host", 4444, "an environment", (HttpClient) httpClient);
+
         pool = new GlobalRemoteControlPool();
         pool.register(aRC);
         pool.reserve(new Environment("an environment", "a browser"));
@@ -713,7 +720,10 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         final RemoteControlProxy rc;
         final GlobalRemoteControlPool pool;
 
-        rc = new HealthyRemoteControl("host", 4444, "an environment", null);
+        final Mock httpClient = mock(HttpClient.class);
+        httpClient.stubs("post");
+        rc = new HealthyRemoteControl("host", 4444, "an environment", (HttpClient) httpClient);
+
         pool = new GlobalRemoteControlPool();
         pool.register(rc);
         pool.reserve(new Environment("an environment", "a browser"));

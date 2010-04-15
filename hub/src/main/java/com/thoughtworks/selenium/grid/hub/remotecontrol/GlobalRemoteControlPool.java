@@ -113,6 +113,7 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
             remoteControlsBySessionIds.remove(sessionId);
         }
         getProvisioner(remoteControl.environment()).release(remoteControl);
+        remoteControl.terminateSession(sessionId);
     }
 
     public List<RemoteControlProxy> availableRemoteControls() {
