@@ -9,6 +9,8 @@ import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertSame;
 import static junit.framework.Assert.assertTrue;
+
+import com.thoughtworks.selenium.grid.hub.NoSuchSessionException;
 import org.jbehave.classmock.UsingClassMock;
 import org.jbehave.core.mock.Mock;
 import static org.junit.Assert.assertNotNull;
@@ -82,7 +84,7 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
     }
 
     @Test
-    public void onceUnregisteredARemoteControlIsNotassociatedWithAnyExistingSession() {
+    public void onceUnregisteredARemoteControlIsNotAssociatedWithAnyExistingSession() {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
@@ -92,7 +94,14 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         pool.register(remoteControl);
         pool.associateWithSession(remoteControl, "a session id");
         pool.unregister(remoteControl);
-        assertEquals(null, pool.retrieve("a session id"));
+
+        try {
+            pool.retrieve("a session id");
+            fail("did not catch NoSuchSessionException as expected");
+        } catch(NoSuchSessionException e) {
+            assertEquals("a session id", e.sessionId());
+        }
+
         verifyMocks();
     }
 
@@ -136,8 +145,13 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
     }
 
     @Test
-    public void getRemoteControlReturnsNullWhenNoRemoteControlHasBeenAssociatedWithTheSessionId() {
-        assertEquals(null, new GlobalRemoteControlPool().retrieve("unknown session id"));
+    public void getRemoteControlRaisesNoSuchSessionExceptionWhenNoRemoteControlHasBeenAssociatedWithTheSessionId() {
+        try {
+            new GlobalRemoteControlPool().retrieve("unknown session id");
+            fail("did not catch NoSuchSessionException as expected");
+        } catch(NoSuchSessionException e) {
+            assertEquals("unknown session id", e.sessionId());
+        }
     }
 
     @Test
@@ -182,7 +196,13 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         pool.associateWithSession(remoteControl, "a session id");
 
         pool.releaseForSession("a session id");
-        assertEquals(null, pool.retrieve("a session id"));
+
+        try {
+            pool.retrieve("a session id");
+            fail("did not catch NoSuchSessionException as expected");
+        } catch(NoSuchSessionException e) {
+            assertEquals("a session id", e.sessionId());
+        }
     }
 
     public void releaseForSessionDoesNotThrowsAnExceptionWhenSessionIsNotAssociated() {
@@ -209,7 +229,14 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
 
         provisioner.expects("release").with(remoteControl);
         pool.releaseForSession("a session id");
-        assertEquals(null, pool.retrieve("a session id"));
+
+        try {
+            pool.retrieve("a session id");
+            fail("did not catch NoSuchSessionException as expected");
+        } catch(NoSuchSessionException e) {
+            assertEquals("a session id", e.sessionId());
+        }
+
         verifyMocks();
     }
 
@@ -231,7 +258,14 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         provisioner.expects("release").with(remoteControl);
 
         pool.release(remoteControl);
-        assertEquals(null, pool.retrieve("a session id"));
+
+        try {
+            pool.retrieve("a session id");
+            fail("did not catch NoSuchSessionException as expected");
+        } catch(NoSuchSessionException e) {
+            assertEquals("a session id", e.sessionId());
+        }
+
         verifyMocks();
     }
 
@@ -265,12 +299,17 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
     }
 
     @Test
-    public void getPoolForSessionReturnsNullWhenNoPoolHaveBeenAssociatedWithThisSession() {
-        assertNull(new GlobalRemoteControlPool().getRemoteControlForSession("a session id"));
+    public void getPoolForSessionRaisesNoSuchSessionExceptionWhenNoPoolHaveBeenAssociatedWithThisSession() {
+        try {
+            new GlobalRemoteControlPool().getRemoteControlForSession("a session id");
+            fail("did not catch NoSuchSessionException as expected");
+        } catch(NoSuchSessionException e) {
+            assertEquals("a session id", e.sessionId());
+        }
     }
 
     @Test
-    public void aRemoteControlIsNotAsssociateWithTheSesssionAfterCallingReleaseForSession() {
+    public void aRemoteControlIsNotAssociatedWithTheSessionAfterCallingReleaseForSession() {
         final RemoteControlProxy remoteControl;
         final GlobalRemoteControlPool pool;
 
@@ -282,7 +321,12 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         pool.associateWithSession(remoteControl, "a session id");
         pool.releaseForSession("a session id");
 
-        assertEquals(null, pool.getRemoteControlForSession("a session id"));
+        try {
+            pool.getRemoteControlForSession("a session id");
+            fail("did not catch NoSuchSessionException as expected");
+        } catch(NoSuchSessionException e) {
+            assertEquals("a session id", e.sessionId());
+        }
     }
 
     @Test
@@ -657,9 +701,15 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         pool.associateWithSession(aRC, "a session id");
 
         pool.recycleSessionIfIdleForTooLong(new RemoteControlSession("a session id", aRC), 0);
-        assertNull(pool.getRemoteControlForSession("a session id"));
         assertTrue(pool.availableRemoteControls().contains(aRC));
         assertTrue(pool.allRegisteredRemoteControls().contains(aRC));
+
+        try {
+            pool.getRemoteControlForSession("a session id");
+            fail("did not catch NoSuchSessionException as expected");
+        } catch(NoSuchSessionException e) {
+            assertEquals("a session id", e.sessionId());
+        }
     }
 
     @Test
@@ -698,7 +748,13 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         session.expects("innactiveForMoreThan").with(eq(20000)).will(returnValue(true));
 
         pool.recycleSessionIfIdleForTooLong((RemoteControlSession) session, 20);
-        assertNull(pool.getRemoteControlForSession("a session id"));
+
+        try {
+            pool.getRemoteControlForSession("a session id");
+            fail("did not catch NoSuchSessionException as expected");
+        } catch(NoSuchSessionException e) {
+            assertEquals("a session id", e.sessionId());
+        }
     }
 
     @Test
@@ -730,8 +786,14 @@ public class GlobalRemoteControlPoolTest extends UsingClassMock {
         pool.associateWithSession(rc, "a session id");
 
         pool.recycleAllSessionsIdleForTooLong(0.0);
-        assertNull(pool.getRemoteControlForSession("a session id"));
         assertTrue(pool.allRegisteredRemoteControls().contains(rc));
+
+        try {
+            pool.getRemoteControlForSession("a session id");
+            fail("did not catch NoSuchSessionException as expected");
+        } catch(NoSuchSessionException e) {
+            assertEquals("a session id", e.sessionId());
+        }
     }
 
     @Test

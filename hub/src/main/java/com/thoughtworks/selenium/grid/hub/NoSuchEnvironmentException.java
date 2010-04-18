@@ -1,7 +1,7 @@
 package com.thoughtworks.selenium.grid.hub;
 
 /**
- * Signals attemps to reserve an environment for which there is no registered remote control.
+ * Signals attempt to reserve an environment for which there is no registered remote control.
  */
 public class NoSuchEnvironmentException extends RuntimeException {
 

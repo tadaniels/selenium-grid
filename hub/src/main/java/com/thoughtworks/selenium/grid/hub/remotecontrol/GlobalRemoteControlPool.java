@@ -2,6 +2,7 @@ package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
 import com.thoughtworks.selenium.grid.hub.Environment;
 import com.thoughtworks.selenium.grid.hub.NoSuchEnvironmentException;
+import com.thoughtworks.selenium.grid.hub.NoSuchSessionException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -168,7 +169,11 @@ public class GlobalRemoteControlPool implements DynamicRemoteControlPool {
         final RemoteControlSession session;
 
         session = getRemoteControlSession(sessionId);
-        return (null == session)? null : session.remoteControl();
+        if (null == session) {
+            throw new NoSuchSessionException(sessionId);
+        }
+
+        return session.remoteControl();
     }
 
     protected RemoteControlSession getRemoteControlSession(String sessionId) {
