@@ -57,4 +57,15 @@ public class HubConfigurationTest {
         assertEquals(24.0, configuration.getSessionMaxIdleTimeInSeconds());
     }
 
+    @Test
+    public void defaultNewSessionMaxWaitTimeInSecondsIsInfinity() {
+        assertEquals(Double.POSITIVE_INFINITY, new HubConfiguration().getNewSessionMaxWaitTimeInSeconds());
+    }
+
+    @Test
+    public void newSessionMaxWaitTimeInSecondsCanBeSetToANonDefaultValue() {
+        final HubConfiguration configuration = new HubConfiguration();
+        configuration.setNewSessionMaxWaitTimeInSeconds(24.0);
+        assertEquals(24.0, configuration.getNewSessionMaxWaitTimeInSeconds());
+    }
 }

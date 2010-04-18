@@ -6,6 +6,8 @@ import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertSame;
+
+import com.thoughtworks.selenium.grid.hub.HubRegistry;
 import org.junit.Test;
 
 public class RemoteControlProvisionerTest {
@@ -194,7 +196,7 @@ public class RemoteControlProvisionerTest {
     }
 
     @Test
-    public void reserveBlocksUntilARemoteControlIsaddedWhenThereIsAtLeastOneRegisteredRemoteControl() {
+    public void reserveBlocksUntilARemoteControlIsAddedWhenThereIsAtLeastOneRegisteredRemoteControl() {
         final RemoteControlProvisioner provisioner;
         final RemoteControlProxy firstRemoteControl;
         final RemoteControlProxy secondRemoteControl;
@@ -212,6 +214,19 @@ public class RemoteControlProvisionerTest {
             }
         };
         assertEquals(secondRemoteControl, provisioner.reserve());
+    }
+
+    @Test
+    public void reserveTimesOutIfARemoteControlIsNotAddedOrReleased() {
+        final RemoteControlProvisioner provisioner = new RemoteControlProvisioner();
+        final RemoteControlProxy remoteControl = new HealthyRemoteControl("a", 0, "", null);
+
+        HubRegistry.registry().gridConfiguration().getHub().setNewSessionMaxWaitTimeInSeconds(2.0);
+
+        provisioner.add(remoteControl);
+        provisioner.reserve();
+
+        assertEquals(null, provisioner.reserve());
     }
 
     @Test

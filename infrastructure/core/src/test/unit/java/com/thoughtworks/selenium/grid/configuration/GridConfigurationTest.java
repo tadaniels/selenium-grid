@@ -73,6 +73,16 @@ public class GridConfigurationTest {
     }
 
     @Test
+    public void parseNewSessionMaxWaitTimeInSecondsAsDefinedInYaml() {
+        final GridConfiguration configuration;
+
+        configuration = GridConfiguration.parse(new StringReader(
+                "hub: \n"
+              + "  newSessionMaxWaitTimeInSeconds: 120"));
+        assertEquals(120.0, configuration.getHub().getNewSessionMaxWaitTimeInSeconds());
+    }
+
+    @Test
     public void parseHubEnvironmentsAsDefinedInYaml() {
         final EnvironmentConfiguration[] environments;
         final GridConfiguration configuration;

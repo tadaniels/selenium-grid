@@ -1,11 +1,13 @@
 package com.thoughtworks.selenium.grid.hub.remotecontrol;
 
+import com.thoughtworks.selenium.grid.hub.HubRegistry;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -42,6 +44,12 @@ public class RemoteControlProvisioner {
             }
 
             remoteControl = blockUntilARemoteControlIsAvailable();
+            if (null == remoteControl) {
+                LOGGER.info("Timed out waiting for a remote control for environment.");
+                return null;
+            }
+
+
             while (remoteControl.unreliable()) {
                 LOGGER.warn("Reserved RC " + remoteControl + " is detected as unreliable, unregistering it and reserving a new one...");
                 tearDownExistingRemoteControl(remoteControl);
@@ -49,6 +57,10 @@ public class RemoteControlProvisioner {
                     return null;
                 }
                 remoteControl = blockUntilARemoteControlIsAvailable();
+                if (null == remoteControl) {
+                    LOGGER.info("Timed out waiting for a remote control for environment.");
+                    return null;
+                }
             }
             remoteControl.registerNewSession();
             LOGGER.info("Reserved remote control" + remoteControl);
@@ -143,7 +155,7 @@ public class RemoteControlProvisioner {
         while (true) {
             try {
                 availableRemoteControl = findNextAvailableRemoteControl();
-                while (null == availableRemoteControl) {
+                if (null == availableRemoteControl) {
                     LOGGER.info("Waiting for a remote control...");
                     waitForARemoteControlToBeAvailable();
                     availableRemoteControl = findNextAvailableRemoteControl();
@@ -170,7 +182,13 @@ public class RemoteControlProvisioner {
     }
 
     protected void waitForARemoteControlToBeAvailable() throws InterruptedException {
-        remoteControlAvailable.await();
+        final Double maxWaitTime = HubRegistry.registry().gridConfiguration().getHub().getNewSessionMaxWaitTimeInSeconds();
+
+        if (maxWaitTime.isInfinite()) {
+            remoteControlAvailable.await();
+        } else {
+            remoteControlAvailable.await(maxWaitTime.longValue(), TimeUnit.SECONDS);
+        }
     }
 
     protected void signalThatARemoteControlHasBeenMadeAvailable() {

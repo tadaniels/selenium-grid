@@ -9,6 +9,10 @@ Summary of changes from 1.0.6 to 1.0.7
  * Hub now instructs remote controls to shutdown a session if the hub
    is going to remove it due to being idle for too long.
 
+ * Added ability to specify timeout period when waiting for remote controls
+   to become available.  Now the client can timeout gracefully and decide what
+   it would like to do next.
+
 
 Summary of changes from 1.0.5 to 1.0.6 (April 8 2010)
 ===================================================

@@ -8,6 +8,7 @@ public class HubConfiguration {
     private int port;
     private double remoteControlPollingIntervalInSeconds;
     private double sessionMaxIdleTimeInSeconds;
+    private double newSessionMaxWaitTimeInSeconds;
     private EnvironmentConfiguration[] environments;
 
     public HubConfiguration() {
@@ -15,6 +16,7 @@ public class HubConfiguration {
         this.environments = new EnvironmentConfiguration[] {};
         this.remoteControlPollingIntervalInSeconds = 3 * 60;
         this.sessionMaxIdleTimeInSeconds = 5 * 60;
+        this.newSessionMaxWaitTimeInSeconds = Double.POSITIVE_INFINITY;
     }
 
     public int getPort() {
@@ -49,4 +51,11 @@ public class HubConfiguration {
         this.sessionMaxIdleTimeInSeconds = newIdleTimeInSeconds;
     }
 
+    public double getNewSessionMaxWaitTimeInSeconds() {
+        return newSessionMaxWaitTimeInSeconds;
+    }
+
+    public void setNewSessionMaxWaitTimeInSeconds(final double newSessionMaxWaitTimeInSeconds) {
+        this.newSessionMaxWaitTimeInSeconds = newSessionMaxWaitTimeInSeconds;
+    }
 }
