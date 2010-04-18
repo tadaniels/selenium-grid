@@ -43,7 +43,7 @@ public class RemoteControlProvisioner {
                 return null;
             }
 
-            remoteControl = blockUntilARemoteControlIsAvailable();
+            remoteControl = blockUntilARemoteControlIsAvailableOrRequestTimesOut();
             if (null == remoteControl) {
                 LOGGER.info("Timed out waiting for a remote control for environment.");
                 return null;
@@ -56,7 +56,7 @@ public class RemoteControlProvisioner {
                 if (remoteControls.isEmpty()) {
                     return null;
                 }
-                remoteControl = blockUntilARemoteControlIsAvailable();
+                remoteControl = blockUntilARemoteControlIsAvailableOrRequestTimesOut();
                 if (null == remoteControl) {
                     LOGGER.info("Timed out waiting for a remote control for environment.");
                     return null;
@@ -149,15 +149,16 @@ public class RemoteControlProvisioner {
         return Arrays.asList(reservedRemoteControls.toArray(new RemoteControlProxy[reservedRemoteControls.size()]));
     }
 
-    protected RemoteControlProxy blockUntilARemoteControlIsAvailable() {
+    protected RemoteControlProxy blockUntilARemoteControlIsAvailableOrRequestTimesOut() {
         RemoteControlProxy availableRemoteControl;
 
         while (true) {
             try {
                 availableRemoteControl = findNextAvailableRemoteControl();
-                if (null == availableRemoteControl) {
+                boolean timedOut = false;
+                while ((null == availableRemoteControl) && !timedOut) {
                     LOGGER.info("Waiting for a remote control...");
-                    waitForARemoteControlToBeAvailable();
+                    timedOut = waitForARemoteControlToBeAvailable();
                     availableRemoteControl = findNextAvailableRemoteControl();
                 }
                 return availableRemoteControl;
@@ -181,13 +182,21 @@ public class RemoteControlProvisioner {
         return null;
     }
 
-    protected void waitForARemoteControlToBeAvailable() throws InterruptedException {
+  /**
+   * Wait for a remote control to be available or timeout while waiting.
+   *
+   * @return Indicates whether the request timed out.
+   * 
+   * @throws InterruptedException
+   */
+    protected boolean waitForARemoteControlToBeAvailable() throws InterruptedException {
         final Double maxWaitTime = HubRegistry.registry().gridConfiguration().getHub().getNewSessionMaxWaitTimeInSeconds();
 
         if (maxWaitTime.isInfinite()) {
             remoteControlAvailable.await();
+            return false;
         } else {
-            remoteControlAvailable.await(maxWaitTime.longValue(), TimeUnit.SECONDS);
+            return !remoteControlAvailable.await(maxWaitTime.longValue(), TimeUnit.SECONDS);
         }
     }
 
