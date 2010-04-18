@@ -144,7 +144,7 @@ public class RemoteControlProvisioner {
             try {
                 availableRemoteControl = findNextAvailableRemoteControl();
                 while (null == availableRemoteControl) {
-                    LOGGER.info("Waiting for an remote control...");
+                    LOGGER.info("Waiting for a remote control...");
                     waitForARemoteControlToBeAvailable();
                     availableRemoteControl = findNextAvailableRemoteControl();
                 }
