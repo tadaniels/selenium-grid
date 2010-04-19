@@ -661,6 +661,20 @@
         <entry key="$PROJECT_DIR$">
           <value>
             <SvnBranchConfiguration>
+              <option name="branchMap">
+                <map>
+                  <entry key="https://svn.seleniumhq.org/svn/selenium-grid/tags">
+                    <value>
+                      <list />
+                    </value>
+                  </entry>
+                  <entry key="https://svn.seleniumhq.org/svn/selenium-grid/website">
+                    <value>
+                      <list />
+                    </value>
+                  </entry>
+                </map>
+              </option>
               <option name="branchUrls">
                 <list>
                   <option value="https://svn.seleniumhq.org/svn/selenium-grid/tags" />
