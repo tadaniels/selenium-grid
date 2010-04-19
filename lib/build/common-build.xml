@@ -1,4 +1,4 @@
-<project name="Selenium Grid Common Build Tasks">
+<project name="Selenium Grid Common Build Tasks" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
 
   <description>Selenium Grid Common Build Tasks</description>
 
@@ -16,6 +16,11 @@
   <property name="metrics.pmd.reports" location="${metrics.reports}/pmd"/>
   <property name="metrics.coverage.reports" location="${metrics.reports}/coverage"/>
   <property environment="env"/>
+
+  <path id="maven-ant-tasks.classpath" path="${rootdir}/vendor/maven-ant-tasks-2.0.10.jar" />
+  <typedef resource="org/apache/maven/artifact/ant/antlib.xml"
+           uri="antlib:org.apache.maven.artifact.ant"
+           classpathref="maven-ant-tasks.classpath" />
 
   <path id="mocking.classpath">
     <fileset dir="${rootdir}/vendor">
@@ -208,6 +213,22 @@
         </section>
       </manifest>
     </jar>
+    <jar jarfile="${dist}/lib/${artifact}-${version}-sources.jar" basedir="${build.src}">
+      <manifest>
+        <attribute name="Built-By" value="OpenQA.org"/>
+        <attribute name="Build-Time" value="${DSTAMP}${TSTAMP}"/>
+        <section name="common">
+          <attribute name="Specification-Title" value="${name}"/>
+          <attribute name="Specification-Version" value="${version}"/>
+          <attribute name="Specification-Vendor" value="OpenQA.org"/>
+        </section>
+      </manifest>
+    </jar>
+    <artifact:pom id="mypom" file="pom.xml" />
+    <artifact:install file="${dist}/lib/${artifact}-${version}.jar">
+      <pom refid="mypom"/>
+      <artifact:attach file="${dist}/lib/${artifact}-${version}-sources.jar" classifier="sources"/>
+    </artifact:install>
   </target>
 
   <macrodef name="package-standalone-jar">
