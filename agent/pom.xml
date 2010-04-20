@@ -17,4 +17,35 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>om.thoughtworks.selenium.grid.agent.AgentServer</mainClass>
+              <addClasspath>true</addClasspath>
+            </manifest>
+          </archive>
+          <descriptors>
+            <descriptor>src/assembly/jar-assembly.xml</descriptor>
+          </descriptors>
+          <descriptorRefs>
+            <descriptorRef>src</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

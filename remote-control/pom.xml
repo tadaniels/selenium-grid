@@ -24,10 +24,41 @@
       <artifactId>commons-httpclient</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.seleniumhq.selenium.server</groupId>
+      <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-server</artifactId>
-      <classifier>standalone</classifier>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.thoughtworks.selenium.grid.remotecontrol.SelfRegisteringRemoteControlLauncher</mainClass>
+              <addClasspath>true</addClasspath>
+            </manifest>
+          </archive>
+          <descriptors>
+            <descriptor>src/assembly/jar-assembly.xml</descriptor>
+          </descriptors>
+          <descriptorRefs>
+            <descriptorRef>src</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>

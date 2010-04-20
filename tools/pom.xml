@@ -9,10 +9,6 @@
   <artifactId>selenium-grid-tools</artifactId>
   <name>Selenium Grid Tools</name>
 
-  <build>
-    <sourceDirectory>src/main</sourceDirectory>
-  </build>
-
   <dependencies>
     <dependency>
       <groupId>commons-logging</groupId>
@@ -24,4 +20,35 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <sourceDirectory>src/main</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+            </manifest>
+          </archive>
+          <descriptors>
+            <descriptor>src/assembly/jar-assembly.xml</descriptor>
+          </descriptors>
+          <descriptorRefs>
+            <descriptorRef>src</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

@@ -10,10 +10,6 @@
   <artifactId>selenium-grid-core</artifactId>
   <name>Selenium Grid Core</name>
 
-  <build>
-    <sourceDirectory>src/main</sourceDirectory>
-  </build>
-
   <dependencies>
     <dependency>
       <groupId>org.jyaml</groupId>
@@ -25,4 +21,33 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <sourceDirectory>src/main</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass></mainClass>
+              <addClasspath>true</addClasspath>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>src</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
