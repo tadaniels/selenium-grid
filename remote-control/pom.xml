@@ -24,8 +24,9 @@
       <artifactId>commons-httpclient</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
+      <groupId>org.seleniumhq.selenium.server</groupId>
       <artifactId>selenium-server</artifactId>
+      <classifier>standalone</classifier>
     </dependency>
   </dependencies>
 
