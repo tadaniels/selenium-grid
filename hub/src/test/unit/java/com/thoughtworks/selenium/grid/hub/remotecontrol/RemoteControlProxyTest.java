@@ -215,7 +215,7 @@ public class RemoteControlProxyTest extends UsingClassMock {
     }
 
     @Test
-    public void unreliableReturnsFalseWhenTheResponseIsSuccesfull() {
+    public void unreliableReturnsFalseWhenTheResponseIsSuccessful() {
         final RemoteControlProxy proxy;
         final Response successfulResponse;
         final Mock client;
@@ -232,12 +232,12 @@ public class RemoteControlProxyTest extends UsingClassMock {
     @Test
     public void unreliableReturnsTrueWhenTheResponseIsA500() {
         final RemoteControlProxy proxy;
-        final Response successfulResponse;
+        final Response badResponse;
         final Mock client;
 
         client = mock(HttpClient.class);
-        successfulResponse = new Response(500, "");
-        client.expects("get").with(eq("http://foo:10/selenium-server/heartbeat")).will(returnValue(successfulResponse));
+        badResponse = new Response(500, "");
+        client.expects("get").with(eq("http://foo:10/selenium-server/heartbeat")).will(returnValue(badResponse));
         proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
         assertTrue(proxy.unreliable());
 
@@ -259,4 +259,37 @@ public class RemoteControlProxyTest extends UsingClassMock {
         verifyMocks();
     }
 
+    @SuppressWarnings({"ThrowableInstanceNeverThrown"})
+    @Test
+    public void unreliableReturnsFalseWhenTheRemoteControlCannotBeReachedAtFirstButRecovers() {
+        final RemoteControlProxy proxy;
+        final Response successfulResponse;
+        final Mock client;
+
+        client = mock(HttpClient.class);
+        successfulResponse = new Response(200, "");
+        client.expects("get").with(eq("http://foo:10/selenium-server/heartbeat")).
+               will(throwException(new RuntimeException("Simulated Error"))).will(returnValue(successfulResponse));
+        proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
+        assertFalse(proxy.unreliable());
+
+        verifyMocks();
+    }
+
+    @Test
+    public void unreliableReturnsFalseWhenTheResponseIsA500ThenA200() {
+        final RemoteControlProxy proxy;
+        final Response badResponse;
+        final Response successfulResponse;
+        final Mock client;
+
+        client = mock(HttpClient.class);
+        badResponse = new Response(500, "");
+        successfulResponse = new Response(200, "");
+        client.expects("get").with(eq("http://foo:10/selenium-server/heartbeat")).will(returnValue(badResponse)).will(returnValue(successfulResponse));
+        proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
+        assertFalse(proxy.unreliable());
+
+        verifyMocks();
+    }
 }

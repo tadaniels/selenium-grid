@@ -18,11 +18,14 @@ public class RemoteControlProxy {
 
     private static final Log LOGGER = LogFactory.getLog(HubServer.class);
 
+    private static final int MAX_FAILED_HEARTBEATS = 3;
+
     private boolean sessionInProgress;
     private final HttpClient httpClient;
     private final String environment;
     private final String host;
     private final int port;
+    private int failedHeartbeatCount;
 
 
     public RemoteControlProxy(String host, int port, String environment, HttpClient httpClient) {
@@ -37,6 +40,7 @@ public class RemoteControlProxy {
         this.environment = environment;
         this.sessionInProgress = false;
         this.httpClient = httpClient;
+        this.failedHeartbeatCount = 0;
     }
 
     public String host() {
@@ -133,12 +137,35 @@ public class RemoteControlProxy {
             response = httpClient.get(remoteControlPingURL());
         } catch (Exception e) {
             LOGGER.warn("Remote Control at " + host + ":" + port + " is unresponsive");
-            return true;
+
+            if (this.sessionInProgress() && (failedHeartbeatCount < MAX_FAILED_HEARTBEATS)) {
+                LOGGER.warn(String.format("... attempt %d of %d -- trying again.", failedHeartbeatCount + 1, MAX_FAILED_HEARTBEATS));
+
+                failedHeartbeatCount++;
+                return unreliable();
+            }
+            else {
+                failedHeartbeatCount = 0;
+                return true;
+            }
         }
+
         if (response.statusCode() != 200) {
             LOGGER.warn("Remote Control at " + host + ":" + port + " did not respond correctly");
-            return true;
+
+            if (this.sessionInProgress() && (failedHeartbeatCount < MAX_FAILED_HEARTBEATS)) {
+                LOGGER.warn(String.format("... attempt %d of %d -- trying again.", failedHeartbeatCount + 1, MAX_FAILED_HEARTBEATS));
+
+                failedHeartbeatCount++;
+                return unreliable();
+            }
+            else {
+                failedHeartbeatCount = 0;
+                return true;
+            }
         }
+
+        failedHeartbeatCount = 0;
         return false;
     }
 
