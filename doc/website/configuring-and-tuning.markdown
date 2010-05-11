@@ -124,4 +124,28 @@ Changing Remote Control Self-Healing Parameters
   e.g.
   
     ant -DhubPollerIntervalInSeconds=120 launch-hub  
- 
+
+Changing Maximum Wait Time for New Session
+==========================================
+
+  By default the Hub will block until a Remote Control becomes available when
+  requesting a new browser session.  This can be problematic if the requesting
+  client times out.  Since the Hub is unaware of this timeout, it will request
+  the new session anyway and that session will become effectively orphaned.
+
+  If your client cannot wait for the session you may change the maximum time the
+  Hub will wait in `grid_configuration.yml`.  When the `newSessionMaxWaitTimeInSeconds`
+  value is exceeded, the Hub will return an Error indicating that no Remote Controls
+  were available to fulfill the request.
+
+  For instance:
+
+      hub:
+         newSessionMaxWaitTimeInSeconds: 120
+
+  This sample configuration will instruct the Hub to block for up to 2 minutes
+  while waiting for a Remote Control to become available to handle the new session
+  request.
+
+  NB: If this configuration value is not provided, the default value of infinite
+  will be used.
