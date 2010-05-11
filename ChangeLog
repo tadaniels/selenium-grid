@@ -3,8 +3,8 @@
                   =========================
 
 
-Summary of changes from 1.0.6 to 1.0.7
-======================================
+Summary of changes from 1.0.6 to 1.0.7 (May 11 2010)
+====================================================
 
  * Hub now instructs remote controls to shutdown a session if the hub
    is going to remove it due to being idle for too long
@@ -17,9 +17,15 @@ Summary of changes from 1.0.6 to 1.0.7
    or was already closed; rather than raising a NullPointerException we now raise
    a NoSuchSessionException
 
+ * Truncate long command response bodies to 128 characters
+
+ * Retry remote control checks up to three times before deciding that a remote
+   control is unreliable or unresponsive.  This prevents aggressive unregistration
+   of hosts that are busy or suffer from network issues
+
 
 Summary of changes from 1.0.5 to 1.0.6 (April 8 2010)
-===================================================
+=====================================================
 
  * Fixed issue with shutting down workers with Rakefile
  
