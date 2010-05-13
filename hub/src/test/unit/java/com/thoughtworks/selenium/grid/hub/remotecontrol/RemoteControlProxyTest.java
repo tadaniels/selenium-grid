@@ -3,20 +3,21 @@ package com.thoughtworks.selenium.grid.hub.remotecontrol;
 import static com.thoughtworks.selenium.grid.AssertionHelper.assertDistinctHashCodes;
 import static com.thoughtworks.selenium.grid.AssertionHelper.assertNotEquals;
 import static com.thoughtworks.selenium.grid.AssertionHelper.assertSameHashCode;
-import com.thoughtworks.selenium.grid.HttpClient;
-import com.thoughtworks.selenium.grid.HttpParameters;
-import com.thoughtworks.selenium.grid.Response;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
-import org.jbehave.classmock.UsingClassMock;
-import org.jbehave.core.mock.Mock;
-import org.junit.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 
+import org.junit.Test;
 
-public class RemoteControlProxyTest extends UsingClassMock {
+import com.thoughtworks.selenium.grid.HttpClient;
+import com.thoughtworks.selenium.grid.HttpParameters;
+import com.thoughtworks.selenium.grid.Response;
+
+public class RemoteControlProxyTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void contructorThrowsIllegalArgumentExceptionWhenServerIsNull() {
@@ -113,22 +114,19 @@ public class RemoteControlProxyTest extends UsingClassMock {
         final RemoteControlProxy proxy = new RemoteControlProxy("localhost", 5555, "", null);
         assertEquals("http://localhost:5555/selenium-server/heartbeat", proxy.remoteControlPingURL());
     }
-
+	
     @Test
     public void forwardReturnsTheResponseOfTheSeleniumRC() throws IOException {
         final RemoteControlProxy proxy;
         final Response expectedResponse;
         final HttpParameters parameters;
-        final Mock client;
-
-        expectedResponse = new Response(0, "");
-        client = mock(HttpClient.class);
+        
+        HttpClient client = mock(HttpClient.class);
         parameters = new HttpParameters();
-        client.expects("post").with(eq("http://foo:10/selenium-server/driver/"), eq(parameters)).will(returnValue(expectedResponse));
+        expectedResponse = new Response(0, "");
+        when(client.post("http://foo:10/selenium-server/driver/", parameters)).thenReturn(expectedResponse);
         proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
         assertEquals(expectedResponse, proxy.forward(parameters));
-
-        verifyMocks();
     }
 
     @Test
@@ -143,11 +141,9 @@ public class RemoteControlProxyTest extends UsingClassMock {
 
         remoteControl = new RemoteControlProxy("grid.org", 4444, "", null);
         remoteControl.registerNewSession();
-        assertEquals("[RemoteControlProxy grid.org:4444#true]",
-                     remoteControl.toString());
+        assertEquals("[RemoteControlProxy grid.org:4444#true]", remoteControl.toString());
     }
 
-    @SuppressWarnings({"EqualsBetweenInconvertibleTypes"})
     @Test
     public void aRemoteControlsIsNotEqualToARandomObject() {
         assertNotEquals(new RemoteControlProxy("a.host.com", 24, "", new HttpClient()), "a random object");
@@ -215,81 +211,70 @@ public class RemoteControlProxyTest extends UsingClassMock {
     }
 
     @Test
-    public void unreliableReturnsFalseWhenTheResponseIsSuccessful() {
+    public void unreliableReturnsFalseWhenTheResponseIsSuccessful() throws IOException {
         final RemoteControlProxy proxy;
         final Response successfulResponse;
-        final Mock client;
 
-        client = mock(HttpClient.class);
+        HttpClient client = mock(HttpClient.class);
         successfulResponse = new Response(200, "");
-        client.expects("get").with(eq("http://foo:10/selenium-server/heartbeat")).will(returnValue(successfulResponse));
+        when(client.get("http://foo:10/selenium-server/heartbeat")).thenReturn(successfulResponse);
         proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
+        proxy.registerNewSession();
         assertFalse(proxy.unreliable());
-
-        verifyMocks();
     }
 
     @Test
-    public void unreliableReturnsTrueWhenTheResponseIsA500() {
+    public void unreliableReturnsTrueWhenTheResponseIsA500() throws IOException {
         final RemoteControlProxy proxy;
         final Response badResponse;
-        final Mock client;
-
-        client = mock(HttpClient.class);
+        
+        HttpClient client = mock(HttpClient.class);
         badResponse = new Response(500, "");
-        client.expects("get").with(eq("http://foo:10/selenium-server/heartbeat")).will(returnValue(badResponse));
+        when(client.get("http://foo:10/selenium-server/heartbeat")).thenReturn(badResponse);
         proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
+        proxy.registerNewSession();
         assertTrue(proxy.unreliable());
-
-        verifyMocks();
     }
-
-    @SuppressWarnings({"ThrowableInstanceNeverThrown"})
+    
     @Test
-    public void unreliableReturnsTrueWhenTheRemoteControlCannotBeReached() {
+    public void unreliableReturnsTrueWhenTheRemoteControlCannotBeReached() throws IOException {
         final RemoteControlProxy proxy;
-        final Mock client;
 
-        client = mock(HttpClient.class);
-        client.expects("get").with(eq("http://foo:10/selenium-server/heartbeat")).
-               will(throwException(new RuntimeException("Simulated Error")));
+        HttpClient client = mock(HttpClient.class);
+        when(client.get("http://foo:10/selenium-server/heartbeat")).thenThrow(new RuntimeException());
         proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
+        proxy.registerNewSession();
         assertTrue(proxy.unreliable());
-
-        verifyMocks();
     }
-
-    @SuppressWarnings({"ThrowableInstanceNeverThrown"})
+	
     @Test
-    public void unreliableReturnsFalseWhenTheRemoteControlCannotBeReachedAtFirstButRecovers() {
+    public void unreliableReturnsFalseWhenTheRemoteControlCannotBeReachedAtFirstButRecovers() throws IOException {
         final RemoteControlProxy proxy;
         final Response successfulResponse;
-        final Mock client;
 
-        client = mock(HttpClient.class);
+        HttpClient client = mock(HttpClient.class);
         successfulResponse = new Response(200, "");
-        client.expects("get").with(eq("http://foo:10/selenium-server/heartbeat")).
-               will(throwException(new RuntimeException("Simulated Error"))).will(returnValue(successfulResponse));
+        when(client.get("http://foo:10/selenium-server/heartbeat"))
+    		.thenThrow(new RuntimeException())
+    		.thenReturn(successfulResponse);
         proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
+        proxy.registerNewSession();
         assertFalse(proxy.unreliable());
-
-        verifyMocks();
     }
-
+	
     @Test
-    public void unreliableReturnsFalseWhenTheResponseIsA500ThenA200() {
+    public void unreliableReturnsFalseWhenTheResponseIsA500ThenA200() throws IOException {
         final RemoteControlProxy proxy;
         final Response badResponse;
         final Response successfulResponse;
-        final Mock client;
 
-        client = mock(HttpClient.class);
+        HttpClient client = mock(HttpClient.class);
         badResponse = new Response(500, "");
         successfulResponse = new Response(200, "");
-        client.expects("get").with(eq("http://foo:10/selenium-server/heartbeat")).will(returnValue(badResponse)).will(returnValue(successfulResponse));
+        when(client.get("http://foo:10/selenium-server/heartbeat")).thenReturn(badResponse, successfulResponse);
         proxy = new RemoteControlProxy("foo", 10, "", (HttpClient) client);
+        proxy.registerNewSession();
         assertFalse(proxy.unreliable());
-
-        verifyMocks();
     }
+	
 }

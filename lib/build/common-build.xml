@@ -26,6 +26,7 @@
       <include name="objenesis-1.0.jar"/>
       <include name="jmock-2.2.0.jar"/>
       <include name="cglib-nodep-2.1_3.jar"/>
+      <include name="mockito-all-1.8.4.jar"/>
     </fileset>
   </path>
 
