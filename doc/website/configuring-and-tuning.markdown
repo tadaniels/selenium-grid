@@ -147,5 +147,5 @@ Changing Maximum Wait Time for New Session
   while waiting for a Remote Control to become available to handle the new session
   request.
 
-  NB: If this configuration value is not provided, the default value of infinite
-  will be used.
+  _NB: If this configuration value is not provided, the default value of infinite
+  will be used._
