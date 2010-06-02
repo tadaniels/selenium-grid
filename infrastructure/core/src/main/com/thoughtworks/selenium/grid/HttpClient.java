@@ -24,7 +24,7 @@ public class HttpClient {
     }
 
     public HttpClient() {
-        this(new org.apache.commons.httpclient.HttpClient());
+        this(new org.apache.commons.httpclient.HttpClient(new org.apache.commons.httpclient.MultiThreadedHttpConnectionManager()));
     }
 
     public Response get(String url) throws IOException {
