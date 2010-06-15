@@ -3,6 +3,7 @@
   <groupId>org.seleniumhq.selenium.grid</groupId>
   <version>1.0.8-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <artifactId>selenium-grid-parent</artifactId>
   <name>Selenium Grid parent</name>
   <url>http://selenium-grid.openqa.org/</url>
   <scm>
