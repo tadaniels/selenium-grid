@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.seleniumhq.selenium.grid</groupId>
     <artifactId>selenium-grid-parent</artifactId>
-    <version>1.0.8-SNAPSHOT</version>
+    <version>1.0.8</version>
   </parent>
   <artifactId>selenium-grid-hub</artifactId>
   <name>Selenium Grid Hub</name>
