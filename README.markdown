@@ -55,3 +55,16 @@ Contributors
 
  * [Christian Eager](http://perpenduum.com)
     - [Patch](http://github.com/eager/selenium-grid/commit/2c1a5fb4ec7937977e007eca9ac356bb1ed64d16) to fix "Errors for ec2-run-instances cause erratic grid instantiation in ec2 example"
+
+ * Chris Gulley
+    - [Fixed](http://github.com/nirvdrum/selenium-grid/commit/d9a507bd87bcf7e036cee446f5ea5eaeeed59b17) the insidious problem with HttpClient being accessed from multiple threads
+
+ * [Raymond Etornam Agbeame](http://twitter.com/retornam)
+    - Constant testing of snapshot releases
+
+ * [Taylor Wicksell](http://github.com/Gradinko)
+    - Constant testing of snapshot releases
+
+ * [Dave Hunt](http://seleniumexamples.com/blog/)
+    - Constant testing of snapshot releases
+    - Patches for various bugfixes

@@ -61,7 +61,15 @@ public class HubServlet extends HttpServlet {
             LOGGER.error(e.getMessage());
             return new Response(e.getMessage());
         }
-        LOGGER.info("Responding with " + response.statusCode() + "/ '" + response.body() + "'");
+
+        final String responseBody = response.body();
+        if (responseBody.length() > 128) {
+            final int truncated = responseBody.length() - 128;
+            LOGGER.info(String.format("Responding with %d / %s...[%d characters truncated]", response.statusCode(), responseBody.substring(0, 128), truncated));
+        }
+        else {
+            LOGGER.info(String.format("Responding with %d / %s", response.statusCode(), responseBody));
+        }
 
         return response;
     }
